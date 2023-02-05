@@ -1,0 +1,24 @@
+[core]
+	excludesfile = /Users/evan/.gitignore_global
+[user]
+	name = Evan McNeely
+	email = evan.mcneely@leadpages.com
+[alias]
+	co = checkout
+	br = branch
+	cm = commit
+	st = status
+	hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[pull]
+  rebase = false
+
+  ; [core]
+	; repositoryformatversion = 0
+	; filemode = true
+	; bare = false
+	; logallrefupdates = true
+	; ignorecase = true
+	; precomposeunicode = true
+; [remote "origin"]
+	; url = git@github.com:evanmcneely/dotfiles.git
+	; fetch = +refs/heads/*:refs/remotes/origin/*

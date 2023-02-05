@@ -1,0 +1,75 @@
+return {
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, { "lua" })
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        sumneko_lua = {
+          settings = {
+            Lua = {
+              workspace = {
+                checkThirdParty = false,
+              },
+              completion = { callSnippet = "Replace" },
+              telemetry = { enable = false },
+              hint = {
+                enable = false,
+              },
+            },
+          },
+        },
+      },
+      setup = {
+        sumneko_lua = function(_, _)
+          local lsp_utils = require "plugins.lsp.utils"
+          lsp_utils.on_attach(function(client, buffer)
+            -- stylua: ignore
+            if client.name == "sumneko_lua" then
+              vim.keymap.set("n", "<leader>dX", function() require("osv").run_this() end, { buffer = buffer, desc = "OSV Run" })
+              vim.keymap.set("n", "<leader>dL", function() require("osv").launch({port = 8086} ) end,{ buffer = buffer, desc = "OSV Launch" })
+            end
+          end)
+        end,
+      },
+    },
+  },
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = { "mfussenegger/nvim-dap-python" },
+    opts = {
+      setup = {
+        osv = function(_, _)
+          local dap = require "dap"
+          dap.configurations.lua = {
+            {
+              type = "nlua",
+              request = "attach",
+              name = "Attach to running Neovim instance",
+              host = function()
+                local value = vim.fn.input "Host [127.0.0.1]: "
+                if value ~= "" then
+                  return value
+                end
+                return "127.0.0.1"
+              end,
+              port = function()
+                local val = tonumber(vim.fn.input("Port: ", "8086"))
+                assert(val, "Please provide a port number")
+                return val
+              end,
+            },
+          }
+
+          dap.adapters.nlua = function(callback, config)
+            callback { type = "server", host = config.host, port = config.port }
+          end
+        end,
+      },
+    },
+  },
+}

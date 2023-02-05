@@ -1,0 +1,21 @@
+{
+  "diagnostic.errorSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": "",
+  "diagnostic.okSign": "",
+  "diagnostic.debugSign": "",
+  "diagnostic.traceSign": "",
+  "languageserver": {
+    "bash": {
+      "command": "coc-sh",
+      "args": ["start"],
+      "filetypes": ["sh"]
+    },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    }
+  }
+}

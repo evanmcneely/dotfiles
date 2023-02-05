@@ -1,0 +1,7 @@
+.python-version
+.DS_Store
+*.sw*
+.idea
+.vscode
+pyrightconfig.json
+.env
