@@ -52,7 +52,7 @@ plugins=(
     git-prompt
     pyenv
 )
-ZSH_THEME="evans"
+ZSH_THEME="evans-2"
 source $ZSH/oh-my-zsh.sh
 
 #### Aliases
