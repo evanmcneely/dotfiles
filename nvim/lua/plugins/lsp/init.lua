@@ -47,6 +47,7 @@ return {
         "codelldb",
         "prettier",
         "codespell",
+        "beautysh",
       },
     },
     config = function(_, opts)
@@ -75,6 +76,7 @@ return {
           -- nls.builtins.formatting.autopep8,
           nls.builtins.formatting.black,
           nls.builtins.diagnostics.codespell,
+          nls.builtins.formatting.beautysh,
         },
       }
     end,
