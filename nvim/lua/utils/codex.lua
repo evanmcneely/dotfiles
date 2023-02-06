@@ -1,6 +1,6 @@
 local M = {}
 
-local API_KEY = "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"
+local API_KEY = ""
 local OPENAI_URL = "https://api.openai.com/v1/engines/davinci-codex/completions"
 -- local OPENAI_URL = "https://api.openai.com/v1/engines/cushman-codex/completions"
 local MAX_TOKENS = 300
