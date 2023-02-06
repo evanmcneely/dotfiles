@@ -9,16 +9,16 @@ return {
     cmd = "Neogit",
     opts = {
       integrations = { diffview = true },
-      kind = "floating",
-      commit_popup = {
-        kind = "floating",
-      },
-      popup = {
-        kind = "floating",
-      },
+      -- kind = "tab",
+      -- commit_popup = {
+      --   kind = "floating",
+      -- },
+      -- popup = {
+      --   kind = "floating",
+      -- },
     },
     keys = {
-      { "<leader>gs", "<cmd>Neogit<cr>", desc = "Status" },
+      { "<leader>gs", "<cmd>Neogit kind=tab<cr>", desc = "Status" },
       {
         "<leader>gc",
         function()
