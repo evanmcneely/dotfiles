@@ -42,7 +42,7 @@ export LDFLAGS="-L/usr/local/lib ${LDFLAGS}"
 
 export PATH="/opt/poetry/bin:/opt/poetry2/bin:${PATH}"
 
-export OPENAI_API_KEY="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"
+export OPENAI_API_KEY=""
 
 export PATH="${HOME}/.local/bin:${PATH}"
 
