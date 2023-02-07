@@ -30,12 +30,8 @@ return {
         },
         q = {
           name = "+Quit",
-          q = {
-            function()
-              require("utils").smart_quit()
-            end,
-            "Quit",
-          },
+          --stylua: ignore 
+          q = { function() require("utils").smart_quit() end, "Quit" },
           t = { "<cmd>tabclose<cr>", "Close Tab" },
         },
         b = { name = "+Buffer", c = { name = "+Close" }, g = { name = "+Group" } },
@@ -48,6 +44,7 @@ return {
         v = { name = "+View" },
         e = { name = "+Explorer" },
         a = { name = "+AI" },
+        -- m = { name = "+Messages" },
         z = { name = "+System" },
         s = {
           name = "+Search",
@@ -59,18 +56,8 @@ return {
         c = {
           name = "+Code",
           g = { name = "+Annotation" },
-          x = {
-            name = "Swap Next",
-            f = "Function",
-            p = "Parameter",
-            c = "Class",
-          },
-          X = {
-            name = "Swap Previous",
-            f = "Function",
-            p = "Parameter",
-            c = "Class",
-          },
+          x = { name = "Swap Next", f = "Function", p = "Parameter", c = "Class" },
+          X = { name = "Swap Previous", f = "Function", p = "Parameter", c = "Class" },
         },
         u = {
           name = "+Utils",
