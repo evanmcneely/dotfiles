@@ -47,7 +47,7 @@ return {
         t = { name = "+Test", N = { name = "Neotest" }, o = { "Overseer" } },
         v = { name = "+View" },
         e = { name = "+Explorer" },
-        a = { name = "+AI Generation" },
+        a = { name = "+AI" },
         z = { name = "+System" },
         s = {
           name = "+Search",

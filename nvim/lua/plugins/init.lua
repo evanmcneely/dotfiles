@@ -130,9 +130,9 @@ return {
       "MunifTanjim/nui.nvim",
     },
     keys = {
-      { "<leader>ac", "<Plug>nvim-magic-append-completion", "Completion", mode = "v", desc = "Completion" },
-      { "<leader>aa", "<Plug>nvim-magic-suggest-alteration", "Alteration", mode = "v", desc = "Alteration" },
-      { "<leader>ad", "<Plug>nvim-magic-suggest-docstring", "Docstring", mode = "v", desc = "Docstring" },
+      { "<leader>ac", "<Plug>nvim-magic-append-completion", mode = "v", desc = "Completion" },
+      { "<leader>aa", "<Plug>nvim-magic-suggest-alteration", mode = "v", desc = "Alteration" },
+      { "<leader>ad", "<Plug>nvim-magic-suggest-docstring", mode = "v", desc = "Docstring" },
     },
     config = function()
       require("nvim-magic").setup {
