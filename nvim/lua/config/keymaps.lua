@@ -31,12 +31,12 @@ keymap("v", ">", ">gv")
 keymap("v", "p", '"_dP')
 
 -- Move Lines
-keymap("n", "<C-j>", "<cmd>m .+1<CR>==")
-keymap("v", "<C-j>", "<cmd>m '>+1<CR>gv=gv")
-keymap("i", "<C-j>", "<Esc><cmd>m .+1<CR>==gi")
-keymap("n", "<C-k>", "<cmd>m .-2<CR>==")
-keymap("v", "<C-k>", "<cmd>m '<-2<CR>gv=gv")
-keymap("i", "<C-k>", "<Esc><cmd>m .-2<CR>==gi")
+-- keymap("n", "<C-j>", "<cmd>m .+1<CR>==")
+-- keymap("v", "<C-j>", "<cmd>m '>+1<CR>gv=gv")
+-- keymap("i", "<C-j>", "<Esc><cmd>m .+1<CR>==gi")
+-- keymap("n", "<C-k>", "<cmd>m .-2<CR>==")
+-- keymap("v", "<C-k>", "<cmd>m '<-2<CR>gv=gv")
+-- keymap("i", "<C-k>", "<Esc><cmd>m .-2<CR>==gi")
 
 -- Move in insert mode with using the arrow keys
 keymap("i", "<C-k>", "<Up>")
@@ -51,9 +51,10 @@ keymap("n", "<S-Down>", "<cmd>resize -2<CR>")
 keymap("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
 keymap("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
 
--- remap H and L to move to the start and end of the line
+-- useful
 keymap("n", "H", "^")
 keymap("n", "L", "$")
+keymap("n", "Q", "@q")
 
 -- insert blank lines above and below
 keymap("n", "[<space>", "O<esc>", { desc = "Pad above" })
