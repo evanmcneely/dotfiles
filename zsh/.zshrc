@@ -42,7 +42,7 @@ export LDFLAGS="-L/usr/local/lib ${LDFLAGS}"
 
 export PATH="/opt/poetry/bin:/opt/poetry2/bin:${PATH}"
 
-export OPENAI_API_KEY=""
+source ~/.zsh-secrets.sh
 
 export PATH="${HOME}/.local/bin:${PATH}"
 
