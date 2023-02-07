@@ -14,6 +14,7 @@ brew install \
     so \
     node \
     git \
-    wget
+    wget \
+    navi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
