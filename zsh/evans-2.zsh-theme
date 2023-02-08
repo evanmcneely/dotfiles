@@ -50,14 +50,15 @@ function node_version {
 # if there is a python virtualenv active show the name other wiseshow system version
 function pyenv_info {
   if [[ -n "$VIRTUAL_ENV" ]] then
-    echo " $(pyenv_prompt_info)"
+    echo " $(pyenv_prompt_info) "
   else
-    echo " $(python -V | cut -c 8-)"
+    echo " "
+  #   echo " $(python -V | cut -c 8-)"
   fi
 }
 
 # primary prompt 
-PS1='${PROMPT_SYMBOL}╭─ $(status) ${NAME}%n${SYSTEM}  $(arch) $(pyenv_info) $(node_version)${DIR}  %4~$(git_super_status) %{$reset_color%}
+PS1='${PROMPT_SYMBOL}╭─ $(status) ${NAME}%n${SYSTEM}  $(arch)$(pyenv_info)$(node_version)${DIR}  %4~$(git_super_status) %{$reset_color%}
 ${PROMPT_SYMBOL}╰─%{$reset_color%} '
 
 # secondary prompt
