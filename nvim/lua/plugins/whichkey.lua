@@ -51,7 +51,6 @@ return {
           c = { require("utils.coding").cht, "Cheatsheets" },
           s = { require("utils.coding").stack_overflow, "Stack Overflow" },
           i = { require("utils.term").interactive_cheatsheet_toggle, "Interactive cheatsheet" },
-          m = { name = "+Messages" },
         },
         c = {
           name = "+Code",
