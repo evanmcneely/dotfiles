@@ -54,7 +54,7 @@ keymap("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
 -- useful
 keymap("n", "H", "^")
 keymap("n", "L", "$")
-keymap("n", "Q", "@q")
+keymap("n", "Q", "@")
 
 -- insert blank lines above and below
 keymap("n", "[<space>", "O<esc>", { desc = "Pad above" })
