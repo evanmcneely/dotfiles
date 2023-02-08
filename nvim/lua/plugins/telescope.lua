@@ -11,7 +11,7 @@ return {
       "stevearc/aerial.nvim",
       "nvim-telescope/telescope-frecency.nvim",
       "kkharji/sqlite.lua",
-      -- "ThePrimeagen/git-worktree.nvim",
+      "ThePrimeagen/git-worktree.nvim",
     },
     keys = {
       { "<leader><leader>", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
@@ -109,7 +109,7 @@ return {
       telescope.load_extension "aerial"
       telescope.load_extension "dap"
       telescope.load_extension "frecency"
-      -- telescope.load_extension "git_worktree"
+      telescope.load_extension "git_worktree"
     end,
   },
   {

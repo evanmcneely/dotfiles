@@ -133,7 +133,7 @@ return {
   },
   {
     "ThePrimeagen/git-worktree.nvim",
-    enabled = false,
+    -- enabled = false,
     event = "VeryLazy",
     config = function()
       -- change_directory_command = <str> -- default: "cd",
