@@ -131,4 +131,32 @@ return {
       vim.g.gist_open_browser_after_post = 1
     end,
   },
+  {
+    "ThePrimeagen/git-worktree.nvim",
+    enabled = false,
+    event = "VeryLazy",
+    config = function()
+      -- change_directory_command = <str> -- default: "cd",
+      -- update_on_change = <boolean> -- default: true,
+      -- update_on_change_command = <str> -- default: "e .",
+      -- clearjumps_on_change = <boolean> -- default: true,
+      -- autopush = <boolean> -- default: false,
+    end,
+    keys = {
+      {
+        "<leader>gW",
+        function()
+          require("telescope").extensions.git_worktree.git_worktrees()
+        end,
+        desc = "Worktrees",
+      },
+      {
+        "<leader>gw",
+        function()
+          require("telescope").extensions.git_worktree.create_git_worktree()
+        end,
+        desc = "Create worktree",
+      },
+    },
+  },
 }
