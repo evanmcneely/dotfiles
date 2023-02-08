@@ -12,6 +12,34 @@ return {
   -- enter :{number} to peek view of line number in buffer
   { "nacro90/numb.nvim", event = "BufReadPre", config = true },
 
+  -- move stuff around
+  {
+    "matze/vim-move",
+    enabled = false,
+    event = "VeryLazy",
+    config = function()
+      vim.g.move_key_modifier = "C"
+    end,
+  },
+  {
+    "fedepujol/move.nvim",
+    event = "VeryLazy",
+    config = function()
+      local opts = { noremap = true, silent = true }
+      -- Normal-mode commands
+      vim.keymap.set("n", "<C-j>", ":MoveLine(1)<CR>", opts)
+      vim.keymap.set("n", "<C-k>", ":MoveLine(-1)<CR>", opts)
+      vim.keymap.set("n", "<C-h>", ":MoveHChar(-1)<CR>", opts)
+      vim.keymap.set("n", "<C-l>", ":MoveHChar(1)<CR>", opts)
+
+      -- Visual-mode commands
+      vim.keymap.set("v", "<C-k>", ":MoveBlock(-1)<CR>", opts)
+      vim.keymap.set("v", "<C-h>", ":MoveHBlock(-1)<CR>", opts)
+      vim.keymap.set("v", "<C-l>", ":MoveHBlock(1)<CR>", opts)
+      vim.keymap.set("v", "<C-j>", ":MoveBlock(1)<CR>", opts)
+    end,
+  },
+
   -- adds indentation guides to all lines (including empty lines)
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -121,28 +149,7 @@ return {
     },
   },
 
-  -- open ai comlpetion
-  {
-    "jameshiew/nvim-magic",
-    event = "BufReadPre",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-    },
-    keys = {
-      { "<leader>ac", "<Plug>nvim-magic-append-completion", mode = "v", desc = "Completion" },
-      { "<leader>aa", "<Plug>nvim-magic-suggest-alteration", mode = "v", desc = "Alteration" },
-      { "<leader>ad", "<Plug>nvim-magic-suggest-docstring", mode = "v", desc = "Docstring" },
-    },
-    config = function()
-      require("nvim-magic").setup {
-        use_default_keymap = false,
-      }
-    end,
-  },
-
   -- highlighting like paren and machit
-  -- causes problems with lspsaga and flickering
   {
     "andymass/vim-matchup",
     lazy = false,
