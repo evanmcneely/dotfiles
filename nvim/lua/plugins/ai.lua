@@ -50,4 +50,22 @@ return {
       { "<leader>ae", "<cmd>ChatGPTEditWithInstructions<cr>", desc = "GPT edit" },
     },
   },
+  {
+    -- copilot in cmp menu
+    {
+      "zbirenbaum/copilot-cmp",
+      event = "InsertEnter",
+      config = function()
+        require("copilot_cmp").setup()
+      end,
+      dependencies = {
+        "zbirenbaum/copilot.lua",
+        config = function()
+          vim.schedule(function()
+            require("copilot").setup()
+          end)
+        end,
+      },
+    },
+  },
 }

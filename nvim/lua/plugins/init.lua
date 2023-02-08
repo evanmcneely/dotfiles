@@ -132,23 +132,6 @@ return {
   -- add marks to sign column
   { "kshenoy/vim-signature", event = "BufReadPre" },
 
-  -- copilot in cmp menu
-  {
-    "zbirenbaum/copilot-cmp",
-    event = "InsertEnter",
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-    dependencies = {
-      "zbirenbaum/copilot.lua",
-      config = function()
-        vim.schedule(function()
-          require("copilot").setup()
-        end)
-      end,
-    },
-  },
-
   -- highlighting like paren and machit
   {
     "andymass/vim-matchup",
