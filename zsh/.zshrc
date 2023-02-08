@@ -1,4 +1,3 @@
-
 #### LP config
 
 export PATH="/opt/homebrew/bin:${PATH}"
@@ -88,7 +87,7 @@ alias dclf='docker compose logs -f'
 # other
 alias cl='cd dev/lp'
 alias v='vim'
-# alias nv='nvim'
-alias n='nv.sh'
+alias n='nvim'
+alias nightly='nv.sh'
 
 alias luamake=/Users/evan/.config/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
