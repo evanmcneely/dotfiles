@@ -67,6 +67,12 @@ alias gpull='git pull origin $(git symbolic-ref --short HEAD)'
 alias gd='git diff'
 alias gdm='git diff master..$(git symbolic-ref --short HEAD)'
 alias gbprune='git branch | grep -v "master" | grep -v "main" | xargs git branch -D'
+alias gwa='git worktree add'
+alias gwr='git worktree remove'
+alias gwl='git worktree list'
+alias gwpd='git worktree prune --dry-run'
+alias gwp='git worktree prune'
+alias glog='git log --graph --oneline --decorate --all'
 
 # docker
 alias lpdu="docker compose -f ~/dev/lp/lp-docker/docker-compose.yml up --detach"
@@ -89,5 +95,8 @@ alias cl='cd dev/lp'
 alias v='vim'
 alias n='nvim'
 alias nightly='nv.sh'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
 alias luamake=/Users/evan/.config/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
