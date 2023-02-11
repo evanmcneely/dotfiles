@@ -50,7 +50,7 @@ function node_version {
 # if there is a python virtualenv active show the name other wiseshow system version
 function pyenv_info {
   if [[ -n "$VIRTUAL_ENV" ]] then
-    echo " $(pyenv_prompt_info) "
+    echo "  $(pyenv_prompt_info) "
   else
     echo " "
   #   echo " $(python -V | cut -c 8-)"
