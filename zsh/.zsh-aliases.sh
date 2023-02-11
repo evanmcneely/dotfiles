@@ -41,4 +41,5 @@ alias nightly='nv.sh'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias rds="find . -name ".DS_Store" -delete"
 alias luamake=/Users/evan/.config/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
