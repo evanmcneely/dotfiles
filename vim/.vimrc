@@ -42,7 +42,7 @@ filetype plugin indent on
 
 " ----------- Theme Settings -----
 set background=dark
-"" colorscheme solarized 
+" colorscheme solarized 
 colorscheme nord 
 "" linenumber
 set number 
@@ -64,8 +64,8 @@ set smartindent
 set shiftwidth=4
 set autoread
 set noswapfile
-autocmd FileType python set foldmethod=indent
-autocmd FileType python set foldnestmax=2
+" autocmd FileType python set foldmethod=indent
+" autocmd FileType python set foldnestmax=2
 
 " ---------- Shortcuts -------
 "" some convinient stuff
@@ -83,6 +83,9 @@ autocmd FileType python set foldnestmax=2
 " nmap <Left>  <Nop>
 " nmap <Right> <Nop>
 " remap hard to use keys
+:nmap jj <Esc>
+:nmap H ^
+:nmap L $
 nnoremap Q @
 "" navigation in insert mode without arrow keys
 inoremap <C-k> <Up>
