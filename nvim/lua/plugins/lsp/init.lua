@@ -88,6 +88,7 @@ return {
           nls.builtins.code_actions.cspell,
           nls.builtins.code_actions.eslint,
           -- nls.builtins.code_actions.gitsigns,
+          require "typescript.extensions.null-ls.code-actions",
         },
       }
     end,
