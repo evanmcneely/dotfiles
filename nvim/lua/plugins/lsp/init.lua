@@ -26,6 +26,7 @@ return {
         vimls = {},
         yamlls = {},
         bashls = {},
+        -- docker_compose_language_service = {},
       },
     },
     config = function(plugin, opts)

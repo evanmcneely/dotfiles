@@ -92,10 +92,4 @@ function M.stack_overflow()
   end)
 end
 
-function M.reddit()
-  local buf = vim.api.nvim_get_current_buf()
-  local cmd = "tuir"
-  M.open_term(cmd, { direction = "float" })
-end
-
 return M
