@@ -1,10 +1,10 @@
 local icons = require "config.icons"
 
 local function get_repo()
-  -- if vim.fn.trim(vim.fn.system "git rev-parse --is-inside-work-tree") == "true" then
-  return vim.fn.trim(vim.fn.system "basename `git rev-parse --show-toplevel`")
-  -- end
-  -- return ""
+  if vim.fn.trim(vim.fn.system "git rev-parse --is-inside-work-tree") == "true" then
+    return vim.fn.trim(vim.fn.system "basename `git rev-parse --show-toplevel`")
+  end
+  return ""
 end
 -- CURRENT_GIT_REPO = get_repo()
 
