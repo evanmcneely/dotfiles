@@ -41,7 +41,6 @@ return {
             components.lsp_client,
           },
           lualine_x = {
-            components.filename,
             components.window,
             components.spaces,
             "encoding",
