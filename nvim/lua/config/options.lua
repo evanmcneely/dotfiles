@@ -31,7 +31,6 @@ vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.splitbelow = true
--- vim.opt.splitkeep = "screen" -- Neovim 0.9
 vim.opt.splitright = true
 vim.opt.tabstop = indent
 vim.opt.termguicolors = true
@@ -47,6 +46,11 @@ vim.opt.showbreak = "+++"
 
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.clipboard = "unnamedplus"
+
+if vim.fn.has "nvim-0.9.0" == 1 then
+  vim.opt.splitkeep = "screen"
+  vim.opt.shortmess:append { C = true }
+end
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
