@@ -44,7 +44,7 @@ return {
         v = { name = "+View" },
         e = { name = "+Explorer" },
         a = { name = "+AI" },
-        -- m = { name = "+Messages" },
+        m = { name = "+Messages" },
         z = { name = "+System" },
         c = {
           name = "+Code",
