@@ -46,12 +46,6 @@ return {
         a = { name = "+AI" },
         -- m = { name = "+Messages" },
         z = { name = "+System" },
-        s = {
-          name = "+Search",
-          c = { require("utils.coding").cht, "Cheatsheets" },
-          s = { require("utils.coding").stack_overflow, "Stack Overflow" },
-          i = { require("utils.term").interactive_cheatsheet_toggle, "Interactive cheatsheet" },
-        },
         c = {
           name = "+Code",
           g = { name = "+Annotation" },
@@ -61,6 +55,10 @@ return {
         u = {
           name = "+Utils",
           d = { require("utils.term").docker_client_toggle, "lazydocker" },
+          l = { require("utils.term").lazygit_toggle, "lazygit" },
+          c = { require("utils.coding").cht, "Cheatsheets" },
+          s = { require("utils.coding").stack_overflow, "Stack Overflow" },
+          i = { require("utils.term").interactive_cheatsheet_toggle, "Interactive cheatsheet" },
         },
       }, { prefix = "<leader>" })
     end,

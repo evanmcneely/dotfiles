@@ -37,4 +37,21 @@ function M.interactive_cheatsheet_toggle()
   interactive_cheatsheet:toggle()
 end
 
+local lazygit = "lazygit"
+
+local lazygit_term = Terminal:new {
+  cmd = lazygit,
+  dir = "git_dir",
+  hidden = true,
+  direction = "float",
+  float_opts = {
+    border = "double",
+  },
+  close_on_exit = true,
+}
+
+function M.lazygit_toggle()
+  lazygit_term:toggle()
+end
+
 return M
