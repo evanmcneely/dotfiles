@@ -1,19 +1,6 @@
 local icons = require "config.icons"
+local colors = require "config.colors"
 local noice_status = require("noice").api.status
--- from evil line
-local colors = {
-  bg = "#202328",
-  fg = "#bbc2cf",
-  yellow = "#ECBE7B",
-  cyan = "#008080",
-  darkblue = "#081633",
-  green = "#98be65",
-  orange = "#FF8800",
-  violet = "#a9a1e1",
-  magenta = "#c678dd",
-  blue = "#51afef",
-  red = "#ec5f67",
-}
 
 local function get_repo()
   -- if vim.fn.trim(vim.fn.system "git rev-parse --is-inside-work-tree") == "true" then
@@ -107,11 +94,12 @@ return {
       removed = icons.git.LineRemoved,
     },
     diff_color = {
-      added = { fg = colors.green },
-      modified = { fg = colors.orange },
-      removed = { fg = colors.red },
+      added = { fg = colors.git.green },
+      modified = { fg = colors.git.steal },
+      removed = { fg = colors.git.red },
     },
     cond = conditions.check_git_workspace,
+    separator = "|",
   },
   diagnostics = {
     "diagnostics",

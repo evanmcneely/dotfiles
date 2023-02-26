@@ -7,7 +7,7 @@ return {
 
       require("lualine").setup {
         options = {
-          icoes_enabled = true,
+          icons_enabled = true,
           theme = "auto",
           component_separators = { right = "|" },
           section_separators = {},
@@ -34,18 +34,16 @@ return {
 
         sections = {
           lualine_a = { "mode" },
-          lualine_b = {
+          lualine_b = {},
+          lualine_c = {
             components.git_repo_exp,
             components.branch,
             components.diff,
-          },
-          lualine_c = {
             components.diagnostics,
             components.separator,
             components.lsp_client,
           },
           lualine_x = {
-            components.noice_cmd,
             components.window,
             components.spaces,
             "encoding",
