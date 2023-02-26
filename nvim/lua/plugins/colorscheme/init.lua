@@ -30,7 +30,12 @@ return {
     "ellisonleao/gruvbox.nvim",
     lazy = false,
     config = function()
-      require("gruvbox").setup()
+      require("gruvbox").setup {
+        overrides = {
+          SignColumn = { bg = "#32302f" },
+        },
+      }
     end,
   },
+  {},
 }
