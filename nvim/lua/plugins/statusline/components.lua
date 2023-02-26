@@ -1,15 +1,25 @@
 local icons = require "config.icons"
 
-local function get_repo()
-  if vim.fn.trim(vim.fn.system "git rev-parse --is-inside-work-tree") == "true" then
-    return vim.fn.trim(vim.fn.system "basename `git rev-parse --show-toplevel`")
-  end
-  return ""
-end
--- CURRENT_GIT_REPO = get_repo()
+-- from evil line
+local colors = {
+  bg = "#202328",
+  fg = "#bbc2cf",
+  yellow = "#ECBE7B",
+  cyan = "#008080",
+  darkblue = "#081633",
+  green = "#98be65",
+  orange = "#FF8800",
+  violet = "#a9a1e1",
+  magenta = "#c678dd",
+  blue = "#51afef",
+  red = "#ec5f67",
+}
 
-local function get_root_dir()
-  return vim.fn.finddir(".git/..", vim.fn.expand "%:r:t" .. ";")
+local function get_repo()
+  -- if vim.fn.trim(vim.fn.system "git rev-parse --is-inside-work-tree") == "true" then
+  return vim.fn.trim(vim.fn.system "basename `git rev-parse --show-toplevel`")
+  -- end
+  -- return ""
 end
 
 local function diff_source()
@@ -22,6 +32,21 @@ local function diff_source()
     }
   end
 end
+
+-- from evil line
+local conditions = {
+  buffer_not_empty = function()
+    return vim.fn.empty(vim.fn.expand "%:t") ~= 1
+  end,
+  hide_in_width = function()
+    return vim.fn.winwidth(0) > 80
+  end,
+  check_git_workspace = function()
+    local filepath = vim.fn.expand "%:p:h"
+    local gitdir = vim.fn.finddir(".git", filepath .. ";")
+    return gitdir and #gitdir > 0 and #gitdir < #filepath
+  end,
+}
 
 return {
   spaces = {
@@ -38,6 +63,7 @@ return {
   git_repo_exp = {
     get_repo,
     icon = icons.git.Repo,
+    cond = conditions.check_git_workspace,
   },
   buffer = {
     "buffers",
@@ -47,10 +73,7 @@ return {
   },
   filename = {
     "filename",
-    -- path = 1,
-    -- show_filename_only = true,
     file_status = false,
-    -- hide_filename_extension = true,
   },
   separator = {
     function()
@@ -73,16 +96,27 @@ return {
     "diff",
     source = diff_source,
     colored = true,
+    symbols = {
+      added = icons.git.LineAdded,
+      modified = icons.git.LineModified,
+      removed = icons.git.LineRemoved,
+    },
+    diff_color = {
+      added = { fg = colors.green },
+      modified = { fg = colors.orange },
+      removed = { fg = colors.red },
+    },
+    cond = conditions.check_git_workspace,
   },
   diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
-    -- diagnostics_color = {
-    -- error = "DiagnosticError",
-    -- warn = "DiagnosticWarn",
-    -- info = "DiagnosticInfo",
-    -- hint = "DiagnosticHint",
-    -- },
+    symbols = {
+      error = icons.diagnostics.BoldError,
+      warn = icons.diagnostics.BoldWarning,
+      info = icons.diagnostics.BoldInformation,
+      hint = icons.diagnostics.BoldQuestion,
+    },
     colored = true,
   },
   lsp_client = {
@@ -140,5 +174,6 @@ return {
     on_click = function()
       vim.cmd [[LspInfo]]
     end,
+    cond = conditions.hide_in_width,
   },
 }

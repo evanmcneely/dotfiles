@@ -34,9 +34,13 @@ return {
 
         sections = {
           lualine_a = { "mode" },
-          lualine_b = { components.git_repo_exp, components.branch, components.diff },
+          lualine_b = {
+            components.git_repo_exp,
+            components.branch,
+            components.diff,
+          },
           lualine_c = {
-            "diagnostics",
+            components.diagnostics,
             components.separator,
             components.lsp_client,
           },
