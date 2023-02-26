@@ -1,6 +1,6 @@
 local icons = require "config.icons"
 local colors = require "config.colors"
-local noice_status = require("noice").api.status
+-- local noice_status = require("noice").api.status
 
 local function get_repo()
   -- if vim.fn.trim(vim.fn.system "git rev-parse --is-inside-work-tree") == "true" then
@@ -79,11 +79,11 @@ return {
     "branch",
     icon = icons.git.Branch,
   },
-  noice_cmd = {
-    noice_status.command.get,
-    cond = noice_status.command.has and conditions.hide_in_width,
-    -- color = { fg = "#ff9e64" },
-  },
+  -- noice_cmd = {
+  --   noice_status.command.get,
+  --   cond = noice_status.command.has and conditions.hide_in_width,
+  --   -- color = { fg = "#ff9e64" },
+  -- },
   diff = {
     "diff",
     source = diff_source,

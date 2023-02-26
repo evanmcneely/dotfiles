@@ -1,7 +1,7 @@
 return {
   "folke/noice.nvim",
   lazy = false,
-  -- enabled = false,
+  enabled = false,
   opts = {
     lsp = {
       override = {
@@ -18,7 +18,7 @@ return {
       lsp_doc_border = false, -- add a border to hover docs and signature help
     },
     cmdline = {
-      view = "cmdline",
+      view = "mini",
     },
   },
   --stylua: ignore
