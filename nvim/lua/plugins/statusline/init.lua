@@ -45,6 +45,7 @@ return {
             components.lsp_client,
           },
           lualine_x = {
+            components.noice_cmd,
             components.window,
             components.spaces,
             "encoding",

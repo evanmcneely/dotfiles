@@ -1,5 +1,5 @@
 local icons = require "config.icons"
-
+local noice_status = require("noice").api.status
 -- from evil line
 local colors = {
   bg = "#202328",
@@ -91,6 +91,11 @@ return {
   branch = {
     "branch",
     icon = icons.git.Branch,
+  },
+  noice_cmd = {
+    noice_status.command.get,
+    cond = noice_status.command.has and conditions.hide_in_width,
+    -- color = { fg = "#ff9e64" },
   },
   diff = {
     "diff",
