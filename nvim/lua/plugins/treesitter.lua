@@ -21,9 +21,10 @@ return {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "JoosepAlviste/nvim-ts-context-commentstring",
       "RRethy/nvim-treesitter-endwise",
+      "windwp/nvim-ts-autotag",
     },
     build = ":TSUpdate",
-    event = "BufReadPost",
+    event = { "BufReadPost", "BufNewFile" },
     opts = {
       sync_install = false,
       ensure_installed = {
@@ -32,14 +33,16 @@ return {
         "help",
         "html",
         "lua",
+        "org",
         "markdown",
+        "latex",
         "markdown_inline",
         "query",
         "regex",
         "vim",
         "yaml",
       },
-      highlight = { enable = true },
+      highlight = { enable = true, additional_vim_regex_highlighting = { "org", "markdown" } },
       indent = { enable = true, disable = { "python" } },
       context_commentstring = { enable = true },
       incremental_selection = {
@@ -95,6 +98,9 @@ return {
         enable = true,
       },
       endwise = {
+        enable = true,
+      },
+      autotag = {
         enable = true,
       },
     },

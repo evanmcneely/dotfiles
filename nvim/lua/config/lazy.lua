@@ -17,6 +17,7 @@ require("lazy").setup {
   spec = {
     { import = "plugins" },
     { import = "plugins.lsp.lang" },
+    { import = "plugins.notes" },
   },
   defaults = { lazy = true, version = "*" },
   install = { missing = true, colorscheme = { "tokyonight", "gruvbox" } },

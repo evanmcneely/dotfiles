@@ -88,9 +88,10 @@ return {
           { name = "buffer" },
           { name = "path" },
           { name = "treesitter" },
+          { name = "orgmode" },
           -- { name = "nvim_lua" },
           { name = "spell" },
-          -- { name = "emoji" },
+          { name = "emoji" },
           -- { name = "calc" },
         },
         formatting = {
@@ -162,6 +163,11 @@ return {
         "honza/vim-snippets",
         config = function()
           require("luasnip.loaders.from_snipmate").lazy_load()
+
+          -- One peculiarity of honza/vim-snippets is that the file with the global snippets is _.snippets, so global snippets
+          -- are stored in `ls.snippets._`.
+          -- We need to tell luasnip that "_" contains global snippets:
+          require("luasnip").filetype_extend("all", { "_" })
         end,
       },
     },
@@ -182,5 +188,15 @@ return {
     --   { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
     --   { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
     -- },
+    config = function(_, opts)
+      require("luasnip").setup(opts)
+
+      local snippets_folder = vim.fn.stdpath "config" .. "/lua/plugins/completion/snippets/"
+      require("luasnip.loaders.from_lua").lazy_load { paths = snippets_folder }
+
+      vim.api.nvim_create_user_command("LuaSnipEdit", function()
+        require("luasnip.loaders.from_lua").edit_snippet_files()
+      end, {})
+    end,
   },
 }

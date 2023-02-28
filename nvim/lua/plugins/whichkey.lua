@@ -39,11 +39,13 @@ return {
         f = { name = "+File" },
         h = { name = "+Help" },
         g = { name = "+Git", h = { name = "+Hunk" }, t = { name = "+Toggle" } },
+        n = { name = "+Notes" },
         p = { name = "+Project" },
         t = { name = "+Test", N = { name = "Neotest" }, o = { "Overseer" } },
         v = { name = "+View" },
         e = { name = "+Explorer" },
         a = { name = "+AI" },
+        j = { name = "+Jump" },
         m = { name = "+Messages" },
         z = { name = "+System" },
         c = {
