@@ -84,6 +84,13 @@ return {
   --   cond = noice_status.command.has and conditions.hide_in_width,
   --   -- color = { fg = "#ff9e64" },
   -- },
+  codium = {
+    function()
+      return vim.fn["codeium#GetStatusString"]()
+    end,
+    icon = icons.misc.Robot,
+  },
+
   diff = {
     "diff",
     source = diff_source,
