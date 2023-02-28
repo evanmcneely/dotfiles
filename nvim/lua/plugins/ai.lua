@@ -55,7 +55,7 @@ return {
     {
       "zbirenbaum/copilot-cmp",
       event = "InsertEnter",
-      -- enabled = false,
+      enabled = false,
       config = function()
         require("copilot_cmp").setup()
       end,
@@ -72,15 +72,15 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "InsertEnter",
-    enabled = false,
+    -- enabled = false,
     -- stylua: ignore
     config = function ()
-      envim.g.codeium_disable_bindings = 1
-      vim.keymap.set("i", "<A-m>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
-      vim.keymap.set("i", "<A-f>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
-      vim.keymap.set("i", "<A-b>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
-      vim.keymap.set("i", "<A-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
-      vim.keymap.set("i", "<A-s>", function() return vim.fn["codeium#Complete"]() end, { expr = true })
+      vim.g.codeium_disable_bindings = 1
+      vim.keymap.set("i", "<C-c>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
+      vim.keymap.set("i", "<C-]>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
+      vim.keymap.set("i", "<C-[>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
+      vim.keymap.set("i", "<C-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
+      -- vim.keymap.set("i", "<M-s>", function() return vim.fn["codeium#Complete"]() end, { expr = true })
     end,
   },
 }
