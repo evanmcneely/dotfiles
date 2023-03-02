@@ -84,7 +84,7 @@ return {
   --   cond = noice_status.command.has and conditions.hide_in_width,
   --   -- color = { fg = "#ff9e64" },
   -- },
-  codium = {
+  codeium = {
     function()
       return vim.fn["codeium#GetStatusString"]()
     end,
@@ -106,7 +106,7 @@ return {
       removed = { fg = colors.git.red },
     },
     cond = conditions.check_git_workspace,
-    separator = "|",
+    -- separator = "|",
   },
   diagnostics = {
     "diagnostics",

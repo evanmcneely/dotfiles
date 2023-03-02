@@ -40,12 +40,17 @@ return {
             -- components.git_repo_exp,
             components.branch,
             components.diff,
+            {
+              function()
+                return "|"
+              end,
+            },
             components.diagnostics,
             components.separator,
             components.lsp_client,
           },
           lualine_x = {
-            components.codium,
+            components.codeium,
             components.window,
             components.spaces,
             "encoding",
