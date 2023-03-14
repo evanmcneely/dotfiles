@@ -2,6 +2,7 @@ return {
   -- open ai comlpetion
   {
     "jameshiew/nvim-magic",
+    disabled = true,
     event = "BufReadPre",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -24,7 +25,7 @@ return {
       require("chatgpt").setup {
         welcome_message = "",
         openai_params = {
-          model = "text-davinci-003",
+          -- model = "text-davinci-003",
           frequency_penalty = 0,
           presence_penalty = 0,
           max_tokens = 300,

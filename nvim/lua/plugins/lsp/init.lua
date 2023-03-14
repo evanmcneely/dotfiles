@@ -26,6 +26,7 @@ return {
         vimls = {},
         yamlls = {},
         bashls = {},
+        stylelint_lsp = {},
         -- docker_compose_language_service = {},
       },
     },
@@ -53,6 +54,7 @@ return {
         "markdownlint",
         -- "vulture",
         "yamllint",
+        -- "stylelint_lsp",
       },
     },
     config = function(_, opts)
@@ -81,6 +83,7 @@ return {
           nls.builtins.formatting.markdownlint,
           -- nls.builtins.formatting.autopep8,
           -- nls.builtins.diagnostics.ruff.with { extra_args = { "--max-line-length=180" } },
+          -- nls.builtins.diagnostics.stylelint_lsp,
           nls.builtins.diagnostics.codespell,
           nls.builtins.diagnostics.markdownlint,
           -- nls.builtins.diagnostics.vulture,

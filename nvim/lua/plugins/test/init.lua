@@ -35,6 +35,7 @@ return {
       "nvim-neotest/neotest-python",
       "nvim-neotest/neotest-plenary",
       "nvim-neotest/neotest-vim-test",
+      "haydenmeade/neotest-jest",
       "rouge8/neotest-rust",
     },
     config = function()
@@ -46,9 +47,17 @@ return {
           },
           require "neotest-plenary",
           require "neotest-vim-test" {
-            ignore_file_types = { "python", "vim", "lua" },
+            ignore_file_types = { "python", "vim", "lua", "javascript" },
           },
           require "neotest-rust",
+          require "neotest-jest" {
+            jestCommand = "yarn test --",
+            jestConfigFile = "custom.jest.config.ts",
+            env = { CI = true },
+            -- cwd = function(path)
+            --   return vim.fn.getcwd()
+            -- end,
+          },
         },
         -- overseer.nvim
         consumers = {

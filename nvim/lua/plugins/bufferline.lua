@@ -19,14 +19,14 @@ return {
           show_buffer_close_icons = false,
           show_close_icon = false,
           color_icons = true,
-          offsets = {
-            {
-              filetype = "NvimTree",
-              text = "File Explorer",
-              highlight = "Directory",
-              text_align = "center",
-            },
-          },
+          -- offsets = {
+          --   {
+          --     filetype = "NvimTree",
+          --     text = "File Explorer",
+          --     highlight = "Directory",
+          --     text_align = "center",
+          --   },
+          -- },
           custom_filter = function(buf_number, _)
             local tab_num = 0
             for _ in pairs(vim.api.nvim_list_tabpages()) do
