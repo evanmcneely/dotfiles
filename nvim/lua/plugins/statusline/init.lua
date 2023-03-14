@@ -37,7 +37,7 @@ return {
           lualine_b = {},
           lualine_c = {
             -- causing issues
-            -- components.git_repo_exp,
+            components.git_repo_exp,
             components.branch,
             components.diff,
             {
@@ -51,10 +51,9 @@ return {
           },
           lualine_x = {
             components.codeium,
-            components.window,
             components.spaces,
-            "encoding",
-            "fileformat",
+            -- "encoding",
+            -- "fileformat",
             "progress",
           },
           lualine_y = {},

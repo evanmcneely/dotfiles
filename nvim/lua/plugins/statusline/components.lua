@@ -4,7 +4,8 @@ local colors = require "config.colors"
 
 local function get_repo()
   -- if vim.fn.trim(vim.fn.system "git rev-parse --is-inside-work-tree") == "true" then
-  return vim.fn.trim(vim.fn.system "basename `git rev-parse --show-toplevel`")
+  local repo = vim.fn.trim(vim.fn.system "git config --get remote.origin.url | sed -e 's/^git@.*:([[:graph:]]*).git/\1/'")
+  return repo:gsub("git@github.com:", ""):gsub(".git", "")
   -- end
   -- return ""
 end
@@ -96,9 +97,9 @@ return {
     source = diff_source,
     colored = true,
     symbols = {
-      added = icons.git.LineAdded,
-      modified = icons.git.LineModified,
-      removed = icons.git.LineRemoved,
+      added = "+",
+      modified = "~",
+      removed = "-",
     },
     diff_color = {
       added = { fg = colors.git.green },

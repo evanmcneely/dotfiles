@@ -44,6 +44,7 @@
   "neogit": { "branch": "master", "commit": "c4068a22a60981f1bedd9672cdad34b79411ed7a" },
   "neorg": { "branch": "main", "commit": "36cc15300c0dfc19d483b0a4176cb89e94f4730a" },
   "neotest": { "branch": "master", "commit": "bbbfa55d850f1aaa6707ea85fb5230ac866459c6" },
+  "neotest-jest": { "branch": "main", "commit": "821bb227e31259307db30c88671a1c3724f78637" },
   "neotest-plenary": { "branch": "master", "commit": "d49bfd9470f791e7c29149e75d56b6f925bb391b" },
   "neotest-python": { "branch": "master", "commit": "6c06041cfb45f45e276068020baa06c06fe20d5c" },
   "neotest-rust": { "branch": "main", "commit": "ceb091b6fe30c675564b81a166064fc283eab7ae" },

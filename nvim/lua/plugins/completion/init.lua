@@ -14,6 +14,7 @@ return {
       local luasnip = require "luasnip"
       local icons = require "config.icons"
       local neogen = require "neogen"
+      local compare = require "cmp.config.compare"
 
       local has_words_before = function()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -73,6 +74,19 @@ return {
       cmp.setup {
         completion = {
           completeopt = "menu,menuone,noinsert",
+        },
+        sorting = {
+          priority_weight = 2,
+          comparators = {
+            compare.score,
+            compare.recently_used,
+            compare.offset,
+            compare.exact,
+            compare.kind,
+            compare.sort_text,
+            compare.length,
+            compare.order,
+          },
         },
         snippet = {
           expand = function(args)

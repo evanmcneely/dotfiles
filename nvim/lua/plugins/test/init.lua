@@ -51,9 +51,9 @@ return {
           },
           require "neotest-rust",
           require "neotest-jest" {
-            jestCommand = "yarn test --",
-            jestConfigFile = "custom.jest.config.ts",
-            env = { CI = true },
+            jestCommand = "yarn test",
+            -- jestConfigFile = "custom.jest.config.ts",
+            -- env = { CI = true },
             -- cwd = function(path)
             --   return vim.fn.getcwd()
             -- end,
