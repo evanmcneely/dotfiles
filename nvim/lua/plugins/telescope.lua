@@ -14,7 +14,7 @@ return {
       -- "ThePrimeagen/git-worktree.nvim",
     },
     keys = {
-      { "<leader><leader>", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+      { "<leader><leader>", "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find Files" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git Files" },

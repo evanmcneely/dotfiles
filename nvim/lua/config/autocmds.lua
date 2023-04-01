@@ -57,6 +57,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "toggleterm",
     "tsplayground",
     "vim",
+    "chatgpt",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false

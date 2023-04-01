@@ -84,6 +84,7 @@ return {
   -- increment and decrement things easily
   {
     "monaqa/dial.nvim",
+    enabled = false,
     event = "BufReadPre",
     keys = { "<C-a>", "<C-x>", { "<C-a>", "v" }, { "<C-x>", "v" }, { "g<C-a>", "v" }, { "g<C-x>", "v" } },
     -- stylua: ignore
@@ -170,6 +171,6 @@ return {
       "cbochs/grapple.nvim",
       "ThePrimeagen/harpoon",
     },
-    enabled = false,
+    enabled = true,
   },
 }
