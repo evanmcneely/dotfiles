@@ -21,7 +21,7 @@ return {
   },
   {
     "jackMort/ChatGPT.nvim",
-    enabled = false,
+    -- enabled = false,
     config = function()
       require("chatgpt").setup {
         welcome_message = "",
@@ -101,15 +101,18 @@ return {
     end,
   },
   {
-    "dense-analysis/neural",
+    -- "dense-analysis/neural",
+    -- branch = "main",
+    dir = "~/dev/neural",
     event = "BufReadPost",
-    keys = { { "<leader>n", "<cmd>Neural<cr>", desc = "Neural" } },
+    keys = { { "<leader>n", "<cmd>Neural<cr>", desc = "Neural", mode = { "n", "v" } } },
     config = function()
       local icons = require "config.icons"
       require("neural").setup {
         ui = {
           prompt_icon = icons.misc.Robot,
         },
+        -- pre_process = false,
         source = {
           openai = {
             api_key = vim.env.OPENAI_API_KEY,
