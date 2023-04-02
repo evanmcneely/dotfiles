@@ -111,8 +111,10 @@ return {
       require("neural").setup {
         ui = {
           prompt_icon = icons.misc.Robot,
+          animated_sign_enabled = false,
         },
         -- pre_process = false,
+        selected = "chatgpt",
         source = {
           openai = {
             api_key = vim.env.OPENAI_API_KEY,
