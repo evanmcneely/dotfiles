@@ -111,7 +111,7 @@ return {
       require("neural").setup {
         ui = {
           prompt_icon = icons.misc.Robot,
-          animated_sign_enabled = false,
+          animated_sign_enabled = true,
         },
         -- pre_process = false,
         selected = "chatgpt",

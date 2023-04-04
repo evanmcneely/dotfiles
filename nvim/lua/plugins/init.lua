@@ -6,6 +6,8 @@ return {
   -- better repeat with .
   { "tpope/vim-repeat", event = "VeryLazy" },
 
+  { "ElPiloto/significant.nvim" },
+
   -- dev icons
   "nvim-tree/nvim-web-devicons",
 
