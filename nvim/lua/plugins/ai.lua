@@ -72,7 +72,7 @@ return {
     {
       "zbirenbaum/copilot-cmp",
       event = "InsertEnter",
-      -- enabled = false,
+      enabled = false,
       config = function()
         require("copilot_cmp").setup()
       end,
@@ -89,7 +89,7 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "InsertEnter",
-    enabled = false,
+    -- enabled = false,
     -- stylua: ignore
     config = function ()
       vim.g.codeium_disable_bindings = 1
@@ -105,7 +105,10 @@ return {
     -- branch = "main",
     dir = "~/dev/neural",
     event = "BufReadPost",
-    keys = { { "<leader>n", "<cmd>Neural<cr>", desc = "Neural", mode = { "n", "v" } } },
+    keys = {
+      { "<leader>an", "<cmd>Neural<cr>", desc = "Neural with selection", mode = { "n", "v" } },
+      { "<leader>ab", "<cmd>NeuralWithBuffers<cr>", desc = "Neural with buffers", mode = "n" },
+    },
     config = function()
       local icons = require "config.icons"
       require("neural").setup {
