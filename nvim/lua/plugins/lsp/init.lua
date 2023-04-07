@@ -17,6 +17,7 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "RRethy/vim-illuminate",
+      "jay-babu/mason-null-ls.nvim",
     },
     opts = {
       servers = {
@@ -97,6 +98,7 @@ return {
       }
     end,
   },
+  { "jay-babu/mason-null-ls.nvim", opts = { ensure_installed = nil, automatic_installation = true, automatic_setup = false } },
   {
     "SmiteshP/nvim-navic",
     -- enabled = false,

@@ -1,13 +1,29 @@
 local icons = require "config.icons"
 local colors = require "config.colors"
+local Job = require "plenary.job"
 -- local noice_status = require("noice").api.status
 
 local function get_repo()
   -- if vim.fn.trim(vim.fn.system "git rev-parse --is-inside-work-tree") == "true" then
-  local repo = vim.fn.trim(vim.fn.system "git config --get remote.origin.url | sed -e 's/^git@.*:([[:graph:]]*).git/\1/'")
-  return repo:gsub("git@github.com:", ""):gsub(".git", "")
+  -- local repo = vim.fn.trim(vim.fn.system "git config --get remote.origin.url | sed -e 's/^git@.*:([[:graph:]]*).git/\1/'")
+  -- return repo:gsub("git@github.com:", ""):gsub(".git", "")
   -- end
   -- return ""
+  local results = {}
+  local job = Job:new {
+    command = "git",
+    args = { "rev-parse", "--show-toplevel" },
+    cwd = vim.fn.expand "%:p:h",
+    on_stdout = function(_, line)
+      table.insert(results, line)
+    end,
+  }
+  job:sync()
+  if results[1] ~= nil then
+    return vim.fn.fnamemodify(results[1], ":t")
+  else
+    return ""
+  end
 end
 
 local function diff_source()
