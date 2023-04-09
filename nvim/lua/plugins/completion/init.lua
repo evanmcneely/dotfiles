@@ -105,6 +105,7 @@ return {
           { name = "treesitter" },
           { name = "orgmode" },
           { name = "git" },
+          { name = "codeium" },
           -- { name = "nvim_lua" },
           { name = "spell" },
           { name = "emoji" },
@@ -120,6 +121,7 @@ return {
               luasnip = "(Snippet)",
               buffer = "(Buffer)",
               copilot = "(Copilot)",
+              codeium = "(Codeium)",
             }
             local duplicates = {
               buffer = 1,

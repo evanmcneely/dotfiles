@@ -101,9 +101,27 @@ return {
     end,
   },
   {
+    "jcdickinson/codeium.nvim",
+    enabled = false,
+    -- dir = "~/dev/codeium.nvim",
+    -- event = "InsertEnter",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+      -- "Exafunction/codeium.vim",
+    },
+    config = function()
+      require("codeium").setup {
+        tools = {
+          language_server = "https://github.com/Exafunction/codeium/releases/download/language-server-v1.1.72/language_server_macos_arm.gz",
+        },
+      }
+    end,
+  },
+  {
     -- "dense-analysis/neural",
     -- branch = "main",
-    dir = "~/dev/neural",
+    dir = "~/dev/neural-hack",
     event = "BufReadPost",
     keys = {
       { "<leader>an", "<cmd>Neural<cr>", desc = "Neural with selection", mode = { "n", "v" } },

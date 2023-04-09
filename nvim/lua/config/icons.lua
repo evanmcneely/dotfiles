@@ -35,6 +35,7 @@ return {
     Value = "",
     Variable = "",
     Copilot = "",
+    Codium = "ﮧ",
   },
   git = {
     LineAdded = " ",
