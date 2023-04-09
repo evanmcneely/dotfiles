@@ -15,6 +15,19 @@ brew install \
     node \
     git \
     wget \
-    navi
+    navi \
+    neovim \
+    python3 \
+    pyenv \
+    pyenv-virtualenv \
+    node \
+    ruby \
+    jq \
+    libmemcached \
+    mkcert \
+    nss \
+    yarn \
+    zlib \
+    graphviz
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
