@@ -31,15 +31,6 @@ ZSH_THEME_GIT_PROMPT_STASHED="${RED}%{⚑%G%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="${GREEN}%{✔%G%}"
 ZSH_THEME_GIT_PROMPT_UPSTREAM_SEPARATOR="${BLUE}->"
 
-# previous command status
-function status {
-  if [[ ${%?} -eq 0 ]] then
-    echo "${GREEN}✔"
-  else
-    echo "${RED}✘"
-  fi
-}
-
 # node
 function node_version {
   if [[ -x "$(command -v node)" ]] then
@@ -58,7 +49,7 @@ function pyenv_info {
 }
 
 # primary prompt 
-PS1='${PROMPT_SYMBOL}╭─ $(status) ${NAME}%n${SYSTEM}  $(arch)$(pyenv_info)$(node_version)${DIR}  %4~$(git_super_status) %{$reset_color%}
+PS1='${PROMPT_SYMBOL}╭─ ${NAME}%n${SYSTEM}  $(arch)$(pyenv_info)$(node_version)${DIR}  %4~$(git_super_status) %{$reset_color%}
 ${PROMPT_SYMBOL}╰─%{$reset_color%} '
 
 # secondary prompt
