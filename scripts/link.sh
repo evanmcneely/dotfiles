@@ -7,7 +7,7 @@ ln -sf "${DOTFILES}/zsh/.zsh-aliases.sh" ~
 ln -sf "${DOTFILES}/zsh/.zsh-lp.sh" ~
 ln -sf "${DOTFILES}/zsh/evans.zsh-theme" "${HOME}/.oh-my-zsh/themes"
 ln -sf "${DOTFILES}/zsh/evans-2.zsh-theme" "${HOME}/.oh-my-zsh/themes"
-ln -sf "${DOTFILES}/zsh/.wezterw.lua" "${HOME}/.wezterm.lua"
+ln -sf "${DOTFILES}/zsh/.wezterm.lua" "${HOME}/.wezterm.lua"
 
 # vim
 ln -sf "${DOTFILES}/vim/.vimrc" ~
