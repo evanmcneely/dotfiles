@@ -20,8 +20,8 @@ export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
 eval "$(brew shellenv)"
 
 # google-cloud-sdk (homebrew)
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+# source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+# source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
 # NVM (Node Version Manager)
 export NVM_DIR="$HOME/.nvm"

@@ -28,6 +28,7 @@ brew install \
     nss \
     yarn \
     zlib \
-    graphviz
+    graphviz\
+    wezterm
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
