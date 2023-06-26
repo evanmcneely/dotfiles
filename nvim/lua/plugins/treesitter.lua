@@ -42,7 +42,7 @@ return {
         "vim",
         "yaml",
       },
-      highlight = { enable = true, additional_vim_regex_highlighting = { "org", "markdown" } },
+      -- highlight = { enable = true },
       indent = { enable = true, disable = { "python" } },
       context_commentstring = { enable = true },
       incremental_selection = {

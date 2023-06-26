@@ -42,15 +42,15 @@ return {
     opts = {
       ensure_installed = {
         "stylua",
-        -- "ruff",
+        "ruff",
         -- "eslint_d",
         -- "autopep8",
-        -- "black",
+        "black",
         "debugpy",
         "codelldb",
         "prettier",
         "codespell",
-        -- "cspell",
+        "cspell",
         "beautysh",
         "markdownlint",
         -- "vulture",
@@ -77,23 +77,31 @@ return {
       local nls = require "null-ls"
       nls.setup {
         sources = {
-          nls.builtins.formatting.stylua,
+          -- python
           nls.builtins.formatting.black,
+          nls.builtins.formatting.isort,
+          nls.builtins.diagnostics.ruff,
+          -- nls.builtins.formatting.autopep8,
+          -- nls.builtins.diagnostics.vulture,
+
+          -- lua
+          nls.builtins.formatting.stylua,
+          -- nls.builtins.diagnostics.stylelint_lsp,
+
+          -- js
           nls.builtins.formatting.prettier,
+          nls.builtins.code_actions.eslint,
+          -- nls.builtins.code_actions.eslint_d,
+          -- require "typescript.extensions.null-ls.code-actions",
+
+          -- other
           nls.builtins.formatting.beautysh,
           nls.builtins.formatting.markdownlint,
-          -- nls.builtins.formatting.autopep8,
-          nls.builtins.diagnostics.ruff,
-          -- nls.builtins.diagnostics.stylelint_lsp,
           nls.builtins.diagnostics.codespell,
           nls.builtins.diagnostics.markdownlint,
-          -- nls.builtins.diagnostics.vulture,
           nls.builtins.diagnostics.yamllint,
-          -- nls.builtins.code_actions.eslint_d,
           -- nls.builtins.code_actions.cspell,
-          nls.builtins.code_actions.eslint,
           -- nls.builtins.code_actions.gitsigns,
-          -- require "typescript.extensions.null-ls.code-actions",
         },
       }
     end,
@@ -101,7 +109,6 @@ return {
   { "jay-babu/mason-null-ls.nvim", opts = { ensure_installed = nil, automatic_installation = true, automatic_setup = false } },
   {
     "SmiteshP/nvim-navic",
-    -- enabled = false,
     event = "VeryLazy",
     dependencies = {
       "neovim/nvim-lspconfig",
