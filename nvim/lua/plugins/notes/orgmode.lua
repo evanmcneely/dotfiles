@@ -1,6 +1,7 @@
 return {
   {
     "nvim-orgmode/orgmode",
+    enabled = false,
     ft = { "org" },
     opts = {
       org_agenda_files = { vim.env.HOME .. "/org-notes/agenda/*" },

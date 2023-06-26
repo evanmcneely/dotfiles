@@ -21,17 +21,8 @@ return {
   { "yamatsum/nvim-nonicons", config = true, enabled = false },
 
   -- enter :{number} to peek view of line number in buffer
-  { "nacro90/numb.nvim", event = "BufReadPre", config = true },
+  { "nacro90/numb.nvim", enabled = false, event = "BufReadPre", config = true },
 
-  -- move stuff around
-  {
-    "matze/vim-move",
-    enabled = false,
-    event = "VeryLazy",
-    config = function()
-      vim.g.move_key_modifier = "C"
-    end,
-  },
   {
     "fedepujol/move.nvim",
     event = "VeryLazy",
@@ -92,43 +83,12 @@ return {
     },
   },
 
-  -- increment and decrement things easily
-  {
-    "monaqa/dial.nvim",
-    enabled = false,
-    event = "BufReadPre",
-    keys = { "<C-a>", "<C-x>", { "<C-a>", "v" }, { "<C-x>", "v" }, { "g<C-a>", "v" }, { "g<C-x>", "v" } },
-    -- stylua: ignore
-    init = function()
-      vim.api.nvim_set_keymap("n", "<C-a>", require("dial.map").inc_normal(), { desc = "Increment", noremap = true })
-      vim.api.nvim_set_keymap("n", "<C-x>", require("dial.map").dec_normal(), { desc = "Decrement", noremap = true })
-      vim.api.nvim_set_keymap("v", "<C-a>", require("dial.map").inc_visual(), { desc = "Increment", noremap = true })
-      vim.api.nvim_set_keymap("v", "<C-x>", require("dial.map").dec_visual(), { desc = "Decrement", noremap = true })
-      vim.api.nvim_set_keymap("v", "g<C-a>", require("dial.map").inc_gvisual(), { desc = "Increment", noremap = true })
-      vim.api.nvim_set_keymap("v", "g<C-x>", require("dial.map").dec_gvisual(), { desc = "Decrement", noremap = true })
-     end,
-  },
-
   -- Comment stuff out
   { "tpope/vim-commentary", event = "BufReadPre" },
-  {
-    "numToStr/Comment.nvim",
-    enabled = false,
-    dependencies = { "JoosepAlviste/nvim-ts-context-commentstring" },
-    keys = { "gc", "gcc", "gbc" },
-    config = function(_, _)
-      local opts = {
-        ignore = "^$",
-        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-      }
-      require("Comment").setup(opts)
-    end,
-  },
 
   -- complete parens
   {
     "windwp/nvim-autopairs",
-    -- enable = false,
     event = "InsertEnter",
     config = function()
       require("nvim-autopairs").setup {
@@ -182,6 +142,6 @@ return {
       "cbochs/grapple.nvim",
       "ThePrimeagen/harpoon",
     },
-    enabled = true,
+    enabled = false,
   },
 }

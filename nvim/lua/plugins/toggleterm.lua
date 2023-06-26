@@ -7,8 +7,6 @@ return {
     hide_numbers = true,
     open_mapping = [[<C-\>]],
     shade_filetypes = {},
-    -- shade_terminals = true,
-    -- shading_factor = -30,
     start_in_insert = true,
     persist_size = true,
     direction = "horizontal",

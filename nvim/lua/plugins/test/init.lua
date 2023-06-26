@@ -88,9 +88,9 @@ return {
     },
     config = true,
   },
-  -- {
-  --   "andythigpen/nvim-coverage",
-  --   cmd = { "Coverage" },
-  --   config = true,
-  -- },
+  {
+    "andythigpen/nvim-coverage",
+    cmd = { "Coverage" },
+    config = true,
+  },
 }

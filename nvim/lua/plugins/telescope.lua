@@ -106,8 +106,8 @@ return {
       telescope.load_extension "fzf"
       telescope.load_extension "file_browser"
       telescope.load_extension "project"
-      telescope.load_extension "projects"
-      telescope.load_extension "aerial"
+      -- telescope.load_extension "projects"
+      -- telescope.load_extension "aerial"
       telescope.load_extension "dap"
       telescope.load_extension "frecency"
       -- telescope.load_extension "git_worktree"
@@ -115,10 +115,12 @@ return {
   },
   {
     "stevearc/aerial.nvim",
+    enabled = false,
     config = true,
   },
   {
     "ahmedkhalf/project.nvim",
+    enabled = false,
     config = function()
       require("project_nvim").setup {
         detection_methods = { "pattern", "lsp" },

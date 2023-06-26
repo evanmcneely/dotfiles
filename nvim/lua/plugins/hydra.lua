@@ -146,6 +146,7 @@ end
 return {
   {
     "anuvyklack/hydra.nvim",
+    enabled = false,
     event = "VeryLazy",
     config = function(_, _)
       local Hydra = require "hydra"

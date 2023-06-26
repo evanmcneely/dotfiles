@@ -125,6 +125,7 @@ return {
   },
   {
     "mattn/vim-gist",
+    enabled = false,
     dependencies = { "mattn/webapi-vim" },
     cmd = { "Gist" },
     config = function()
@@ -161,6 +162,7 @@ return {
   },
   {
     "aaronhallaert/advanced-git-search.nvim",
+    enabled = false,
     config = function()
       require("telescope").load_extension "advanced_git_search"
     end,

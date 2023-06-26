@@ -6,7 +6,7 @@ return {
     opts = {},
     enabled = false,
   },
-  { "AckslD/nvim-FeMaco.lua", ft = { "markdown" }, opts = {} },
+  { "AckslD/nvim-FeMaco.lua", enabled = false, ft = { "markdown" }, opts = {} },
   {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
@@ -15,9 +15,10 @@ return {
       vim.g.mkdp_filetypes = { "markdown" }
     end,
   },
-  { "mzlogin/vim-markdown-toc", ft = { "markdown" } },
+  { "mzlogin/vim-markdown-toc", enabled = false, ft = { "markdown" } },
   {
     "renerocksai/telekasten.nvim",
+    enabled = false,
     dependencies = { "nvim-telescope/telescope.nvim" },
     opts = {
       home = vim.env.HOME .. "/zettelkasten",
@@ -26,6 +27,7 @@ return {
   },
   {
     "epwalsh/obsidian.nvim",
+    enabled = false,
     opts = {
       dir = vim.env.HOME .. "/obsidian",
       completion = {

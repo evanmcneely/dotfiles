@@ -2,7 +2,7 @@ return {
   -- VS Code like command palette for functions, keymaps, commands, etc.
   {
     "mrjones2014/legendary.nvim",
-    -- enabled = false,
+    enabled = false,
     keys = {
       { "<leader>hc", "<cmd>Legendary<cr>", desc = "Command Palette" },
     },

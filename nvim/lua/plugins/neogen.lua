@@ -1,5 +1,6 @@
 return {
   "danymat/neogen",
+  enabled = false,
   opts = {
     snippet_engine = "luasnip",
     enabled = true,

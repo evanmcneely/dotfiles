@@ -1,24 +1,4 @@
 return {
-  -- open ai comlpetion
-  {
-    "jameshiew/nvim-magic",
-    enabled = false,
-    event = "BufReadPre",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-    },
-    keys = {
-      { "<leader>ac", "<Plug>nvim-magic-append-completion", mode = "v", desc = "Completion" },
-      { "<leader>aa", "<Plug>nvim-magic-suggest-alteration", mode = "v", desc = "Alteration" },
-      { "<leader>ad", "<Plug>nvim-magic-suggest-docstring", mode = "v", desc = "Docstring" },
-    },
-    config = function()
-      require("nvim-magic").setup {
-        use_default_keymap = false,
-      }
-    end,
-  },
   {
     "jackMort/ChatGPT.nvim",
     -- enabled = false,
@@ -67,23 +47,21 @@ return {
       { "<leader>ae", "<cmd>ChatGPTEditWithInstructions<cr>", desc = "GPT edit" },
     },
   },
+  -- copilot in cmp menu
   {
-    -- copilot in cmp menu
-    {
-      "zbirenbaum/copilot-cmp",
-      event = "InsertEnter",
-      enabled = false,
+    "zbirenbaum/copilot-cmp",
+    event = "InsertEnter",
+    enabled = false,
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+    dependencies = {
+      "zbirenbaum/copilot.lua",
       config = function()
-        require("copilot_cmp").setup()
+        vim.schedule(function()
+          require("copilot").setup()
+        end)
       end,
-      dependencies = {
-        "zbirenbaum/copilot.lua",
-        config = function()
-          vim.schedule(function()
-            require("copilot").setup()
-          end)
-        end,
-      },
     },
   },
   {
@@ -101,26 +79,7 @@ return {
     end,
   },
   {
-    "jcdickinson/codeium.nvim",
-    enabled = false,
-    -- dir = "~/dev/codeium.nvim",
-    -- event = "InsertEnter",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-      -- "Exafunction/codeium.vim",
-    },
-    config = function()
-      require("codeium").setup {
-        tools = {
-          language_server = "https://github.com/Exafunction/codeium/releases/download/language-server-v1.1.72/language_server_macos_arm.gz",
-        },
-      }
-    end,
-  },
-  {
     -- "dense-analysis/neural",
-    -- branch = "main",
     dir = "~/dev/neural-hack",
     event = "BufReadPost",
     keys = {

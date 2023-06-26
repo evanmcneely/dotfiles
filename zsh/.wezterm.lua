@@ -13,8 +13,8 @@ config.color_scheme = "tokyonight_night"
 config.line_height = 1.2
 
 -- config.keys = {
--- 	{ key = "{", mods = "ALT", action = act.ActivateTabRelative(-1) },
--- 	{ key = "}", mods = "ALT", action = act.ActivateTabRelative(1) },
+-- 	{ key = "{", mods = "CTR", action = act.ActivateTabRelative(-1) },
+-- 	{ key = "}", mods = "CTR", action = act.ActivateTabRelative(1) },
 -- }
 
 return config
