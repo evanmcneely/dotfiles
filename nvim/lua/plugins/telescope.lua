@@ -107,7 +107,7 @@ return {
       telescope.load_extension "file_browser"
       telescope.load_extension "project"
       -- telescope.load_extension "projects"
-      -- telescope.load_extension "aerial"
+      telescope.load_extension "aerial"
       telescope.load_extension "dap"
       telescope.load_extension "frecency"
       -- telescope.load_extension "git_worktree"
@@ -115,7 +115,6 @@ return {
   },
   {
     "stevearc/aerial.nvim",
-    enabled = false,
     config = true,
   },
   {

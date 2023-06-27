@@ -39,7 +39,7 @@ return {
         j = { name = "+Jump" },
         -- m = { name = "+Messages" },
         -- n = { name = "+Notes" },
-        p = { name = "+Project" },
+        -- p = { name = "+Project" },
         q = {
           name = "+Quit",
           --stylua: ignore 
@@ -48,14 +48,12 @@ return {
         },
         s = { name = "+Search" },
         t = { name = "+Test", N = { name = "Neotest" }, o = { "Overseer" } },
-        v = { name = "+View" },
         u = {
           name = "+Utils",
           d = { require("utils.term").docker_client_toggle, "lazydocker" },
           l = { require("utils.term").lazygit_toggle, "lazygit" },
-          c = { require("utils.coding").cht, "Cheatsheets" },
-          s = { require("utils.coding").stack_overflow, "Stack Overflow" },
-          i = { require("utils.term").interactive_cheatsheet_toggle, "Interactive cheatsheet" },
+          v = { '<cmd>ToggleTerm direction="vertical size=100"<cr>', "Vertical Terminal" },
+          h = { '<cmd>ToggleTerm direction="horizontal size=20"<cr>', "Horizontal Terminal" },
         },
         w = {
           name = "+Save",

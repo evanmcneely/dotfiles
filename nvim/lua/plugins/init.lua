@@ -110,7 +110,7 @@ return {
   {
     "andymass/vim-matchup",
     lazy = false,
-    -- enabled = false,
+    enabled = false,
     init = function()
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
     end,
