@@ -36,7 +36,6 @@ return {
           lualine_a = { "mode" },
           lualine_b = {},
           lualine_c = {
-            -- causing issues
             components.git_repo_exp,
             components.branch,
             components.diff,
