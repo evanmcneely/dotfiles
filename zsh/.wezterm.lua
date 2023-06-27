@@ -10,7 +10,7 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "tokyonight_night"
-config.font_size = 13
+config.font_size = 13.5
 config.line_height = 1.2
 
 config.keys = {
