@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local act = wezterm.action
 
 local config = {}
 
@@ -9,12 +10,12 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "tokyonight_night"
--- config.font_size = 12.0
+config.font_size = 13
 config.line_height = 1.2
 
--- config.keys = {
--- 	{ key = "{", mods = "CTR", action = act.ActivateTabRelative(-1) },
--- 	{ key = "}", mods = "CTR", action = act.ActivateTabRelative(1) },
--- }
+config.keys = {
+	{ key = "LeftArrow", mods = "CMD", action = act.ActivateTabRelative(-1) },
+	{ key = "RightArrow", mods = "CMD", action = act.ActivateTabRelative(1) },
+}
 
 return config
