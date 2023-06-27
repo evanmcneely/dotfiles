@@ -41,7 +41,6 @@ return {
         "regex",
         "vim",
         "yaml",
-        "python",
       },
       highlight = { enable = true, disable = { "python", "markdown" }, additional_vim_regex_highlighting = false },
       indent = { enable = true },

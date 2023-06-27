@@ -2,7 +2,6 @@ DOTFILES="${HOME}/dev/dotfiles"
 
 # zsh
 ln -sf "${DOTFILES}/zsh/.zshrc" ~
-ln -sf "${DOTFILES}/zsh/.zsh-secrets.sh" ~
 ln -sf "${DOTFILES}/zsh/.zsh-aliases.sh" ~
 ln -sf "${DOTFILES}/zsh/.zsh-lp.sh" ~
 ln -sf "${DOTFILES}/zsh/evans.zsh-theme" "${HOME}/.oh-my-zsh/themes"

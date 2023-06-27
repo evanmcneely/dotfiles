@@ -13,12 +13,12 @@ return {
           settings = {
             python = {
               analysis = {
-                typeCheckingMode = "off",
+                -- typeCheckingMode = "off",
                 autoSearchPaths = true,
                 useLibraryCodeForTypes = true,
                 diagnosticMode = "workspace",
               },
-              venvPath = "~/.pyenv.shims",
+              venvPath = "~/.pyenv.versions",
             },
           },
         },
