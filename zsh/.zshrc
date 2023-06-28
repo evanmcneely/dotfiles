@@ -14,3 +14,6 @@ plugins=(
 )
 ZSH_THEME="evans-2"
 source $ZSH/oh-my-zsh.sh
+
+# for zoxide to work
+eval "$(zoxide init zsh)"
