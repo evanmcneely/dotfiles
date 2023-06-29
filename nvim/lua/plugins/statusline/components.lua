@@ -67,7 +67,7 @@ return {
   git_repo_exp = {
     get_repo,
     icon = icons.git.Repo,
-    cond = conditions.check_git_workspace,
+    -- cond = conditions.check_git_workspace,
   },
   buffer = {
     "buffers",
