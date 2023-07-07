@@ -1,15 +1,4 @@
 return {
-  -- VS Code like command palette for functions, keymaps, commands, etc.
-  {
-    "mrjones2014/legendary.nvim",
-    enabled = false,
-    keys = {
-      { "<leader>hc", "<cmd>Legendary<cr>", desc = "Command Palette" },
-    },
-    opts = {
-      which_key = { auto_register = true },
-    },
-  },
   {
     "folke/which-key.nvim",
     event = "VeryLazy",

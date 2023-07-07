@@ -7,10 +7,6 @@ return {
       lightbulb = { enable = false },
       symbol_in_winbar = {
         enable = false,
-        -- separator = ' ',
-        hide_keyword = true,
-        show_file = true,
-        folder_level = 3,
       },
     }
   end,

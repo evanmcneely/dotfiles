@@ -1,13 +1,5 @@
 return {
   {
-    "jakewvincent/mkdnflow.nvim",
-    ft = { "markdown" },
-    rocks = "luautf8",
-    opts = {},
-    enabled = false,
-  },
-  { "AckslD/nvim-FeMaco.lua", enabled = false, ft = { "markdown" }, opts = {} },
-  {
     "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
     build = "cd app && npm install",
@@ -15,7 +7,6 @@ return {
       vim.g.mkdp_filetypes = { "markdown" }
     end,
   },
-  { "mzlogin/vim-markdown-toc", enabled = false, ft = { "markdown" } },
   {
     "renerocksai/telekasten.nvim",
     enabled = false,
@@ -36,7 +27,4 @@ return {
     },
     ft = { "markdown" },
   },
-  -- { "toppair/peek.nvim", run = "deno task --quiet build:fast" },
-  -- glow.nvim
-  -- https://github.com/rockerBOO/awesome-neovim#markdown-and-latex
 }

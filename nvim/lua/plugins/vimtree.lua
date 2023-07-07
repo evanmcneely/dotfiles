@@ -1,62 +1,15 @@
--- local function edit_or_open()
---   -- open as vsplit on current node
---   local action = "edit"
---   local node = lib.get_node_at_cursor()
-
---   -- Just copy what's done normally with vsplit
---   if node.link_to and not node.nodes then
---     require("nvim-tree.actions.node.open-file").fn(action, node.link_to)
---     view.close() -- Close the tree if file was opened
---   elseif node.nodes ~= nil then
---     lib.expand_or_collapse(node)
---   else
---     require("nvim-tree.actions.node.open-file").fn(action, node.absolute_path)
---     view.close() -- Close the tree if file was opened
---   end
--- end
-
-local function collapse_all()
-  require("nvim-tree.actions.tree-modifiers.collapse-all").fn()
-end
-
-local function vsplit_preview()
-  local lib = require "nvim-tree.lib"
-  local view = require "nvim-tree.view"
-  -- open as vsplit on current node
-  local action = "vsplit"
-  local node = lib.get_node_at_cursor()
-
-  -- Just copy what's done normally with vsplit
-  if node.link_to and not node.nodes then
-    require("nvim-tree.actions.node.open-file").fn(action, node.link_to)
-  elseif node.nodes ~= nil then
-    lib.expand_or_collapse(node)
-  else
-    require("nvim-tree.actions.node.open-file").fn(action, node.absolute_path)
-  end
-
-  -- Finally refocus on tree if it was lost
-  view.focus()
-end
-
-local swap_then_open_tab = function()
-  local lib = require "nvim-tree.lib"
-  local api = require "nvim-tree.api"
-
-  local node = lib.get_node_at_cursor()
-  vim.cmd "wincmd l"
-  api.node.open.tab(node)
-end
-
 local function on_attach(bufnr)
   local api = require "nvim-tree.api"
 
-  local function opts(desc)
-    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-  end
-
   -- default mappings
   api.config.mappings.default_on_attach(bufnr)
+
+  -- custom mappings
+
+  -- local function opts(desc)
+  --   return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+  -- end
+
 
   -- custom mappings
   -- vim.keymap.set("n", "?", api.tree.toggle_help, opts "Help")
@@ -83,7 +36,6 @@ return {
       on_attach = on_attach,
       disable_netrw = true,
       hijack_netrw = true,
-      -- auto_close = true,
       open_on_tab = false,
       hijack_cursor = true,
       update_cwd = true,
@@ -99,7 +51,6 @@ return {
       view = {
         width = 40,
         side = "left",
-        -- auto_resize = false,
       },
     }
   end,

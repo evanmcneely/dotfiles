@@ -9,13 +9,6 @@ return {
     cmd = "Neogit",
     opts = {
       integrations = { diffview = true },
-      -- kind = "tab",
-      -- commit_popup = {
-      --   kind = "floating",
-      -- },
-      -- popup = {
-      --   kind = "floating",
-      -- },
     },
     keys = {
       { "<leader>gs", "<cmd>Neogit kind=tab<cr>", desc = "Status" },
@@ -72,7 +65,6 @@ return {
           linehl = "GitSignsChangeLn",
         },
       },
-      -- update_debounce = 100,
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
         local function map(mode, l, r, opts)
@@ -117,20 +109,8 @@ return {
           gs.diffthis "~"
         end, { desc = "Diff This ~" })
         map("n", "<leader>gt", gs.toggle_deleted, { desc = "Toggle Delete" })
-
-        -- Text object
-        -- map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "Select Hunk" })
       end,
     },
-  },
-  {
-    "mattn/vim-gist",
-    enabled = false,
-    dependencies = { "mattn/webapi-vim" },
-    cmd = { "Gist" },
-    config = function()
-      vim.g.gist_open_browser_after_post = 1
-    end,
   },
   {
     "ThePrimeagen/git-worktree.nvim",
@@ -158,17 +138,6 @@ return {
         end,
         desc = "Create worktree",
       },
-    },
-  },
-  {
-    "aaronhallaert/advanced-git-search.nvim",
-    enabled = false,
-    config = function()
-      require("telescope").load_extension "advanced_git_search"
-    end,
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "tpope/vim-fugitive",
     },
   },
 }

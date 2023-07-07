@@ -21,7 +21,7 @@ return {
   { "yamatsum/nvim-nonicons", config = true, enabled = false },
 
   -- enter :{number} to peek view of line number in buffer
-  { "nacro90/numb.nvim", enabled = false, event = "BufReadPre", config = true },
+  { "nacro90/numb.nvim", event = "BufReadPre", config = true },
 
   {
     "fedepujol/move.nvim",
@@ -106,16 +106,6 @@ return {
   -- add marks to sign column
   { "kshenoy/vim-signature", event = "BufReadPre" },
 
-  -- highlighting like paren and machit
-  {
-    "andymass/vim-matchup",
-    lazy = false,
-    enabled = false,
-    init = function()
-      vim.g.matchup_matchparen_offscreen = { method = "popup" }
-    end,
-  },
-
   -- session management
   {
     "folke/persistence.nvim",
@@ -130,18 +120,4 @@ return {
   },
 
   { "tpope/vim-surround", event = "BufReadPre" },
-  {
-    "cbochs/portal.nvim",
-    keys = {
-      { "<C-o>", "<cmd>Portal jumplist backward<cr>", desc = "Jump Backward" },
-      { "<C-i>", "<cmd>Portal jumplist forward<cr>", desc = "Jump Forward" },
-      { "g;", "<cmd>Portal changelist backward<cr>", desc = "Change Backward" },
-      { "g,", "<cmd>Portal changelist forward<cr>", desc = "Change Forward" },
-    },
-    dependencies = {
-      "cbochs/grapple.nvim",
-      "ThePrimeagen/harpoon",
-    },
-    enabled = false,
-  },
 }

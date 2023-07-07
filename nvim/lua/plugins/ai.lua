@@ -9,7 +9,7 @@ return {
           model = "gpt-4",
           frequency_penalty = 0,
           presence_penalty = 0,
-          max_tokens = 1000,
+          max_tokens = 4000,
           temperature = 0.5,
           top_p = 1,
           n = 1,
@@ -47,27 +47,9 @@ return {
       { "<leader>ae", "<cmd>ChatGPTEditWithInstructions<cr>", desc = "GPT edit" },
     },
   },
-  -- copilot in cmp menu
-  {
-    "zbirenbaum/copilot-cmp",
-    event = "InsertEnter",
-    enabled = false,
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-    dependencies = {
-      "zbirenbaum/copilot.lua",
-      config = function()
-        vim.schedule(function()
-          require("copilot").setup()
-        end)
-      end,
-    },
-  },
   {
     "Exafunction/codeium.vim",
     event = "InsertEnter",
-    -- enabled = false,
     -- stylua: ignore
     config = function ()
       vim.g.codeium_disable_bindings = 1

@@ -4,11 +4,6 @@ local Job = require "plenary.job"
 -- local noice_status = require("noice").api.status
 
 local function get_repo()
-  -- if vim.fn.trim(vim.fn.system "git rev-parse --is-inside-work-tree") == "true" then
-  -- local repo = vim.fn.trim(vim.fn.system "git config --get remote.origin.url | sed -e 's/^git@.*:([[:graph:]]*).git/\1/'")
-  -- return repo:gsub("git@github.com:", ""):gsub(".git", "")
-  -- end
-  -- return ""
   local results = {}
   local job = Job:new {
     command = "git",
@@ -38,19 +33,19 @@ local function diff_source()
 end
 
 -- from evil line
-local conditions = {
-  buffer_not_empty = function()
-    return vim.fn.empty(vim.fn.expand "%:t") ~= 1
-  end,
-  hide_in_width = function()
-    return vim.fn.winwidth(0) > 80
-  end,
-  check_git_workspace = function()
-    local filepath = vim.fn.expand "%:p:h"
-    local gitdir = vim.fn.finddir(".git", filepath .. ";")
-    return gitdir and #gitdir > 0 and #gitdir < #filepath
-  end,
-}
+-- local conditions = {
+--   buffer_not_empty = function()
+--     return vim.fn.empty(vim.fn.expand "%:t") ~= 1
+--   end,
+--   hide_in_width = function()
+--     return vim.fn.winwidth(0) > 80
+--   end,
+--   check_git_workspace = function()
+--     local filepath = vim.fn.expand "%:p:h"
+--     local gitdir = vim.fn.finddir(".git", filepath .. ";")
+--     return gitdir and #gitdir > 0 and #gitdir < #filepath
+--   end,
+-- }
 
 return {
   spaces = {
@@ -67,7 +62,6 @@ return {
   git_repo_exp = {
     get_repo,
     icon = icons.git.Repo,
-    -- cond = conditions.check_git_workspace,
   },
   buffer = {
     "buffers",
@@ -122,17 +116,15 @@ return {
       modified = { fg = colors.git.steal },
       removed = { fg = colors.git.red },
     },
-    cond = conditions.check_git_workspace,
-    -- separator = "|",
   },
   diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
     symbols = {
-      error = icons.diagnostics.BoldError,
-      warn = icons.diagnostics.BoldWarning,
-      info = icons.diagnostics.BoldInformation,
-      hint = icons.diagnostics.BoldQuestion,
+      error = icons.diagnostics.Error,
+      warn = icons.diagnostics.Warning,
+      info = icons.diagnostics.Information,
+      hint = icons.diagnostics.Question,
     },
     colored = true,
   },
@@ -186,11 +178,9 @@ return {
       table.sort(client_names)
       return icons.ui.Code .. " " .. table.concat(client_names, ", ") .. " " .. icons.ui.Code
     end,
-    -- icon = icons.ui.Code,
     colored = true,
     on_click = function()
       vim.cmd [[LspInfo]]
     end,
-    cond = conditions.hide_in_width,
   },
 }
