@@ -19,3 +19,6 @@ ln -sf "${DOTFILES}/scripts/nv.sh" "${HOME}/.local/bin/"
 # git
 ln -sf "${DOTFILES}/git/.gitignore_global" ~
 ln -sf "${DOTFILES}/git/.gitconfig" ~
+
+#vscode
+ln -sf "${DOTFILES}/vscode/settings.json" "${HOME}/Library/Application Support/Cursor/User"

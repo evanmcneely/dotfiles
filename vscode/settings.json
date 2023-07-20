@@ -1,0 +1,167 @@
+{
+  // editor
+  "editor.codeActionsOnSave": {},
+  "editor.accessibilitySupport": "off",
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": false,
+  "editor.fontLigatures": true,
+  "editor.cursorBlinking": "smooth",
+  "editor.fontSize": 13,
+  "editor.lineHeight": 1.55,
+  "editor.minimap.enabled": false,
+  "editor.inlineSuggest.enabled": true,
+
+  // window
+  "window.restoreWindows": "none",
+
+  // other
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "security.workspace.trust.untrustedFiles": "open",
+  "files.autoSave": "afterDelay",
+  "extensions.ignoreRecommendations": true,
+  "diffEditor.diffAlgorithm": "advanced",
+  "diffEditor.experimental.useVersion2": true,
+  "codeium.enableCodeLens": false,
+
+  // themes
+  "workbench.colorTheme": "Tokyo Night",
+  "editor.fontFamily": "Fira Code",
+
+  // liveshare
+  "liveshare.allowGuestTaskControl": true,
+  "liveshare.allowGuestDebugControl": true,
+  "liveshare.focusBehavior": "prompt",
+  "liveshare.sharedTerminalHeight": 300,
+  "liveshare.sharedTerminalWidth": 170,
+
+  // terminal
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+
+  // better comments
+  "better-comments.tags": [
+    {
+      "tag": "bug",
+      "color": "#ffffff",
+      "strikethrough": false,
+      "underline": false,
+      "bold": true,
+      "italic": false
+    },
+    {
+      "color": "#FF2D00",
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "bold": true
+    },
+    {
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "#3498DB",
+      "bold": true
+    },
+    {
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "underline": false,
+      "bold": true,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "underline": false,
+      "bold": true
+    }
+  ],
+
+  // spell check
+  "cSpell.userWords": [
+    "Leadpage",
+    "leadpages",
+    "leadpagestest",
+    "lpagestest",
+    "codeium"
+  ],
+
+  //vim
+  "vim.debug.silent": true,
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/local/bin/nvim",
+  "vim.neovimUseConfigFile": true,
+  "vim.neovimConfigPath": "~/.config/nvim",
+  "vim.camelCaseMotion.enable": true,
+  "vim.highlightedyank.enable": true,
+  "vim.visualstar": true,
+  "vim.commandLineModeKeyBindings": [],
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [":"],
+      "commands": ["workbench.action.showCommands"],
+      "silent": true
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["K"],
+      "commands": ["lineBreakInsert"],
+      "silent": true
+    },
+    {
+      "before": ["<leader>", "m"],
+      "commands": ["bookmarks.toggle"]
+    },
+    {
+      "before": ["<leader>", "b"],
+      "commands": ["bookmarks.list"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
+    },
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    }
+  ],
+  "vim.operatorPendingModeKeyBindings": [
+    {
+      "before": ["L"],
+      "after": ["$"]
+    },
+    {
+      "before": ["H"],
+      "after": ["^"]
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+
+  // formatter
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
+}
