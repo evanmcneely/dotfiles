@@ -136,15 +136,19 @@
     {
       "before": ["<leader>", "b"],
       "commands": ["bookmarks.list"]
-    },
-    {
-      "before": ["<leader>", "e", "t"],
-      "commands": ["workbench.view.explorer"]
-    },
-    {
-      "before": ["<leader>", "c", "f"],
-      "commands": ["editor.action.formatDocument"]
     }
+    // {
+    //   "before": ["<leader>", "e", "t"],
+    //   "commands": ["workbench.view.explorer"]
+    // },
+    // {
+    //   "before": ["<leader>", "c", "f"],
+    //   "commands": ["editor.action.formatDocument"]
+    // }
+    // {
+    //     "before": ["<leader>", "\\"],
+    //     "commands": ["workbench.action.terminal.toggleTerminal"]
+    // }
   ],
   "vim.visualModeKeyBindings": [
     {

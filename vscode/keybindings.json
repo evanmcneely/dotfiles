@@ -37,6 +37,10 @@
     "key": "ctrl+shift+-",
     "command": "workbench.files.action.collapseExplorerFolders"
   },
+  {
+    "key": "ctrl+\\",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
 
   // Terminal
   // ---------------------------------------------------------------------------
