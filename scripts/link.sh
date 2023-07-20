@@ -22,3 +22,4 @@ ln -sf "${DOTFILES}/git/.gitconfig" ~
 
 #vscode
 ln -sf "${DOTFILES}/vscode/settings.json" "${HOME}/Library/Application Support/Cursor/User"
+ln -sf "${DOTFILES}/vscode/keybindings.json" "${HOME}/Library/Application Support/Cursor/User"
