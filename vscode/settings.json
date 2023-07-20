@@ -1,6 +1,6 @@
 {
   // editor
-  "editor.codeActionsOnSave": {},
+  // -----------------------------------------------
   "editor.accessibilitySupport": "off",
   "editor.detectIndentation": false,
   "editor.formatOnSave": false,
@@ -11,23 +11,13 @@
   "editor.minimap.enabled": false,
   "editor.inlineSuggest.enabled": true,
 
-  // window
-  "window.restoreWindows": "none",
-
-  // other
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "security.workspace.trust.untrustedFiles": "open",
-  "files.autoSave": "afterDelay",
-  "extensions.ignoreRecommendations": true,
-  "diffEditor.diffAlgorithm": "advanced",
-  "diffEditor.experimental.useVersion2": true,
-  "codeium.enableCodeLens": false,
-
   // themes
+  // -----------------------------------------------
   "workbench.colorTheme": "Tokyo Night",
-  "editor.fontFamily": "Fira Code",
+  "editor.fontFamily": "FiraCode NFM",
 
   // liveshare
+  // -----------------------------------------------
   "liveshare.allowGuestTaskControl": true,
   "liveshare.allowGuestDebugControl": true,
   "liveshare.focusBehavior": "prompt",
@@ -35,10 +25,12 @@
   "liveshare.sharedTerminalWidth": 170,
 
   // terminal
+  // -----------------------------------------------
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.defaultProfile.osx": "zsh",
 
   // better comments
+  // -----------------------------------------------
   "better-comments.tags": [
     {
       "tag": "bug",
@@ -81,20 +73,24 @@
   ],
 
   // spell check
+  // -----------------------------------------------
   "cSpell.userWords": [
+    "codeium",
     "Leadpage",
     "leadpages",
     "leadpagestest",
-    "lpagestest",
-    "codeium"
+    "liveshare",
+    "lpagestest"
   ],
 
   //vim
+  // -----------------------------------------------
   "vim.debug.silent": true,
   "vim.enableNeovim": true,
-  "vim.neovimPath": "/usr/local/bin/nvim",
+  "vim.neovimPath": "/opt/homebrew/Cellar/neovim/0.9.1/bin/nvim",
   "vim.neovimUseConfigFile": true,
-  "vim.neovimConfigPath": "~/.config/nvim",
+  "vim.neovimConfigPath": "~/.config/nvim/init.lua",
+
   "vim.camelCaseMotion.enable": true,
   "vim.highlightedyank.enable": true,
   "vim.visualstar": true,
@@ -111,6 +107,14 @@
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["L"],
+      "after": ["$"]
+    },
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
     {
       "before": [":"],
       "commands": ["workbench.action.showCommands"],
@@ -132,6 +136,14 @@
     {
       "before": ["<leader>", "b"],
       "commands": ["bookmarks.list"]
+    },
+    {
+      "before": ["<leader>", "e", "t"],
+      "commands": ["workbench.view.explorer"]
+    },
+    {
+      "before": ["<leader>", "c", "f"],
+      "commands": ["editor.action.formatDocument"]
     }
   ],
   "vim.visualModeKeyBindings": [
@@ -144,16 +156,7 @@
       "commands": ["editor.action.outdentLines"]
     }
   ],
-  "vim.operatorPendingModeKeyBindings": [
-    {
-      "before": ["L"],
-      "after": ["$"]
-    },
-    {
-      "before": ["H"],
-      "after": ["^"]
-    }
-  ],
+  "vim.operatorPendingModeKeyBindings": [],
   "vim.leader": "<space>",
   "vim.handleKeys": {
     "<C-a>": false,
@@ -161,7 +164,26 @@
   },
 
   // formatter
+  // -----------------------------------------------
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+
+  // other
+  // -----------------------------------------------
+  "window.restoreWindows": "none",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "security.workspace.trust.untrustedFiles": "open",
+  "files.autoSave": "afterDelay",
+  "extensions.ignoreRecommendations": true,
+  "diffEditor.diffAlgorithm": "advanced",
+  "diffEditor.experimental.useVersion2": true,
+  "codeium.enableCodeLens": false,
+  "git.openRepositoryInParentFolders": "always",
+  "terminal.external.osxExec": "wezterm",
+  "workbench.editor.showTabs": false,
+  "breadcrumbs.enabled": false
 }
