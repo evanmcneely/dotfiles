@@ -13,8 +13,8 @@
 
   // themes
   // -----------------------------------------------
-  "workbench.colorTheme": "Tokyo Night",
-  "editor.fontFamily": "FiraCode NFM",
+  "workbench.colorTheme": "Tokyo Night Storm",
+  "editor.fontFamily": "FiraCode NFM, FiraCode Nerd Font",
 
   // liveshare
   // -----------------------------------------------
@@ -189,5 +189,8 @@
   "git.openRepositoryInParentFolders": "always",
   "terminal.external.osxExec": "wezterm",
   "workbench.editor.showTabs": false,
-  "breadcrumbs.enabled": false
+  "breadcrumbs.enabled": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
