@@ -30,7 +30,7 @@
   "terminal.integrated.defaultProfile.osx": "zsh",
 
   // better comments
-  // -----------------------------------------------
+  // ---------------------------------------------
   "better-comments.tags": [
     {
       "tag": "bug",
@@ -76,6 +76,7 @@
   // -----------------------------------------------
   "cSpell.userWords": [
     "codeium",
+    "jsonhandler",
     "Leadpage",
     "leadpages",
     "leadpagestest",
@@ -137,13 +138,34 @@
       "before": ["<leader>", "b"],
       "commands": ["bookmarks.list"]
     },
+
     {
-      "before": ["<leader>", "e", "t"],
-      "commands": ["workbench.view.explorer"]
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.next"]
     },
     {
-      "before": ["<leader>", "c", "f"],
-      "commands": ["editor.action.formatDocument"]
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["[", "h"],
+      "commands": ["workbench.action.compareEditor.nextChange"],
+      "when": "isInDiffEditor"
+    },
+    {
+      "before": ["]", "h"],
+      "commands": ["workbench.action.compareEditor.previousChange"],
+      "when": "isInDiffEditor"
+    },
+    {
+      "before": ["[", "h"],
+      "commands": ["workbench.action.editor.nextChange"],
+      "when": "editorTextFocus"
+    },
+    {
+      "before": ["]", "h"],
+      "commands": ["workbench.action.editor.previousChange"],
+      "when": "editorTextFocus"
     }
   ],
   "vim.visualModeKeyBindings": [
@@ -168,8 +190,20 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // other
@@ -186,10 +220,8 @@
   "terminal.external.osxExec": "wezterm",
   "workbench.editor.showTabs": false,
   "breadcrumbs.enabled": false,
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-},
-"[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-}
+  "jest.autoRun": {
+    "watch": false,
+    "onStartup": ["off"]
+  }
 }

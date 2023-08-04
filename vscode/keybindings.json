@@ -6,6 +6,42 @@
     "command": "closeParameterHints",
     "when": "editorTextFocus && parameterHintsVisible"
   },
+  {
+    "key": "alt+j",
+    "command": "editor.action.moveLinesDownAction"
+  },
+  {
+    "key": "alt+k",
+    "command": "editor.action.moveLinesUpAction"
+  },
+  {
+    "key": "ctrl+c ctrl+f",
+    "command": "editor.action.formatDocument"
+  },
+  {
+    "key": "ctrl+c ctrl+s",
+    "command": "editor.action.formatSelection"
+  },
+//   {
+//     "key": "ctrl+c ctrl+r",
+//     "command": "editor.action.refactor"
+//   },
+  {
+    "key": "ctrl+c ctrl+p",
+    "command": "editor.action.peekDefinition"
+  },
+  {
+    "key": "ctrl+c ctrl+r",
+    "command": "editor.action.rename"
+  },
+  {
+    "key": "ctrl+c ctrl+a",
+    "command": "editor.action.codeAction"
+  },
+
+  
+
+
 
   // Workbench
   // ---------------------------------------------------------------------------
@@ -18,11 +54,11 @@
     "command": "workbench.action.moveEditorRightInGroup"
   },
   {
-    "key": "alt+j",
+    "key": "ctrl+j",
     "command": "workbench.action.increaseViewSize"
   },
   {
-    "key": "alt+k",
+    "key": "ctrl+k",
     "command": "workbench.action.decreaseViewSize"
   },
   {
@@ -36,6 +72,10 @@
   {
     "key": "ctrl+shift+-",
     "command": "workbench.files.action.collapseExplorerFolders"
+  },
+  {
+    "key": "ctrl+\\",
+    "command": "workbench.action.terminal.toggleTerminal"
   },
 
   // Terminal
@@ -122,5 +162,24 @@
     "key": "ctrl+k",
     "command": "list.focusUp",
     "when": "listFocus"
+  },
+
+  // Git
+  // --------------------------------------------------------------------
+  {
+    "key": "ctrl+g ctrl+e",
+    "command": "git.openFile"
+  },
+  {
+    "key": "ctrl+g ctrl+d",
+    "command": "git.openChange"
+  },
+  {
+    "key": "ctrl+g ctrl+s",
+    "command": "git.stageSelectedRanges"
+  },
+  {
+    "key": "ctrl+g ctrl+r",
+    "command": "git.revertSelectedRanges"
   }
 ]
