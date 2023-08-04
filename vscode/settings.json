@@ -76,6 +76,7 @@
   // -----------------------------------------------
   "cSpell.userWords": [
     "codeium",
+    "jsonhandler",
     "Leadpage",
     "leadpages",
     "leadpagestest",
@@ -136,19 +137,36 @@
     {
       "before": ["<leader>", "b"],
       "commands": ["bookmarks.list"]
+    },
+
+    {
+      "before": ["[", "d"],
+      "commands": ["editor.action.marker.next"]
+    },
+    {
+      "before": ["]", "d"],
+      "commands": ["editor.action.marker.prev"]
+    },
+    {
+      "before": ["[", "h"],
+      "commands": ["workbench.action.compareEditor.nextChange"],
+      "when": "isInDiffEditor"
+    },
+    {
+      "before": ["]", "h"],
+      "commands": ["workbench.action.compareEditor.previousChange"],
+      "when": "isInDiffEditor"
+    },
+    {
+      "before": ["[", "h"],
+      "commands": ["workbench.action.editor.nextChange"],
+      "when": "editorTextFocus"
+    },
+    {
+      "before": ["]", "h"],
+      "commands": ["workbench.action.editor.previousChange"],
+      "when": "editorTextFocus"
     }
-    // {
-    //   "before": ["<leader>", "e", "t"],
-    //   "commands": ["workbench.view.explorer"]
-    // },
-    // {
-    //   "before": ["<leader>", "c", "f"],
-    //   "commands": ["editor.action.formatDocument"]
-    // }
-    // {
-    //     "before": ["<leader>", "\\"],
-    //     "commands": ["workbench.action.terminal.toggleTerminal"]
-    // }
   ],
   "vim.visualModeKeyBindings": [
     {
@@ -172,8 +190,14 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // other
@@ -190,7 +214,11 @@
   "terminal.external.osxExec": "wezterm",
   "workbench.editor.showTabs": false,
   "breadcrumbs.enabled": false,
-  "[json]": {
+  "jest.autoRun": {
+    "watch": false,
+    "onStartup": ["off"]
+},
+"[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+}
 }
