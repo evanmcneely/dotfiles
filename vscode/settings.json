@@ -30,7 +30,7 @@
   "terminal.integrated.defaultProfile.osx": "zsh",
 
   // better comments
-  // -----------------------------------------------
+  // ---------------------------------------------
   "better-comments.tags": [
     {
       "tag": "bug",
@@ -208,6 +208,12 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 
   // other
   // -----------------------------------------------
@@ -226,6 +232,6 @@
   "jest.autoRun": {
     "watch": false,
     "onStartup": ["off"]
-},
-"workbench.activityBar.orientation": "vertical"
+  },
+  "workbench.activityBar.orientation": "vertical"
 }

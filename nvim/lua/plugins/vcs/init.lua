@@ -114,7 +114,7 @@ return {
   },
   {
     "ThePrimeagen/git-worktree.nvim",
-    enabled = false,
+    -- enabled = false,
     event = "VeryLazy",
     config = function()
       -- change_directory_command = <str> -- default: "cd",
@@ -125,18 +125,18 @@ return {
     end,
     keys = {
       {
-        "<leader>gW",
+        "<leader>gw",
         function()
           require("telescope").extensions.git_worktree.git_worktrees()
         end,
-        desc = "Worktrees",
+        desc = "Worktree",
       },
       {
-        "<leader>gw",
+        "<leader>gW",
         function()
           require("telescope").extensions.git_worktree.create_git_worktree()
         end,
-        desc = "Create worktree",
+        desc = "create worktree",
       },
     },
   },
