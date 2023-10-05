@@ -22,10 +22,6 @@
     "key": "ctrl+c ctrl+s",
     "command": "editor.action.formatSelection"
   },
-//   {
-//     "key": "ctrl+c ctrl+r",
-//     "command": "editor.action.refactor"
-//   },
   {
     "key": "ctrl+c ctrl+p",
     "command": "editor.action.peekDefinition"
@@ -38,10 +34,6 @@
     "key": "ctrl+c ctrl+a",
     "command": "editor.action.codeAction"
   },
-
-  
-
-
 
   // Workbench
   // ---------------------------------------------------------------------------
@@ -62,14 +54,6 @@
     "command": "workbench.action.decreaseViewSize"
   },
   {
-    "key": "cmd+]",
-    "command": "workbench.action.focusRightGroup"
-  },
-  {
-    "key": "cmd+[",
-    "command": "workbench.action.focusLeftGroup"
-  },
-  {
     "key": "ctrl+shift+-",
     "command": "workbench.files.action.collapseExplorerFolders"
   },
@@ -77,27 +61,27 @@
     "key": "ctrl+\\",
     "command": "workbench.action.terminal.toggleTerminal"
   },
-
+  
   // Terminal
   // ---------------------------------------------------------------------------
   {
     "key": "ctrl+tab",
-    "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "cmd+]",
     "command": "workbench.action.terminal.focusNextPane",
     "when": "terminalFocus"
   },
   {
     "key": "ctrl+shift+tab",
-    "command": "workbench.action.terminal.focusPrevious",
+    "command": "workbench.action.terminal.focusPreviousPane",
     "when": "terminalFocus"
   },
   {
     "key": "cmd+[",
-    "command": "workbench.action.terminal.focusPreviousPane",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+]",
+    "command": "workbench.action.terminal.focusNext",
     "when": "terminalFocus"
   },
   {
@@ -167,12 +151,14 @@
   // Git
   // --------------------------------------------------------------------
   {
-    "key": "ctrl+g ctrl+e",
-    "command": "git.openFile"
+    "key": "ctrl+g ctrl+d",
+    "command": "git.openFile",
+    "when": "editorTextFocus"
   },
   {
     "key": "ctrl+g ctrl+d",
-    "command": "git.openChange"
+    "command": "git.openChange",
+    "when": "!editorTextFocus"
   },
   {
     "key": "ctrl+g ctrl+s",

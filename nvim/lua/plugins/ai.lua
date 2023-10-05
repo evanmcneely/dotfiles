@@ -1,7 +1,7 @@
 return {
   {
     "jackMort/ChatGPT.nvim",
-    -- enabled = false,
+    enabled = false,
     config = function()
       require("chatgpt").setup {
         welcome_message = "",
