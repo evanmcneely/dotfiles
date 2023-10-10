@@ -41,7 +41,7 @@ return {
           name = "+Utils",
           d = { require("utils.term").docker_client_toggle, "lazydocker" },
           l = { require("utils.term").lazygit_toggle, "lazygit" },
-          v = { "<cmd>ToggleTerm direction=vertical size=110<cr>", "Vertical Terminal" },
+          v = { "<cmd>ToggleTerm direction=vertical size=130<cr>", "Vertical Terminal" },
           h = { '<cmd>ToggleTerm direction=horizontal size=20"<cr>', "Horizontal Terminal" },
         },
         w = {

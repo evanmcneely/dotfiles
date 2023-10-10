@@ -102,7 +102,7 @@ return {
           { name = "buffer" },
           { name = "path" },
           { name = "treesitter" },
-          { name = "git" },
+          -- { name = "git" },
           { name = "codeium" },
           { name = "spell" },
           -- { name = "copilot" },
@@ -164,7 +164,7 @@ return {
       })
 
       -- Git
-      require("cmp_git").setup { filetypes = { "NeogitCommitMessage" } }
+      -- require("cmp_git").setup { filetypes = { "NeogitCommitMessage" } }
 
       -- Auto pairs
       local cmp_autopairs = require "nvim-autopairs.completion.cmp"
