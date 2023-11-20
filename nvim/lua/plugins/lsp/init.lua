@@ -55,6 +55,8 @@ return {
         "markdownlint",
         -- "vulture",
         "yamllint",
+        "phpcs",
+        "phpcbf",
         -- "stylelint_lsp",
       },
     },
@@ -77,6 +79,10 @@ return {
       local nls = require "null-ls"
       nls.setup {
         sources = {
+          -- php
+          nls.builtins.formatting.phpcbf,
+          nls.builtins.diagnostics.phpcs,
+
           -- python
           nls.builtins.formatting.black,
           nls.builtins.formatting.isort,
@@ -89,7 +95,9 @@ return {
           -- nls.builtins.diagnostics.stylelint_lsp,
 
           -- js
-          nls.builtins.formatting.prettier,
+          nls.builtins.formatting.prettier.with({
+            filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "php", "json", "xml" },
+          }),
           nls.builtins.code_actions.eslint,
           -- nls.builtins.code_actions.eslint_d,
           -- require "typescript.extensions.null-ls.code-actions",

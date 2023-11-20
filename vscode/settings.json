@@ -200,10 +200,19 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
   // other
@@ -223,7 +232,12 @@
   "jest.autoRun": {
     "watch": false,
     "onStartup": ["off"]
+  },
+"workbench.activityBar.orientation": "vertical",
+"[php]": {
+    "editor.defaultFormatter": "valeryanm.vscode-phpsab"
 },
+<<<<<<< HEAD
 "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
 },
@@ -237,4 +251,7 @@
 "codeium.enableConfig": {
     "*": true
 }
+=======
+"window.zoomLevel": 1
+>>>>>>> 628630e4546f68081cc362b6253d9321dfb350cb
 }

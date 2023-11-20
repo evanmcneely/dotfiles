@@ -5,34 +5,33 @@ return {
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "nvim-telescope/telescope-file-browser.nvim",
-      "nvim-telescope/telescope-project.nvim",
-      "ahmedkhalf/project.nvim",
-      "cljoly/telescope-repo.nvim",
+      -- "nvim-telescope/telescope-project.nvim",
+      -- "ahmedkhalf/project.nvim",
+      -- "cljoly/telescope-repo.nvim",
       "stevearc/aerial.nvim",
-      "nvim-telescope/telescope-frecency.nvim",
-      "kkharji/sqlite.lua",
-      "aaronhallaert/advanced-git-search.nvim",
+      -- "nvim-telescope/telescope-frecency.nvim",
+      -- "kkharji/sqlite.lua",
+      -- "aaronhallaert/advanced-git-search.nvim",
       -- "ThePrimeagen/git-worktree.nvim",
     },
     keys = {
       { "<leader><leader>", "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find Files" },
       { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git Files" },
-      { "<leader>f/", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
-      { "<leader>fo", "<cmd>Telescope frecency theme=dropdown previewer=false<cr>", desc = "Recent" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>fr", "<cmd>Telescope file_browser<cr>", desc = "Browser" },
-      { "<leader>ps", "<cmd>Telescope repo list<cr>", desc = "Search" },
-      { "<leader>hs", "<cmd>Telescope help_tags<cr>", desc = "Search" },
-      {
-        "<leader>pp",
-        function()
-          require("telescope").extensions.project.project { display_type = "minimal" }
-        end,
-        desc = "List",
-      },
-      { "<leader>sw", "<cmd>Telescope live_grep<cr>", desc = "Workspace" },
+      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
+      -- { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Git Files" },
+      -- { "<leader>fo", "<cmd>Telescope frecency theme=dropdown previewer=false<cr>", desc = "Recent" },
+      -- { "<leader>fr", "<cmd>Telescope file_browser<cr>", desc = "Browser" },
+      -- { "<leader>ps", "<cmd>Telescope repo list<cr>", desc = "Search" },
+      -- { "<leader>hs", "<cmd>Telescope help_tags<cr>", desc = "Search" },
+      -- {
+      --   "<leader>pp",
+      --   function()
+      --     require("telescope").extensions.project.project { display_type = "minimal" }
+      --   end,
+      --   desc = "List",
+      -- },
+      -- { "<leader>sw", "<cmd>Telescope live_grep<cr>", desc = "Workspace" },
       {
         "<leader>sb",
         function()
@@ -75,41 +74,39 @@ return {
         },
         pickers = {
           find_files = {
-            -- theme = "dropdown",
-            -- previewer = false,
             hidden = true,
             find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
           },
-          git_files = {
+          -- git_files = {
             -- theme = "dropdown",
             -- previewer = false,
-          },
+          -- },
           buffers = {
             theme = "dropdown",
             previewer = false,
           },
         },
         extensions = {
-          file_browser = {
+          -- file_browser = {
             -- theme = "dropdown",
             -- previewer = false,
-            hijack_netrw = true,
-            mappings = mappings,
-          },
-          project = {
-            hidden_files = false,
-            theme = "dropdown",
-          },
+            -- hijack_netrw = true,
+            -- mappings = mappings,
+          -- },
+          -- project = {
+          --   hidden_files = false,
+          --   theme = "dropdown",
+          -- },
         },
       }
       telescope.setup(opts)
       telescope.load_extension "fzf"
-      telescope.load_extension "file_browser"
-      telescope.load_extension "project"
+      -- telescope.load_extension "file_browser"
+      -- telescope.load_extension "project"
       -- telescope.load_extension "projects"
       telescope.load_extension "aerial"
-      telescope.load_extension "dap"
-      telescope.load_extension "frecency"
+      -- telescope.load_extension "dap"
+      -- telescope.load_extension "frecency"
       -- telescope.load_extension "git_worktree"
     end,
   },

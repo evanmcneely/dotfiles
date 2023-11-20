@@ -3,7 +3,6 @@ return {
   "nvim-lua/plenary.nvim",
   "MunifTanjim/nui.nvim",
 
-  -- better repeat with .
   { "tpope/vim-repeat", event = "VeryLazy" },
 
   { "ElPiloto/significant.nvim" },
@@ -18,7 +17,6 @@ return {
       }
     end,
   },
-  { "yamatsum/nvim-nonicons", config = true, enabled = false },
 
   -- enter :{number} to peek view of line number in buffer
   { "nacro90/numb.nvim", event = "BufReadPre", config = true },
@@ -79,7 +77,6 @@ return {
       max_width = function()
         return math.floor(vim.o.columns * 0.75)
       end,
-      -- render = "compact",
     },
   },
 
@@ -120,4 +117,7 @@ return {
   },
 
   { "tpope/vim-surround", event = "BufReadPre" },
+
+  { "folke/twilight.nvim", opts = {}, cmd = { "Twilight", "TwilightEnable", "TwilightDisable" } },
+  { "folke/zen-mode.nvim", opts = {}, cmd = { "ZenMode" } },
 }

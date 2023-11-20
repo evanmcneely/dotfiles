@@ -41,6 +41,7 @@ return {
   {
     "mfussenegger/nvim-dap",
     dependencies = { "mfussenegger/nvim-dap-python" },
+    enabled = false,
     opts = {
       setup = {
         debugpy = function(_, _)
