@@ -233,5 +233,9 @@
     "watch": false,
     "onStartup": ["off"]
   },
-  "workbench.activityBar.orientation": "vertical"
+"workbench.activityBar.orientation": "vertical",
+"[php]": {
+    "editor.defaultFormatter": "valeryanm.vscode-phpsab"
+},
+"window.zoomLevel": 1
 }

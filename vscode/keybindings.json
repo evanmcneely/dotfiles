@@ -16,23 +16,28 @@
   },
   {
     "key": "ctrl+c ctrl+f",
-    "command": "editor.action.formatDocument"
+    "command": "editor.action.formatDocument",
+    "when": "!terminalFocus"
   },
   {
     "key": "ctrl+c ctrl+s",
-    "command": "editor.action.formatSelection"
+    "command": "editor.action.formatSelection",
+    "when": "!terminalFocus"
   },
   {
     "key": "ctrl+c ctrl+p",
-    "command": "editor.action.peekDefinition"
+    "command": "editor.action.peekDefinition",
+    "when": "!terminalFocus"
   },
   {
     "key": "ctrl+c ctrl+r",
-    "command": "editor.action.rename"
+    "command": "editor.action.rename",
+    "when": "!terminalFocus"
   },
   {
     "key": "ctrl+c ctrl+a",
-    "command": "editor.action.codeAction"
+    "command": "editor.action.codeAction",
+    "when": "!terminalFocus"
   },
 
   // Workbench
@@ -61,7 +66,7 @@
     "key": "ctrl+\\",
     "command": "workbench.action.terminal.toggleTerminal"
   },
-  
+
   // Terminal
   // ---------------------------------------------------------------------------
   {
