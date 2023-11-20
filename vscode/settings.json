@@ -218,7 +218,7 @@
   "codeium.enableCodeLens": false,
   "git.openRepositoryInParentFolders": "always",
   "terminal.external.osxExec": "wezterm",
-  "workbench.editor.showTabs": false,
+  "workbench.editor.showTabs": "single",
   "breadcrumbs.enabled": false,
   "jest.autoRun": {
     "watch": false,
@@ -232,5 +232,9 @@
 },
 "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+"typescript.updateImportsOnFileMove.enabled": "always",
+"codeium.enableConfig": {
+    "*": true
 }
 }
