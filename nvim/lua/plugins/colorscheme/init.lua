@@ -5,8 +5,8 @@ return {
     config = function()
       require("styler").setup {
         themes = {
-          markdown = { colorscheme = "gruvbox" },
-          help = { colorscheme = "gruvbox" },
+          markdown = { colorscheme = "catppuccin" },
+          help = { colorscheme = "catppuccin" },
         },
       }
     end,
@@ -18,7 +18,6 @@ return {
     config = function()
       local tokyonight = require "tokyonight"
       tokyonight.setup { style = "storm" }
-      tokyonight.load()
     end,
   },
   {
@@ -29,12 +28,13 @@ return {
   {
     "ellisonleao/gruvbox.nvim",
     lazy = false,
+    priority = 1000,
     config = function()
-      require("gruvbox").setup {
-        overrides = {
-          SignColumn = { bg = "#32302f" },
-        },
+      local gruvbox = require("gruvbox")
+      gruvbox.setup {
+        contrast = "hard",
       }
+      gruvbox.load()
     end,
   },
   {},
