@@ -2,7 +2,7 @@
   // editor
   // -----------------------------------------------
   "editor.accessibilitySupport": "off",
-  "editor.detectIndentation": false,
+  "editor.detectIndentation": true,
   "editor.formatOnSave": false,
   "editor.fontLigatures": true,
   "editor.cursorBlinking": "smooth",
@@ -13,7 +13,7 @@
 
   // themes
   // -----------------------------------------------
-  "workbench.colorTheme": "Tokyo Night Storm",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
   "editor.fontFamily": "FiraCode NFM, FiraCode Nerd Font",
 
   // liveshare
@@ -29,49 +29,6 @@
   "terminal.integrated.fontSize": 12,
   "terminal.integrated.defaultProfile.osx": "zsh",
 
-  // better comments
-  // ---------------------------------------------
-  "better-comments.tags": [
-    {
-      "tag": "bug",
-      "color": "#ffffff",
-      "strikethrough": false,
-      "underline": false,
-      "bold": true,
-      "italic": false
-    },
-    {
-      "color": "#FF2D00",
-      "italic": false,
-      "strikethrough": false,
-      "underline": false,
-      "bold": true
-    },
-    {
-      "tag": "?",
-      "color": "#3498DB",
-      "strikethrough": false,
-      "underline": false,
-      "backgroundColor": "#3498DB",
-      "bold": true
-    },
-    {
-      "tag": "todo",
-      "color": "#FF8C00",
-      "strikethrough": false,
-      "underline": false,
-      "bold": true,
-      "italic": false
-    },
-    {
-      "tag": "*",
-      "color": "#98C379",
-      "strikethrough": false,
-      "underline": false,
-      "bold": true
-    }
-  ],
-
   // spell check
   // -----------------------------------------------
   "cSpell.userWords": [
@@ -81,7 +38,8 @@
     "leadpages",
     "leadpagestest",
     "liveshare",
-    "lpagestest"
+    "lpagestest",
+    "Neovim"
   ],
 
   //vim
@@ -218,7 +176,6 @@
     "editor.defaultFormatter": "valeryanm.vscode-phpsab"
   },
 
-
   // other
   // -----------------------------------------------
   "window.restoreWindows": "none",
@@ -241,5 +198,55 @@
   "codeium.enableConfig": {
     "*": true
   },
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  // git blame
+  "gitblame.inlineMessageEnabled": true,
+  "gitblame.statusBarMessageFormat": "${author.name} (${time.ago})",
+  "gitblame.inlineMessageFormat": "${commit.summary}",
+  // phpunit in WP
+  "phpunit.command": "yarn wp-env run tests-wordpress --env-cwd=wp-content/plugins/leadpages",
+  "phpunit.args": ["-c tests/phpunit.xml"],
+  "phpunit.php": "",
+  "phpunit.phpunit": "phpunit",
+  "phpunit.paths": {
+    "${workspaceFolder}": "."
+  },
+  "peacock.favoriteColors": [
+    {
+      "name": "Angular Red",
+      "value": "#dd0531"
+    },
+    {
+      "name": "Azure Blue",
+      "value": "#007fff"
+    },
+    {
+      "name": "JavaScript Yellow",
+      "value": "#f9e64f"
+    },
+    {
+      "name": "Mandalorian Blue",
+      "value": "#1857a4"
+    },
+    {
+      "name": "Node Green",
+      "value": "#215732"
+    },
+    {
+      "name": "React Blue",
+      "value": "#61dafb"
+    },
+    {
+      "name": "Something Different",
+      "value": "#832561"
+    },
+    {
+      "name": "Svelte Orange",
+      "value": "#ff3d00"
+    },
+    {
+      "name": "Vue Green",
+      "value": "#42b883"
+    }
+  ]
 }
