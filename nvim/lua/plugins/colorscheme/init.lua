@@ -18,6 +18,7 @@ return {
     config = function()
       local tokyonight = require "tokyonight"
       tokyonight.setup { style = "storm" }
+      tokyonight.load()
     end,
   },
   {
@@ -30,11 +31,11 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      local gruvbox = require("gruvbox")
+      local gruvbox = require "gruvbox"
       gruvbox.setup {
         contrast = "hard",
       }
-      gruvbox.load()
+      -- gruvbox.load()
     end,
   },
   {},
