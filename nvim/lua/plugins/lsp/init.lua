@@ -80,8 +80,14 @@ return {
       nls.setup {
         sources = {
           -- php
-          nls.builtins.formatting.phpcbf,
-          nls.builtins.diagnostics.phpcs,
+          nls.builtins.formatting.phpcbf.with {
+            command = "./vendor/bin/phpcbf",
+            extra_args = { "--standard=phpcs.xml" },
+          },
+          nls.builtins.diagnostics.phpcs.with {
+            command = "./vendor/bin/phpcs",
+            extra_args = { "--standard=phpcs.xml" },
+          },
 
           -- python
           nls.builtins.formatting.black,
@@ -95,9 +101,9 @@ return {
           -- nls.builtins.diagnostics.stylelint_lsp,
 
           -- js
-          nls.builtins.formatting.prettier.with({
-            filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "php", "json", "xml" },
-          }),
+          nls.builtins.formatting.prettier.with {
+            filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
+          },
           nls.builtins.code_actions.eslint,
           -- nls.builtins.code_actions.eslint_d,
           -- require "typescript.extensions.null-ls.code-actions",
