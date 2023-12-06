@@ -43,12 +43,12 @@ return {
   -- adds indentation guides to all lines (including empty lines)
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
     event = { "BufReadPost", "BufNewFile" },
-    filetype_exclude = { "help", "alpha", "dashboard", "NvimTree", "Trouble", "lazy" },
     config = function()
-      vim.opt.list = true
-      require("indent_blankline").setup {
-        show_current_context = true,
+      require("ibl").setup {
+        indent = { char = "│" },
+        scope = { enabled = false },
       }
     end,
   },
