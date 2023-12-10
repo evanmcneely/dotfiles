@@ -4,20 +4,13 @@ return {
     event = "BufReadPre",
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      {
-        "folke/neodev.nvim",
-        opts = { library = { plugins = { "neotest", "nvim-dap-ui" }, types = true } },
-      },
-      { "j-hui/fidget.nvim", config = true },
       { "smjonas/inc-rename.nvim", config = true },
-      "simrat39/rust-tools.nvim",
-      "rust-lang/rust.vim",
+      { "j-hui/fidget.nvim", enabled = false, opts = {} }, -- TODO: move to experimental
+      { "folke/neodev.nvim", opts = {} },
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-      "RRethy/vim-illuminate",
       "jay-babu/mason-null-ls.nvim",
+      "RRethy/vim-illuminate", -- TODO: not working
     },
     opts = {
       servers = {
@@ -43,8 +36,7 @@ return {
       ensure_installed = {
         "stylua",
         "ruff",
-        -- "eslint_d",
-        -- "autopep8",
+        "eslint_d",
         "black",
         "debugpy",
         "codelldb",
@@ -53,11 +45,9 @@ return {
         "cspell",
         "beautysh",
         "markdownlint",
-        -- "vulture",
         "yamllint",
         "phpcs",
         "phpcbf",
-        -- "stylelint_lsp",
       },
     },
     config = function(_, opts)
@@ -93,20 +83,15 @@ return {
           nls.builtins.formatting.black,
           nls.builtins.formatting.isort,
           nls.builtins.diagnostics.ruff,
-          -- nls.builtins.formatting.autopep8,
-          -- nls.builtins.diagnostics.vulture,
 
           -- lua
           nls.builtins.formatting.stylua,
-          -- nls.builtins.diagnostics.stylelint_lsp,
 
           -- js
           nls.builtins.formatting.prettier.with {
             filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
           },
           nls.builtins.code_actions.eslint,
-          -- nls.builtins.code_actions.eslint_d,
-          -- require "typescript.extensions.null-ls.code-actions",
 
           -- other
           nls.builtins.formatting.beautysh,
@@ -114,8 +99,6 @@ return {
           nls.builtins.diagnostics.codespell,
           nls.builtins.diagnostics.markdownlint,
           nls.builtins.diagnostics.yamllint,
-          -- nls.builtins.code_actions.cspell,
-          -- nls.builtins.code_actions.gitsigns,
         },
       }
     end,

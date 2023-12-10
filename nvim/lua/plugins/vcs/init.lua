@@ -12,20 +12,6 @@ return {
     },
     keys = {
       { "<leader>gs", "<cmd>Neogit kind=tab<cr>", desc = "Status" },
-      {
-        "<leader>gc",
-        function()
-          require("neogit").open { "commit" }
-        end,
-        desc = "Commit",
-      },
-    },
-  },
-  {
-    "tpope/vim-fugitive",
-    cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" },
-    dependencies = {
-      "tpope/vim-rhubarb",
     },
   },
   {
@@ -33,38 +19,6 @@ return {
     event = "BufReadPre",
     opts = {
       current_line_blame = true,
-      signs = {
-        add = {
-          hl = "GitSignsAdd",
-          text = "▍",
-          numhl = "GitSignsAddNr",
-          linehl = "GitSignsAddLn",
-        },
-        change = {
-          hl = "GitSignsChange",
-          text = "▍",
-          numhl = "GitSignsChangeNr",
-          linehl = "GitSignsChangeLn",
-        },
-        delete = {
-          hl = "GitSignsDelete",
-          text = "▸",
-          numhl = "GitSignsDeleteNr",
-          linehl = "GitSignsDeleteLn",
-        },
-        topdelete = {
-          hl = "GitSignsDelete",
-          text = "▾",
-          numhl = "GitSignsDeleteNr",
-          linehl = "GitSignsDeleteLn",
-        },
-        changedelete = {
-          hl = "GitSignsChange",
-          text = "▍",
-          numhl = "GitSignsChangeNr",
-          linehl = "GitSignsChangeLn",
-        },
-      },
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
         local function map(mode, l, r, opts)
@@ -104,24 +58,15 @@ return {
           gs.blame_line { full = true }
         end, { desc = "Blame Line" })
         map("n", "<leader>gl", gs.toggle_current_line_blame, { desc = "Toggle Line Blame" })
-        map("n", "<leader>gd", gs.diffthis, { desc = "Diff This" })
-        map("n", "<leader>gD", function()
-          gs.diffthis "~"
-        end, { desc = "Diff This ~" })
         map("n", "<leader>gt", gs.toggle_deleted, { desc = "Toggle Delete" })
       end,
     },
   },
   {
     "ThePrimeagen/git-worktree.nvim",
-    -- enabled = false,
+    enabled = false,
     event = "VeryLazy",
     config = function()
-      -- change_directory_command = <str> -- default: "cd",
-      -- update_on_change = <boolean> -- default: true,
-      -- update_on_change_command = <str> -- default: "e .",
-      -- clearjumps_on_change = <boolean> -- default: true,
-      -- autopush = <boolean> -- default: false,
     end,
     keys = {
       {

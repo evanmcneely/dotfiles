@@ -86,31 +86,3 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
   end,
 })
 
--- vim.api.nvim_set_hl(0, "TerminalCursorShape", { underline = true })
--- vim.api.nvim_create_autocmd("TermEnter", {
---   callback = function()
---     vim.cmd [[setlocal winhighlight=TermCursor:TerminalCursorShape]]
---   end,
--- })
-
--- vim.api.nvim_create_autocmd("VimLeave", {
---   callback = function()
---     vim.cmd [[set guicursor=a:ver100]]
---   end,
--- })
-
--- vim.api.nvim_create_autocmd("DirChanged", {
---   callback = function()
---     vim.opt.titlestring = vim.fn.getcwd()
---   end,
--- })
-
--- show line diagnostics
--- vim.api.nvim_create_autocmd("CursorHold", {
---   callback = function()
---     vim.schedule(vim.diagnostic.open_float)
---   end,
--- })
-
--- don't auto comment new line
-vim.api.nvim_create_autocmd("BufEnter", { command = [[set formatoptions-=cro]] })

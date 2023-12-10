@@ -1,8 +1,3 @@
-local function on_attach(bufnr)
-  local api = require "nvim-tree.api"
-  api.config.mappings.default_on_attach(bufnr)
-end
-
 return {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -14,24 +9,22 @@ return {
     { "<leader>en", "<cmd>NvimTreeFocus<cr>", desc = "Focus" },
     { "<leader>ec", "<cmd>NvimTreeClose<cr>", desc = "Close" },
   },
-
   config = function()
     require("nvim-tree").setup {
-      on_attach = on_attach,
-      disable_netrw = true,
-      hijack_netrw = true,
-      open_on_tab = false,
-      hijack_cursor = true,
-      update_cwd = true,
+      -- disable_netrw = true,
+      -- hijack_netrw = true,
+      -- open_on_tab = false,
+      -- hijack_cursor = true,
+      -- update_cwd = true,
       update_focused_file = {
         enable = true,
         update_cwd = true,
         ignore_list = {},
       },
-      system_open = {
-        cmd = nil,
-        args = {},
-      },
+      -- system_open = {
+      --   cmd = nil,
+      --   args = {},
+      -- },
       view = {
         width = 40,
         side = "left",

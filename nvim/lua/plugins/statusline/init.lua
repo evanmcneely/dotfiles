@@ -9,53 +9,43 @@ return {
         options = {
           icons_enabled = true,
           theme = "auto",
-          component_separators = { right = "|" },
+          component_separators = { right = "│", left = "│" },
           section_separators = {},
           disabled_filetypes = {
             statusline = {
               "alpha",
               "lazy",
-              "NeogitStatus",
-              "NeogitCommitPopup",
-              "COMMIT_EDITMSG",
+              -- "NeogitStatus",
+              -- "NeogitCommitPopup",
+              -- "COMMIT_EDITMSG",
             },
             winbar = {
               "help",
               "alpha",
               "lazy",
-              "NeogitStatus",
-              "NeogitCommitPopup",
-              "COMMIT_EDITMSG",
             },
           },
           always_divide_middle = true,
           globalstatus = true,
         },
-
         sections = {
           lualine_a = { "mode" },
-          lualine_b = {},
+          lualine_b = {
+            components.git_repo,
+          },
           lualine_c = {
-            components.git_repo_exp,
             components.branch,
             components.diff,
-            {
-              function()
-                return "|"
-              end,
-            },
-            components.diagnostics,
-            components.separator,
-            components.lsp_client,
           },
           lualine_x = {
+            components.diagnostics,
+            components.lsp_client,
+          },
+          lualine_y = {
             components.codeium,
             components.spaces,
-            -- "encoding",
-            -- "fileformat",
             "progress",
           },
-          lualine_y = {},
           lualine_z = { "location" },
         },
         inactive_sections = {

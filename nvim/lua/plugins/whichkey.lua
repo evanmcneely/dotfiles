@@ -25,13 +25,8 @@ return {
         f = { name = "+File" },
         g = { name = "+Git", h = { name = "+Hunk" } },
         h = { name = "+Help" },
-        j = { name = "+Jump" },
-        -- m = { name = "+Messages" },
-        -- n = { name = "+Notes" },
-        -- p = { name = "+Project" },
         q = {
           name = "+Quit",
-          --stylua: ignore 
           q = { require("utils").smart_quit, "Quit" },
           t = { "<cmd>tabclose<cr>", "Close Tab" },
         },

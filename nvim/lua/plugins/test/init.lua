@@ -36,7 +36,6 @@ return {
       "nvim-neotest/neotest-plenary",
       "nvim-neotest/neotest-vim-test",
       "haydenmeade/neotest-jest",
-      "rouge8/neotest-rust",
     },
     config = function()
       local opts = {
@@ -49,7 +48,6 @@ return {
           require "neotest-vim-test" {
             ignore_file_types = { "python", "vim", "lua", "javascript" },
           },
-          require "neotest-rust",
           require "neotest-jest" {
             jestCommand = "yarn test",
             -- jestConfigFile = "custom.jest.config.ts",

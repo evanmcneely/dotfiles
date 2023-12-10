@@ -28,7 +28,15 @@ return {
     opts = {
       sync_install = false,
       ensure_installed = {
+        "javascript",
+        "typescript",
+        "tsx",
+        "python",
+        "php",
         "bash",
+        "json",
+        "json5",
+        "jsonc",
         "dockerfile",
         "help",
         "html",
@@ -44,7 +52,6 @@ return {
       },
       highlight = { enable = true, disable = { "markdown" }, additional_vim_regex_highlighting = false },
       indent = { enable = true },
-      context_commentstring = { enable = true },
       incremental_selection = {
         enable = true,
         keymaps = {

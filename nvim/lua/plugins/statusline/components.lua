@@ -32,21 +32,6 @@ local function diff_source()
   end
 end
 
--- from evil line
--- local conditions = {
---   buffer_not_empty = function()
---     return vim.fn.empty(vim.fn.expand "%:t") ~= 1
---   end,
---   hide_in_width = function()
---     return vim.fn.winwidth(0) > 80
---   end,
---   check_git_workspace = function()
---     local filepath = vim.fn.expand "%:p:h"
---     local gitdir = vim.fn.finddir(".git", filepath .. ";")
---     return gitdir and #gitdir > 0 and #gitdir < #filepath
---   end,
--- }
-
 return {
   spaces = {
     function()
@@ -55,11 +40,12 @@ return {
     end,
     padding = 1,
   },
-  git_repo = {
-    "CURRENT_GIT_REPO",
-    icon = icons.git.Repo,
+  line = {
+    function()
+      return "|"
+    end,
   },
-  git_repo_exp = {
+  git_repo = {
     get_repo,
     icon = icons.git.Repo,
   },
@@ -101,7 +87,6 @@ return {
     end,
     icon = icons.misc.Robot,
   },
-
   diff = {
     "diff",
     source = diff_source,
@@ -176,9 +161,10 @@ return {
         end
       end
       table.sort(client_names)
-      return icons.ui.Code .. " " .. table.concat(client_names, ", ") .. " " .. icons.ui.Code
+      return table.concat(client_names, ", ")
     end,
     colored = true,
+    icon = icons.ui.Code,
     on_click = function()
       vim.cmd [[LspInfo]]
     end,

@@ -25,6 +25,7 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
   table.insert(newVirtText, { suffix, "MoreMsg" })
   return newVirtText
 end
+
 return {
   {
     "kevinhwang91/nvim-ufo",

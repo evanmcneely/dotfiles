@@ -11,8 +11,8 @@ end
 
 config.color_scheme = "tokyonight_night"
 config.font = wezterm.font("Fira Code")
-config.font_size = 13.5
-config.line_height = 1.2
+config.font_size = 14
+config.line_height = 1.3
 
 config.keys = {
 	{ key = "LeftArrow", mods = "CMD", action = act.ActivateTabRelative(-1) },

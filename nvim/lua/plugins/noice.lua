@@ -9,6 +9,10 @@ return {
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true,
       },
+      progress = {
+        -- enabled = true,
+        view = "mini"
+      }
     },
     presets = {
       bottom_search = true, -- use a classic bottom cmdline for search
@@ -17,8 +21,11 @@ return {
       inc_rename = false, -- enables an input dialog for inc-rename.nvim
       lsp_doc_border = false, -- add a border to hover docs and signature help
     },
-    cmdline = {
-      view = "mini",
+    messages = {
+      enabled = false,
+    },
+    notify = {
+      enabled = false,
     },
   },
   --stylua: ignore

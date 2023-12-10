@@ -4,17 +4,16 @@ return {
     event = "InsertEnter",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
-      "petertriho/cmp-git",
     },
     config = function()
       local cmp = require "cmp"
       local luasnip = require "luasnip"
       local icons = require "config.icons"
-      -- local neogen = require "neogen"
       local compare = require "cmp.config.compare"
 
       local has_words_before = function()
@@ -43,8 +42,6 @@ return {
             cmp.select_next_item()
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
-          -- elseif neogen.jumpable() then
-          --   neogen.jump_next()
           elseif has_words_before() then
             cmp.complete()
           else
@@ -60,8 +57,6 @@ return {
             cmp.select_prev_item()
           elseif luasnip.jumpable(-1) then
             luasnip.jump(-1)
-          -- elseif neogen.jumpable(true) then
-          --   neogen.jump_prev()
           else
             fallback()
           end
@@ -102,14 +97,7 @@ return {
           { name = "buffer" },
           { name = "path" },
           { name = "treesitter" },
-          -- { name = "git" },
-          { name = "codeium" },
           { name = "spell" },
-          -- { name = "copilot" },
-          -- { name = "orgmode" },
-          -- { name = "nvim_lua" },
-          -- { name = "emoji" },
-          -- { name = "calc" },
         },
         formatting = {
           fields = { "kind", "abbr", "menu" },
@@ -120,8 +108,7 @@ return {
               path = "(Path)",
               luasnip = "(Snippet)",
               buffer = "(Buffer)",
-              copilot = "(Copilot)",
-              codeium = "(Codeium)",
+              nvim_lsp_signature_help = "(Sig)",
             }
             local duplicates = {
               buffer = 1,
@@ -134,7 +121,7 @@ return {
               item.abbr = string.sub(item.abbr, 1, max_width - 1) .. icons.ui.Ellipsis
             end
             item.kind = icons.kind[item.kind]
-            item.menu = source_names[entry.source.name]
+            item.menu = source_names[entry.source.name] or entry.source.name
             item.dup = duplicates[entry.source.name] or duplicates_default
             return item
           end,
@@ -144,16 +131,13 @@ return {
         },
       }
 
-      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-      cmp.setup.cmdline({ "/", "?" }, {
-        -- mapping = cmp.mapping.preset.cmdline(),
+      cmp.setup.cmdline("/", {
         mapping = cmp.mapping.preset.insert(completion_mappings),
         sources = {
           { name = "buffer" },
         },
       })
 
-      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.insert(completion_mappings),
         sources = cmp.config.sources {
@@ -162,9 +146,6 @@ return {
           { name = "cmdline" },
         },
       })
-
-      -- Git
-      -- require("cmp_git").setup { filetypes = { "NeogitCommitMessage" } }
 
       -- Auto pairs
       local cmp_autopairs = require "nvim-autopairs.completion.cmp"
@@ -197,18 +178,6 @@ return {
       history = true,
       delete_check_events = "TextChanged",
     },
-    -- stylua: ignore
-    -- keys = {
-    --   {
-    --     "<tab>",
-    --     function()
-    --       return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-    --     end,
-    --     expr = true, remap = true, silent = true, mode = "i",
-    --   },
-    --   { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-    --   { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
-    -- },
     config = function(_, opts)
       require("luasnip").setup(opts)
 

@@ -1,7 +1,5 @@
 local indent = 2
 
---vim.o.formatoptions = "jcroqlnt"
---vim.o.shortmess = "filnxtToOFWIcC"
 vim.opt.breakindent = true
 vim.opt.completeopt = "menuone,noselect"
 vim.opt.conceallevel = 3
@@ -20,13 +18,10 @@ vim.opt.mouse = "a"
 vim.opt.number = true
 vim.opt.pumblend = 10
 vim.opt.pumheight = 10
--- vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
--- vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 vim.opt.shiftround = true
 vim.opt.shiftwidth = indent
 vim.opt.showmode = false
--- vim.opt.sidescrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.smartindent = true
@@ -47,10 +42,8 @@ vim.opt.showbreak = "+++"
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.clipboard = "unnamedplus"
 
-if vim.fn.has "nvim-0.9.0" == 1 then
-  vim.opt.splitkeep = "screen"
-  vim.opt.shortmess:append { C = true }
-end
+vim.opt.splitkeep = "screen"
+vim.opt.shortmess:append { C = true }
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
