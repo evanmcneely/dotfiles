@@ -2,10 +2,9 @@ return {
   -- helper plugins
   "nvim-lua/plenary.nvim",
   "MunifTanjim/nui.nvim",
+  "ElPiloto/significant.nvim",
 
   { "tpope/vim-repeat", event = "VeryLazy" },
-
-  { "ElPiloto/significant.nvim" },
 
   -- dev icons
   {
@@ -53,7 +52,7 @@ return {
     end,
   },
 
-  -- Ui improvements
+  -- Ui improvements -- TODO: expand
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
@@ -120,4 +119,21 @@ return {
 
   { "folke/twilight.nvim", opts = {}, cmd = { "Twilight", "TwilightEnable", "TwilightDisable" } },
   { "folke/zen-mode.nvim", opts = {}, cmd = { "ZenMode" } },
+  {
+    "abecodes/tabout.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "hrsh7th/nvim-cmp",
+    },
+    config = true,
+  },
+
+  {
+    "RRethy/vim-illuminate",
+    event = "BufReadPost",
+    config = function()
+      require("illuminate").configure {}
+    end,
+  },
 }

@@ -10,7 +10,6 @@ return {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "jay-babu/mason-null-ls.nvim",
-      "RRethy/vim-illuminate", -- TODO: not working
     },
     opts = {
       servers = {
@@ -78,21 +77,17 @@ return {
             command = "./vendor/bin/phpcs",
             extra_args = { "--standard=phpcs.xml" },
           },
-
           -- python
           nls.builtins.formatting.black,
           nls.builtins.formatting.isort,
           nls.builtins.diagnostics.ruff,
-
           -- lua
           nls.builtins.formatting.stylua,
-
           -- js
           nls.builtins.formatting.prettier.with {
             filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
           },
           nls.builtins.code_actions.eslint,
-
           -- other
           nls.builtins.formatting.beautysh,
           nls.builtins.formatting.markdownlint,
@@ -105,13 +100,15 @@ return {
   },
   { "jay-babu/mason-null-ls.nvim", opts = { ensure_installed = nil, automatic_installation = true, automatic_setup = false } },
   {
-    "SmiteshP/nvim-navic",
-    event = "VeryLazy",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-    },
+    "glepnir/lspsaga.nvim",
+    event = "BufReadPost",
     config = function()
-      require("nvim-navic").setup {}
+      require("lspsaga").setup {
+        lightbulb = { enable = false },
+        symbol_in_winbar = {
+          enable = false,
+        },
+      }
     end,
   },
   {
@@ -119,7 +116,7 @@ return {
     event = "VeryLazy",
     dependencies = {
       "neovim/nvim-lspconfig",
-      "SmiteshP/nvim-navic",
+      { "SmiteshP/nvim-navic", config = true },
       "nvim-tree/nvim-web-devicons",
     },
     config = true,
