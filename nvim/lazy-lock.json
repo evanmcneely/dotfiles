@@ -61,6 +61,7 @@
   "persistence.nvim": { "branch": "main", "commit": "ad538bfd5336f1335cdb6fd4e0b0eebfa6e12f32" },
   "plenary.nvim": { "branch": "master", "commit": "50012918b2fc8357b87cff2a7f7f0446e47da174" },
   "promise-async": { "branch": "main", "commit": "38a4575da9497326badd3995e768b4ccf0bb153e" },
+  "refactoring.nvim": { "branch": "master", "commit": "156532476deb10b1b2a32cb38e1078b3f9951c42" },
   "significant.nvim": { "branch": "main", "commit": "5450e9d5917dc6aa9afb0fcbe32355799b8303fb" },
   "splitjoin.vim": { "branch": "main", "commit": "95a700875530a1ad87232e472fab307ee2a553ba" },
   "styler.nvim": { "branch": "main", "commit": "f77fba4d737c94725325d9eebcf7320c88380298" },

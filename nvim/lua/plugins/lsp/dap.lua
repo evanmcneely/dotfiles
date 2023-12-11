@@ -1,4 +1,4 @@
-local M = {
+return {
   {
     "mfussenegger/nvim-dap",
     enabled = false,
@@ -34,9 +34,9 @@ local M = {
   },
     opts = {
       setup = {
-        osv = function(_, _)
-          require("plugins.dap.lua").setup()
-        end,
+        -- osv = function(_, _)
+        --   require("plugins.dap.lua").setup()
+        -- end,
       },
     },
     config = function(plugin, opts)
@@ -67,5 +67,3 @@ local M = {
   --TODO: to configure
   { "jay-babu/mason-nvim-dap.nvim", enabled = false, opts = {}, cmd = { "DapInstall", "DapUninstall" } },
 }
-
-return M

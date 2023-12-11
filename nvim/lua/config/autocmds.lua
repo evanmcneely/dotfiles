@@ -59,6 +59,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "tsplayground",
     "vim",
     "chatgpt",
+    "neural-preview", -- TODO: make this work
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
@@ -85,4 +86,3 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
     end
   end,
 })
-

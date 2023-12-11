@@ -3,6 +3,7 @@ return {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
     config = true,
+    -- TODO: key maps
   },
   {
     "TimUntersberger/neogit",
@@ -48,6 +49,7 @@ return {
         end, { expr = true, desc = "Pevious hunk" })
 
         -- Actions
+        -- TODO: move these to keymaps
         map({ "n", "v" }, "<leader>gha", gs.stage_hunk, { desc = "Stage Hunk" })
         map({ "n", "v" }, "<leader>ghr", gs.reset_hunk, { desc = "Reset Hunk" })
         map("n", "<leader>ghu", gs.undo_stage_hunk, { desc = "Undo Stage Hunk" })

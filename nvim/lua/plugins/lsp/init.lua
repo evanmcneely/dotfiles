@@ -3,10 +3,6 @@ return {
     "neovim/nvim-lspconfig",
     event = "BufReadPre",
     dependencies = {
-      { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
-      { "smjonas/inc-rename.nvim", config = true },
-      { "j-hui/fidget.nvim", enabled = false, opts = {} }, -- TODO: move to experimental
-      { "folke/neodev.nvim", opts = {} },
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "jay-babu/mason-null-ls.nvim",
@@ -69,6 +65,7 @@ return {
       nls.setup {
         sources = {
           -- php
+          -- TODO: set this up on a project level?
           nls.builtins.formatting.phpcbf.with {
             command = "./vendor/bin/phpcbf",
             extra_args = { "--standard=phpcs.xml" },
@@ -94,11 +91,13 @@ return {
           nls.builtins.diagnostics.codespell,
           nls.builtins.diagnostics.markdownlint,
           nls.builtins.diagnostics.yamllint,
+          nls.builtins.completion.spell,
         },
       }
     end,
   },
   { "jay-babu/mason-null-ls.nvim", opts = { ensure_installed = nil, automatic_installation = true, automatic_setup = false } },
+  { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
   {
     "glepnir/lspsaga.nvim",
     event = "BufReadPost",
@@ -121,4 +120,5 @@ return {
     },
     config = true,
   },
+  { "folke/neodev.nvim", opts = {} },
 }

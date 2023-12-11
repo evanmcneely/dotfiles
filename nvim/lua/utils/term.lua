@@ -13,12 +13,15 @@ local docker_client = Terminal:new {
   float_opts = {
     border = "double",
   },
+  close_on_exit = true,
 }
 
 function M.docker_client_toggle()
   docker_client:toggle()
 end
 
+
+-- Lazygit
 local lazygit = "lazygit"
 
 local lazygit_term = Terminal:new {

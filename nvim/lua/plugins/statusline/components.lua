@@ -76,11 +76,6 @@ return {
     "branch",
     icon = icons.git.Branch,
   },
-  -- noice_cmd = {
-  --   noice_status.command.get,
-  --   cond = noice_status.command.has and conditions.hide_in_width,
-  --   -- color = { fg = "#ff9e64" },
-  -- },
   codeium = {
     function()
       return vim.fn["codeium#GetStatusString"]()

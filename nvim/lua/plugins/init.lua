@@ -119,6 +119,7 @@ return {
 
   { "folke/twilight.nvim", opts = {}, cmd = { "Twilight", "TwilightEnable", "TwilightDisable" } },
   { "folke/zen-mode.nvim", opts = {}, cmd = { "ZenMode" } },
+
   {
     "abecodes/tabout.nvim",
     event = "VeryLazy",
@@ -136,4 +137,6 @@ return {
       require("illuminate").configure {}
     end,
   },
+
+  { "smjonas/inc-rename.nvim", config = true },
 }

@@ -40,13 +40,16 @@ return {
           lualine_x = {
             components.diagnostics,
             components.lsp_client,
+            "filetype",
           },
           lualine_y = {
             components.codeium,
             components.spaces,
             "progress",
           },
-          lualine_z = { "location" },
+          lualine_z = {
+            "location",
+          },
         },
         inactive_sections = {
           lualine_a = {},
