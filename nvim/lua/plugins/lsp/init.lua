@@ -9,14 +9,8 @@ return {
     },
     opts = {
       servers = {
-        dockerls = {},
-        html = {},
-        cssls = {},
         vimls = {},
-        yamlls = {},
         bashls = {},
-        -- stylelint_lsp = {},
-        -- docker_compose_language_service = {},
       },
     },
     config = function(plugin, opts)
@@ -29,20 +23,8 @@ return {
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = {
       ensure_installed = {
-        "stylua",
-        "ruff",
-        "eslint_d",
-        "black",
-        "debugpy",
-        "codelldb",
-        "prettier",
         "codespell",
-        "cspell",
         "beautysh",
-        "markdownlint",
-        "yamllint",
-        "phpcs",
-        "phpcbf",
       },
     },
     config = function(_, opts)
@@ -57,41 +39,16 @@ return {
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    event = "BufReadPre",
+    "nvimtools/none-ls.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = { "mason.nvim" },
-    config = function()
+    opts = function()
       local nls = require "null-ls"
-      nls.setup {
+      return {
+        root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
         sources = {
-          -- php
-          -- TODO: set this up on a project level?
-          nls.builtins.formatting.phpcbf.with {
-            command = "./vendor/bin/phpcbf",
-            extra_args = { "--standard=phpcs.xml" },
-          },
-          nls.builtins.diagnostics.phpcs.with {
-            command = "./vendor/bin/phpcs",
-            extra_args = { "--standard=phpcs.xml" },
-          },
-          -- python
-          nls.builtins.formatting.black,
-          nls.builtins.formatting.isort,
-          nls.builtins.diagnostics.ruff,
-          -- lua
-          nls.builtins.formatting.stylua,
-          -- js
-          nls.builtins.formatting.prettier.with {
-            filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
-          },
-          nls.builtins.code_actions.eslint,
-          -- other
           nls.builtins.formatting.beautysh,
-          nls.builtins.formatting.markdownlint,
           nls.builtins.diagnostics.codespell,
-          nls.builtins.diagnostics.markdownlint,
-          nls.builtins.diagnostics.yamllint,
-          nls.builtins.completion.spell,
         },
       }
     end,

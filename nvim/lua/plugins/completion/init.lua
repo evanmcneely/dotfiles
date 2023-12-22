@@ -96,13 +96,10 @@ return {
           { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },
-          { name = "treesitter" },
-          { name = "spell" },
         },
         formatting = {
-          fields = { "kind", "abbr", "menu" },
+          fields = { "abbr", "menu" },
           format = function(entry, item)
-            local max_width = 0
             local source_names = {
               nvim_lsp = "(LSP)",
               path = "(Path)",
@@ -117,9 +114,6 @@ return {
               luasnip = 1,
             }
             local duplicates_default = 0
-            if max_width ~= 0 and #item.abbr > max_width then
-              item.abbr = string.sub(item.abbr, 1, max_width - 1) .. icons.ui.Ellipsis
-            end
             item.kind = icons.kind[item.kind]
             item.menu = source_names[entry.source.name] or entry.source.name
             item.dup = duplicates[entry.source.name] or duplicates_default
@@ -127,6 +121,7 @@ return {
           end,
         },
         window = {
+          completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
         },
       }

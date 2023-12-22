@@ -200,9 +200,9 @@
   },
   "window.zoomLevel": 1,
   // git blame
-  "gitblame.inlineMessageEnabled": true,
+  // "gitblame.inlineMessageEnabled": true,
   "gitblame.statusBarMessageFormat": "${author.name} (${time.ago})",
-  "gitblame.inlineMessageFormat": "${commit.summary}",
+  // "gitblame.inlineMessageFormat": "${commit.summary}",
   // phpunit in WP
   "phpunit.command": "yarn wp-env run tests-wordpress --env-cwd=wp-content/plugins/leadpages",
   "phpunit.args": ["-c tests/phpunit.xml"],

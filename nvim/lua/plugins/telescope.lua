@@ -40,6 +40,7 @@ return {
           ["<C-n>"] = actions.cycle_history_next,
           ["<C-p>"] = actions.cycle_history_prev,
           ["?"] = actions_layout.toggle_preview,
+          ["<esc>"] = actions.close,
         },
       }
 

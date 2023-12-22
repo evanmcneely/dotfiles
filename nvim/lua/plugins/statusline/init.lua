@@ -25,7 +25,7 @@ return {
               "lazy",
             },
           },
-          always_divide_middle = true,
+          -- always_divide_middle = true,
           globalstatus = true,
         },
         sections = {

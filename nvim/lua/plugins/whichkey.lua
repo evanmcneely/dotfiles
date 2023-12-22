@@ -25,6 +25,8 @@ return {
         f = { name = "+File" },
         g = { name = "+Git", h = { name = "+Hunk" } },
         h = { name = "+Help" },
+        l = { name = "+LSP" },
+        v = { name = "+View" },
         q = {
           name = "+Quit",
           q = { require("utils").smart_quit, "Quit" },

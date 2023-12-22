@@ -59,7 +59,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "tsplayground",
     "vim",
     "chatgpt",
-    "neural-preview", -- TODO: make this work
+    "neural-preview",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false

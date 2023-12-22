@@ -1,5 +1,28 @@
 return {
   {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, { "json", "json5", "jsonc" })
+      end
+    end,
+  },
+  {
+    "williamboman/mason.nvim",
+    opts = function(_, opts)
+      vim.list_extend(opts.ensure_installed, { "prettierd" })
+    end,
+  },
+  {
+    "nvimtools/none-ls.nvim",
+    opts = function(_, opts)
+      local nls = require "null-ls"
+      local filetypes = { "json" }
+      -- table.insert(opts.sources, nls.builtins.code_actions.eslint_d.with { filetypes = filetypes })
+      table.insert(opts.sources, nls.builtins.formatting.prettierd.with { filetypes = filetypes })
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = { "b0o/SchemaStore.nvim" },
     opts = {
