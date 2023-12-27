@@ -7,7 +7,7 @@ return {
       "nvim-telescope/telescope-file-browser.nvim",
     },
     keys = {
-      { "<leader><leader>", "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find Files" },
+      { "<leader><leader>", "<cmd>Telescope git_files theme=dropdown previewer=false<cr>", desc = "Find Files" },
       { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
       { "<leader>sb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
