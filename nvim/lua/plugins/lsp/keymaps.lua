@@ -10,6 +10,7 @@ function M.on_attach(client, buffer)
   self:map("gI", "Telescope lsp_implementations", { desc = "Goto Implementation" })
   self:map("gb", "Telescope lsp_type_definitions", { desc = "Goto Type Definition" })
   self:map("gK", vim.lsp.buf.signature_help, { desc = "Signature Help", has = "signatureHelp" })
+
   self:map("[d", M.diagnostic_goto(true), { desc = "Next Diagnostic" })
   self:map("]d", M.diagnostic_goto(false), { desc = "Prev Diagnostic" })
   self:map("]e", M.diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
@@ -19,17 +20,12 @@ function M.on_attach(client, buffer)
 
   self:map("K", "Lspsaga hover_doc", { desc = "Hover" })
   self:map("<leader>ca", "Lspsaga code_action", { desc = "Code Action", mode = { "n", "v" }, has = "codeAction" })
-  self:map("<leader>bo", "Lspsaga outline", { desc = "Outline" })
   self:map("<leader>ci", "Lspsaga incoming_calls", { desc = "Incoming calls" })
   self:map("<leader>co", "Lspsaga outgoing_calls", { desc = "Outgoing calls" })
 
-  self:map("<leader>cf", format, { desc = "Format Document", has = "documentFormatting" })
-  self:map("<leader>cf", format, { desc = "Format Range", mode = "v", has = "documentRangeFormatting" })
+  self:map("<leader>f", format, { desc = "Format Document", has = "documentFormatting" })
+  self:map("<leader>f", format, { desc = "Format Range", mode = "v", has = "documentRangeFormatting" })
   self:map("<leader>cr", M.rename, { expr = true, desc = "Rename", has = "rename" })
-  self:map("<leader>cR", "Lspsaga remame ++project", { desc = "Project rename" })
-
-  self:map("<leader>cs", require("telescope.builtin").lsp_document_symbols, { desc = "Document Symbols" })
-  self:map("<leader>cS", require("telescope.builtin").lsp_dynamic_workspace_symbols, { desc = "Workspace Symbols" })
 
   self:map("<leader>cl", "Lspsaga show_line_diagnostics", { desc = "Line Diagnostics" })
 end

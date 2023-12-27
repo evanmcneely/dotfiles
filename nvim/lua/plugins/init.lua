@@ -18,7 +18,7 @@ return {
   },
 
   -- enter :{number} to peek view of line number in buffer
-  { "nacro90/numb.nvim", event = "BufReadPre", config = true },
+  { "nacro90/numb.nvim", enabled = false, event = "BufReadPre", config = true },
 
   {
     "fedepujol/move.nvim",
@@ -30,7 +30,6 @@ return {
       vim.keymap.set("n", "<C-k>", ":MoveLine(-1)<CR>", opts)
       vim.keymap.set("n", "<C-h>", ":MoveHChar(-1)<CR>", opts)
       vim.keymap.set("n", "<C-l>", ":MoveHChar(1)<CR>", opts)
-
       -- Visual-mode commands
       vim.keymap.set("v", "<C-k>", ":MoveBlock(-1)<CR>", opts)
       vim.keymap.set("v", "<C-h>", ":MoveHBlock(-1)<CR>", opts)
@@ -82,7 +81,7 @@ return {
   -- Comment stuff out
   { "tpope/vim-commentary", event = "BufReadPre" },
 
-  -- complete parens
+  -- Complete parens
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
@@ -109,19 +108,20 @@ return {
     opts = { options = { "buffers", "curdir", "tabpages", "winsize", "help" } },
     -- stylua: ignore
     keys = {
-      { "<leader>qs", function() require("persistence").load() end, desc = "Restore Session" },
-      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
-      { "<leader>qd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
+      { "<leader>zs", function() require("persistence").load() end, desc = "Restore Session" },
+      { "<leader>zl", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
+      { "<leader>zd", function() require("persistence").stop() end, desc = "Don't Save Current Session" },
     },
   },
 
   { "tpope/vim-surround", event = "BufReadPre" },
 
-  { "folke/twilight.nvim", opts = {}, cmd = { "Twilight", "TwilightEnable", "TwilightDisable" } },
-  { "folke/zen-mode.nvim", opts = {}, cmd = { "ZenMode" } },
+  { "folke/twilight.nvim", enabled = false, opts = {}, cmd = { "Twilight", "TwilightEnable", "TwilightDisable" } },
+  { "folke/zen-mode.nvim", enabled = false, opts = {}, cmd = { "ZenMode" } },
 
   {
     "abecodes/tabout.nvim",
+    enabled = false,
     event = "VeryLazy",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -139,4 +139,7 @@ return {
   },
 
   { "smjonas/inc-rename.nvim", config = true },
+
+  {"mbbill/undotree", cmd = "UndotreeToggle", keys = {{"<leader>eu", vim.cmd.UndotreeToggle, desc="Undotree"}}},
 }
+

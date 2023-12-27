@@ -13,8 +13,6 @@ return {
       wk.register({
         mode = { "n", "v" },
         a = { name = "+AI" },
-        b = { name = "+Buffer", c = { name = "+Close" }, g = { name = "+Group" } },
-        d = { name = "+Debug" },
         c = {
           name = "+Code",
           g = { name = "+Annotation" },
@@ -22,18 +20,9 @@ return {
           X = { name = "Swap Previous", f = "Function", p = "Parameter", c = "Class" },
         },
         e = { name = "+Explorer" },
-        f = { name = "+File" },
         g = { name = "+Git", h = { name = "+Hunk" } },
-        h = { name = "+Help" },
-        l = { name = "+LSP" },
-        v = { name = "+View" },
-        q = {
-          name = "+Quit",
-          q = { require("utils").smart_quit, "Quit" },
-          t = { "<cmd>tabclose<cr>", "Close Tab" },
-        },
+        h = { name = "+Harpoon" },
         s = { name = "+Search" },
-        t = { name = "+Test", N = { name = "Neotest" }, o = { "Overseer" } },
         u = {
           name = "+Utils",
           d = { require("utils.term").docker_client_toggle, "lazydocker" },
@@ -41,12 +30,19 @@ return {
           v = { "<cmd>ToggleTerm direction=vertical size=130<cr>", "Vertical Terminal" },
           h = { '<cmd>ToggleTerm direction=horizontal size=20"<cr>', "Horizontal Terminal" },
         },
-        w = {
-          name = "+Save",
+        z = {
+          name = "+System",
           f = { require("plugins.lsp.format").toggle, "Format on save" },
-          w = { "<cmd>update!<CR>", "Save" },
+          w = {
+            name = "+Save",
+            w = { "<cmd>update!<CR>", "Save" },
+          },
+          q = {
+            name = "+Quit",
+            q = { require("utils").smart_quit, "Quit" },
+            t = { "<cmd>tabclose<cr>", "Close Tab" },
+          },
         },
-        z = { name = "+System" },
       }, { prefix = "<leader>" })
     end,
   },

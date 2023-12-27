@@ -14,12 +14,11 @@ ln -sf "${DOTFILES}/vim/.vim/coc-settings.json" "${HOME}/.vim"
 
 # nvim
 ln -sf "${DOTFILES}/nvim" "${HOME}/.config"
-ln -sf "${DOTFILES}/scripts/nv.sh" "${HOME}/.local/bin/"
 
 # git
 ln -sf "${DOTFILES}/git/.gitignore_global" ~
 ln -sf "${DOTFILES}/git/.gitconfig" ~
 
-#vscode
+# vscode/cursor
 ln -sf "${DOTFILES}/vscode/settings.json" "${HOME}/Library/Application Support/Cursor/User"
 ln -sf "${DOTFILES}/vscode/keybindings.json" "${HOME}/Library/Application Support/Cursor/User"

@@ -44,15 +44,4 @@ return {
       table.insert(opts.sources, nls.builtins.formatting.prettierd)
     end,
   },
-  {
-    "uga-rosa/ccc.nvim",
-    opts = {},
-    cmd = { "CccPick", "CccConvert", "CccHighlighterEnable", "CccHighlighterDisable", "CccHighlighterToggle" },
-    keys = {
-      { "<leader>zC", desc = "+Color" },
-      { "<leader>zCp", "<cmd>CccPick<cr>", desc = "Pick" },
-      { "<leader>zCc", "<cmd>CccConvert<cr>", desc = "Convert" },
-      { "<leader>zCh", "<cmd>CccHighlighterToggle<cr>", desc = "Toggle Highlighter" },
-    },
-  },
 }

@@ -36,7 +36,7 @@ local function toggle_hlsearch(char)
 end
 vim.on_key(toggle_hlsearch, ns)
 
--- windows to close
+-- windows to close with "q"
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "OverseerForm",

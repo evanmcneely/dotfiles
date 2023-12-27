@@ -20,7 +20,6 @@ return {
   {
     "williamboman/mason.nvim",
     cmd = "Mason",
-    keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = {
       ensure_installed = {
         "codespell",
@@ -56,26 +55,18 @@ return {
   { "jay-babu/mason-null-ls.nvim", opts = { ensure_installed = nil, automatic_installation = true, automatic_setup = false } },
   { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
   {
-    "glepnir/lspsaga.nvim",
+    "nvimdev/lspsaga.nvim",
     event = "BufReadPost",
     config = function()
       require("lspsaga").setup {
         lightbulb = { enable = false },
         symbol_in_winbar = {
-          enable = false,
+          hide_keyword = true,
+          folder_level = 3,
+          show_file = true,
         },
       }
     end,
-  },
-  {
-    "utilyre/barbecue.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      { "SmiteshP/nvim-navic", config = true },
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = true,
   },
   { "folke/neodev.nvim", opts = {} },
 }

@@ -5,13 +5,12 @@ return {
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       "nvim-telescope/telescope-file-browser.nvim",
-      "stevearc/aerial.nvim",
     },
     keys = {
       { "<leader><leader>", "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find Files" },
-      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
+      { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+      { "<leader>sb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+      { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
       {
         "<leader>sb",
         function()
@@ -26,7 +25,6 @@ return {
         end,
         desc = "Colorscheme",
       },
-      { "<leader>vo", "<cmd>Telescope aerial<cr>", desc = "Code Outline" },
     },
     config = function(_, _)
       local telescope = require "telescope"
@@ -43,7 +41,6 @@ return {
           ["<esc>"] = actions.close,
         },
       }
-
       local opts = {
         defaults = {
           prompt_prefix = icons.ui.Telescope .. " ",
@@ -64,24 +61,9 @@ return {
           },
         },
       }
+
       telescope.setup(opts)
       telescope.load_extension "fzf"
-      telescope.load_extension "aerial"
-    end,
-  },
-  {
-    "stevearc/aerial.nvim",
-    config = true,
-  },
-  {
-    "ahmedkhalf/project.nvim",
-    enabled = false,
-    config = function()
-      require("project_nvim").setup {
-        detection_methods = { "pattern", "lsp" },
-        patterns = { ".git" },
-        ignore_lsp = { "null-ls" },
-      }
     end,
   },
 }

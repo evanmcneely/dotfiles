@@ -29,22 +29,21 @@ return {
           globalstatus = true,
         },
         sections = {
-          lualine_a = { "mode" },
-          lualine_b = {
+          lualine_a = {
             components.git_repo,
           },
-          lualine_c = {
+          lualine_b = {
             components.branch,
+          },
+          lualine_c = {
             components.diff,
           },
           lualine_x = {
             components.diagnostics,
-            components.lsp_client,
           },
           lualine_y = {
-            components.codeium,
-            components.spaces,
             "filetype",
+            components.lsp_client,
           },
           lualine_z = {
             "progress",

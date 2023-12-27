@@ -17,11 +17,10 @@ require("lazy").setup {
   spec = {
     { import = "plugins" },
     { import = "plugins.languages" },
-    { import = "plugins.notes" },
   },
   defaults = { lazy = true, version = "*" },
   install = { missing = true, colorscheme = { "tokyonight", "gruvbox" } },
-  dev = { patterns = jit.os:find "Windows" and {} or { "alpha2phi" } },
+  dev = { patterns = jit.os:find "Windows" and {} or { "alpha2pi" } },
   checker = { enabled = true },
   performance = {
     cache = {

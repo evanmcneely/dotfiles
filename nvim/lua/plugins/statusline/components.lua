@@ -159,7 +159,6 @@ return {
       return table.concat(client_names, ", ")
     end,
     colored = true,
-    icon = icons.ui.Code,
     on_click = function()
       vim.cmd [[LspInfo]]
     end,
