@@ -18,6 +18,7 @@ return {
       table.insert(opts.sources, nls.builtins.formatting.stylua)
     end,
   },
+  { "folke/neodev.nvim", opts = {} },
   {
     "neovim/nvim-lspconfig",
     dependencies = {

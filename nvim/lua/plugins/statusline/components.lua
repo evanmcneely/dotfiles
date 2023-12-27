@@ -33,6 +33,11 @@ local function diff_source()
 end
 
 return {
+  lspsaga = {
+    function()
+      return require("lspsaga.symbol.winbar").get_bar()
+    end,
+  },
   spaces = {
     function()
       local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
@@ -57,6 +62,7 @@ return {
   },
   filename = {
     "filename",
+    path = 1,
     file_status = false,
   },
   separator = {

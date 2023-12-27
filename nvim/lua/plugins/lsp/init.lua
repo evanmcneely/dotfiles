@@ -21,10 +21,7 @@ return {
     "williamboman/mason.nvim",
     cmd = "Mason",
     opts = {
-      ensure_installed = {
-        "codespell",
-        "beautysh",
-      },
+      ensure_installed = { "codespell" },
     },
     config = function(_, opts)
       require("mason").setup()
@@ -45,15 +42,11 @@ return {
       local nls = require "null-ls"
       return {
         root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
-        sources = {
-          nls.builtins.formatting.beautysh,
-          nls.builtins.diagnostics.codespell,
-        },
+        sources = { nls.builtins.diagnostics.codespell },
       }
     end,
   },
   { "jay-babu/mason-null-ls.nvim", opts = { ensure_installed = nil, automatic_installation = true, automatic_setup = false } },
-  { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
   {
     "nvimdev/lspsaga.nvim",
     event = "BufReadPost",
@@ -61,6 +54,7 @@ return {
       require("lspsaga").setup {
         lightbulb = { enable = false },
         symbol_in_winbar = {
+          enable = false,
           hide_keyword = true,
           folder_level = 3,
           show_file = true,
@@ -68,5 +62,5 @@ return {
       }
     end,
   },
-  { "folke/neodev.nvim", opts = {} },
+  { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
 }

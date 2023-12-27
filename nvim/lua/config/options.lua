@@ -33,7 +33,8 @@ vim.opt.list = true
 vim.opt.mouse = "a"
 vim.opt.pumblend = 10
 vim.opt.pumheight = 10
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 10
 vim.opt.shiftround = true
 vim.opt.showmode = false
 vim.opt.signcolumn = "yes"
@@ -52,7 +53,7 @@ vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpo
 vim.opt.splitkeep = "screen"
 vim.opt.shortmess:append { C = true }
 
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","

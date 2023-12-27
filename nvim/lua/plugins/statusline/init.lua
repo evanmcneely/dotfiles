@@ -4,12 +4,11 @@ return {
     event = "VeryLazy",
     config = function()
       local components = require "plugins.statusline.components"
-
       require("lualine").setup {
         options = {
           icons_enabled = true,
           theme = "auto",
-          component_separators = { right = "│", left = "│" },
+          component_separators = { right = "|", left = "|" }, -- │
           section_separators = {},
           disabled_filetypes = {
             statusline = {
@@ -32,30 +31,25 @@ return {
           lualine_a = {
             components.git_repo,
           },
-          lualine_b = {
+          lualine_b = {},
+          lualine_c = {
             components.branch,
           },
-          lualine_c = {
-            components.diff,
-          },
           lualine_x = {
-            components.diagnostics,
-          },
-          lualine_y = {
-            "filetype",
             components.lsp_client,
           },
+          lualine_y = { "filetype" },
           lualine_z = {
             "progress",
           },
         },
-        inactive_sections = {
-          lualine_a = {},
-          lualine_b = {},
-          lualine_c = { "filename" },
-          lualine_x = { "location" },
-          lualine_y = {},
-          lualine_z = {},
+        winbar = {
+          lualine_c = { components.filename, components.diff },
+          lualine_x = { components.diagnostics },
+        },
+        inactive_winbar = {
+          lualine_c = { components.filename, components.diff },
+          lualine_x = { components.diagnostics },
         },
         extensions = { "nvim-tree", "toggleterm", "quickfix" },
       }
