@@ -40,4 +40,6 @@ luac.out
 *.hex
 
 .zsh-secrets.sh
+.zsh-local.sh
+.gitconfig_local
 

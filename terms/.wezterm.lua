@@ -19,4 +19,7 @@ config.keys = {
 	{ key = "RightArrow", mods = "CMD", action = act.ActivateTabRelative(1) },
 }
 
+-- will manually check and download updates
+config.check_for_updates = false
+
 return config

@@ -49,7 +49,7 @@ function pyenv_info {
 }
 
 # primary prompt 
-PS1='${PROMPT_SYMBOL}╭─ ${NAME}%n${SYSTEM}  $(arch)$(pyenv_info)$(node_version)${DIR}  %4~$(git_super_status) %{$reset_color%}
+PS1='${PROMPT_SYMBOL}╭─ ${NAME}%n${SYSTEM}$(pyenv_info)$(node_version)${DIR}  %4~$(git_super_status) %{$reset_color%}
 ${PROMPT_SYMBOL}╰─%{$reset_color%} '
 
 # secondary prompt

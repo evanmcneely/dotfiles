@@ -21,7 +21,7 @@ return {
     "williamboman/mason.nvim",
     cmd = "Mason",
     opts = {
-      ensure_installed = { "codespell" },
+      ensure_installed = { "codespell", "beautysh" },
     },
     config = function(_, opts)
       require("mason").setup()
@@ -42,7 +42,7 @@ return {
       local nls = require "null-ls"
       return {
         root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
-        sources = { nls.builtins.diagnostics.codespell },
+        sources = { nls.builtins.diagnostics.codespell, nls.builtins.formatting.beautysh },
       }
     end,
   },

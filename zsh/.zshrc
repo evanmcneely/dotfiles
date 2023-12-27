@@ -1,12 +1,8 @@
-# Source all the things
-source ~/.zsh-lp.sh
+# load aliases and secrets
 source ~/.zsh-aliases.sh
 source ~/.zsh-secrets.sh
 
-# Path to where nvim nightly script is
-export PATH="${HOME}/.local/bin:${PATH}"
-
-# Prompt powered by oh-my-zsh
+# prompt powered by oh-my-zsh
 export ZSH=$HOME/.oh-my-zsh
 plugins=(
     git-prompt
@@ -16,4 +12,13 @@ ZSH_THEME="evans-2"
 source $ZSH/oh-my-zsh.sh
 
 # for zoxide to work
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)" -- FIX: not found ??
+
+# check for local zsh config extension
+if [[ -r ~/.zsh-local.sh ]]; then
+    source ~/.zsh-local.sh
+else
+    # do nothing
+fi
+
+export PATH="~/.dotfiles/bin:${PATH}"

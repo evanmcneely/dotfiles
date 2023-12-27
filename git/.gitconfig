@@ -1,24 +1,27 @@
 [core]
-	excludesfile = /Users/evan/.gitignore_global
+  excludesfile = ~/.gitignore_global
+
 [user]
-	name = Evan McNeely
-	email = evan.mcneely@leadpages.com
-[alias]
-	co = checkout
-	br = branch
-	cm = commit
-	st = status
-	hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  name = Evan McNeely
+  email = evanmcneely@me.com
+
+[alias]  
+  co = checkout
+  br = branch
+  cm = commit
+  jst = status
+  hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
 [pull]
   rebase = false
+  default = current
 
-  ; [core]
-	; repositoryformatversion = 0
-	; filemode = true
-	; bare = false
-	; logallrefupdates = true
-	; ignorecase = true
-	; precomposeunicode = true
-; [remote "origin"]
-	; url = git@github.com:evanmcneely/dotfiles.git
-	; fetch = +refs/heads/*:refs/remotes/origin/*
+[checkout]
+  defaultRemote = origin
+
+# faster git server communication.
+# like a LOT faster. https://opensource.googleblog.com/2018/05/introducing-git-protocol-version-2.html
+[protocol]
+  version = 2
+
+[include] path = ~/.gitconfig_local

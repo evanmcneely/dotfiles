@@ -9,7 +9,7 @@ function M.setup()
     { name = "DiagnosticSignInfo", text = icons.diagnostics.Info },
   }
   for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = false })
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
   end
 
   -- Diagnostic configuration
