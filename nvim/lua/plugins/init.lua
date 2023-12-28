@@ -79,7 +79,11 @@ return {
   },
 
   -- Comment stuff out
-  { "tpope/vim-commentary", event = "BufReadPre" },
+  {
+    "numToStr/Comment.nvim",
+    opts = {},
+    lazy = false,
+  },
 
   -- Complete parens
   {
@@ -140,6 +144,5 @@ return {
 
   { "smjonas/inc-rename.nvim", config = true },
 
-  {"mbbill/undotree", cmd = "UndotreeToggle", keys = {{"<leader>eu", vim.cmd.UndotreeToggle, desc="Undotree"}}},
+  { "mbbill/undotree", cmd = "UndotreeToggle", keys = { { "<leader>eu", vim.cmd.UndotreeToggle, desc = "Undotree" } } },
 }
-

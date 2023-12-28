@@ -1,3 +1,8 @@
+# local files and secrets
+.zsh-secrets.sh
+.zsh-local.sh
+.gitconfig_local
+
 # Compiled Lua sources
 luac.out
 
@@ -38,8 +43,3 @@ luac.out
 *.i*86
 *.x86_64
 *.hex
-
-.zsh-secrets.sh
-.zsh-local.sh
-.gitconfig_local
-

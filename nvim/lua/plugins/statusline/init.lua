@@ -31,11 +31,14 @@ return {
           lualine_a = {
             components.git_repo,
           },
-          lualine_b = {},
-          lualine_c = {
+          lualine_b = {
             components.branch,
           },
+          lualine_c = {
+            components.filename,
+          },
           lualine_x = {
+            components.diagnostics,
             components.lsp_client,
           },
           lualine_y = { "filetype" },
@@ -44,12 +47,12 @@ return {
           },
         },
         winbar = {
-          lualine_c = { components.filename, components.diff },
-          lualine_x = { components.diagnostics },
+          -- lualine_c = { components.filename, components.diff },
+          -- lualine_x = { components.diagnostics },
         },
         inactive_winbar = {
-          lualine_c = { components.filename, components.diff },
-          lualine_x = { components.diagnostics },
+          -- lualine_c = { components.filename },
+          -- lualine_x = { components.diagnostics },
         },
         extensions = { "nvim-tree", "toggleterm", "quickfix" },
       }

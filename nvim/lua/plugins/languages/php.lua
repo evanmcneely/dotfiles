@@ -119,10 +119,10 @@ return {
         },
       },
       setup = {
-        intelephense = function()
-          local lsp_utils = require "plugins.lsp.utils"
+        -- intelephense = function()
+          -- local lsp_utils = require "plugins.lsp.utils"
           -- TODO: add keymaps?
-        end,
+        -- end,
       },
     },
   },

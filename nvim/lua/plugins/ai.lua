@@ -32,6 +32,7 @@ return {
         selected = "chatgpt",
         source = {
           openai = {
+            model = "gpt-4-1106-preview",
             api_key = vim.env.OPENAI_API_KEY,
             max_tokens = 2048,
           },

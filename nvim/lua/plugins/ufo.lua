@@ -50,9 +50,9 @@ return {
         end
       end, desc = "Peek Fold", },
     },
-    -- opts = {
-    --   fold_virt_text_handler = handler,
-    -- },
+    opts = {
+      --   fold_virt_text_handler = handler,
+    },
     config = function(_, opts)
       require("ufo").setup(opts)
     end,

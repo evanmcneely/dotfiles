@@ -63,9 +63,9 @@ return {
             -- stylua: ignore
             if client.name == "pyright" then
               map("n", "<leader>lo", "<cmd>PyrightOrganizeImports<cr>",  "Organize Imports" )
-              -- map("n", "<leader>lC", function() require("dap-python").test_class() end,  "Debug Class" )
-              -- map("n", "<leader>lM", function() require("dap-python").test_method() end,  "Debug Method" )
-              -- map("v", "<leader>lE", function() require("dap-python").debug_selection() end, "Debug Selection" )
+              -- map("n", "<leader>lc", function() require("dap-python").test_class() end,  "Debug Class" )
+              -- map("n", "<leader>lm", function() require("dap-python").test_method() end,  "Debug Method" )
+              -- map("v", "<leader>le", function() require("dap-python").debug_selection() end, "Debug Selection" )
             end
           end)
         end,

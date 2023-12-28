@@ -61,7 +61,6 @@ keymap("n", "<leader>Y", "\"+Y", { desc = "Yank line to clipboard" })
 
 keymap("n", "<leader>d", "\"+d", { desc = "Delete to clipboard" })
 keymap("v", "<leader>d", "\"+d", { desc = "Delete to clipboard" })
-keymap("n", "<leader>D", "\"+D", { desc = "Delete line to clipboard" })
 
 -- keymap("n", "C-k", "<cmd>cprev<CR>zz")
 -- keymap("n", "C-j", "<cmd>cnext<CR>zz")

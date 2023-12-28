@@ -19,9 +19,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
-      "JoosepAlviste/nvim-ts-context-commentstring", -- TODO: is this needed
-      "RRethy/nvim-treesitter-endwise", -- TODO: is this needed
-      "windwp/nvim-ts-autotag", -- TODO: is this needed
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      "windwp/nvim-ts-autotag",
     },
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },

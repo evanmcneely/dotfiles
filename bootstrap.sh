@@ -4,7 +4,6 @@ if [ "$(uname)" != "Darwin" ]; then
 fi
 
 # initialize file system ??
-#   -- create dev folder
 #   -- create projects folder
 #   -- clone some repos ??
 

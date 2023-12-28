@@ -8,7 +8,7 @@ return {
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "typescript-language-server", "js-debug-adapter", "prettierd", "eslint_d" })
+      vim.list_extend(opts.ensure_installed, { "prettierd" })
     end,
   },
   {
@@ -23,7 +23,8 @@ return {
   },
   {
     "pmizio/typescript-tools.nvim",
-    enabled = false,
+    lazy = true,
+    ft = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
     dependencies = { "folke/neoconf.nvim", cmd = "Neoconf", config = true },
     opts = {
       tsserver_file_preferences = {
@@ -59,7 +60,6 @@ return {
     opts = {
       -- make sure mason installs the server
       servers = {
-        -- ESLint
         eslint = {
           settings = {
             -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
@@ -83,5 +83,25 @@ return {
         end,
       },
     },
+  },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/neotest-jest",
+      "marilari88/neotest-vitest",
+      "thenbe/neotest-playwright",
+    },
+    opts = function(_, opts)
+      vim.list_extend(opts.adapters, {
+        require "neotest-jest",
+        require "neotest-vitest",
+        require("neotest-playwright").adapter {
+          options = {
+            persist_project_selection = true,
+            enable_dynamic_test_discovery = true,
+          },
+        },
+      })
+    end,
   },
 }
