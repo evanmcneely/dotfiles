@@ -49,7 +49,6 @@ return {
         end, { expr = true, desc = "Pevious hunk" })
 
         -- Actions
-        -- TODO: move these to keymaps
         map({ "n", "v" }, "<leader>gha", gs.stage_hunk, { desc = "Stage Hunk" })
         map({ "n", "v" }, "<leader>ghr", gs.reset_hunk, { desc = "Reset Hunk" })
         map("n", "<leader>ghu", gs.undo_stage_hunk, { desc = "Undo Stage Hunk" })
@@ -66,25 +65,12 @@ return {
   },
   {
     "ThePrimeagen/git-worktree.nvim",
-    enabled = false,
     event = "VeryLazy",
-    config = function()
-    end,
+    config = function() end,
+    -- stylua: ignore
     keys = {
-      {
-        "<leader>gw",
-        function()
-          require("telescope").extensions.git_worktree.git_worktrees()
-        end,
-        desc = "Worktree",
-      },
-      {
-        "<leader>gW",
-        function()
-          require("telescope").extensions.git_worktree.create_git_worktree()
-        end,
-        desc = "create worktree",
-      },
+      { "<leader>gw", function() require("telescope").extensions.git_worktree.git_worktrees() end, desc = "Worktree", },
+      { "<leader>gW", function() require("telescope").extensions.git_worktree.create_git_worktree() end, desc = "Create worktree", },
     },
   },
 }

@@ -55,12 +55,10 @@ keymap("n", "Q", "<nop>")
 keymap("n", "[<space>", "O<esc>", { desc = "Pad above" })
 keymap("n", "]<space>", "o<esc>", { desc = "Pad below" })
 
-keymap("n", "<leader>y", "\"+y", { desc = "Yank to clipboard" })
-keymap("v", "<leader>y", "\"+y", { desc = "Yank to clipboard" })
+keymap({"n", "v"}, "<leader>y", "\"+y", { desc = "Yank to clipboard" })
 keymap("n", "<leader>Y", "\"+Y", { desc = "Yank line to clipboard" })
 
-keymap("n", "<leader>d", "\"+d", { desc = "Delete to clipboard" })
-keymap("v", "<leader>d", "\"+d", { desc = "Delete to clipboard" })
+keymap({"n", "v"}, "<leader>d", "\"+d", { desc = "Delete to clipboard" })
 
 -- keymap("n", "C-k", "<cmd>cprev<CR>zz")
 -- keymap("n", "C-j", "<cmd>cnext<CR>zz")

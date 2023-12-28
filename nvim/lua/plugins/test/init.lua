@@ -1,6 +1,7 @@
 return {
   {
     "nvim-neotest/neotest",
+    enabled = false,
     keys = {
       -- { "<leader>tF", "<cmd>w|lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", desc = "Debug File" },
       -- { "<leader>tL", "<cmd>w|lua require('neotest').run.run_last({strategy = 'dap'})<cr>", desc = "Debug Last" },
@@ -18,10 +19,23 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
       "stevearc/overseer.nvim",
+      -- JavaScript
+      "nvim-neotest/neotest-jest",
+      "marilari88/neotest-vitest",
+      "thenbe/neotest-playwright",
     },
     opts = function()
       return {
-        adapters = {},
+        adapters = {
+          require "neotest-jest",
+          require "neotest-vitest",
+          require("neotest-playwright").adapter {
+            options = {
+              persist_project_selection = true,
+              enable_dynamic_test_discovery = true,
+            },
+          },
+        },
         status = { virtual_text = true },
         output = { open_on_run = true },
         quickfix = {
