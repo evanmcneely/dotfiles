@@ -1,12 +1,20 @@
 DOTFILES="${HOME}/dev/dotfiles"
 
-ln -sf "${DOTFILES}/bin" "${HOME}/.dotfiles"
+# TODO: fancy script like this https://github.com/paulirish/dotfiles/blob/main/symlink-setup.sh
+
+# create directories needed to store symlinks
+mkdir -p "${HOME}/.dotfiles/bin"
+
+# scripts
+ln -sf "${DOTFILES}/bin/git-delete-merged-branches" "${HOME}/.dotfiles/bin"
 
 # zsh
 ln -sf "${DOTFILES}/zsh/.zshrc" ~
 ln -sf "${DOTFILES}/zsh/.zsh-aliases.sh" ~
 ln -sf "${DOTFILES}/zsh/.zsh-local.sh" ~
 ln -sf "${DOTFILES}/zsh/evans-2.zsh-theme" "${HOME}/.oh-my-zsh/themes"
+
+# terms
 ln -sf "${DOTFILES}/terms/.wezterm.lua" ~
 
 # vim
