@@ -1,9 +1,5 @@
 local keymap = vim.keymap.set
 
--- Remap for dealing with word wrap
--- keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
--- keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
-
 -- Better viewing
 keymap("n", "n", "nzzzv")
 keymap("n", "N", "Nzzzv")
@@ -15,10 +11,6 @@ keymap("n", "<C-u>", "<C-u>zz")
 -- Better escape using jk in insert and terminal mode
 keymap("i", "jj", "<ESC>")
 keymap("t", "jj", "<C-\\><C-n>")
--- keymap("t", "<C-h>", "<C-\\><C-n><C-w>h")
--- keymap("t", "<C-j>", "<C-\\><C-n><C-w>j")
--- keymap("t", "<C-k>", "<C-\\><C-n><C-w>k")
--- keymap("t", "<C-l>", "<C-\\><C-n><C-w>l")
 
 -- Add undo break-points
 -- keymap("i", ",", ",<c-g>u")
@@ -49,16 +41,16 @@ keymap("n", "J", "mzJ`z")
 keymap("n", "Y", "y$")
 keymap("n", "H", "^")
 keymap("n", "L", "$")
-keymap("n", "Q", "<nop>")
+keymap("n", "Q", "@")
 
 -- insert blank lines above and below
-keymap("n", "[<space>", "O<esc>", { desc = "Pad above" })
-keymap("n", "]<space>", "o<esc>", { desc = "Pad below" })
+keymap("n", "[<space>", "O<esc>^", { desc = "Pad above" })
+keymap("n", "]<space>", "o<esc>^", { desc = "Pad below" })
 
-keymap({"n", "v"}, "<leader>y", "\"+y", { desc = "Yank to clipboard" })
-keymap("n", "<leader>Y", "\"+Y", { desc = "Yank line to clipboard" })
-
-keymap({"n", "v"}, "<leader>d", "\"+d", { desc = "Delete to clipboard" })
+-- keymap("t", "<C-h>", "<C-\\><C-n><C-w>h")
+-- keymap("t", "<C-j>", "<C-\\><C-n><C-w>j")
+-- keymap("t", "<C-k>", "<C-\\><C-n><C-w>k")
+-- keymap("t", "<C-l>", "<C-\\><C-n><C-w>l")
 
 -- keymap("n", "C-k", "<cmd>cprev<CR>zz")
 -- keymap("n", "C-j", "<cmd>cnext<CR>zz")

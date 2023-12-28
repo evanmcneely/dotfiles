@@ -6,6 +6,7 @@ vim.opt.shiftwidth = indent
 vim.opt.softtabstop = indent
 vim.opt.tabstop = indent
 vim.opt.expandtab = true
+vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
@@ -39,7 +40,6 @@ vim.opt.shiftround = true
 vim.opt.showmode = false
 vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
-vim.opt.smartindent = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.termguicolors = true
@@ -49,7 +49,7 @@ vim.opt.wildmode = "longest:full,full"
 vim.opt.scrollback = 100000
 -- vim.opt.showbreak = "+++"
 vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
--- vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 vim.opt.splitkeep = "screen"
 vim.opt.shortmess:append { C = true }
 
