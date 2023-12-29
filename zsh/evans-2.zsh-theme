@@ -43,13 +43,12 @@ function pyenv_info {
   if [[ -n "$VIRTUAL_ENV" ]] then
     echo "  $(pyenv_prompt_info) "
   else
-    echo " "
-  #   echo " $(python -V | cut -c 8-)"
+    echo " $(python3 -V | cut -c 8-) "
   fi
 }
 
 # primary prompt 
-PS1='${PROMPT_SYMBOL}╭─ ${NAME}%n${SYSTEM}$(pyenv_info)$(node_version)${DIR}  %4~$(git_super_status) %{$reset_color%}
+PS1='${PROMPT_SYMBOL}╭─ ${SYSTEM}$(pyenv_info)$(node_version)${DIR}  %4~$(git_super_status) %{$reset_color%}
 ${PROMPT_SYMBOL}╰─%{$reset_color%} '
 
 # secondary prompt
