@@ -29,3 +29,9 @@ vim.keymap.set("i", "<C-k>", "<Up>")
 vim.keymap.set("i", "<C-j>", "<Down>")
 vim.keymap.set("i", "<C-h>", "<Left>")
 vim.keymap.set("i", "<C-l>", "<Right>")
+
+-- Resize window using <shift> arrow keys
+vim.keymap.set("n", "<S-Up>", "<cmd>resize +2<CR>")
+vim.keymap.set("n", "<S-Down>", "<cmd>resize -2<CR>")
+vim.keymap.set("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
+vim.keymap.set("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
