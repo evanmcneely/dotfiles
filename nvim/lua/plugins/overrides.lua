@@ -59,4 +59,12 @@ return {
       } }
     end,
   },
+
+  {
+    "folke/todo-comments.nvim",
+    opts = function(_, opts)
+      -- do not use the sign column
+      opts.signs = false
+    end,
+  },
 }
