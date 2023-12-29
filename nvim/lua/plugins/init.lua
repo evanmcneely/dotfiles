@@ -1,4 +1,5 @@
 return {
+  -- better repeat on .
   { "tpope/vim-repeat", event = "VeryLazy" },
 
   -- easily open and join statements to multiple and single lines
@@ -7,6 +8,7 @@ return {
   -- add marks to sign column
   { "kshenoy/vim-signature", event = "BufReadPre" },
 
+  -- tabout of parentheses and stuff
   {
     "abecodes/tabout.nvim",
     event = "BufReadPost",
@@ -18,6 +20,7 @@ return {
     end,
   },
 
+  -- best auto pairirng of parentheses I've found
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
@@ -28,12 +31,14 @@ return {
     end,
   },
 
+  -- navigate undo/redo history
   {
     "mbbill/undotree",
     cmd = "UndotreeToggle",
     keys = { { "<leader>eu", vim.cmd.UndotreeToggle, desc = "Undotree" } },
   },
 
+  -- git stuff
   {
     "NeogitOrg/neogit",
     dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
@@ -45,6 +50,17 @@ return {
       { "<leader>gs", "<cmd>Neogit kind=tab<cr>", desc = "status" },
       { "<leader>gc", "<cmd>Neogit commit<cr>", desc = "commit" },
       { "<leader>gp", "<cmd>Neogit push<cr>", desc = "push" },
+    },
+  },
+
+  -- really just want the merge conflict resolution tool
+  {
+    "tpope/vim-fugitive",
+    cmd = "Gdiff",
+    keys = {
+      { "<leader>gd", "<cmd>Gdiff<cr>", desc = "conflict" },
+      { "<leader>gu", "<cmd>diffget //2<cr>", desc = "conflict resolve left" },
+      { "<leader>gh", "<cmd>diffget //3<cr>", desc = "conflict resolve right" },
     },
   },
 }

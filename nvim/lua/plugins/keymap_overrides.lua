@@ -3,6 +3,7 @@ return {
   {
     "folke/which-key.nvim",
     opts = {
+      show_help = false,
       defaults = {
         mode = { "n", "v" },
         ["g"] = { name = "+goto" },

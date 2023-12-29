@@ -1,4 +1,5 @@
 return {
+  -- slick navigation, like marks but for files
   {
     "ThePrimeagen/harpoon",
     --stylua: ignore

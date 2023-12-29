@@ -18,6 +18,7 @@ return {
       opts.sources = opts.sources or {}
 
       -- TODO: set this up on a project level?
+      -- use conform.nvim?
       table.insert(
         opts.sources,
         nls.builtins.diagnostics.phpcs.with {

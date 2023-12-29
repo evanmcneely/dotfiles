@@ -20,25 +20,25 @@ return {
       },
     },
     opts = {
-      enable_diagnostics = false,
-      window = { width = 60 },
+      enable_diagnostics = false, -- don't need it
+      window = { width = 60 }, -- default width
       default_component_configs = {
-        modified = { symbol = "~" },
-        file_size = { enabled = false },
-        type = { enabled = false },
-        created = { enabled = false },
+        modified = { symbol = "~" }, -- default is [+]
+        file_size = { enabled = false }, -- hide
+        type = { enabled = false }, -- hide
+        created = { enabled = false }, -- hide
         last_modified = {
           enabled = true,
-          required_width = 60,
+          required_width = 60, -- show on default width
         },
       },
-      filesystem = { filtered_items = { visible = true } },
+      filesystem = { filtered_items = { visible = true } }, -- show visible files
     },
   },
 
-  -- disable default tab and S-tab
   {
     "L3MON4D3/LuaSnip",
+    -- disable default tab and S-tab
     keys = function()
       return {}
     end,

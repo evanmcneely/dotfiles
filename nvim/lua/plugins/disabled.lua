@@ -1,6 +1,6 @@
 return {
-  { "echasnovski/mini.indentscope", enabled = false },
-  { "akisho/bufferline.nvim", enabled = false },
-  { "folke/todo-comments.nvim", enabled = false },
-  { "echasnovski/mini.pairs", enabled = false },
+  { "echasnovski/mini.indentscope", enabled = false }, -- animates scope
+  { "akisho/bufferline.nvim", enabled = false }, -- "tabs"
+  { "folke/todo-comments.nvim", enabled = false }, -- hightlights todos, etc.
+  { "echasnovski/mini.pairs", enabled = false }, -- trys to pair parens
 }
