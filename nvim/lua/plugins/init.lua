@@ -19,19 +19,19 @@ return {
   },
 
   {
-    "mbbill/undotree",
-    cmd = "UndotreeToggle",
-    keys = { { "<leader>bu", vim.cmd.UndotreeToggle, desc = "Undotree Explore" } },
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup {
+        disable_filetype = { "TelescopePrompt", "vim" },
+      }
+    end,
   },
 
   {
-    "sindrets/diffview.nvim",
-    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
-    config = true,
-    keys = {
-      { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diff View Open" },
-      { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Diff View Close" },
-    },
+    "mbbill/undotree",
+    cmd = "UndotreeToggle",
+    keys = { { "<leader>eu", vim.cmd.UndotreeToggle, desc = "Undotree" } },
   },
 
   {

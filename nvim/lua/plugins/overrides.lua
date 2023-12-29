@@ -75,13 +75,18 @@ return {
             fallback()
           end
         end, { "i", "s", "c" }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
           else
             fallback()
           end
         end, { "i", "s" }),
+      }
+
+      -- addd border to docs
+      opts.window = {
+        documentation = cmp.config.window.bordered(),
       }
     end,
   },

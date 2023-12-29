@@ -1,6 +1,16 @@
 -- delete defaults https://www.lazyvim.org/configuration/general#keymaps
 vim.keymap.del("n", "<S-h>")
 vim.keymap.del("n", "<S-l>")
+vim.keymap.del("n", "<leader>fn") -- neww file
+vim.keymap.del("n", "<leader>ft") -- terminal
+vim.keymap.del("n", "<leader>fT") -- terminal
+vim.keymap.del("n", "<leader>gg") -- lazygit
+vim.keymap.del("n", "<leader>gG") -- lazygit
+vim.keymap.del("n", "<leader>-") -- split window down
+vim.keymap.del("n", "<leader>|") -- split window vert
+vim.keymap.del("n", "<leader>`") -- next buffer
+vim.keymap.del("n", "<leader>L") -- Lazy
+vim.keymap.del("n", "<leader>l") -- Lazy
 
 -- Better escape using jk in insert and terminal mode
 vim.keymap.set("i", "jj", "<ESC>")
@@ -25,10 +35,10 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- Move in insert mode with using the arrow keys
-vim.keymap.set("i", "<C-k>", "<Up>")
-vim.keymap.set("i", "<C-j>", "<Down>")
-vim.keymap.set("i", "<C-h>", "<Left>")
-vim.keymap.set("i", "<C-l>", "<Right>")
+-- vim.keymap.set("i", "<C-k>", "<Up>")
+-- vim.keymap.set("i", "<C-j>", "<Down>")
+-- vim.keymap.set("i", "<C-h>", "<Left>")
+-- vim.keymap.set("i", "<C-l>", "<Right>")
 
 -- Resize window using <shift> arrow keys
 vim.keymap.set("n", "<S-Up>", "<cmd>resize +2<CR>")
