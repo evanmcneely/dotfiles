@@ -1,4 +1,5 @@
 return {
+  -- replate which key keymaps
   {
     "folke/which-key.nvim",
     opts = {
@@ -12,8 +13,7 @@ return {
         ["<leader>b"] = { name = "+buffer" },
         ["<leader>c"] = { name = "+code" },
         ["<leader>e"] = { name = "+explore" },
-        ["<leader>g"] = { name = "+git" },
-        ["<leader>gh"] = { name = "+hunks" },
+        ["<leader>g"] = { name = "+git", h = { name = "+hunk" } },
         ["<leader>l"] = { name = "+lsp" },
         ["<leader>q"] = { name = "+quit/session" },
         ["<leader>s"] = { name = "+search" },

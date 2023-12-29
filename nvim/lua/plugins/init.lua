@@ -35,13 +35,16 @@ return {
   },
 
   {
-    "TimUntersberger/neogit",
+    "NeogitOrg/neogit",
+    dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
     cmd = "Neogit",
     opts = {
       integrations = { diffview = true },
     },
     keys = {
-      { "<leader>gs", "<cmd>Neogit kind=tab<cr>", desc = "Git Status" },
+      { "<leader>gs", "<cmd>Neogit kind=tab<cr>", desc = "status" },
+      { "<leader>gc", "<cmd>Neogit commit<cr>", desc = "commit" },
+      { "<leader>gp", "<cmd>Neogit push<cr>", desc = "push" },
     },
   },
 }
