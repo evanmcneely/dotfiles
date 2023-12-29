@@ -22,7 +22,7 @@ ln -sf "${DOTFILES}/vim/.vimrc" ~
 ln -sf "${DOTFILES}/vim/.vim/coc-settings.json" "${HOME}/.vim"
 
 # nvim
-ln -sf "${DOTFILES}/nvim_2023" "${HOME}/.config"
+ln -sf "${DOTFILES}/nvim" "${HOME}/.config"
 
 # git
 ln -sf "${DOTFILES}/git/.gitignore_global" ~
