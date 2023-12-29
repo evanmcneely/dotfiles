@@ -32,6 +32,7 @@ require("lazy").setup {
     { import = "lazyvim.plugins.extras.coding.codeium" },
     -- overrides and extensions
     { import = "plugins" },
+    { import = "plugins.languages" },
   },
   defaults = { lazy = true, version = "*" },
   install = { missing = true, colorscheme = { "tokyonight", "gruvbox" } },
