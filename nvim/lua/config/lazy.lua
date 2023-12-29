@@ -35,7 +35,7 @@ require("lazy").setup {
     { import = "plugins.languages" },
   },
   defaults = { lazy = true, version = "*" },
-  install = { missing = true, colorscheme = { "tokyonight", "gruvbox" } },
+  install = { missing = true, colorscheme = { "tokyonight" } },
   checker = { enabled = false },
   performance = {
     cache = {
