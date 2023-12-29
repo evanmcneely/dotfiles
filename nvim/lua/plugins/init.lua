@@ -28,7 +28,10 @@ return {
     "sindrets/diffview.nvim",
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
     config = true,
-    -- TODO: key maps
+    keys = {
+      { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diff View Open" },
+      { "<leader>gD", "<cmd>DiffviewClose<cr>", desc = "Diff View Close" },
+    },
   },
 
   {
@@ -38,7 +41,7 @@ return {
       integrations = { diffview = true },
     },
     keys = {
-      { "<leader>gs", "<cmd>Neogit kind=tab<cr>", desc = "Status" },
+      { "<leader>gs", "<cmd>Neogit kind=tab<cr>", desc = "Git Status" },
     },
   },
 }
