@@ -46,9 +46,23 @@ return {
     end,
   },
 
-  -- replace all Telescope keymaps with my own
   {
     "nvim-telescope/telescope.nvim",
+    -- better navigation in insert mode
+    opts = function(_, opts)
+      local actions = require "telescope.actions"
+      opts.defaults.mappings = opts.defaults.mappings or {}
+      opts.defaults.mappings = vim.tbl_deep_extend("force", opts.defaults.mappings, {
+        i = {
+          ["<C-j>"] = actions.move_selection_next,
+          ["<C-k>"] = actions.move_selection_previous,
+          ["<C-n>"] = actions.cycle_history_next,
+          ["<C-p>"] = actions.cycle_history_prev,
+          ["<esc>"] = actions.close,
+        },
+      })
+    end,
+    -- replace all Telescope keymaps with my own
     keys = function()
       return {
         { "<leader><leader>", "<cmd>Telescope git_files theme=dropdown previewer=false<cr>", desc = "Find Files" },

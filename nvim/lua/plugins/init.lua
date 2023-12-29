@@ -56,7 +56,7 @@ return {
   -- really just want the merge conflict resolution tool
   {
     "tpope/vim-fugitive",
-    cmd = "Gdiff",
+    cmd = { "Gdiff", "Git" },
     keys = {
       { "<leader>gd", "<cmd>Gdiff<cr>", desc = "conflict" },
       { "<leader>gu", "<cmd>diffget //2<cr>", desc = "conflict resolve left" },
