@@ -1,0 +1,50 @@
+# tools
+brew 'git'
+brew 'ripgrep'
+brew 'fzf'
+brew 'neovim'
+brew 'tmux'
+brew 'tpm' # tmux plugin manager
+brew 'curl'
+brew 'stow'
+brew 'bat'
+brew 'tree'
+brew 'coreutils' # Those that come with macOS are outdated
+
+# apps
+cask 'visual-studio-code'
+cask 'zoom'
+cask 'google-chrome'
+cask 'firefox'
+cask 'microsoft-edge'
+cask 'wezterm'
+
+# python
+brew 'python3'
+brew 'pyenv'
+brew 'pyenv-virtualenv'
+
+# node
+brew 'nvm'
+brew 'yarn'
+brew 'pnpm'
+
+# php
+brew 'composer'
+brew 'php'
+
+# other dependencies
+brew 'cmake'
+brew 'tree-sitter'
+brew 'ninja'
+brew 'libtool'
+brew 'automake'
+brew 'pkg-config'
+brew 'gettext'
+brew 'navi'
+brew 'jq'
+brew 'libmemcache'
+brew 'mkcert'
+brew 'nss'
+brew 'zlib'
+brew 'graphv'
