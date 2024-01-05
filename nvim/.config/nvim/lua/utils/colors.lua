@@ -16,6 +16,12 @@ return {
   tokyonight = {
     magenta = "#bb9af7",
     blue = "#2ac3de",
+    violet = "#9d7cd8",
+    red = "#f7768e",
+    green = "#9ece6a",
+    orange = "#ff9e64",
+    yellow = "#e0af68",
+    cyan = "#7dcfff",
     gitSigns = {
       add = "#266d6a",
       change = "#536c9e",
