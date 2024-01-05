@@ -4,7 +4,6 @@ brew 'ripgrep'
 brew 'fzf'
 brew 'neovim'
 brew 'tmux'
-brew 'tpm' # tmux plugin manager
 brew 'curl'
 brew 'stow'
 brew 'bat'

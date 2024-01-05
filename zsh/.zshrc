@@ -24,4 +24,4 @@ if [[ -r ~/.zsh-local.sh ]]; then
     source ~/.zsh-local.sh
 fi
 
-export PATH="~/.dotfiles/bin:${PATH}"
+export PATH="~/.local/bin:${PATH}"

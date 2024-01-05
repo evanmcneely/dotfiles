@@ -44,3 +44,7 @@ stow git
 
 # Set macOS preferences - we will run this last because this will reload the shell
 source ./.macos
+
+# setup and source tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux source ~/.config/tmux/tmux.conf
