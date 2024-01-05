@@ -24,4 +24,7 @@ if [[ -r ~/.zsh-local.sh ]]; then
     source ~/.zsh-local.sh
 fi
 
-export PATH="~/.local/bin:${PATH}"
+export PATH="${HOME}/.local/bin:${PATH}"
+
+bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^w "tmux-windowizer\n"
