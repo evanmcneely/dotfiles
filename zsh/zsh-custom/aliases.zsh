@@ -1,5 +1,3 @@
-# Aliases
-
 # git
 alias gcm='git commit -m'
 alias ga='git add'
@@ -19,10 +17,6 @@ alias gwp='git worktree prune'
 alias glog='git log --graph --oneline --decorate --all'
 
 # docker
-alias lpdu="docker compose -f ~/dev/lp/lp-docker/docker-compose.yml up --detach"
-alias lpds="docker compose -f ~/dev/lp/lp-docker/docker-compose.yml stop"
-alias lpdr="docker compose -f ~/dev/lp/lp-docker/docker-compose.yml restart"
-alias lpdl="docker compose -f ~/dev/lp/lp-docker/docker-compose.yml logs -f"
 alias da="docker ps --format 'table {{.Names}}\t{{.Status}}'"
 alias d='docker'
 alias dr='docker run --rm -it'
@@ -34,7 +28,8 @@ alias dcl='docker compose logs'
 alias dclf='docker compose logs -f'
 
 # other
-alias cl='cd dev/lp'
+alias t=tmux
+alias ta=tmux attach
 alias v='vim'
 alias n='nvim'
 alias ..='cd ..'
@@ -42,4 +37,4 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias rds="find . -name ".DS_Store" -delete"
 alias luamake=/Users/evan/.config/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
-alias review='PYENV_VERSION=gpt-pp python ~/dev/em/gpt_pp/cli_pr_review.py'
+alias review='PYENV_VERSION=gpt-pp python ~/dev/personal/gpt_pp/cli_pr_review.py'

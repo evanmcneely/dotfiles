@@ -1,7 +1,6 @@
-# path to dotfiles
 export DOTFILES=$HOME/.dotfiles
-# custom oh-my-zsh
 ZSH_CUSTOM=$DOTFILES/zsh/zsh-custom
+
 # disable oh-my-zsh update checks
 zstyle ':omz:update' mode disabled
 
@@ -16,12 +15,9 @@ plugins=(
 ZSH_THEME="evans"
 source $ZSH/oh-my-zsh.sh
 
-# for zoxide to work
-# eval "$(zoxide init zsh)" -- FIX: not found ??
-
 # check for local zsh config extension
-if [[ -r ~/.zsh-local.sh ]]; then
-    source ~/.zsh-local.sh
+if [[ -r $HOME/.zsh-local.sh ]]; then
+    source $HOME/.zsh-local.sh
 fi
 
 export PATH="${HOME}/.local/bin:${PATH}"
