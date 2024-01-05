@@ -22,4 +22,8 @@ config.keys = {
 -- will manually check and download updates
 config.check_for_updates = false
 
+config.window_decorations = "RESIZE"
+config.use_dead_keys = false
+config.enable_tab_bar = false
+
 return config
