@@ -3,6 +3,8 @@
 .zsh-local.sh
 .gitconfig_local
 
+tmux/.config/tmux/plugins
+
 # Compiled Lua sources
 luac.out
 
