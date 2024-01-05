@@ -1,4 +1,5 @@
 local icons = require "utils.icons"
+local colors = require "utils.colors"
 local Job = require "plenary.job"
 
 return {
@@ -95,7 +96,6 @@ return {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
       local Util = require "lazyvim.util"
-      local lazy_icons = require("lazyvim.config").icons
       local lualine_require = require "lualine_require"
       lualine_require.require = require
 
@@ -120,22 +120,28 @@ return {
 
       -- override lualine sections with custom statusline
       opts.sections = {
-        lualine_a = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {
           {
             get_repo,
             icon = icons.git.Repo,
           },
-        },
-        lualine_b = {
-          { "branch" },
-        },
-        lualine_c = {
+          {
+            "branch",
+            separator = "",
+          },
           {
             "diff",
             symbols = {
               added = icons.git.added,
               modified = icons.git.modified,
               removed = icons.git.removed,
+            },
+            diff_color = {
+              added = { fg = colors.tokyonight.gitSigns.add },
+              modified = { fg = colors.tokyonight.gitSigns.change },
+              removed = { fg = colors.tokyonight.gitSigns.delete },
             },
             source = function()
               local gitsigns = vim.b.gitsigns_status_dict
@@ -147,16 +153,17 @@ return {
                 }
               end
             end,
+            draw_empty = true,
           },
           { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-          { Util.lualine.pretty_path() },
+          { Util.lualine.pretty_path(), separator = "" },
           {
             "diagnostics",
             symbols = {
-              error = lazy_icons.diagnostics.Error,
-              warn = lazy_icons.diagnostics.Warn,
-              info = lazy_icons.diagnostics.Info,
-              hint = lazy_icons.diagnostics.Hint,
+              error = icons.diagnostics.Error,
+              warn = icons.diagnostics.Warn,
+              info = icons.diagnostics.Info,
+              hint = icons.diagnostics.Hint,
             },
           },
         },
@@ -168,19 +175,21 @@ return {
             color = Util.ui.fg("Statement"),
           },
           -- stylua: ignore
-          -- {
-          --   function() return require("noice").api.status.mode.get() end,
-          --   cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-          --   color = Util.ui.fg("Constant"),
-          -- },
-          -- stylua: ignore
           {
             function() return "  " .. require("dap").status() end,
             cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
             color = Util.ui.fg("Debug"),
           },
+          {
+            function()
+              local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
+              return icons.ui.Tab .. " " .. shiftwidth
+            end,
+            padding = 1,
+          },
           { "progress", separator = " ", padding = { left = 1, right = 0 } },
           { "location", padding = { left = 0, right = 1 } },
+          { "mode" },
         },
         lualine_y = {},
         lualine_z = {},

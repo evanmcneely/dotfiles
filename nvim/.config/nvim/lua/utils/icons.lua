@@ -141,9 +141,9 @@ return {
     BoldQuestion = " ",
     Question = " ",
     BoldHint = " ",
-    Hint = "",
-    Debug = "",
-    Trace = "✎",
+    Hint = " ",
+    Debug = " ",
+    Trace = "✎ ",
   },
   misc = {
     Robot = "ﮧ",
