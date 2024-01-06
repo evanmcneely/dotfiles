@@ -57,21 +57,27 @@ return {
   filetype = { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
   pretty_path = {
     function()
+      -- modified and simplfied from LazyVim pretty path
       local path = vim.fn.expand "%:p"
       local repo = get_repo()
+      local cwd = vim.loop.cwd()
 
       if repo == "no git" then
         repo = ""
       end
 
       if path == "" then
-        return ""
+        return "…?"
       end
 
+      -- path from cwd split into table
+      path = path:sub(#cwd + 2)
       local parts = vim.split(path, "[\\/]")
-      if #parts > 3 then
+      -- use only the last two parts of the path if it is long
+      if #parts >= 3 then
         parts = { "…", parts[#parts - 1], parts[#parts] }
       end
+      -- join it all together
       return repo .. "/" .. table.concat(parts, "/")
     end,
   },
