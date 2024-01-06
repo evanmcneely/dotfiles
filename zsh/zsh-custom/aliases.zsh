@@ -27,9 +27,13 @@ alias dcs='docker compose stop'
 alias dcl='docker compose logs'
 alias dclf='docker compose logs -f'
 
+# tmux
+alias t='tmux'
+alias ta='tmux attach'
+alias td='tmux detach'
+alias tl='tmux ls'
+
 # other
-alias t=tmux
-alias ta=tmux attach
 alias v='vim'
 alias n='nvim'
 alias ..='cd ..'

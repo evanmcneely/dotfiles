@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [[ -z $TMUX ]]; then
+	echo "not in tmux"
+	exit 0
+fi
+
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
@@ -11,8 +16,5 @@ if [[ -z $selected ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
 
-if [[ -n $TMUX ]] && [[ -n $tmux_running ]]; then
-	tmux new-window -n $selected_name -c $selected
-fi
+tmux new-window -n $selected_name -c $selected
