@@ -1,7 +1,6 @@
 local icons = require "utils.icons"
-local colors = require "utils.colors"
 local Job = require "plenary.job"
-local Util = require "lazyvim.util"
+local tokyonight = require("tokyonight.colors").default
 
 -- async get the git repo the current file is in
 local function get_repo()
@@ -39,9 +38,9 @@ return {
       removed = icons.git.removed,
     },
     diff_color = {
-      added = { fg = colors.tokyonight.gitSigns.add },
-      modified = { fg = colors.tokyonight.gitSigns.change },
-      removed = { fg = colors.tokyonight.gitSigns.delete },
+      added = { fg = tokyonight.git.add },
+      modified = { fg = tokyonight.git.change },
+      removed = { fg = tokyonight.git.delete },
     },
     source = function()
       local gitsigns = vim.b.gitsigns_status_dict
@@ -56,7 +55,26 @@ return {
     draw_empty = true,
   },
   filetype = { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-  pretty_path = { Util.lualine.pretty_path(), separator = "" },
+  pretty_path = {
+    function()
+      local path = vim.fn.expand "%:p"
+      local repo = get_repo()
+
+      if repo == "no git" then
+        repo = ""
+      end
+
+      if path == "" then
+        return ""
+      end
+
+      local parts = vim.split(path, "[\\/]")
+      if #parts > 3 then
+        parts = { "…", parts[#parts - 1], parts[#parts] }
+      end
+      return repo .. "/" .. table.concat(parts, "/")
+    end,
+  },
   diagnostics = {
     "diagnostics",
     symbols = {
@@ -66,14 +84,23 @@ return {
       hint = icons.diagnostics.Hint,
     },
   },
-  command = {
+  noice_command = {
     function()
       return require("noice").api.status.command.get()
     end,
     cond = function()
       return package.loaded["noice"] and require("noice").api.status.command.has()
     end,
-    color = Util.ui.fg "Statement",
+    color = { fg = tokyonight.magenta },
+  },
+  noice_mode = {
+    function()
+      return require("noice").api.status.mode.get()
+    end,
+    cond = function()
+      return package.loaded["noice"] and require("noice").api.status.mode.has()
+    end,
+    color = { fg = tokyonight.orange },
   },
   debug_status = {
     function()
@@ -82,7 +109,7 @@ return {
     cond = function()
       return package.loaded["dap"] and require("dap").status() ~= ""
     end,
-    color = Util.ui.fg "Debug",
+    color = { fg = tokyonight.green },
   },
   shift_width = {
     function()
@@ -91,33 +118,33 @@ return {
     end,
     padding = 1,
   },
-  progress = { "progress", separator = " ", padding = { left = 1, right = 0 } },
-  location = { "location", padding = { left = 0, right = 1 } },
+  progress = { "progress" },
+  location = { "location" },
   mode = {
     "mode",
     color = function()
       -- auto change color according to neovims mode
       local mode_color = {
-        n = colors.tokyonight.red,
-        i = colors.tokyonight.green,
-        v = colors.tokyonight.blue,
-        [""] = colors.tokyonight.blue,
-        V = colors.tokyonight.blue,
-        c = colors.tokyonight.magenta,
-        no = colors.tokyonight.red,
-        s = colors.tokyonight.orange,
-        S = colors.tokyonight.orange,
-        [""] = colors.tokyonight.orange,
-        ic = colors.tokyonight.yellow,
-        R = colors.tokyonight.violet,
-        Rv = colors.tokyonight.violet,
-        cv = colors.tokyonight.red,
-        ce = colors.tokyonight.red,
-        r = colors.tokyonight.cyan,
-        rm = colors.tokyonight.cyan,
-        ["r?"] = colors.tokyonight.cyan,
-        ["!"] = colors.tokyonight.red,
-        t = colors.tokyonight.red,
+        n = tokyonight.blue,
+        i = tokyonight.green,
+        v = tokyonight.purple,
+        [""] = tokyonight.purple,
+        V = tokyonight.purple,
+        c = tokyonight.magenta,
+        no = tokyonight.red,
+        s = tokyonight.orange,
+        S = tokyonight.orange,
+        [""] = tokyonight.orange,
+        ic = tokyonight.yellow,
+        R = tokyonight.purple,
+        Rv = tokyonight.purple,
+        cv = tokyonight.red,
+        ce = tokyonight.red,
+        r = tokyonight.cyan,
+        rm = tokyonight.cyan,
+        ["r?"] = tokyonight.cyan,
+        ["!"] = tokyonight.red,
+        t = tokyonight.red,
       }
       return { fg = mode_color[vim.fn.mode()] }
     end,

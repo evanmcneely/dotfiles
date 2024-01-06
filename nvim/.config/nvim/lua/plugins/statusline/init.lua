@@ -3,7 +3,8 @@ return {
   opts = function(_, opts)
     local components = require "plugins.statusline.components"
 
-    opts.options.component_separators = " "
+    -- override seperators
+    opts.options.component_separators = { left = "  ", right = "" }
     opts.options.section_separators = ""
 
     -- override lualine sections with custom statusline
@@ -19,11 +20,12 @@ return {
         components.diagnostics,
       },
       lualine_x = {
-        components.command,
+        components.noice_mode,
+        components.noice_command,
         components.debug_status,
         components.shift_width,
-        components.progress,
         components.location,
+        components.progress,
       },
       lualine_y = {},
       lualine_z = {},

@@ -153,5 +153,6 @@ return {
     Smiley = "",
     Package = "",
     CircuitBoard = "",
+    Vim = "",
   },
 }
