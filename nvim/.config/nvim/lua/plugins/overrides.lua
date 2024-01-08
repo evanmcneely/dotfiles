@@ -81,7 +81,7 @@ return {
         end, { "i", "s" }),
       }
 
-      -- addd border to docs
+      -- add border to docs
       opts.window = {
         documentation = cmp.config.window.bordered(),
       }
@@ -102,5 +102,34 @@ return {
         ["*"] = { "codespell" },
       },
     },
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      -- TODO: use neoconf for local setup
+      servers = {
+        pyright = {
+          reportGeneralTypeIssues = false, -- we don't use types at Leadpages
+          -- reportUnboundVariable = false, -- not working
+        },
+      },
+    },
+  },
+
+  {
+    "nvimtools/none-ls.nvim",
+    opts = function(_, opts)
+      local nls = require "null-ls"
+      opts.sources = opts.sources or {}
+      -- add codespell
+      table.insert(opts.sources, nls.builtins.diagnostics.codespell)
+    end,
+  },
+
+  {
+    "folke/noice.nvim",
+    -- do not start noice in the browser
+    enabled = not vim.g.started_by_firenvim,
   },
 }
