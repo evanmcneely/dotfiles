@@ -1,5 +1,5 @@
 return {
-  { "ellisonleao/gruvbox.nvim", enabled = false, priority = 1000, config = true },
+  { "ellisonleao/gruvbox.nvim", priority = 1000, config = true },
   { "navarasu/onedark.nvim", enabled = false, priority = 1000 },
   { "catppuccin/nvim", priority = 1000 },
   {
@@ -9,7 +9,7 @@ return {
     },
   },
 
-  -- Configure LazyVim colorscheme
+  -- Configure LazyVim colorscheme with this
   -- {
   --   "LazyVim/LazyVim",
   --   opts = {
@@ -20,10 +20,12 @@ return {
   -- use colors for specific filestypes
   {
     "folke/styler.nvim",
+    enabled = false, -- causes "unthemed content"
+    event = "VeryLazy", -- required
     opts = {
       themes = {
-        markdown = { colorscheme = "catppuccin-macchiato" },
-        help = { colorscheme = "catppuccin-mocha" },
+        markdown = { colorscheme = "catppuccin" },
+        help = { colorscheme = "gruvbox" },
       },
     },
   },

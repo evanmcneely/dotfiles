@@ -1,6 +1,7 @@
 -- show cursor line only in active window
 vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
   callback = function()
+    -- TODO: not on help docs
     local ok, cl = pcall(vim.api.nvim_win_get_var, 0, "auto-cursorline")
     if ok and cl then
       vim.wo.cursorline = true
@@ -19,13 +20,3 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
     end
   end,
 })
-
--- vim.api.nvim_create_autocmd({ "UIEnter" }, {
---   callback = function()
---     local client = vim.api.nvim_get_chan_info(vim.v.event.chan).client
---     if client ~= nil and client.name == "Firenvim" then
---       print "firenvim"
---       vim.o.laststatus = 0
---     end
---   end,
--- })
