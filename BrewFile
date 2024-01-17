@@ -9,6 +9,8 @@ brew 'stow'
 brew 'bat'
 brew 'tree'
 brew 'coreutils' # Those that come with macOS are outdated
+brew 'koekeishiya/formulae/yabai'
+brew 'koekeishiya/formulae/skhd'
 
 # apps
 cask 'visual-studio-code'
@@ -17,6 +19,7 @@ cask 'google-chrome'
 cask 'firefox'
 cask 'microsoft-edge'
 cask 'wezterm'
+cask 'hyperkey'
 
 # python
 brew 'python3'

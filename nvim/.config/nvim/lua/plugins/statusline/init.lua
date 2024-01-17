@@ -26,6 +26,7 @@ return {
         components.noice_command,
         components.debug_status,
         components.shift_width,
+        { "filetype", icons_enabled = false },
         components.location,
         components.progress,
       },

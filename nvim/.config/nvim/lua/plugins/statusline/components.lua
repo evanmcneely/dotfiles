@@ -1,6 +1,6 @@
 local icons = require "utils.icons"
 local Job = require "plenary.job"
-local tokyonight = require("tokyonight.colors").default
+local colors = require "nordic.colors"
 
 -- async get the git repo the current file is in
 local function get_repo()
@@ -38,9 +38,9 @@ return {
       removed = icons.git.removed,
     },
     diff_color = {
-      added = { fg = tokyonight.git.add },
-      modified = { fg = tokyonight.git.change },
-      removed = { fg = tokyonight.git.delete },
+      added = { fg = colors.green.base },
+      modified = { fg = colors.cyan.base },
+      removed = { fg = colors.red.base },
     },
     source = function()
       local gitsigns = vim.b.gitsigns_status_dict
@@ -57,7 +57,7 @@ return {
   filetype = { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
   pretty_path = {
     function()
-      -- modified and simplfied from LazyVim pretty path
+      -- modified and simplified from LazyVim pretty path
       local path = vim.fn.expand "%:p"
       local repo = get_repo()
       local cwd = vim.loop.cwd()
@@ -89,6 +89,12 @@ return {
       info = icons.diagnostics.Info,
       hint = icons.diagnostics.Hint,
     },
+    diagnostic_color = {
+      error = colors.red.bright,
+      warn = colors.yellow.bright,
+      hint = colors.green.blue2,
+      info = colors.blue3,
+    },
   },
   noice_command = {
     function()
@@ -97,7 +103,7 @@ return {
     cond = function()
       return package.loaded["noice"] and require("noice").api.status.command.has()
     end,
-    color = { fg = tokyonight.magenta },
+    color = { fg = colors.magenta.bright },
   },
   noice_mode = {
     function()
@@ -106,7 +112,7 @@ return {
     cond = function()
       return package.loaded["noice"] and require("noice").api.status.mode.has()
     end,
-    color = { fg = tokyonight.orange },
+    color = { fg = colors.orange.bright },
   },
   debug_status = {
     function()
@@ -115,7 +121,7 @@ return {
     cond = function()
       return package.loaded["dap"] and require("dap").status() ~= ""
     end,
-    color = { fg = tokyonight.green },
+    color = { fg = colors.green.bright },
   },
   shift_width = {
     function()
@@ -123,6 +129,7 @@ return {
       return icons.ui.Tab .. " " .. shiftwidth
     end,
     padding = 1,
+    color = { fg = colors.cyan.bright },
   },
   progress = { "progress" },
   location = { "location" },
@@ -131,26 +138,26 @@ return {
     color = function()
       -- auto change color according to neovims mode
       local mode_color = {
-        n = tokyonight.blue,
-        i = tokyonight.green,
-        v = tokyonight.purple,
-        [""] = tokyonight.purple,
-        V = tokyonight.purple,
-        c = tokyonight.magenta,
-        no = tokyonight.red,
-        s = tokyonight.orange,
-        S = tokyonight.orange,
-        [""] = tokyonight.orange,
-        ic = tokyonight.yellow,
-        R = tokyonight.purple,
-        Rv = tokyonight.purple,
-        cv = tokyonight.red,
-        ce = tokyonight.red,
-        r = tokyonight.cyan,
-        rm = tokyonight.cyan,
-        ["r?"] = tokyonight.cyan,
-        ["!"] = tokyonight.red,
-        t = tokyonight.red,
+        n = colors.blue1,
+        i = colors.green.base,
+        v = colors.magenta.base,
+        [""] = colors.magenta.base,
+        V = colors.magenta.base,
+        c = colors.magenta.dim,
+        no = colors.red.base,
+        s = colors.orange.base,
+        S = colors.orange.base,
+        [""] = colors.orange.base,
+        ic = colors.yellow.bese,
+        R = colors.magenta.base,
+        Rv = colors.magenta.base,
+        cv = colors.red.base,
+        ce = colors.red.base,
+        r = colors.cyan.base,
+        rm = colors.cyan.base,
+        ["r?"] = colors.cyan.base,
+        ["!"] = colors.red.base,
+        t = colors.red.base,
       }
       return { fg = mode_color[vim.fn.mode()] }
     end,

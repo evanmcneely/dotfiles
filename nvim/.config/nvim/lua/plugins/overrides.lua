@@ -18,9 +18,9 @@ return {
     },
     opts = {
       enable_diagnostics = false, -- don't need it
-      window = { width = 60 }, -- default width
+      window = { width = 60, position = "current" }, -- default width
       default_component_configs = {
-        modified = { symbol = "~" }, -- default is [+]
+        modified = { symbol = "" }, -- default is [+]
         file_size = { enabled = false }, -- hide
         type = { enabled = false }, -- hide
         created = { enabled = false }, -- hide
@@ -92,15 +92,14 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
-        -- use prettierd if possible
-        javascript = { { "prettierd", "prettier" } },
-        javascriptreact = { { "prettierd", "prettier" } },
-        typescript = { { "prettierd", "prettier" } },
-        typescriptreact = { { "prettierd", "prettier" } },
         python = { "isort", "black" },
-        -- ["php = { "phpcbf" }, -- not tested
+        php = { "phpcbf" },
         ["*"] = { "codespell" },
       },
+    },
+    keys = {
+      -- stylua: ignore
+      { "<leader>f", function() require("conform").format { lsp_fallback = true } end, mode = { "n", "v" }, desc = "Format", },
     },
   },
 
@@ -131,5 +130,13 @@ return {
     "folke/noice.nvim",
     -- do not start noice in the browser
     enabled = not vim.g.started_by_firenvim,
+  },
+
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      -- set line blame on by default
+      current_line_blame = true,
+    },
   },
 }

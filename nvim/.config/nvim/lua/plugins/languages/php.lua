@@ -26,13 +26,14 @@ return {
           extra_args = { "--standard=phpcs.xml" },
         }
       )
-      table.insert(
-        opts.sources,
-        nls.builtins.formatting.phpcbf.with {
-          command = "./vendor/bin/phpcbf",
-          extra_args = { "--standard=phpcs.xml" },
-        }
-      )
+      -- using conform, not needed
+      --   table.insert(
+      --     opts.sources,
+      --     nls.builtins.formatting.phpcbf.with {
+      --       command = "./vendor/bin/phpcbf",
+      --       extra_args = { "--standard=phpcs.xml" },
+      --     }
+      --   )
     end,
   },
   {

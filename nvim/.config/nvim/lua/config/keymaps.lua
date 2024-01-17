@@ -12,9 +12,9 @@ vim.keymap.del("n", "<leader>`") -- next buffer
 vim.keymap.del("n", "<leader>L") -- Lazy
 vim.keymap.del("n", "<leader>l") -- Lazy
 
--- Better escape using jk in insert and terminal mode
-vim.keymap.set("i", "jj", "<ESC>")
-vim.keymap.set("t", "jj", "<C-\\><C-n>")
+-- Better escape using jj in insert and terminal mode
+-- vim.keymap.set("i", "jj", "<ESC>")
+-- vim.keymap.set("t", "jj", "<C-\\><C-n>")
 
 -- insert blank lines above and below
 vim.keymap.set("n", "[<space>", "O<esc>^", { desc = "Pad above" })
@@ -45,3 +45,8 @@ vim.keymap.set("n", "<S-Up>", "<cmd>resize +2<CR>")
 vim.keymap.set("n", "<S-Down>", "<cmd>resize -2<CR>")
 vim.keymap.set("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
 vim.keymap.set("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
+
+-- formatting with a longer timeout
+-- vim.keymap.set("n", "<leader>f", function()
+--   vim.lsp.buf.format { timeout_ms = 3000 }
+-- end, { desc = "Format" })

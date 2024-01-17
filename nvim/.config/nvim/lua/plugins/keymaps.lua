@@ -13,8 +13,9 @@ return {
         ["<leader><tab>"] = { name = "+tabs" },
         ["<leader>b"] = { name = "+buffer" },
         ["<leader>c"] = { name = "+code" },
-        ["<leader>e"] = { name = "+explore" },
+        -- ["<leader>e"] = { name = "+explore" },
         ["<leader>g"] = { name = "+git", h = { name = "+hunk" } },
+        -- ["<leader>h"] = { name = "+harpoon" },
         ["<leader>l"] = { name = "+lsp" },
         ["<leader>q"] = { name = "+quit/session" },
         ["<leader>s"] = { name = "+search" },
@@ -39,11 +40,8 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
     keys = function()
       return {
-        { "<leader>ee", "<cmd>Neotree toggle<cr>", desc = "Files" },
-        { "<leader>eb", "<cmd>Neotree buffers<cr>", desc = "Buffers" },
-        { "<leader>en", "<cmd>Neotree action=focus<cr>", desc = "Explorer focus" },
-        { "<leader>es", "<cmd>Neotree show<cr>", desc = "Explorer show" },
-        { "<leader>ec", "<cmd>Neotree close<cr>", desc = "Explorer close" },
+        { "<C-e>", "<cmd>Neotree toggle<cr>", desc = "File Explorer" },
+        -- { "<leader>eb", "<cmd>Neotree buffers<cr>", desc = "Buffer Explorer" },
       }
     end,
   },
@@ -68,11 +66,11 @@ return {
     keys = function()
       return {
         { "<leader><leader>", "<cmd>Telescope git_files theme=dropdown previewer=false<cr>", desc = "Find Files" },
-        { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-        { "<leader>sb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
+        { "<leader>sf", "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find Files" },
+        -- { "<leader>sb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
         { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Marks" },
         { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
-        { "<leader>sr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+        { "<leader>sr", "<cmd>Telescope oldfiles theme=dropdown previewer=false<cr>", desc = "Recent" },
         {
           "<leader>sb",
           function()
@@ -99,5 +97,21 @@ return {
         { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll backward", mode = {"i", "n", "s"}},
       }
     end,
+  },
+
+  -- don't need these
+  {
+    "williamboman/mason.nvim",
+    keys = function()
+      return {}
+    end,
+  },
+
+  -- add the ability to toggle line blame
+  {
+    "lewis6991/gitsigns.nvim",
+    keys = {
+      { "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "Toggle line blame" },
+    },
   },
 }
