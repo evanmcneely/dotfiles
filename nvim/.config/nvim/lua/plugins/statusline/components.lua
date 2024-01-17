@@ -2,6 +2,16 @@ local icons = require "utils.icons"
 local Job = require "plenary.job"
 local colors = require "nordic.colors"
 
+local function apply_highlight(component, text)
+  component.hl_cache = component.hl_cache or {}
+  local hl = component.hl_cache["this_is_hack"]
+  if not hl then
+    hl = component:create_hl { fg = colors.orange.bright }
+    component.hl_cache["this_is_hack"] = hl
+  end
+  return component:format_hl(hl) .. text .. component:get_default_hl()
+end
+
 -- async get the git repo the current file is in
 local function get_repo()
   local results = {}
@@ -56,7 +66,7 @@ return {
   },
   filetype = { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
   pretty_path = {
-    function()
+    function(self)
       -- modified and simplified from LazyVim pretty path
       local path = vim.fn.expand "%:p"
       local repo = get_repo()
@@ -75,7 +85,7 @@ return {
       local parts = vim.split(path, "[\\/]")
       -- use only the last two parts of the path if it is long
       if #parts >= 3 then
-        parts = { "…", parts[#parts - 1], parts[#parts] }
+        parts = { "…", parts[#parts - 1], apply_highlight(self, parts[#parts]) }
       end
       -- join it all together
       return repo .. "/" .. table.concat(parts, "/")
