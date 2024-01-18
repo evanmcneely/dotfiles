@@ -6,7 +6,7 @@ local function apply_highlight(component, text)
   component.hl_cache = component.hl_cache or {}
   local hl = component.hl_cache["this_is_hack"]
   if not hl then
-    hl = component:create_hl { fg = colors.orange.bright }
+    hl = component:create_hl { fg = colors.blue1 }
     component.hl_cache["this_is_hack"] = hl
   end
   return component:format_hl(hl) .. text .. component:get_default_hl()
@@ -48,9 +48,9 @@ return {
       removed = icons.git.removed,
     },
     diff_color = {
-      added = { fg = colors.green.base },
-      modified = { fg = colors.cyan.base },
-      removed = { fg = colors.red.base },
+      added = { fg = colors.green.dim },
+      modified = { fg = colors.cyan.dim },
+      removed = { fg = colors.red.dim },
     },
     source = function()
       local gitsigns = vim.b.gitsigns_status_dict
@@ -90,6 +90,11 @@ return {
       -- join it all together
       return repo .. "/" .. table.concat(parts, "/")
     end,
+  },
+  filename = {
+    "filetype",
+    icons_enabled = false,
+    -- color = { fg = colors.grey5 },
   },
   diagnostics = {
     "diagnostics",
@@ -139,7 +144,7 @@ return {
       return icons.ui.Tab .. " " .. shiftwidth
     end,
     padding = 1,
-    color = { fg = colors.cyan.bright },
+    -- color = { fg = colors.cyan.bright },
   },
   progress = { "progress" },
   location = { "location" },
