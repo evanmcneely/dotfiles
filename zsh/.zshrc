@@ -1,5 +1,5 @@
 export DOTFILES=$HOME/.dotfiles
-ZSH_CUSTOM=$DOTFILES/zsh/zsh-custom
+ZSH_CUSTOM=$DOTFILES/zsh/.zsh-custom
 
 # disable oh-my-zsh update checks
 zstyle ':omz:update' mode disabled
