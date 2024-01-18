@@ -93,14 +93,17 @@ ctrl + alt + shift - h : window=$(yabai -m query --windows --window | jq -r '.id
 # # ##### # SPACES # ##### # #
 
 # scroll through spaces
-# ?? yabaiSwitchAndFocus
-# cmd + alt - 1 :
-# cmd + alt - 2 :
-
+cmd + alt - 1 : yabaiSwitchSpace 1
+cmd + alt - 2 : yabaiSwitchSpace 2
+cmd + alt - 3 : yabaiSwitchSpace 3
+cmd + alt - 4 : yabaiSwitchSpace 4
+# cmd + alt - 1 : yabaiSwitchAndFocusSIP 1
+# cmd + alt - 2 : yabaiSwitchAndFocusSIP 2
+# cmd + alt - 3 : yabaiSwitchAndFocusSIP 3
+# cmd + alt - 4 : yabaiSwitchAndFocusSIP 4
 # move active window to next space on current display
 cmd + alt + shift - 1 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '1' ]]; then yabai -m window --space 2; elif [[ '{}' = '2' ]]; then yabai -m window --space 1; fi"
 cmd + alt + shift - 2 :yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '3' ]]; then yabai -m window --space 4; elif [[ '{}' = '4' ]]; then yabai -m window --space 3; fi"
-
 # move window to space on next display
 # cmd + alt - l : yabaiMoveWindowLeftAndFollowFocus
 # cmd + alt - h : yabaiMoveWindowRightAndFollowFocus
@@ -110,7 +113,6 @@ cmd + alt + shift - 2 :yabai -m query --spaces --space | jq -re ".index" | xargs
 # focus displays
 cmd - 1 : yabai -m display --focus 1
 cmd - 2 : yabai -m display --focus 2
-cmd - 3 : yabai -m display --focus 3
 
 # # ##### # WINDOWS # ##### # #
 
@@ -136,7 +138,10 @@ shift + alt - right : yabai -m window --resize right:20:0
 
 # # ##### # OTHER # ##### # #
 
-# Close active application
+# close active application
 ctrl + alt - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
-# open browser in float
+# float / unfloat window and center on screen
+alt - f : yabai -m window --toggle float;\
+yabai -m window --grid 4:4:1:1:2:2 ## toggle sticky alt - s : yabai -m window --toggle sticky ## toggle sticky, float and resize to picture-in-picture size alt - p : yabai -m window --toggle sticky;\ yabai -m window --grid 5:5:4:0:1:1 ## change layout of desktop ctrl + alt - a : yabai -m space --layout bsp ctrl + alt - d : yabai -m space --layout float
 # open wezterm
+ctrl + alt - t : /Applications/WezTerm.app/Contents/MacOS/wezterm
