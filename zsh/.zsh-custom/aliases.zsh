@@ -42,3 +42,4 @@ alias ....='cd ../../..'
 alias rds="find . -name ".DS_Store" -delete"
 alias luamake=/Users/evan/.config/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
 alias review='PYENV_VERSION=gpt-pp python ~/dev/personal/gpt_pp/cli_pr_review.py'
+alias fn='fd --type f --hidden --exclude .git | fzf-tmux -p | xargs nvim'
