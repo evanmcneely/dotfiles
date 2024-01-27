@@ -76,6 +76,7 @@
 # restart stuff
 cmd + ctrl + alt - y : yabai --restart-service
 cmd + ctrl + alt - s : skhd --reload
+cmd + ctrl + alt + shift - s : skhd --restart-service
 cmd + ctrl + alt - t : tmux source-file ~/.config/tmux/tmux.conf
 
 # # ##### # STACKS # ##### # #
@@ -84,8 +85,8 @@ cmd + ctrl + alt - t : tmux source-file ~/.config/tmux/tmux.conf
 alt - n : yabai -m window --focus stack.next || yabai -m window --focus stack.first
 alt - p : yabai -m window --focus stack.prev || yabai -m window --focus stack.last
 # stack next window onto current window
-ctrl + alt + shift - l : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window east --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
-ctrl + alt + shift - h : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window west --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
+# ctrl + alt + shift - l : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window east --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
+# ctrl + alt + shift - h : window=$(yabai -m query --windows --window | jq -r '.id') && yabai -m window west --stack $window || (yabai -m window $window --toggle float && yabai -m window $window --toggle float)
 # create a stack
 # ctrl + alt - c : yabai -m query --windows --window | jq -re "." | xargs -I{} yabai -m window 1 --stack {}
 # remove stack
@@ -93,29 +94,24 @@ ctrl + alt + shift - h : window=$(yabai -m query --windows --window | jq -r '.id
 
 # # ##### # SPACES # ##### # #
 
-# scroll through spaces
+# navigate to spaces
 cmd - a : yabaiSwitchSpace 1
 cmd - o : yabaiSwitchSpace 2
 cmd - e : yabaiSwitchSpace 3
 cmd - u : yabaiSwitchSpace 4
 cmd - i : yabaiSwitchSpace 5
 cmd - d : yabaiSwitchSpace 6
-# cmd + alt - 1 : yabaiSwitchAndFocusSIP 1
-# cmd + alt - 2 : yabaiSwitchAndFocusSIP 2
-# cmd + alt - 3 : yabaiSwitchAndFocusSIP 3
-# cmd + alt - 4 : yabaiSwitchAndFocusSIP 4
 # move active window to next space on current display
-cmd + alt + shift - 1 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '1' ]]; then yabai -m window --space 2; elif [[ '{}' = '2' ]]; then yabai -m window --space 1; fi"
-cmd + alt + shift - 2 :yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '3' ]]; then yabai -m window --space 4; elif [[ '{}' = '4' ]]; then yabai -m window --space 3; fi"
-# move window to space on next display
-# cmd + alt - l : yabaiMoveWindowLeftAndFollowFocus
-# cmd + alt - h : yabaiMoveWindowRightAndFollowFocus
+# cmd + alt + shift - 1 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '1' ]]; then yabai -m window --space 2; elif [[ '{}' = '2' ]]; then yabai -m window --space 1; fi"
+# cmd + alt + shift - 2 :yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '3' ]]; then yabai -m window --space 4; elif [[ '{}' = '4' ]]; then yabai -m window --space 3; fi"
 
 # # ##### # DISPLAYS # ##### # #
 
 # focus displays
 cmd - 1 : yabai -m display --focus 1
 cmd - 2 : yabai -m display --focus 2
+# toggle between recent displays
+ctrl + alt - r : yabai -m display --focus recent
 
 # # ##### # WINDOWS # ##### # #
 
@@ -124,26 +120,30 @@ alt - l : yabai -m window --focus east || yabai -m window --focus $(yabai -m que
 alt - h : yabai -m window --focus west || yabai -m window --focus $(yabai -m query --spaces --display west | jq '.[] | select(."is-visible" == true) | ."last-window"')
 # alt - j : yabai -m window --focus south
 # alt - k : yabai -m window --focus north
+# toggle between recent windows
+alt - r : yabai -m window --focus recent
 # swap window
 ctrl + alt - h : yabai -m window --swap west || yabaiMoveWindowLeftAndFollowFocus
 ctrl + alt - l : yabai -m window --swap east || yabaiMoveWindowRightAndFollowFocus
 # ctrl + alt - j : yabai -m window --swap south
 # ctrl + alt - k : yabai -m window --swap north
 # rotate tree
-ctrl + alt - x : yabai -m space --rotate 90
+# ctrl + alt - r : yabai -m space --rotate 90
 # balance out all windows both horizontally and vertically
-ctrl + alt - e : yabai -m space --balance
+# ctrl + alt - e : yabai -m space --balance
 ## increase window size
-shift + alt - left : yabai -m window --resize right:-20:0
-shift + alt - down : yabai -m window --resize bottom:0:20
+# shift + alt - left : yabai -m window --resize right:-20:0
+# shift + alt - down : yabai -m window --resize bottom:0:20
 # shift + alt - up : yabai -m window --resize bottom:0:-20
 # shift + alt - right : yabai -m window --resize right:20:0
 
 # # ##### # OTHER # ##### # #
 
+# toggle full screen
+cmd + ctrl + alt - space : yabai -m window --toggle native-fullscreen
 # close active application
 ctrl + alt - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
-# float / unfloat window and center on screen
-alt - f : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
+# float / unfloat window and center on screen - doesn't work when using stacks
+# crtl + alt - f : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
 # open wezterm
 ctrl + alt - t : /Applications/WezTerm.app/Contents/MacOS/wezterm
