@@ -9,9 +9,10 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.colors = { background = "#1d2029", cursor_bg = "#bdbfbe", cursor_fg = "#212121" }
+-- config.colors = { background = "#1d2029", cursor_bg = "#bdbfbe", cursor_fg = "#212121" }
 -- config.color_scheme = "Night Owl (Gogh)"
-config.color_scheme = "nord"
+-- config.color_scheme = "nord"
+config.color_scheme = "tokyonight"
 config.font = wezterm.font("Fira Code")
 config.font_size = 14
 config.line_height = 1.3
@@ -24,7 +25,7 @@ config.keys = {
 -- will manually check and download updates
 config.check_for_updates = false
 
--- config.window_decorations = "RESIZE"
+config.window_decorations = "RESIZE"
 -- config.use_dead_keys = false
 config.enable_tab_bar = false
 

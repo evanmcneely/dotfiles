@@ -76,6 +76,7 @@
 # restart stuff
 cmd + ctrl + alt - y : yabai --restart-service
 cmd + ctrl + alt - s : skhd --reload
+cmd + ctrl + alt - t : tmux source-file ~/.config/tmux/tmux.conf
 
 # # ##### # STACKS # ##### # #
 
@@ -93,10 +94,12 @@ ctrl + alt + shift - h : window=$(yabai -m query --windows --window | jq -r '.id
 # # ##### # SPACES # ##### # #
 
 # scroll through spaces
-cmd + alt - 1 : yabaiSwitchSpace 1
-cmd + alt - 2 : yabaiSwitchSpace 2
-cmd + alt - 3 : yabaiSwitchSpace 3
-cmd + alt - 4 : yabaiSwitchSpace 4
+cmd - a : yabaiSwitchSpace 1
+cmd - o : yabaiSwitchSpace 2
+cmd - e : yabaiSwitchSpace 3
+cmd - u : yabaiSwitchSpace 4
+cmd - i : yabaiSwitchSpace 5
+cmd - d : yabaiSwitchSpace 6
 # cmd + alt - 1 : yabaiSwitchAndFocusSIP 1
 # cmd + alt - 2 : yabaiSwitchAndFocusSIP 2
 # cmd + alt - 3 : yabaiSwitchAndFocusSIP 3
@@ -119,13 +122,13 @@ cmd - 2 : yabai -m display --focus 2
 # focus windows - navigate around
 alt - l : yabai -m window --focus east || yabai -m window --focus $(yabai -m query --spaces --display east | jq '.[] | select(."is-visible" == true) | ."first-window"')
 alt - h : yabai -m window --focus west || yabai -m window --focus $(yabai -m query --spaces --display west | jq '.[] | select(."is-visible" == true) | ."last-window"')
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
+# alt - j : yabai -m window --focus south
+# alt - k : yabai -m window --focus north
 # swap window
 ctrl + alt - h : yabai -m window --swap west || yabaiMoveWindowLeftAndFollowFocus
 ctrl + alt - l : yabai -m window --swap east || yabaiMoveWindowRightAndFollowFocus
-ctrl + alt - j : yabai -m window --swap south
-ctrl + alt - k : yabai -m window --swap north
+# ctrl + alt - j : yabai -m window --swap south
+# ctrl + alt - k : yabai -m window --swap north
 # rotate tree
 ctrl + alt - x : yabai -m space --rotate 90
 # balance out all windows both horizontally and vertically
@@ -133,15 +136,14 @@ ctrl + alt - e : yabai -m space --balance
 ## increase window size
 shift + alt - left : yabai -m window --resize right:-20:0
 shift + alt - down : yabai -m window --resize bottom:0:20
-shift + alt - up : yabai -m window --resize bottom:0:-20
-shift + alt - right : yabai -m window --resize right:20:0
+# shift + alt - up : yabai -m window --resize bottom:0:-20
+# shift + alt - right : yabai -m window --resize right:20:0
 
 # # ##### # OTHER # ##### # #
 
 # close active application
 ctrl + alt - backspace : $(yabai -m window $(yabai -m query --windows --window | jq -re ".id") --close)
 # float / unfloat window and center on screen
-alt - f : yabai -m window --toggle float;\
-yabai -m window --grid 4:4:1:1:2:2 ## toggle sticky alt - s : yabai -m window --toggle sticky ## toggle sticky, float and resize to picture-in-picture size alt - p : yabai -m window --toggle sticky;\ yabai -m window --grid 5:5:4:0:1:1 ## change layout of desktop ctrl + alt - a : yabai -m space --layout bsp ctrl + alt - d : yabai -m space --layout float
+alt - f : yabai -m window --toggle float && yabai -m window --grid 4:4:1:1:2:2
 # open wezterm
 ctrl + alt - t : /Applications/WezTerm.app/Contents/MacOS/wezterm

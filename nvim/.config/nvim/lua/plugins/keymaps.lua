@@ -40,8 +40,7 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
     keys = function()
       return {
-        { "<C-e>", "<cmd>Neotree toggle<cr>", desc = "File Explorer" },
-        -- { "<leader>eb", "<cmd>Neotree buffers<cr>", desc = "Buffer Explorer" },
+        { "<C-e>", "<cmd>Neotree toggle %:p:h<cr>", desc = "File Explorer" },
       }
     end,
   },
@@ -65,11 +64,12 @@ return {
     -- replace all Telescope keymaps with my own
     keys = function()
       return {
-        { "<leader><leader>", "<cmd>Telescope git_files theme=dropdown previewer=false<cr>", desc = "Find Files" },
-        { "<leader>sf", "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find Files" },
+        { "<leader><leader>", "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find Files" },
+        { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
         -- { "<leader>sb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
         { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Marks" },
         { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
+        { "<leader>sv", "<cmd>Telescope git_files theme=dropdown previewer=false<cr>", desc = "Git Files" },
         { "<leader>sr", "<cmd>Telescope oldfiles theme=dropdown previewer=false<cr>", desc = "Recent" },
         {
           "<leader>sb",

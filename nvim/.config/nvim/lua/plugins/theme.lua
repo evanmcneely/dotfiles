@@ -2,7 +2,7 @@ return {
   {
     "navarasu/onedark.nvim",
     lazy = false,
-    -- enabled = false,
+    enabled = false,
     priority = 1000,
     opts = {
       style = "deep",
@@ -16,6 +16,7 @@ return {
   },
   {
     "AlexvZyl/nordic.nvim",
+    enabled = false,
     lazy = false,
     priority = 1000,
     opts = function()
@@ -26,13 +27,14 @@ return {
           style = "classic",
         },
         override = {
-          TelescopePromptTitle = { fg = palette.orange.dim },
-          TelescopeResultsTitle = { fg = palette.orange.dim },
-          TelescopePreviewTitle = { fg = palette.blue2 },
-          TelescopePromptBorder = { fg = palette.orange.dim },
-          TelescopeResultsBorder = { fg = palette.orange.dim },
-          TelescopePreviewBorder = { fg = palette.blue2 },
-          MatchParen = { underline = false },
+          TelescopePromptTitle = { fg = palette.cyan.dim },
+          TelescopeResultsTitle = { fg = palette.cyan.dim },
+          TelescopePreviewTitle = { fg = palette.cyan.dim },
+          TelescopePromptBorder = { fg = palette.cyan.dim },
+          TelescopeResultsBorder = { fg = palette.cyan.dim },
+          TelescopePreviewBorder = { fg = palette.cyan.dim },
+          -- MatchParen = { underline = false },
+          PmenuSel = { fg = palette.yellow.dim, bg = palette.black0 }, -- cmp menu
           -- Normal = { bg = "#1c1f27" },
           -- NormalSB = { bg = "red" },
           -- SignColumnSB = { bg = "#1c1f27" },
@@ -52,7 +54,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "nordic",
+      -- colorscheme = "nordic",
     },
   },
 }

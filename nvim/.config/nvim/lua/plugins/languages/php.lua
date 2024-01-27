@@ -8,7 +8,7 @@ return {
   {
     "williamboman/mason.nvim",
     opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { "phpcs", "phpcbf" })
+      vim.list_extend(opts.ensure_installed, { "phpcs" })
     end,
   },
   {
@@ -18,7 +18,6 @@ return {
       opts.sources = opts.sources or {}
 
       -- TODO: set this up on a project level?
-      -- use conform.nvim?
       table.insert(
         opts.sources,
         nls.builtins.diagnostics.phpcs.with {
@@ -26,14 +25,6 @@ return {
           extra_args = { "--standard=phpcs.xml" },
         }
       )
-      -- using conform, not needed
-      --   table.insert(
-      --     opts.sources,
-      --     nls.builtins.formatting.phpcbf.with {
-      --       command = "./vendor/bin/phpcbf",
-      --       extra_args = { "--standard=phpcs.xml" },
-      --     }
-      --   )
     end,
   },
   {

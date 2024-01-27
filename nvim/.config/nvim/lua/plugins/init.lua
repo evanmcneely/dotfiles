@@ -1,5 +1,5 @@
 return {
-  -- autoset the tabs size
+  -- autoset the tabs seze
   {
     "NMAC427/guess-indent.nvim",
     event = "BufReadPost",
@@ -7,9 +7,6 @@ return {
       require("guess-indent").setup {}
     end,
   },
-
-  -- better repeat on .
-  { "tpope/vim-repeat", event = "VeryLazy" },
 
   -- easily open and join statements to multiple and single lines
   { "AndrewRadev/splitjoin.vim", event = "BufReadPost" },
@@ -23,6 +20,9 @@ return {
     event = "BufReadPost",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
+    },
+    opts = {
+      enable_backwards = false,
     },
     config = function()
       require("tabout").setup {}
@@ -67,9 +67,9 @@ return {
     "tpope/vim-fugitive",
     cmd = { "Gdiff", "Git" },
     keys = {
-      -- { "<leader>gC", "<cmd>Gdiff<cr>", desc = "Resolve conflict" },
-      -- { "<leader>u", "<cmd>diffget //2<cr>", desc = "Resolve left" },
-      -- { "<leader>h", "<cmd>diffget //3<cr>", desc = "Resolve right" },
+      { "<leader>gC", "<cmd>Gdiff<cr>", desc = "Resolve conflict" },
+      { "<leader>gl", "<cmd>diffget //2<cr>", desc = "Resolve left" },
+      { "<leader>gr", "<cmd>diffget //3<cr>", desc = "Resolve right" },
     },
   },
 
@@ -93,6 +93,7 @@ return {
 
   {
     "ThePrimeagen/harpoon",
+    -- branch = "harpoon2",
     --stylua: ignore
     keys = {
       { "<C-a>", function() require("harpoon.mark").add_file() end, desc = "Add file to Harpoon" },
@@ -104,19 +105,19 @@ return {
       { "<leader>2", function() require("harpoon.ui").nav_file(2) end, desc = "File 2" },
       { "<leader>3", function() require("harpoon.ui").nav_file(3) end, desc = "File 3" },
       { "<leader>4", function() require("harpoon.ui").nav_file(4) end, desc = "File 4" },
-      -- { "<leader>5", function() require("harpoon.term").sendCommand(1, 1) end, desc = "Command 1" },
-      -- { "<leader>6", function() require("harpoon.term").sendCommand(2, 1) end, desc = "Command 2" },
-      -- { "<leader>7", function() require("harpoon.term").sendCommand(3, 3) end, desc = "Command 3" },
-      -- { "<leader>8", function() require("harpoon.term").sendCommand(2, 4) end, desc = "Command 4" },
-      { "<leader>5", function() require("harpoon.tmux").sendCommand(2, 1) end, desc = "Command 1" },
-      { "<leader>6", function() require("harpoon.tmux").sendCommand(2, 2) end, desc = "Command 2" },
-      { "<leader>7", function() require("harpoon.tmux").sendCommand(2, 3) end, desc = "Command 3" },
-      { "<leader>8", function() require("harpoon.tmux").sendCommand(2, 4) end, desc = "Command 4" },
+      -- { "<leader>5", function() require("harpoon.term").gotoTerminal(1) end, desc = "Open terminal 1" },
+      -- { "<leader>6", function() require("harpoon.term").sendCommand(1, 1) end, desc = "Command 2" },
+      -- { "<leader>7", function() require("harpoon.term").sendCommand(1, 2) end, desc = "Command 3" },
+      -- { "<leader>8", function() require("harpoon.term").sendCommand(1, 3) end, desc = "Command 4" },
+      -- { "<leader>5", function() require("harpoon.tmux").sendCommand(1, 1) end, desc = "Command 1" },
+      -- { "<leader>6", function() require("harpoon.tmux").sendCommand(1, 2) end, desc = "Command 2" },
+      -- { "<leader>7", function() require("harpoon.tmux").sendCommand(1, 3) end, desc = "Command 3" },
+      -- { "<leader>8", function() require("harpoon.tmux").sendCommand(1, 4) end, desc = "Command 4" },
     },
     opts = {
       global_settings = {
-        save_on_toggle = true,
-        enter_on_sendcmd = true,
+        -- save_on_toggle = true,
+        -- enter_on_sendcmd = true,
       },
     },
   },
@@ -139,7 +140,46 @@ return {
     },
   },
 
-  -- use neovim in the browser
+  -- generate github links for the current file
+  {
+    "ruifm/gitlinker.nvim",
+    lazy = "BufReadPost",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("gitlinker").setup()
+    end,
+    keys = {
+      {
+        "<leader>gy",
+        function()
+          require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").copy_to_clipboard })
+        end,
+        desc = "Link to Github",
+      },
+      {
+        "<leader>gY",
+        function()
+          require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").open_in_browser })
+        end,
+        desc = "Open in Github",
+      },
+    },
+  },
+
+  {
+    "Exafunction/codeium.vim",
+    event = "InsertEnter",
+    -- stylua: ignore
+    config = function ()
+      vim.g.codeium_disable_bindings = 1
+      vim.keymap.set("i", "<S-Tab>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
+      -- vim.keymap.set("i", "<C-a>", function() return vim.fn["codeium#Complete"]() end, { expr = true })
+      vim.keymap.set("i", "<C-]>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
+      vim.keymap.set("i", "<C-[>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
+      vim.keymap.set("i", "<C-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
+    end,
+  },
+
   {
     "glacambre/firenvim",
     -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297

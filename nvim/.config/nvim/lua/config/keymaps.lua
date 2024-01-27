@@ -12,20 +12,6 @@ vim.keymap.del("n", "<leader>`") -- next buffer
 vim.keymap.del("n", "<leader>L") -- Lazy
 vim.keymap.del("n", "<leader>l") -- Lazy
 
--- remap move lines to Control
-vim.keymap.del("n", "<A-j>")
-vim.keymap.del("v", "<A-j>")
-vim.keymap.del("i", "<A-j>")
-vim.keymap.del("n", "<A-k>")
-vim.keymap.del("v", "<A-k>")
-vim.keymap.del("i", "<A-k>")
-vim.keymap.set("n", "<C-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
-vim.keymap.set("n", "<C-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
-vim.keymap.set("i", "<C-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
-vim.keymap.set("i", "<C-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
-vim.keymap.set("v", "<C-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
-vim.keymap.set("v", "<C-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
-
 -- insert blank lines above and below
 vim.keymap.set("n", "[<space>", "O<esc>^", { desc = "Pad above" })
 vim.keymap.set("n", "]<space>", "o<esc>^", { desc = "Pad below" })
@@ -55,8 +41,3 @@ vim.keymap.set("n", "<S-Up>", "<cmd>resize +2<CR>")
 vim.keymap.set("n", "<S-Down>", "<cmd>resize -2<CR>")
 vim.keymap.set("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
 vim.keymap.set("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
-
--- formatting with a longer timeout
--- vim.keymap.set("n", "<leader>f", function()
---   vim.lsp.buf.format { timeout_ms = 3000 }
--- end, { desc = "Format" })

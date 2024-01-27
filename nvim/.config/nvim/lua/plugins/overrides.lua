@@ -49,8 +49,8 @@ return {
 
       -- add tab completion and C-j + C-k navigation
       opts.mapping = {
-        ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-        ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+        -- ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+        -- ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
@@ -72,7 +72,7 @@ return {
             fallback()
           end
         end, { "i", "s", "c" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
+        ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
           else
@@ -81,10 +81,7 @@ return {
         end, { "i", "s" }),
       }
 
-      -- add border to docs
-      opts.window = {
-        documentation = cmp.config.window.bordered(),
-      }
+      opts.experimental = {}
     end,
   },
 
@@ -92,6 +89,22 @@ return {
     "stevearc/conform.nvim",
     opts = {
       formatters_by_ft = {
+        javascript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
+        vue = { "prettier" },
+        css = { "prettier" },
+        scss = { "prettier" },
+        less = { "prettier" },
+        html = { "prettier" },
+        json = { "prettier" },
+        jsonc = { "prettier" },
+        yaml = { "prettier" },
+        markdown = { "prettier" },
+        ["markdown.mdx"] = { "prettier" },
+        graphql = { "prettier" },
+        handlebars = { "prettier" },
         python = { "isort", "black" },
         php = { "phpcbf" },
         ["*"] = { "codespell" },
@@ -130,13 +143,5 @@ return {
     "folke/noice.nvim",
     -- do not start noice in the browser
     enabled = not vim.g.started_by_firenvim,
-  },
-
-  {
-    "lewis6991/gitsigns.nvim",
-    opts = {
-      -- set line blame on by default
-      current_line_blame = true,
-    },
   },
 }
