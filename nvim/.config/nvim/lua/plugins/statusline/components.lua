@@ -74,11 +74,11 @@ return {
       local cwd = vim.loop.cwd()
 
       if repo == "no git" then
-        repo = ""
+        repo = "?"
       end
 
       if path == "" then
-        return "…?"
+        return repo .. "/…?"
       end
 
       -- path from cwd split into table
@@ -87,6 +87,8 @@ return {
       -- use only the last two parts of the path if it is long
       if #parts >= 3 then
         parts = { "…", parts[#parts - 1], apply_highlight(self, parts[#parts]) }
+      else
+        parts[#parts] = apply_highlight(self, parts[#parts])
       end
       -- join it all together
       return repo .. "/" .. table.concat(parts, "/")
