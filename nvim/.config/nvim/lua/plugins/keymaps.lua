@@ -60,17 +60,32 @@ return {
           ["<esc>"] = actions.close,
         },
       })
+      -- `hidden = true` is not supported in text grep commands so we need to add it here
+      local telescopeConfig = require "telescope.config"
+      local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) } -- Clone the default Telescope configuration
+      table.insert(vimgrep_arguments, "--hidden") -- I want to search in hidden/dot files.
+      table.insert(vimgrep_arguments, "--glob") -- I don't want to search in the `.git` directory.
+      table.insert(vimgrep_arguments, "!**/.git/*")
+      opts.defaults = {
+        vimgrep_arguments = vimgrep_arguments,
+      }
+      opts.pickers = {
+        find_files = {
+          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+        },
+      }
     end,
     -- replace all Telescope keymaps with my own
     keys = function()
       return {
-        { "<leader><leader>", "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find Files" },
+        {
+          "<leader><leader>",
+          "<cmd>Telescope find_files theme=dropdown previewer=false<cr>",
+          desc = "Find Files",
+        },
         { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-        -- { "<leader>sb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
         { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Marks" },
         { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
-        { "<leader>sv", "<cmd>Telescope git_files theme=dropdown previewer=false<cr>", desc = "Git Files" },
-        { "<leader>sr", "<cmd>Telescope oldfiles theme=dropdown previewer=false<cr>", desc = "Recent" },
         {
           "<leader>sb",
           function()
