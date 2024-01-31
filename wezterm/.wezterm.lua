@@ -1,5 +1,4 @@
 local wezterm = require("wezterm")
-local act = wezterm.action
 
 local config = {}
 
@@ -14,7 +13,7 @@ end
 config.color_scheme = "tokyonight"
 config.font = wezterm.font("Fira Code")
 config.font_size = 13
-config.line_height = 1.3
+config.line_height = 1.1
 
 -- will manually check and download updates
 config.check_for_updates = false
