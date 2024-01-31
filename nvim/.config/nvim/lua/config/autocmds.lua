@@ -30,8 +30,8 @@ vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
 })
 
 -- no autocomment on new line
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  callback = function()
-    vim.cmd "set formatoptions-=ro"
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+--   callback = function()
+--     vim.cmd "set formatoptions-=ro"
+--   end,
+-- })
