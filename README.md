@@ -14,3 +14,4 @@ Todo
 
 Firenvim [Chorme plugin](https://chromewebstore.google.com/detail/egpjdkipkomnmjhjmdamaniclmdlobbo)
 [Add](https://intelephense.com/faq.html) Intelephense License Key
+Import Raycast settings and data
