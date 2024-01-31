@@ -60,15 +60,14 @@ return {
           ["<esc>"] = actions.close,
         },
       })
+
       -- `hidden = true` is not supported in text grep commands so we need to add it here
       local telescopeConfig = require "telescope.config"
       local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) } -- Clone the default Telescope configuration
       table.insert(vimgrep_arguments, "--hidden") -- I want to search in hidden/dot files.
       table.insert(vimgrep_arguments, "--glob") -- I don't want to search in the `.git` directory.
       table.insert(vimgrep_arguments, "!**/.git/*")
-      opts.defaults = {
-        vimgrep_arguments = vimgrep_arguments,
-      }
+      opts.defaults.vimgrep_arguments = vimgrep_arguments
       opts.pickers = {
         find_files = {
           find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
