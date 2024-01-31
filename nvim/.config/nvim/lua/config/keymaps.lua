@@ -11,6 +11,7 @@ vim.keymap.del("n", "<leader>|") -- split window vert
 vim.keymap.del("n", "<leader>`") -- next buffer
 vim.keymap.del("n", "<leader>L") -- Lazy
 vim.keymap.del("n", "<leader>l") -- Lazy
+vim.keymap.del("n", "<leader>K") -- not sure
 
 -- insert blank lines above and below
 vim.keymap.set("n", "[<space>", "O<esc>^", { desc = "Pad above" })

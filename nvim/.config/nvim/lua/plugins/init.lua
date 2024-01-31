@@ -22,11 +22,10 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     opts = {
-      enable_backwards = false,
+      -- enable_backwards = false,
+      tabkey = "<C-l>",
+      backwards_tabkey = "<C-h>",
     },
-    config = function()
-      require("tabout").setup {}
-    end,
   },
 
   -- best auto pairirng of parentheses I've found
@@ -96,7 +95,7 @@ return {
     -- branch = "harpoon2",
     --stylua: ignore
     keys = {
-      { "<C-a>", function() require("harpoon.mark").add_file() end, desc = "Add file to Harpoon" },
+      { "<leader>a", function() require("harpoon.mark").add_file() end, desc = "Add file to Harpoon" },
       { "<leader>m", function() require("harpoon.ui").toggle_quick_menu() end, desc = "File menu" },
       { "<leader>M", function() require('harpoon.cmd-ui').toggle_quick_menu() end, desc = "Command menu"},
       -- { "<leader>h", function() require("harpoon.ui").nav_prev() end, desc = "Harpoon prev" },

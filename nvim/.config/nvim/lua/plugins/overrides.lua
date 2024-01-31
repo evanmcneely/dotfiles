@@ -49,14 +49,12 @@ return {
 
       -- add tab completion and C-j + C-k navigation
       opts.mapping = {
-        -- ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-        -- ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
         ["<C-j>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.select_next_item()
+            cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
           elseif luasnip.jumpable(1) then
             luasnip.jump(1)
           else
@@ -65,7 +63,7 @@ return {
         end, { "i", "s", "c" }),
         ["<C-k>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.select_prev_item()
+            cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
           elseif luasnip.jumpable(-1) then
             luasnip.jump(-1)
           else
@@ -74,14 +72,14 @@ return {
         end, { "i", "s", "c" }),
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false }
+            cmp.confirm()
           else
             fallback()
           end
         end, { "i", "s" }),
       }
 
-      opts.experimental = {}
+      opts.experimental = {} -- disable ghost text, let codeiem show ghost text
     end,
   },
 
