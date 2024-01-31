@@ -20,5 +20,5 @@ fi
 
 export PATH="${HOME}/.local/bin:${PATH}"
 
-bindkey -s ^f "tmux-sessionizer\n"
-bindkey -s ^w "tmux-windowizer\n"
+# bindkey -s ^f "tmux-sessionizer\n"
+# bindkey -s ^w "tmux-windowizer\n"
