@@ -8,6 +8,7 @@ brew 'curl'
 brew 'stow'
 brew 'bat'
 brew 'tree'
+brew 'gnu-sed' # nvim spectre dependency
 brew 'coreutils' # Those that come with macOS are outdated
 brew 'koekeishiya/formulae/yabai'
 brew 'koekeishiya/formulae/skhd'
@@ -20,6 +21,7 @@ cask 'firefox'
 cask 'microsoft-edge'
 cask 'wezterm'
 cask 'hyperkey'
+cast 'raycast'
 
 # python
 brew 'python3'
@@ -44,7 +46,7 @@ brew 'automake'
 brew 'pkg-config'
 brew 'gettext'
 brew 'navi'
-brew 'jq'
+brew 'jq' # json parsing tool - yabai command dependency
 brew 'libmemcache'
 brew 'mkcert'
 brew 'nss'
