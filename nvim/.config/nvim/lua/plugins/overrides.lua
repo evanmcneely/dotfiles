@@ -142,7 +142,5 @@ return {
 
   {
     "folke/noice.nvim",
-    -- do not start noice in the browser
-    enabled = not vim.g.started_by_firenvim,
   },
 }

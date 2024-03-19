@@ -172,21 +172,4 @@ return {
       vim.keymap.set("i", "<C-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
     end,
   },
-
-  {
-    "sourcegraph/sg.nvim",
-    enabled = false,
-    dependencies = { "nvim-lua/plenary.nvim" },
-    -- If you have a recent version of lazy.nvim, you don't need to add this!
-    build = "nvim -l build/init.lua",
-  },
-
-  {
-    "glacambre/firenvim",
-    -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
-    lazy = not vim.g.started_by_firenvim,
-    build = function()
-      vim.fn["firenvim#install"](0)
-    end,
-  },
 }

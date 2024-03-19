@@ -1,7 +1,5 @@
 return {
   "nvim-lualine/lualine.nvim",
-  -- do not start lualine in the browser
-  enabled = not vim.g.started_by_firenvim,
   opts = function(_, opts)
     local components = require "plugins.statusline.components"
 
