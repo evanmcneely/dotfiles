@@ -18,14 +18,17 @@ return {
     },
     opts = {
       enable_diagnostics = false, -- don't need it
-      window = { width = 60, position = "current" }, -- default width
+      window = {
+        width = 40,
+        -- position = "current",
+      }, -- default width
       default_component_configs = {
         modified = { symbol = "" }, -- default is [+]
         file_size = { enabled = false }, -- hide
         type = { enabled = false }, -- hide
         created = { enabled = false }, -- hide
         last_modified = {
-          enabled = true,
+          -- enabled = false,
           required_width = 60, -- show on default width
         },
       },

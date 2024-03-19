@@ -17,6 +17,7 @@ return {
   -- tabout of parentheses and stuff
   {
     "abecodes/tabout.nvim",
+    enabled = false,
     event = "BufReadPost",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
@@ -168,6 +169,7 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "InsertEnter",
+    -- enabled = false,
     -- stylua: ignore
     config = function ()
       vim.g.codeium_disable_bindings = 1
@@ -177,6 +179,14 @@ return {
       vim.keymap.set("i", "<C-[>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
       vim.keymap.set("i", "<C-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
     end,
+  },
+
+  {
+    "sourcegraph/sg.nvim",
+    enabled = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    -- If you have a recent version of lazy.nvim, you don't need to add this!
+    build = "nvim -l build/init.lua",
   },
 
   {

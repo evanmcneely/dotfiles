@@ -24,7 +24,9 @@ vim.keymap.set("v", "p", '"_dP')
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "Y", "y$")
 vim.keymap.set("n", "H", "^")
+vim.keymap.set("v", "H", "^")
 vim.keymap.set("n", "L", "$")
+vim.keymap.set("v", "L", "$")
 vim.keymap.set("n", "Q", "@")
 
 -- better viewing
@@ -32,10 +34,10 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- Move in insert mode with using the arrow keys
--- vim.keymap.set("i", "<C-k>", "<Up>")
--- vim.keymap.set("i", "<C-j>", "<Down>")
--- vim.keymap.set("i", "<C-h>", "<Left>")
--- vim.keymap.set("i", "<C-l>", "<Right>")
+vim.keymap.set("i", "<C-k>", "<Up>")
+vim.keymap.set("i", "<C-j>", "<Down>")
+vim.keymap.set("i", "<C-h>", "<Left>")
+vim.keymap.set("i", "<C-l>", "<Right>")
 
 -- Resize window using <shift> arrow keys
 vim.keymap.set("n", "<S-Up>", "<cmd>resize +2<CR>")

@@ -40,7 +40,7 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
     keys = function()
       return {
-        { "<C-e>", "<cmd>Neotree toggle %:p:h<cr>", desc = "File Explorer" },
+        { "<C-e>", "<cmd>Neotree toggle<cr>", desc = "File Explorer" },
       }
     end,
   },
