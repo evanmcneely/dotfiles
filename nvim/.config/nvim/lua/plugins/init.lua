@@ -93,33 +93,25 @@ return {
 
   {
     "ThePrimeagen/harpoon",
-    -- branch = "harpoon2",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      local harpoon = require "harpoon"
+      harpoon:setup {}
+    end,
     --stylua: ignore
-    keys = {
-      { "<leader>a", function() require("harpoon.mark").add_file() end, desc = "Add file to Harpoon" },
-      { "<leader>m", function() require("harpoon.ui").toggle_quick_menu() end, desc = "File menu" },
-      { "<leader>M", function() require('harpoon.cmd-ui').toggle_quick_menu() end, desc = "Command menu"},
-      -- { "<leader>h", function() require("harpoon.ui").nav_prev() end, desc = "Harpoon prev" },
-      -- { "<leader>l", function() require("harpoon.ui").nav_next() end, desc = "Harpoon next" },
-      { "<leader>1", function() require("harpoon.ui").nav_file(1) end, desc = "File 1" },
-      { "<leader>2", function() require("harpoon.ui").nav_file(2) end, desc = "File 2" },
-      { "<leader>3", function() require("harpoon.ui").nav_file(3) end, desc = "File 3" },
-      { "<leader>4", function() require("harpoon.ui").nav_file(4) end, desc = "File 4" },
-      -- { "<leader>5", function() require("harpoon.term").gotoTerminal(1) end, desc = "Open terminal 1" },
-      -- { "<leader>6", function() require("harpoon.term").sendCommand(1, 1) end, desc = "Command 2" },
-      -- { "<leader>7", function() require("harpoon.term").sendCommand(1, 2) end, desc = "Command 3" },
-      -- { "<leader>8", function() require("harpoon.term").sendCommand(1, 3) end, desc = "Command 4" },
-      -- { "<leader>5", function() require("harpoon.tmux").sendCommand(1, 1) end, desc = "Command 1" },
-      -- { "<leader>6", function() require("harpoon.tmux").sendCommand(1, 2) end, desc = "Command 2" },
-      -- { "<leader>7", function() require("harpoon.tmux").sendCommand(1, 3) end, desc = "Command 3" },
-      -- { "<leader>8", function() require("harpoon.tmux").sendCommand(1, 4) end, desc = "Command 4" },
-    },
-    opts = {
-      global_settings = {
-        -- save_on_toggle = true,
-        -- enter_on_sendcmd = true,
-      },
-    },
+    keys = function()
+      local harpoon = require("harpoon")
+      return {
+        { "<leader>a", function() harpoon:list():append() end, desc = "Add file to Harpoon" },
+        { "<leader>m", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "File menu" },
+        { "<leader>*", function() harpoon:list():select(1) end, desc = "File 1" },
+        { "<leader>+", function() harpoon:list():select(2)  end, desc = "File 2" },
+        { "<leader>[", function() harpoon:list():select(3)  end, desc = "File 3" },
+        { "<leader>{", function() harpoon:list():select(4)  end, desc = "File 4" },
+        { "<leader>(", function() harpoon:list():select(5)  end, desc = "File 5" },
+      }
+    end,
   },
 
   {
