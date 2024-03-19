@@ -97,15 +97,15 @@ ctrl + alt + shift - c : yabai -m space --layout bsp
 # # ##### # SPACES # ##### # #
 
 # navigate to spaces
-cmd - a : yabaiSwitchSpace 1
-cmd - o : yabaiSwitchSpace 2
-cmd - e : yabaiSwitchSpace 3
-cmd - u : yabaiSwitchSpace 4
-cmd - i : yabaiSwitchSpace 5
-cmd - d : yabaiSwitchSpace 6
+# cmd - a : yabaiSwitchSpace 1
+# cmd - o : yabaiSwitchSpace 2
+# cmd - e : yabaiSwitchSpace 3
+# cmd - u : yabaiSwitchSpace 4
+# cmd - i : yabaiSwitchSpace 5
+# cmd - d : yabaiSwitchSpace 6
 # move active window to next space on current display
-cmd + alt + shift - 1 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '1' ]]; then yabai -m window --space 2; elif [[ '{}' = '2' ]]; then yabai -m window --space 1; fi"
-cmd + alt + shift - 2 :yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '3' ]]; then yabai -m window --space 4; elif [[ '{}' = '4' ]]; then yabai -m window --space 3; fi"
+# cmd + alt + shift - 1 : yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '1' ]]; then yabai -m window --space 2; elif [[ '{}' = '2' ]]; then yabai -m window --space 1; fi"
+# cmd + alt + shift - 2 :yabai -m query --spaces --space | jq -re ".index" | xargs -I {} bash -c "if [[ '{}' = '3' ]]; then yabai -m window --space 4; elif [[ '{}' = '4' ]]; then yabai -m window --space 3; fi"
 
 # # ##### # DISPLAYS # ##### # #
 
