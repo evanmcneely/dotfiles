@@ -11,7 +11,7 @@ end
 -- config.colors = { background = "#1d2029", cursor_bg = "#bdbfbe", cursor_fg = "#212121" }
 -- config.color_scheme = "nord"
 config.color_scheme = "tokyonight"
-config.font = wezterm.font("Fira Code")
+config.font = wezterm.font("FiraCode Nerd Font")
 config.font_size = 13
 config.line_height = 1.1
 
