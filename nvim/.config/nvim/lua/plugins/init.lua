@@ -170,6 +170,10 @@ return {
       vim.keymap.set("i", "<C-]>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
       vim.keymap.set("i", "<C-[>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
       vim.keymap.set("i", "<C-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
+      vim.g.codeium_enabled = false
     end,
+    keys = {
+      { "<leader>za", "<cmd>CodeiumToggle<cr>" },
+    },
   },
 }
