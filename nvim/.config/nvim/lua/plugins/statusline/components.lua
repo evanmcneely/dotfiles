@@ -1,6 +1,5 @@
 local icons = require "utils.icons"
 local Job = require "plenary.job"
--- local colors = require "nordic.colors"
 local colors = require("tokyonight.colors").default
 
 local function apply_highlight(component, text)

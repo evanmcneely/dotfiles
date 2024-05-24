@@ -17,16 +17,13 @@ return {
   -- tabout of parentheses and stuff
   {
     "abecodes/tabout.nvim",
-    enabled = false,
-    event = "BufReadPost",
+    event = "InsertCharPre",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
-    opts = {
-      -- enable_backwards = false,
-      tabkey = "<C-l>",
-      backwards_tabkey = "<C-h>",
-    },
+    config = function()
+      require("tabout").setup {}
+    end,
   },
 
   -- best auto pairirng of parentheses I've found
@@ -67,7 +64,6 @@ return {
     "tpope/vim-fugitive",
     cmd = { "Gdiff", "Git" },
     keys = {
-      { "<leader>gC", "<cmd>Gdiff<cr>", desc = "Resolve conflict" },
       { "<leader>gl", "<cmd>diffget //2<cr>", desc = "Resolve left" },
       { "<leader>gr", "<cmd>diffget //3<cr>", desc = "Resolve right" },
     },
@@ -97,7 +93,13 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local harpoon = require "harpoon"
-      harpoon:setup {}
+      harpoon:setup {
+        settings = {
+          -- save menu on close
+          sync_on_ui_close = true,
+          save_on_toggle = true,
+        },
+      }
     end,
     --stylua: ignore
     keys = function()
@@ -105,11 +107,16 @@ return {
       return {
         { "<leader>a", function() harpoon:list():append() end, desc = "Add file to Harpoon" },
         { "<leader>m", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "File menu" },
-        { "<leader>*", function() harpoon:list():select(1) end, desc = "File 1" },
-        { "<leader>+", function() harpoon:list():select(2)  end, desc = "File 2" },
-        { "<leader>[", function() harpoon:list():select(3)  end, desc = "File 3" },
-        { "<leader>{", function() harpoon:list():select(4)  end, desc = "File 4" },
-        { "<leader>(", function() harpoon:list():select(5)  end, desc = "File 5" },
+        { "<leader>+", function() harpoon:list():select(1) end, desc = "File 1" },
+        { "<leader>1", function() harpoon:list():select(1) end, desc = "File 1" },
+        { "<leader>[", function() harpoon:list():select(2)  end, desc = "File 2" },
+        { "<leader>2", function() harpoon:list():select(2)  end, desc = "File 2" },
+        { "<leader>{", function() harpoon:list():select(3)  end, desc = "File 3" },
+        { "<leader>3", function() harpoon:list():select(3)  end, desc = "File 3" },
+        { "<leader>(", function() harpoon:list():select(4)  end, desc = "File 4" },
+        { "<leader>4", function() harpoon:list():select(4)  end, desc = "File 4" },
+        { "<leader>&", function() harpoon:list():select(5)  end, desc = "File 5" },
+        { "<leader>5", function() harpoon:list():select(5)  end, desc = "File 5" },
       }
     end,
   },
@@ -122,13 +129,9 @@ return {
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end,
+    --stylua: ignore
     keys = {
-      {
-        "<leader>cp",
-        ft = "markdown",
-        "<cmd>MarkdownPreviewToggle<cr>",
-        desc = "Markdown Preview",
-      },
+      { "<leader>cp", ft = "markdown", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview" },
     },
   },
 
@@ -161,16 +164,15 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "InsertEnter",
-    -- enabled = false,
     -- stylua: ignore
     config = function ()
       vim.g.codeium_disable_bindings = 1
-      vim.keymap.set("i", "<S-Tab>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
+      vim.keymap.set("i", "<C-c>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
       -- vim.keymap.set("i", "<C-a>", function() return vim.fn["codeium#Complete"]() end, { expr = true })
       vim.keymap.set("i", "<C-]>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
       vim.keymap.set("i", "<C-[>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
       vim.keymap.set("i", "<C-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
-      vim.g.codeium_enabled = false
+      vim.g.codeium_enabled = false -- default disabled
     end,
     keys = {
       { "<leader>za", "<cmd>CodeiumToggle<cr>" },
