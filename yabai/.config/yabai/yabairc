@@ -7,15 +7,15 @@ yabai -m space 3 --label three
 yabai -m space 4 --label four
 
 # float system preferences. Most of these just disable Yabai form resizing them.
-yabai -m rule --add app="^System Preferences$" sticky=on layer=above manage=off
-yabai -m rule --add app="^System Settings$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Finder$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Disk Utility$" sticky=on layer=above manage=off
-yabai -m rule --add app="^System Information$" sticky=on layer=above manage=off
-yabai -m rule --add app="^Activity Monitor$" sticky=on layer=above manage=off
+yabai -m rule --add app="^System Preferences$" sub-layer=above manage=off
+yabai -m rule --add app="^System Settings$" sub-layer=above manage=off
+yabai -m rule --add app="^Finder$" sub-layer=above manage=off
+yabai -m rule --add app="^Disk Utility$" sub-layer=above manage=off
+yabai -m rule --add app="^System Information$" sub-layer=above manage=off
+yabai -m rule --add app="^Activity Monitor$" sub-layer=above manage=off
 yabai -m rule --add app="^Path Finder$" manage=off
 yabai -m rule --add app="^Logi Options$" manage=off
-# yabai -m rule --add app="^Mail$" manage=off
+yabai -m rule --add app="^Mail$" manage=off
 yabai -m rule --add app="^Calendar$" manage=off
 yabai -m rule --add app="^USB Display Device$" manage=off
 
@@ -37,7 +37,7 @@ yabai -m config \
 	left_padding 0 \
 	right_padding 0 \
 	window_gap 0 \
-	layout bsp \
+	layout stack \
 	mouse_modifier ctrl \
 	mouse_action1 move \
 	mouse_action2 resize \
