@@ -22,3 +22,7 @@ export PATH="${HOME}/.local/bin:${PATH}"
 
 # bindkey -s ^f "tmux-sessionizer\n"
 # bindkey -s ^w "tmux-windowizer\n"
+
+# go stuff
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
