@@ -25,9 +25,8 @@ return {
           name = "+system",
           l = { "<cmd>Lazy<cr>", "Lazy" },
           m = { "<cmd>Mason<cr>", "Mason" },
-          L = { "<cmd>LspInfo<cr>", "Lsp info" },
-          N = { "<cmd>NullLsInfo<cr>", "Null ls info" },
-          C = { "<cmd>ConformInfo<cr>", "Conform info" },
+          i = { "<cmd>LspInfo<cr>", "Lsp info" },
+          c = { "<cmd>ConformInfo<cr>", "Conform info" },
           n = { name = "+noice" },
         },
         -- hide these from menu
@@ -96,17 +95,8 @@ return {
   },
 
   {
-    "L3MON4D3/LuaSnip",
-    -- disable default tab and S-tab
-    keys = function()
-      return {}
-    end,
-  },
-
-  {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
-      local luasnip = require "luasnip"
       local cmp = require "cmp"
 
       -- add tab completion and C-j + C-k navigation
@@ -114,31 +104,10 @@ return {
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
-        ["<C-j>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
-          elseif luasnip.jumpable(1) then
-            luasnip.jump(1)
-          else
-            fallback()
-          end
-        end, { "i", "s", "c" }),
-        ["<C-k>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "s", "c" }),
-        ["<cr>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.confirm { select = true }
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
+        ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
+        ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+        ["<tab>"] = cmp.mapping.confirm { select = true },
+        ["<S-tab>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
       }
 
       opts.experimental = {} -- disable ghost text, let codeiem show ghost text
@@ -167,13 +136,25 @@ return {
         handlebars = { "prettier" },
         python = { "isort", "black" },
         php = { "phpcbf" },
-        -- ["*"] = { "codespell" },
       },
     },
-    keys = {
-      -- stylua: ignore
-      { "<leader>f", function() require("conform").format { lsp_fallback = true } end, mode = { "n", "v" }, desc = "Format", },
-    },
+  },
+
+  {
+    "mfussenegger/nvim-lint",
+    opts = function(_, opts)
+      opts.events = { "BufWritePost", "BufReadPost", "InsertLeave", "TextChanged" } -- extends list to include TextChanged event
+      opts.linters_by_ft = vim.tbl_deep_extend("force", opts.linters_by_ft, {
+        ["*"] = { "typos" }, -- add spell checks
+      })
+
+      -- wrap so typos show up as hints not wornings
+      local lint = require "lint"
+      lint.linters.typos = require("lint.util").wrap(lint.linters.typos, function(diagnostic)
+        diagnostic.severity = vim.diagnostic.severity.HINT
+        return diagnostic
+      end)
+    end,
   },
 
   {
@@ -186,17 +167,10 @@ return {
           reportUnboundVariable = false, -- not working
         },
       },
+      inlay_hints = {
+        enabled = false, -- off by default
+      },
     },
-  },
-
-  {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local nls = require "null-ls"
-      opts.sources = opts.sources or {}
-      -- add codespell
-      -- table.insert(opts.sources, nls.builtins.diagnostics.codespell)
-    end,
   },
 
   {
@@ -281,5 +255,12 @@ return {
         { "<c-b>", function() if not require("noice.lsp").scroll(-4) then return "<c-b>" end end, silent = true, expr = true, desc = "Scroll backward", mode = {"i", "n", "s"}},
       }
     end,
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    opts = {
+      scope = { enabled = false },
+    },
   },
 }

@@ -18,7 +18,7 @@ require("lazy").setup {
     -- all the default stuff
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- languages - use these provided configs
-    { import = "lazyvim.plugins.extras.lsp.none-ls" },
+    -- { import = "lazyvim.plugins.extras.lsp.none-ls" }, -- use for php only
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.go" },
     { import = "lazyvim.plugins.extras.lang.python" },
@@ -26,9 +26,10 @@ require("lazy").setup {
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
     -- some nice things
-    { import = "lazyvim.plugins.extras.dap.core" },
     { import = "lazyvim.plugins.extras.editor.leap" },
-    -- overrides and extensions
+    -- { import = "lazyvim.plugins.extras.dap.core" }, -- use for php only
+    { import = "lazyvim.plugins.extras.coding.mini-surround" },
+    -- overrides and extension
     { import = "plugins" },
     { import = "plugins.languages" },
   },

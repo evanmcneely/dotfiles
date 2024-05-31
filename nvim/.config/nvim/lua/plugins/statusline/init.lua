@@ -2,6 +2,7 @@ return {
   "nvim-lualine/lualine.nvim",
   opts = function(_, opts)
     local components = require "plugins.statusline.components"
+    local lazyvim = require "lazyvim.util.lualine"
 
     -- override separators
     opts.options.component_separators = { left = "  ", right = "" }
@@ -16,7 +17,8 @@ return {
         components.branch,
         components.diff,
         components.filetype,
-        components.pretty_path,
+        -- components.pretty_path,
+        lazyvim.pretty_path(),
         components.diagnostics,
       },
       lualine_x = {

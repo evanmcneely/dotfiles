@@ -12,21 +12,37 @@ return {
     end,
   },
   {
-    "nvimtools/none-ls.nvim",
+    "mfussenegger/nvim-lint",
     opts = function(_, opts)
-      local nls = require "null-ls"
-      opts.sources = opts.sources or {}
-
-      -- TODO: set this up on a project level?
-      table.insert(
-        opts.sources,
-        nls.builtins.diagnostics.phpcs.with {
-          command = "./vendor/bin/phpcs",
-          extra_args = { "--standard=phpcs.xml" },
-        }
-      )
+      local phpcs = require("lint").linters.phpcs
+      -- phpcs.cmd = "./vendor/bin/phpcs"
+      phpcs.args = {
+        "-q",
+        "--standard=phpcs.xml", -- wordpress plugin
+        "--report=json",
+        "-",
+      }
+      opts.linters_by_ft = vim.tbl_deep_extend("force", opts.linters_by_ft, {
+        php = { "phpcs" },
+      })
     end,
   },
+  -- {
+  --   "nvimtools/none-ls.nvim",
+  --   opts = function(_, opts)
+  --     local nls = require "null-ls"
+  --     opts.sources = opts.sources or {}
+  --
+  --     -- TODO: set this up on a project level?
+  --     table.insert(
+  --       opts.sources,
+  --       nls.builtins.diagnostics.phpcs.with {
+  --         command = "./vendor/bin/phpcs",
+  --         extra_args = { "--standard=phpcs.xml" },
+  --       }
+  --     )
+  --   end,
+  -- },
   {
     "neovim/nvim-lspconfig",
     opts = {

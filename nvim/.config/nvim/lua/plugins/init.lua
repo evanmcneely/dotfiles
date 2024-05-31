@@ -1,30 +1,9 @@
 return {
-  -- autoset the tabs seze
-  {
-    "NMAC427/guess-indent.nvim",
-    event = "BufReadPost",
-    config = function()
-      require("guess-indent").setup {}
-    end,
-  },
-
   -- easily open and join statements to multiple and single lines
   { "AndrewRadev/splitjoin.vim", event = "BufReadPost" },
 
   -- add marks to sign column
   { "kshenoy/vim-signature", event = "BufReadPre" },
-
-  -- tabout of parentheses and stuff
-  {
-    "abecodes/tabout.nvim",
-    event = "InsertCharPre",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("tabout").setup {}
-    end,
-  },
 
   -- best auto pairirng of parentheses I've found
   {
@@ -56,16 +35,6 @@ return {
       { "<leader>gs", "<cmd>Neogit kind=tab<cr>", desc = "Status" },
       { "<leader>gc", "<cmd>Neogit commit<cr>", desc = "Commit" },
       { "<leader>gp", "<cmd>Neogit push<cr>", desc = "Push" },
-    },
-  },
-
-  -- really just want the merge conflict resolution tool
-  {
-    "tpope/vim-fugitive",
-    cmd = { "Gdiff", "Git" },
-    keys = {
-      { "<leader>gl", "<cmd>diffget //2<cr>", desc = "Resolve left" },
-      { "<leader>gr", "<cmd>diffget //3<cr>", desc = "Resolve right" },
     },
   },
 
@@ -143,21 +112,10 @@ return {
     config = function()
       require("gitlinker").setup()
     end,
+    --stylua: ignore
     keys = {
-      {
-        "<leader>gy",
-        function()
-          require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").copy_to_clipboard })
-        end,
-        desc = "Link to Github",
-      },
-      {
-        "<leader>gY",
-        function()
-          require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").open_in_browser })
-        end,
-        desc = "Open in Github",
-      },
+      { "<leader>gy", function() require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").copy_to_clipboard }) end, desc = "Link to Github" },
+      { "<leader>gY", function() require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").open_in_browser }) end, desc = "Open in Github" },
     },
   },
 
