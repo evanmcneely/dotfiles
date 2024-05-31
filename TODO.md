@@ -1,6 +1,0 @@
-- run commands in a separate tmux pane /window from within neovim. harpoon is supposed to enable this but it didn't work.
-- debugger
-  - chrome
-  - python
-- are there 2 instances of lua_ls running?
-- drop LazyVim and manage everything - more customizable
