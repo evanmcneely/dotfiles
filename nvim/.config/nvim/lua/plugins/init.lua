@@ -119,7 +119,7 @@ return {
   {
     "evanmcneely/enlighten.nvim",
     dir = "~/dev/personal/enlighten.nvim",
-    event = "BufEnter",
+    event = "VeryLazy",
     -- stylua: ignore
     config = function()
       require('enlighten'):setup()
@@ -134,7 +134,6 @@ return {
 
   {
     "folke/lazydev.nvim",
-    ft = "lua",
     opts = {
       library = {
         "plenary.nvim",
