@@ -5,4 +5,5 @@ return {
   { "lukas-reineke/headlines.nvim", enabled = false }, -- highlight headings
   { "folke/flesh.nvim", enabled = false }, -- use leap instead of flash
   { "folke/neodev.nvim", enabled = false }, -- using lazydev.nvim
+  { "echasnovski/mini.icons", enabled = false },
 }

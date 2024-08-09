@@ -1,6 +1,6 @@
 local icons = require "utils.icons"
 local Job = require "plenary.job"
-local colors = require("tokyonight.colors").default
+local colors = require("tokyonight.colors").setup()
 
 -- async get the git repo the current file is in
 local function get_repo()
@@ -56,7 +56,7 @@ return {
   },
   filetype = { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
   pretty_path = {
-    function(self)
+    function()
       -- modified and simplified from LazyVim pretty path
       local path = vim.fn.expand "%:p"
       local repo = get_repo()
@@ -80,7 +80,6 @@ return {
   filename = {
     "filetype",
     icons_enabled = false,
-    -- color = { fg = colors.grey5 },
   },
   diagnostics = {
     "diagnostics",
@@ -130,7 +129,6 @@ return {
       return icons.ui.Tab .. " " .. shiftwidth
     end,
     padding = 1,
-    -- color = { fg = colors.cyan.bright },
   },
   progress = { "progress" },
   location = { "location" },

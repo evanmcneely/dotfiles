@@ -26,8 +26,6 @@ return {
         components.noice_command,
         components.debug_status,
         components.shift_width,
-        -- components.filename,
-        -- components.location,
         components.progress,
       },
       lualine_y = {},
