@@ -41,18 +41,19 @@ function node_version {
 # if there is a python virtualenv active show the name other wiseshow system version
 function pyenv_info {
   if [[ -n "$VIRTUAL_ENV" ]] then
-    echo "  $(pyenv_prompt_info) "
+    echo " $(pyenv_prompt_info) "
   else
     echo " $(python3 -V | cut -c 8-) "
   fi
 }
 
-# primary prompt 
-PS1='${PROMPT_SYMBOL}╭─ ${SYSTEM}$(pyenv_info)$(node_version)${DIR}  %2~$(git_super_status) %{$reset_color%}
+# primary prompt
+PS1='
+${PROMPT_SYMBOL}╭─ ${SYSTEM}$(pyenv_info)$(node_version)${DIR}  %2~$(git_super_status) %{$reset_color%}
 ${PROMPT_SYMBOL}╰─%{$reset_color%} '
 
 # secondary prompt
-PS2='${BLUE}\ %{$reset_color%}'
+# PS2='${BLUE}\ %{$reset_color%}'
 
 # override right prompt which contains the git status info via the git-prompt plugin
 RPROMPT=''
