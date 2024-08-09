@@ -2,16 +2,6 @@ local icons = require "utils.icons"
 local Job = require "plenary.job"
 local colors = require("tokyonight.colors").default
 
-local function apply_highlight(component, text)
-  component.hl_cache = component.hl_cache or {}
-  local hl = component.hl_cache["this_is_hack"]
-  if not hl then
-    hl = component:create_hl { fg = colors.orange }
-    component.hl_cache["this_is_hack"] = hl
-  end
-  return component:format_hl(hl) .. text .. component:get_default_hl()
-end
-
 -- async get the git repo the current file is in
 local function get_repo()
   local results = {}
@@ -27,7 +17,7 @@ local function get_repo()
   if results[1] ~= nil then
     return vim.fn.fnamemodify(results[1], ":t")
   else
-    return "no git"
+    return "?"
   end
 end
 
@@ -72,12 +62,8 @@ return {
       local repo = get_repo()
       local cwd = vim.loop.cwd()
 
-      if repo == "no git" then
-        repo = "?"
-      end
-
       if path == "" then
-        return repo .. "/…?"
+        return repo .. "/?"
       end
 
       -- path from cwd split into table
@@ -85,9 +71,7 @@ return {
       local parts = vim.split(path, "[\\/]")
       -- use only the last two parts of the path if it is long
       if #parts >= 3 then
-        parts = { "…", parts[#parts - 1], apply_highlight(self, parts[#parts]) }
-      else
-        parts[#parts] = apply_highlight(self, parts[#parts])
+        parts = { "…", parts[#parts - 1], parts[#parts] }
       end
       -- join it all together
       return repo .. "/" .. table.concat(parts, "/")

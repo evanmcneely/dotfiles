@@ -12,11 +12,12 @@ return {
         ["["] = { name = "+prev" },
         ["<leader><tab>"] = { name = "+tabs" },
         ["<leader>b"] = { name = "+buffer" },
+        ["<leader>a"] = { name = "+AI" },
+        ["<leader>h"] = { name = "+harpoon" },
         ["<leader>c"] = { name = "+code" },
         ["<leader>g"] = { name = "+git", h = { name = "+hunk" } },
         ["<leader>l"] = { name = "+lsp" },
         ["<leader>q"] = { name = "+quit/session" },
-        ["<leader>r"] = { name = "+refactor" },
         ["<leader>s"] = { name = "+search" },
         ["<leader>u"] = { name = "+ui" },
         ["<leader>w"] = { name = "+windows" },
@@ -53,9 +54,9 @@ return {
 
   {
     "nvim-neo-tree/neo-tree.nvim",
-    -- enabled window picking for Neo-tree
     dependencies = {
       {
+        -- enabled window picking for Neo-tree
         "s1n7ax/nvim-window-picker",
         name = "window-picker",
         event = "VeryLazy",
@@ -106,8 +107,8 @@ return {
         ["<C-e>"] = cmp.mapping.abort(),
         ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
         ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
-        ["<tab>"] = cmp.mapping.confirm { select = true },
-        ["<S-tab>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
+        ["<C-y>"] = cmp.mapping.confirm { select = true },
+        ["<C-Y>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
       }
 
       opts.experimental = {} -- disable ghost text, let codeiem show ghost text
@@ -136,6 +137,7 @@ return {
         handlebars = { "prettier" },
         python = { "isort", "black" },
         php = { "phpcbf" },
+        lua = { "stylua" },
       },
     },
   },
@@ -146,9 +148,10 @@ return {
       opts.events = { "BufWritePost", "BufReadPost", "InsertLeave", "TextChanged" } -- extends list to include TextChanged event
       opts.linters_by_ft = vim.tbl_deep_extend("force", opts.linters_by_ft, {
         ["*"] = { "typos" }, -- add spell checks
+        lua = { "luacheck" },
       })
 
-      -- wrap so typos show up as hints not wornings
+      -- wrap so typos show up as hints not warnings
       local lint = require "lint"
       lint.linters.typos = require("lint.util").wrap(lint.linters.typos, function(diagnostic)
         diagnostic.severity = vim.diagnostic.severity.HINT
@@ -203,23 +206,14 @@ return {
       }
     end,
     -- replace all Telescope keymaps with my own
+    -- stylua: ignore
     keys = function()
       return {
-        {
-          "<leader><leader>",
-          "<cmd>Telescope find_files theme=dropdown previewer=false<cr>",
-          desc = "Find Files",
-        },
+        { "<leader><leader>", "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find Files" },
         { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
         { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Marks" },
         { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
-        {
-          "<leader>sb",
-          function()
-            require("telescope.builtin").current_buffer_fuzzy_find()
-          end,
-          desc = "Buffer",
-        },
+        { "<leader>sb", function() require("telescope.builtin").current_buffer_fuzzy_find() end, desc = "Buffer" },
       }
     end,
   },
@@ -259,6 +253,7 @@ return {
 
   {
     "lukas-reineke/indent-blankline.nvim",
+    -- enabled = false,
     opts = {
       scope = { enabled = false },
     },

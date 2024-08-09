@@ -19,6 +19,7 @@ return {
   -- navigate undo/redo history
   {
     "mbbill/undotree",
+    enabled = false,
     cmd = "UndotreeToggle",
     keys = { { "<leader>U", vim.cmd.UndotreeToggle, desc = "Undotree" } },
   },
@@ -38,15 +39,10 @@ return {
     },
   },
 
+  -- integration with tmux
   {
     "christoomey/vim-tmux-navigator",
-    cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
-    },
+    cmd = { "TmuxNavigateLeft", "TmuxNavigateDown", "TmuxNavigateUp", "TmuxNavigateRight", "TmuxNavigatePrevious" },
     keys = {
       { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
       { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
@@ -56,6 +52,7 @@ return {
     },
   },
 
+  -- easy file navigation
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -74,8 +71,8 @@ return {
     keys = function()
       local harpoon = require("harpoon")
       return {
-        { "<leader>a", function() harpoon:list():append() end, desc = "Add file to Harpoon" },
-        { "<leader>m", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "File menu" },
+        { "<leader>ha", function() harpoon:list():append() end, desc = "Add file to Harpoon" },
+        { "<leader>hm", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "File menu" },
         { "<leader>+", function() harpoon:list():select(1) end, desc = "File 1" },
         { "<leader>1", function() harpoon:list():select(1) end, desc = "File 1" },
         { "<leader>[", function() harpoon:list():select(2)  end, desc = "File 2" },
@@ -120,20 +117,28 @@ return {
   },
 
   {
-    "Exafunction/codeium.vim",
-    event = "InsertEnter",
+    "evanmcneely/enlighten.nvim",
+    dir = "~/dev/personal/enlighten.nvim",
+    event = "BufEnter",
     -- stylua: ignore
-    config = function ()
-      vim.g.codeium_disable_bindings = 1
-      vim.keymap.set("i", "<C-c>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
-      -- vim.keymap.set("i", "<C-a>", function() return vim.fn["codeium#Complete"]() end, { expr = true })
-      vim.keymap.set("i", "<C-]>", function() return vim.fn["codeium#CycleCompletions"](1) end, { expr = true })
-      vim.keymap.set("i", "<C-[>", function() return vim.fn["codeium#CycleCompletions"](-1) end, { expr = true })
-      vim.keymap.set("i", "<C-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true })
-      vim.g.codeium_enabled = false -- default disabled
+    config = function()
+      require('enlighten'):setup()
+      vim.keymap.set("v", "<leader>aa", function() require("enlighten"):toggle_prompt() end, { desc = "Prompt" })
+      vim.keymap.set("n", "<leader>aa", function() require("enlighten"):toggle_prompt() end, { desc = "Prompt" })
+      vim.keymap.set("v", "<leader>ac", function() require("enlighten"):toggle_chat() end, { desc = "Chat" })
+      vim.keymap.set("n", "<leader>ac", function() require("enlighten"):toggle_chat() end, { desc = "Chat" })
+      vim.keymap.set("n", "<leader>af", function() require("enlighten"):focus() end, { desc = "Focus prompt or chat" })
+      vim.keymap.set("n", "<leader>al", function() require("enlighten").logger:show() end, { desc = "Enlighten logs" })
     end,
-    keys = {
-      { "<leader>za", "<cmd>CodeiumToggle<cr>" },
+  },
+
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        "plenary.nvim",
+      },
     },
   },
 }
