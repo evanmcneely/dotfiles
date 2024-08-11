@@ -1,37 +1,26 @@
 --- Install lazy.nvim
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system {
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  }
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system { "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath }
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
+
+require "config.options"
 
 -- Configure lazy.nvim
 require("lazy").setup {
   spec = {
-    -- all the default stuff
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    -- languages - use these provided configs
-    -- { import = "lazyvim.plugins.extras.lsp.none-ls" }, -- use for php only
-    { import = "lazyvim.plugins.extras.lang.typescript" },
-    { import = "lazyvim.plugins.extras.lang.go" },
-    { import = "lazyvim.plugins.extras.lang.python" },
-    { import = "lazyvim.plugins.extras.lang.docker" },
-    { import = "lazyvim.plugins.extras.lang.json" },
-    { import = "lazyvim.plugins.extras.linting.eslint" },
-    -- some nice things
-    { import = "lazyvim.plugins.extras.editor.leap" },
-    -- { import = "lazyvim.plugins.extras.dap.core" }, -- use for php only
-    { import = "lazyvim.plugins.extras.coding.mini-surround" },
-    -- overrides and extension
     { import = "plugins" },
-    { import = "plugins.languages" },
   },
   defaults = { lazy = true, version = "*" },
   install = { missing = true, colorscheme = { "tokyonight" } },
@@ -43,9 +32,7 @@ require("lazy").setup {
     rtp = {
       disabled_plugins = {
         "gzip",
-        -- "matchit",
-        -- "matchparen",
-        "netrwPlugin",
+        -- "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",
@@ -54,3 +41,5 @@ require("lazy").setup {
     },
   },
 }
+require "config.keymaps"
+require "config.autocmds"

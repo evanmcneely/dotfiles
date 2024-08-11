@@ -1,35 +1,57 @@
 return {
   "nvim-lualine/lualine.nvim",
-  opts = function(_, opts)
+  event = "VeryLazy",
+  init = function()
+    vim.g.lualine_laststatus = vim.o.laststatus
+    if vim.fn.argc(-1) > 0 then
+      -- set an empty statusline till lualine loads
+      vim.o.statusline = " "
+    else
+      -- hide the statusline on the starter page
+      vim.o.laststatus = 0
+    end
+  end,
+  opts = function()
+    -- PERF: we don't need this lualine require madness 🤷
+    local lualine_require = require "lualine_require"
+    lualine_require.require = require
     local components = require "plugins.statusline.components"
-    local lazyvim = require "lazyvim.util.lualine"
 
-    -- override separators
-    opts.options.component_separators = { left = "  ", right = "" }
-    opts.options.section_separators = ""
+    vim.o.laststatus = vim.g.lualine_laststatus
 
-    -- override lualine sections with custom statusline
-    opts.sections = {
-      lualine_a = {},
-      lualine_b = {},
-      lualine_c = {
-        components.mode,
-        components.branch,
-        components.diff,
-        components.filetype,
-        -- components.pretty_path,
-        lazyvim.pretty_path(),
-        components.diagnostics,
+    local opts = {
+      options = {
+        theme = "auto",
+        globalstatus = vim.o.laststatus == 3,
+        disabled_filetypes = { statusline = { "dashboard", "alpha", "ministarter" } },
+        component_separators = { left = "  ", right = "" },
+        section_separators = "",
       },
-      lualine_x = {
-        components.noice_mode,
-        components.noice_command,
-        components.debug_status,
-        components.shift_width,
-        components.progress,
+      sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {
+          components.mode,
+          components.branch,
+          components.diff,
+          components.filename,
+          -- components.filetype,
+          -- components.pretty_path,
+          components.diagnostics,
+        },
+        lualine_x = {
+          components.noice_mode,
+          components.noice_command,
+          "filetype",
+          components.shift_width,
+          components.progress,
+        },
+        lualine_y = {},
+        lualine_z = {},
       },
-      lualine_y = {},
-      lualine_z = {},
+      extensions = { "neo-tree", "lazy" },
     }
+
+    return opts
   end,
 }

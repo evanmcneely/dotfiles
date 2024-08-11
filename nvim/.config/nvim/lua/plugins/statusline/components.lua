@@ -2,6 +2,7 @@ local icons = require "utils.icons"
 local Job = require "plenary.job"
 local colors = require("tokyonight.colors").setup()
 
+-- currently doesn't work
 -- async get the git repo the current file is in
 local function get_repo()
   local results = {}
@@ -78,8 +79,10 @@ return {
     end,
   },
   filename = {
-    "filetype",
-    icons_enabled = false,
+    "filename",
+    file_status = false,
+    path = 3,
+    padding = { left = 1, right = 0 },
   },
   diagnostics = {
     "diagnostics",
