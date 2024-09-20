@@ -4,9 +4,12 @@ vim.g.maplocalleader = "\\"
 -- netrw
 vim.g.netrw_winsize = 30
 vim.g.netrw_banner = 0
-vim.g.netrw_list_hide = "(^|ss)\zs.S+"
+vim.g.netrw_fastbrowse = 2
 vim.g.netrw_localcopydircmd = "cp -r"
-vim.g.netrw_keepdir = 0
+vim.g.netrw_altfile = 1
+-- vim.g.netrw_liststyle = 3
+-- vim.g.netrw_list_hide = "(^|ss)\zs.S+"
+-- vim.g.netrw_keepdir = 1
 
 -- Hide deprecation warnings
 vim.g.deprecation_warnings = false
@@ -41,7 +44,6 @@ opt.fillchars = {
 }
 opt.foldlevel = 99
 
--- opt.formatexpr = "v:lua.require'lazyvim.util'.format.formatexpr()"
 opt.formatoptions = "jcroqlnt" -- tcqj
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
@@ -69,6 +71,7 @@ opt.sidescrolloff = 8 -- Columns of context
 opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
 opt.smartcase = true -- Don't ignore case with capitals
 opt.smartindent = true -- Insert indents automatically
+opt.spell = false
 opt.spelllang = { "en" }
 opt.spelloptions:append "noplainbuffer"
 opt.splitbelow = true -- Put new windows below current
@@ -85,6 +88,6 @@ opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
 opt.smoothscroll = true
--- opt.foldexpr = "v:lua.require'lazyvim.util'.ui.foldexpr()"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldmethod = "expr"
-opt.foldtext = ""
+opt.foldtext = " "

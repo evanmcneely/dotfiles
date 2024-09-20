@@ -6,8 +6,8 @@ vim.keymap.set("n", "]<space>", "o<esc>^", { desc = "Pad below" })
 vim.keymap.set("v", "p", '"_dP')
 
 -- netrw
-vim.keymap.set("n", "<leader>e", ":Explore %:p:h<CR>", { noremap = true, silent = true, desc = "Netrw Current" })
-vim.keymap.set("n", "<leader>E", ":Explore<CR>", { noremap = true, silent = true, desc = "Netrw Working" })
+-- vim.keymap.set("n", "<leader>e", ":Explore %:p:h<CR>", { noremap = true, silent = true, desc = "Netrw Current" })
+-- vim.keymap.set("n", "<leader>E", ":Explore<CR>", { noremap = true, silent = true, desc = "Netrw Working" })
 
 -- useful
 vim.keymap.set("n", "J", "mzJ`z")

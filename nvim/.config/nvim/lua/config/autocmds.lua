@@ -2,7 +2,14 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("me_" .. name, { clear = true })
 end
 
--- -- Check if we need to reload the file when it changed
+-- Add html syntax to gohtml files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.gohtml",
+  command = "set syntax=html",
+  group = augroup "filetypedetect",
+})
+
+-- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
   group = augroup "checktime",
   callback = function()
@@ -34,6 +41,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup "close_with_q",
   pattern = {
+    "oil",
     "PlenaryTestPopup",
     "grug-far",
     "help",

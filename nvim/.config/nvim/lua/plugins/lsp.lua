@@ -42,7 +42,7 @@ return {
           { name = "buffer" },
           { name = "path" },
           { name = "snippets" },
-          { name = "lazydev", group_index = 0 },
+          -- { name = "lazydev", group_index = 0 },
         },
         completion = {
           completeopt = "menu,menuone,noinsert",
@@ -96,8 +96,8 @@ return {
         vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
         vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
         vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
-        vim.keymap.set("n", "cr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-        vim.keymap.set("n", "ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+        vim.keymap.set("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+        vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
       end
 
       lsp_zero.extend_lspconfig {
@@ -109,6 +109,14 @@ return {
         },
         lsp_attach = lsp_attach,
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      }
+
+      require("lspconfig").html.setup {
+        filetypes = { "html", "gotmpl" },
+      }
+
+      require("lspconfig").htmx.setup {
+        filetypes = { "html", "gotmpl" },
       }
 
       require("mason-lspconfig").setup {

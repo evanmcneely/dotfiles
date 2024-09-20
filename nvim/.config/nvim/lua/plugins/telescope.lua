@@ -8,6 +8,13 @@ return {
     { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Marks" },
     { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
     {
+      "<leader>s.",
+      function()
+        require("telescope.builtin").find_files { cwd = vim.fn.expand "%:p:h" }
+      end,
+      desc = "Find Files (current)",
+    },
+    {
       "<leader>sb",
       function()
         require("telescope.builtin").current_buffer_fuzzy_find()

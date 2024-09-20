@@ -4,10 +4,10 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      style = "night",
+      style = "day",
     },
     config = function()
-      vim.cmd [[colorscheme tokyonight]]
+      vim.cmd [[colorscheme tokyonight-night]]
     end,
   },
 
@@ -138,7 +138,7 @@ return {
     ░███ ░░██████ ░███████ ░███ ░███ ░░███   ███   ░███  ░███ ░███ ░███   
     ░███  ░░█████ ░███░░░  ░███ ░███  ░░░█████░    ░███  ░███ ░███ ░███   
     █████  ░░█████░░██████ ░░██████     ░░███      █████ █████░███ █████  
-    ░░░░░    ░░░░░  ░░░░░░   ░░░░░░       ░░░      ░░░░░ ░░░░░ ░░░ ░░░░░  
+   ░░░░░    ░░░░░  ░░░░░░   ░░░░░░       ░░░      ░░░░░ ░░░░░ ░░░ ░░░░░   
     ]]
 
       logo = string.rep("\n", 8) .. logo .. "\n\n"

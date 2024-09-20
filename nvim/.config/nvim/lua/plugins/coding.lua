@@ -58,6 +58,7 @@ return {
         { path = "LazyVim", words = { "LazyVim" } },
         { path = "lazy.nvim", words = { "LazyVim" } },
         "plenary.nvim",
+        "busted",
       },
     },
   },
@@ -79,31 +80,73 @@ return {
     "evanmcneely/enlighten.nvim",
     dir = "~/dev/personal/enlighten.nvim",
     event = "VeryLazy",
+    opts = {
+      ai = {
+        model ="o1-mini",
+        chat = {
+          -- provider = "anthropic",
+          -- model = "claude-3-5-sonnet-20240620",
+        },
+      },
+      settings = {
+        chat = {
+          width = 70,
+        },
+        edit = {
+          -- showTitle = false,
+          showHelp = false,
+          -- border = "",
+          -- diff_mode = "smart",
+        },
+      },
+    },
     -- stylua: ignore
-    config = function()
-      require('enlighten'):setup()
-      vim.keymap.set("v", "<leader>aa", function() require("enlighten"):toggle_prompt() end, { desc = "Prompt" })
-      vim.keymap.set("n", "<leader>aa", function() require("enlighten"):toggle_prompt() end, { desc = "Prompt" })
-      vim.keymap.set("v", "<leader>ac", function() require("enlighten"):toggle_chat() end, { desc = "Chat" })
-      vim.keymap.set("n", "<leader>ac", function() require("enlighten"):toggle_chat() end, { desc = "Chat" })
-      vim.keymap.set("n", "<leader>af", function() require("enlighten"):focus() end, { desc = "Focus prompt or chat" })
-      vim.keymap.set("n", "<leader>al", function() require("enlighten").logger:show() end, { desc = "Enlighten logs" })
-    end,
+    keys = {
+      { "<leader>ae", function() require("enlighten").edit() end, desc = "Enlighten Edit", mode = { "n", "v" } },
+      { "<leader>ac", function() require("enlighten").chat() end, desc = "Enlighten Chat", mode = { "n", "v" } },
+      { "<leader>al", function() require("enlighten.logger"):show() end, desc = "Enlighten Logs" },
+    },
+  },
+
+  {
+    "yetone/avante.nvim",
+    enabled = false,
+    event = "VeryLazy",
+    build = "make",
+    opts = {
+      mappings = {
+        ask = "<leader>aA",
+        edit = "<leader>aE", -- does nothing
+        refresh = "<leader>aR",
+      },
+    },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below is optional, make sure to setup it properly if you have lazy=true
+      -- {
+      --   "MeanderingProgrammer/render-markdown.nvim",
+      --   opts = {
+      --     file_types = { "markdown", "Avante" },
+      --   },
+      --   ft = { "markdown", "Avante" },
+      -- },
+    },
   },
 
   {
     "echasnovski/mini.surround",
-    keys = {
-      { "gs", "", desc = "+surround" },
-    },
+    event="VeryLazy",
     opts = {
       mappings = {
-        add = "gsa", -- Add surrounding in Normal and Visual modes
+        add = 'gsa', -- Add surrounding in Normal and Visual modes
         delete = "gsd", -- Delete surrounding
         find = "gsf", -- Find surrounding (to the right)
         find_left = "gsF", -- Find surrounding (to the left)
         highlight = "gsh", -- Highlight surrounding
-        replace = "gsr", -- Replace surrounding
+        replace = 'gsr', -- Replace surrounding
         update_n_lines = "gsn", -- Update `n_lines`
       },
     },

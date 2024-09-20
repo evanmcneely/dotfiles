@@ -55,6 +55,7 @@ return {
         "gomod",
         "gowork",
         "gosum",
+        "gotmpl",
       },
       incremental_selection = {
         enable = false,
@@ -78,6 +79,24 @@ return {
     ---@param opts TSConfig
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
+
+      -- For detecting go template files
+      vim.filetype.add {
+        extension = {
+          gotmpl = "gotmpl",
+          gohtml = "gotmpl",
+          gohtmltmpl = "gotmpl",
+          gohtxttmpl = "gotmpl",
+          gohtexttmpl = "gotmpl",
+        },
+      }
+
+      local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
+      parser_configs["gotmpl"] = {
+        filetype = "gotmpl",
+        used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "gotxttmpl", "gohtml" },
+      }
+      -- vim.treesitter.language.register("gotmpl", { "html" })
     end,
   },
 
@@ -137,11 +156,19 @@ return {
     end,
   },
 
-
   -- Automatically add closing tags for HTML and JSX
   {
     "windwp/nvim-ts-autotag",
     event = "VeryLazy",
-    opts = {},
+    opts = {
+      per_filetype = {
+        ["gotmpl"] = {
+          enable_close = true,
+        },
+        -- aliases = {
+        --   ["gohtml"] = "html",
+        -- },
+      },
+    },
   },
 }
