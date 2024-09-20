@@ -35,7 +35,7 @@ alias tl='tmux ls'
 
 # other
 alias v='vim'
-alias n='nvim'
+alias n=' env TERM=wezterm nvim'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
