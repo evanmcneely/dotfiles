@@ -1,5 +1,5 @@
 [core]
-  excludesfile = ~/.gitignore_global
+	excludesfile = ~/.gitignore_global
 
 [user]
   name = Evan McNeely
@@ -25,3 +25,11 @@
   version = 2
 
 [include] path = ~/.gitconfig_local
+
+[includeIf "exists:.git-blame-ignore-revs"]
+  path = .gitconfig-with-ignore-revs
+
+; echo '[includeIf "exists:.git-blame-ignore-revs"]
+;     path = .gitconfig-with-ignore-revs' >> ~/.gitconfig && echo '[blame]
+;     ignoreRevsFile = .git-blame-ignore-revs' > ~/.gitconfig-with-ignore-revs
+
