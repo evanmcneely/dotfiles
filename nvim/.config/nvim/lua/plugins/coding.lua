@@ -82,10 +82,10 @@ return {
     event = "VeryLazy",
     opts = {
       ai = {
-        model ="o1-mini",
+        -- model ="o1-mini",
         chat = {
-          -- provider = "anthropic",
-          -- model = "claude-3-5-sonnet-20240620",
+          provider = "anthropic",
+          model = "claude-3-5-sonnet-20240620",
         },
       },
       settings = {
@@ -138,15 +138,15 @@ return {
 
   {
     "echasnovski/mini.surround",
-    event="VeryLazy",
+    event = "VeryLazy",
     opts = {
       mappings = {
-        add = 'gsa', -- Add surrounding in Normal and Visual modes
+        add = "gsa", -- Add surrounding in Normal and Visual modes
         delete = "gsd", -- Delete surrounding
         find = "gsf", -- Find surrounding (to the right)
         find_left = "gsF", -- Find surrounding (to the left)
         highlight = "gsh", -- Highlight surrounding
-        replace = 'gsr', -- Replace surrounding
+        replace = "gsr", -- Replace surrounding
         update_n_lines = "gsn", -- Update `n_lines`
       },
     },

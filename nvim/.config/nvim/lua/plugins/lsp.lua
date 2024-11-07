@@ -18,6 +18,7 @@ return {
         "phpcs",
         "goimports",
         "gofumpt",
+        "staticcheck"
       },
     },
   },

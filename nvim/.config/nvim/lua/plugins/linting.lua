@@ -7,6 +7,7 @@ return {
       linters_by_ft = {
         lua = { "luacheck" },
         php = { "phpcs" },
+        go = { "staticcheck" },
         -- ["*"] = { "typos" }, -- add spell checks
       },
     },
