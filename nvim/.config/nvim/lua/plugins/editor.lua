@@ -259,7 +259,8 @@ return {
   -- integration with tmux
   {
     "christoomey/vim-tmux-navigator",
-    cmd = { "TmuxNavigateLeft", "TmuxNavigateDown", "TmuxNavigateUp", "TmuxNavigateRight", "TmuxNavigatePrevious" },
+    version=false,
+    event = "VeryLazy",
     keys = {
       { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
       { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
