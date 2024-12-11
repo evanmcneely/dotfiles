@@ -48,8 +48,10 @@ return {
     opts = {},
   },
 
+  -- Lua helpful stuff
   {
     "folke/lazydev.nvim",
+    enabled = false,
     ft = "lua",
     cmd = "LazyDev",
     opts = {
@@ -62,6 +64,7 @@ return {
       },
     },
   },
+
   -- Manage libuv types with lazy. Plugin will never be loaded
   { "Bilal2453/luvit-meta", lazy = true },
 
@@ -82,7 +85,6 @@ return {
     event = "VeryLazy",
     opts = {
       ai = {
-        -- model ="o1-mini",
         chat = {
           provider = "anthropic",
           model = "claude-3-5-sonnet-20240620",
@@ -90,13 +92,10 @@ return {
       },
       settings = {
         chat = {
-          width = 70,
+          width = 100,
         },
         edit = {
-          -- showTitle = false,
           showHelp = false,
-          -- border = "",
-          -- diff_mode = "smart",
         },
       },
     },
@@ -105,34 +104,6 @@ return {
       { "<leader>ae", function() require("enlighten").edit() end, desc = "Enlighten Edit", mode = { "n", "v" } },
       { "<leader>ac", function() require("enlighten").chat() end, desc = "Enlighten Chat", mode = { "n", "v" } },
       { "<leader>al", function() require("enlighten.logger"):show() end, desc = "Enlighten Logs" },
-    },
-  },
-
-  {
-    "yetone/avante.nvim",
-    enabled = false,
-    event = "VeryLazy",
-    build = "make",
-    opts = {
-      mappings = {
-        ask = "<leader>aA",
-        edit = "<leader>aE", -- does nothing
-        refresh = "<leader>aR",
-      },
-    },
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      --- The below is optional, make sure to setup it properly if you have lazy=true
-      -- {
-      --   "MeanderingProgrammer/render-markdown.nvim",
-      --   opts = {
-      --     file_types = { "markdown", "Avante" },
-      --   },
-      --   ft = { "markdown", "Avante" },
-      -- },
     },
   },
 

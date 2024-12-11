@@ -19,7 +19,7 @@ return {
 
       phpcs.args = {
         "-q",
-        "--standard=phpcs.xml", -- wordpress plugin
+        "--standard=phpcs.xml", -- leadpages wordpress plugin
         "--report=json",
         "-",
       }

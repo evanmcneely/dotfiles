@@ -1,6 +1,9 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
+  dependencies = {
+    "folke/noice.nvim",
+  },
   init = function()
     vim.g.lualine_laststatus = vim.o.laststatus
     if vim.fn.argc(-1) > 0 then
@@ -35,21 +38,19 @@ return {
           components.branch,
           components.diff,
           components.filename,
-          -- components.filetype,
-          -- components.pretty_path,
           components.diagnostics,
         },
         lualine_x = {
           components.noice_mode,
           components.noice_command,
-          "filetype",
           components.shift_width,
           components.progress,
+          "filetype",
         },
         lualine_y = {},
         lualine_z = {},
       },
-      extensions = { "neo-tree", "lazy" },
+      extensions = { "neo-tree", "lazy", "oil" },
     }
 
     return opts

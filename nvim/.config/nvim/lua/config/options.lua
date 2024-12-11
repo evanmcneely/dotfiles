@@ -7,9 +7,6 @@ vim.g.netrw_banner = 0
 vim.g.netrw_fastbrowse = 2
 vim.g.netrw_localcopydircmd = "cp -r"
 vim.g.netrw_altfile = 1
--- vim.g.netrw_liststyle = 3
--- vim.g.netrw_list_hide = "(^|ss)\zs.S+"
--- vim.g.netrw_keepdir = 1
 
 -- Hide deprecation warnings
 vim.g.deprecation_warnings = false
@@ -44,6 +41,7 @@ opt.fillchars = {
 }
 opt.foldlevel = 99
 
+opt.cmdheight = 0
 opt.formatoptions = "jcroqlnt" -- tcqj
 opt.grepformat = "%f:%l:%c:%m"
 opt.grepprg = "rg --vimgrep"
@@ -65,7 +63,7 @@ opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "glob
 opt.shiftround = true -- Round indent
 opt.shiftwidth = 2 -- Size of an indent
 opt.shortmess:append { W = true, I = true, c = true, C = true }
-opt.showbreak = "+"
+opt.showbreak = "+" -- prepend breaklines
 opt.showmode = false -- Dont show mode since we have a statusline
 opt.sidescrolloff = 8 -- Columns of context
 opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
@@ -90,4 +88,5 @@ opt.wrap = false -- Disable line wrap
 opt.smoothscroll = true
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldmethod = "expr"
-opt.foldtext = " "
+-- show first and list line and a count of total lines
+opt.foldtext = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]

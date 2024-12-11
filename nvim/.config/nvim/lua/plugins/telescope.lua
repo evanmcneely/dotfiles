@@ -2,25 +2,14 @@ return {
   "nvim-telescope/telescope.nvim",
   cmd = "Telescope",
   version = false, -- telescope did only one release, so use HEAD for now
+  -- stylua: ignore
   keys = {
     { "<leader><leader>", "<cmd>Telescope find_files theme=dropdown previewer=false<cr>", desc = "Find Files" },
     { "<leader>sf", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
     { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Marks" },
     { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
-    {
-      "<leader>s.",
-      function()
-        require("telescope.builtin").find_files { cwd = vim.fn.expand "%:p:h" }
-      end,
-      desc = "Find Files (current)",
-    },
-    {
-      "<leader>sb",
-      function()
-        require("telescope.builtin").current_buffer_fuzzy_find()
-      end,
-      desc = "Buffer",
-    },
+    { "<leader>s.", function() require("telescope.builtin").find_files { cwd = vim.fn.expand "%:p:h" } end, desc = "Find Files (current)" },
+    { "<leader>sb", function() require("telescope.builtin").current_buffer_fuzzy_find() end, desc = "Buffer" },
   },
   opts = function()
     local actions = require "telescope.actions"

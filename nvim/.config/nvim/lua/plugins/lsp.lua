@@ -18,7 +18,7 @@ return {
         "phpcs",
         "goimports",
         "gofumpt",
-        "staticcheck"
+        "staticcheck",
       },
     },
   },
@@ -43,7 +43,6 @@ return {
           { name = "buffer" },
           { name = "path" },
           { name = "snippets" },
-          -- { name = "lazydev", group_index = 0 },
         },
         completion = {
           completeopt = "menu,menuone,noinsert",
@@ -96,16 +95,21 @@ return {
         vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
         vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
         vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
-        vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
         vim.keymap.set("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
         vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+        vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
+
+        vim.diagnostic.config {
+          signs = false,
+          underline = false,
+        }
       end
 
       lsp_zero.extend_lspconfig {
         sign_text = {
           error = icons.diagnostics.Error,
           warn = icons.diagnostics.Warning,
-          hint = icons.diagnostics.Hint,
+          hint = icons.diagnostics.Information,
           info = icons.diagnostics.Information,
         },
         lsp_attach = lsp_attach,
@@ -113,10 +117,6 @@ return {
       }
 
       require("lspconfig").html.setup {
-        filetypes = { "html", "gotmpl" },
-      }
-
-      require("lspconfig").htmx.setup {
         filetypes = { "html", "gotmpl" },
       }
 

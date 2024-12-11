@@ -11,19 +11,13 @@ return {
     end,
   },
 
-  { "rose-pine/neovim", name = "rose-pine" },
-
   -- Better `vim.notify()`
   {
     "rcarriga/nvim-notify",
+    enabled = false, -- see if I really need/want this
+    -- stylua: ignore
     keys = {
-      {
-        "<leader>un",
-        function()
-          require("notify").dismiss { silent = true, pending = true }
-        end,
-        desc = "Dismiss All Notifications",
-      },
+      { "<leader>un", function() require("notify").dismiss { silent = true, pending = true } end, desc = "Dismiss All Notifications" },
     },
     opts = {
       stages = "static",
@@ -74,6 +68,7 @@ return {
   -- Highly experimental plugin that completely replaces the UI for messages, cmdline and the popupmenu.
   {
     "folke/noice.nvim",
+    enabled = true, -- see if I really need/want this
     event = "VeryLazy",
     opts = {
       lsp = {
@@ -96,6 +91,9 @@ return {
           view = "mini",
         },
       },
+      cmdline = {
+      view = "cmdline",
+    },
       presets = {
         bottom_search = true,
         command_palette = true,

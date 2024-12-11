@@ -5,6 +5,8 @@ return {
   -- add marks to sign column
   { "kshenoy/vim-signature", event = "BufReadPre" },
 
+  { "matze/vim-move", event = "BufReadPost" },
+
   {
     "stevearc/oil.nvim",
     event = "VeryLazy",
@@ -35,7 +37,7 @@ return {
         function()
           local grug = require "grug-far"
           local ext = vim.bo.buftype == "" and vim.fn.expand "%:e"
-          grug.grug_far {
+          grug.open {
             transient = true,
             prefills = {
               filesFilter = ext and ext ~= "" and "*." .. ext or nil,
@@ -53,10 +55,9 @@ return {
   -- location.
   {
     "folke/flash.nvim",
-    enabled=false,
+    enabled = false,
     event = "VeryLazy",
     vscode = true,
-    ---@type Flash.Config
     opts = {},
     -- stylua: ignore
     keys = {
@@ -65,64 +66,6 @@ return {
       { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
       { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
     },
-  },
-
-  -- which-key helps you remember key bindings by showing a popup
-  -- with the active keybindings of the command you started typing.
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts_extend = { "spec" },
-    opts = function()
-      local icons = require "utils.icons"
-      return {
-        icons = { mappings = false }, -- disable icons
-        defaults = {},
-        spec = {
-          {
-            mode = { "n", "v" },
-            { "<leader>1", hidden = true },
-            { "<leader>2", hidden = true },
-            { "<leader>3", hidden = true },
-            { "<leader>4", hidden = true },
-            { "<leader>5", hidden = true },
-            { "<leader>c", group = "code" },
-            { "<leader>zn", group = "noice" },
-            { "<leader>z", group = "system", icon = icons.misc.Vim },
-            { "<leader>a", group = "ai", icon = icons.misc.Robot },
-            { "<leader>h", icon = icons.ui.Files },
-            { "<leader>H", icon = icons.ui.Files },
-            { "<leader>g", group = "git" },
-            { "<leader>gh", group = "hunks" },
-            { "<leader>q", group = "quit/session" },
-            { "<leader>s", group = "search" },
-            { "<leader>u", group = "ui", icon = { icon = "󰙵 ", color = "cyan" } },
-            { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
-            { "<leader>[", hidden = true },
-            { "<leader>(", hidden = true },
-            { "<leader>{", hidden = true },
-            { "<leader>&", hidden = true },
-            { "<leader>+", hidden = true },
-            { "<leader> ", hidden = true },
-            { "g", group = "goto" },
-            { "gs", group = "surround" },
-          },
-        },
-      }
-    end,
-    keys = {
-      {
-        "<leader>?",
-        function()
-          require("which-key").show { global = false }
-        end,
-        desc = "Buffer Keymaps (which-key)",
-      },
-    },
-    config = function(_, opts)
-      local wk = require "which-key"
-      wk.setup(opts)
-    end,
   },
 
   -- git signs highlights text that has changed since the list
@@ -180,8 +123,6 @@ return {
         map("n", "<leader>gr", gs.reset_buffer, "Reset Buffer")
         map("n", "<leader>ghp", gs.preview_hunk_inline, "Preview Hunk Inline")
         map("n", "<leader>gB", function() gs.blame() end, "Blame Buffer")
-        map("n", "<leader>gd", gs.diffthis, "Diff This")
-        map("n", "<leader>gD", function() gs.diffthis("~") end, "Diff This ~")
         map("n", "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>", "Toggle line blame")
       end,
     },
@@ -190,6 +131,7 @@ return {
   -- better diagnostics list and others
   {
     "folke/trouble.nvim",
+    enabled = false, -- see if I really need/want this
     cmd = { "Trouble" },
     opts = {
       modes = {
@@ -241,25 +183,12 @@ return {
     keys = { { "<leader>cu", vim.cmd.UndotreeToggle, desc = "Toggle Undotree" } },
   },
 
-  -- git stuff
-  {
-    "NeogitOrg/neogit",
-    dependencies = { "nvim-lua/plenary.nvim", "sindrets/diffview.nvim" },
-    cmd = "Neogit",
-    opts = {
-      integrations = { diffview = true },
-    },
-    keys = {
-      { "<leader>gs", "<cmd>Neogit kind=tab<cr>", desc = "Status" },
-      { "<leader>gc", "<cmd>Neogit commit<cr>", desc = "Commit" },
-      { "<leader>gp", "<cmd>Neogit push<cr>", desc = "Push" },
-    },
-  },
+  { "sindrets/diffview.nvim", event = "VeryLazy" },
 
   -- integration with tmux
   {
     "christoomey/vim-tmux-navigator",
-    version=false,
+    version = false,
     event = "VeryLazy",
     keys = {
       { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
@@ -274,6 +203,7 @@ return {
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
+    event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       local harpoon = require "harpoon"
@@ -313,10 +243,6 @@ return {
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end,
-    --stylua: ignore
-    keys = {
-      { "<leader>cp", ft = "markdown", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown Preview" },
-    },
   },
 
   -- generate github links for the current file
