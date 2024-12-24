@@ -1,4 +1,18 @@
 return {
+  -- WezTerm integration
+  {
+    "mrjones2014/smart-splits.nvim",
+    lazy = false,
+    config = function()
+      require("smart-splits").setup {}
+
+      vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
+      vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
+      vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
+      vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+    end,
+  },
+
   -- easily open and join statements to multiple and single lines
   { "AndrewRadev/splitjoin.vim", event = "BufReadPost" },
 
@@ -55,7 +69,7 @@ return {
   -- location.
   {
     "folke/flash.nvim",
-    enabled = false,
+    enabled = true,
     event = "VeryLazy",
     vscode = true,
     opts = {},
@@ -184,20 +198,6 @@ return {
   },
 
   { "sindrets/diffview.nvim", event = "VeryLazy" },
-
-  -- integration with tmux
-  {
-    "christoomey/vim-tmux-navigator",
-    version = false,
-    event = "VeryLazy",
-    keys = {
-      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-    },
-  },
 
   -- easy file navigation
   {

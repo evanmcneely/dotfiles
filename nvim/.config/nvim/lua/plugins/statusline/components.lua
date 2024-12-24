@@ -73,7 +73,7 @@ return {
   shift_width = {
     function()
       local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
-      return icons.ui.ChevronRight .. " " .. shiftwidth
+      return icons.ui.Tab .. " " .. shiftwidth
     end,
     padding = 1,
   },

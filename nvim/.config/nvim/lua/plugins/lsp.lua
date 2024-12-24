@@ -101,7 +101,7 @@ return {
 
         vim.diagnostic.config {
           signs = false,
-          underline = false,
+          underline = true,
         }
       end
 
