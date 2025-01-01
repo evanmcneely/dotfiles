@@ -13,7 +13,7 @@ RED="${FG[009]}"
 NAME=${YELLOW}
 SYSTEM=${RED}
 DIR=${GREEN}
-PROMPT_SYMBOL=${BLUE}
+PROMPT_SYMBOL=${YELLOW}
 
 # git prompt settings
 ZSH_THEME_GIT_PROMPT_PREFIX="${BLUE} "
@@ -49,8 +49,8 @@ function pyenv_info {
 
 # primary prompt
 PS1='
-${PROMPT_SYMBOL}╭─ ${SYSTEM}$(pyenv_info)$(node_version)${DIR}  %2~$(git_super_status) %{$reset_color%}
-${PROMPT_SYMBOL}╰─%{$reset_color%} '
+${SYSTEM}$(pyenv_info)$(node_version)${DIR}  %2~$(git_super_status) %{$reset_color%}
+${PROMPT_SYMBOL}->%{$reset_color%} '
 
 # secondary prompt
 # PS2='${BLUE}\ %{$reset_color%}'
