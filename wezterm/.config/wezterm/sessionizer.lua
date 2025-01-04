@@ -12,7 +12,7 @@ end
 
 M._cached_projects = nil
 
-M.search = function(window, pane)
+M.search = function(win, pane)
 	local projects = {}
 	if not M._cached_projects then
 		local success, stdout, stderr = wezterm.run_child_process({
@@ -41,7 +41,7 @@ M.search = function(window, pane)
 		projects = M._cached_projects
 	end
 
-	window:perform_action(
+	win:perform_action(
 		act.InputSelector({
 			action = wezterm.action_callback(M._handle_selection),
 			fuzzy = true,
@@ -53,7 +53,7 @@ M.search = function(window, pane)
 	)
 end
 
-M.switch = function(window, pane)
+M.switch = function(win, pane)
 	local choices = {}
 	for _, workspace in ipairs(mux.get_workspace_names()) do
 		table.insert(choices, {
@@ -64,7 +64,7 @@ M.switch = function(window, pane)
 		})
 	end
 
-	window:perform_action(
+	win:perform_action(
 		act.InputSelector({
 			action = wezterm.action_callback(M._handle_selection),
 			title = "Choose Workspace",
@@ -76,39 +76,39 @@ M.switch = function(window, pane)
 	)
 end
 
-M._handle_selection = function(window, pane, id, label)
+M._handle_selection = function(win, pane, id, label)
 	if not id and not label then
 		wezterm.log_info("Cancelled")
 	else
 		wezterm.log_info("Selected " .. label)
-		M._switch_workspace(window, pane, id)
+		M._switch_workspace(win, pane, id)
 	end
 end
 
-M._switch_workspace = function(window, pane, workspace)
-	local current_workspace = window:active_workspace()
-	if current_workspace == workspace then
+M._switch_workspace = function(win, pane, id)
+	local current_workspace = win:active_workspace()
+	if current_workspace == id then
 		return
 	end
 
-	window:perform_action(
+	win:perform_action(
 		act.SwitchToWorkspace({
-			name = workspace,
+			name = id,
 		}),
 		pane
 	)
 	wezterm.GLOBAL.previous_workspace = current_workspace
 end
 
-M.previous = function(window, pane)
-	local current_workspace = window:active_workspace()
+M.previous = function(win, pane)
+	local current_workspace = win:active_workspace()
 	local workspace = wezterm.GLOBAL.previous_workspace
 
 	if current_workspace == workspace or wezterm.GLOBAL.previous_workspace == nil then
 		return
 	end
 
-	M._switch_workspace(window, pane, workspace)
+	M._switch_workspace(win, pane, workspace)
 end
 
 return M
