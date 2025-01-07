@@ -24,8 +24,8 @@ ZSH_THEME_GIT_PROMPT_STAGED="${YELLOW}%{●%G%}"
 ZSH_THEME_GIT_PROMPT_CONFLICTS="${YELLOW}%{✖%G%}"
 ZSH_THEME_GIT_PROMPT_CHANGED="${RED}%{✚%G%}"
 ZSH_THEME_GIT_PROMPT_DELETED="${RED}%{-%G%}"
-ZSH_THEME_GIT_PROMPT_BEHIND="${BLUE}%{ ↓%G%}"
-ZSH_THEME_GIT_PROMPT_AHEAD="${BLUE}%{ ↑%G%}"
+ZSH_THEME_GIT_PROMPT_BEHIND="${BLUE}%{↓%G%}"
+ZSH_THEME_GIT_PROMPT_AHEAD="${BLUE}%{↑%G%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="${GREEN}%{…%G%}"
 ZSH_THEME_GIT_PROMPT_STASHED="${RED}%{⚑%G%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="${GREEN}%{%G%}"
@@ -49,7 +49,7 @@ function pyenv_info {
 
 # primary prompt
 PS1='
-${SYSTEM}$(pyenv_info)$(node_version)${DIR}  %2~$(git_super_status) %{$reset_color%}
+${DIR} %2~$(git_super_status) %{$reset_color%}
 ${PROMPT_SYMBOL}->%{$reset_color%} '
 
 # secondary prompt

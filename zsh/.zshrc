@@ -19,11 +19,8 @@ if [[ -r $HOME/.zsh-local.sh ]]; then
 fi
 
 export PATH="${HOME}/.local/bin:${PATH}"
-
-# bindkey -s ^f "tmux-sessionizer\n"
-# bindkey -s ^w "tmux-windowizer\n"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # go stuff
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
