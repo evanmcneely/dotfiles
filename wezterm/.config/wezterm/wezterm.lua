@@ -8,9 +8,13 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "tokyonight"
-config.font = wezterm.font("FiraCode Nerd Font")
+config.font = wezterm.font("0xProto Nerd Font Mono")
 config.font_size = 13
 config.line_height = 1.4
+
+-- config.font = wezterm.font("Iosevka Nerd Font")
+-- config.font_size = 14
+-- config.line_height = 1.3
 
 config.window_decorations = "RESIZE"
 config.max_fps = 120
@@ -47,6 +51,23 @@ config.keys = {
   { key = 'c', mods = 'LEADER', action = wezterm.action.ActivateCopyMode },
   -- Open command palette
   { key = ':', mods = 'LEADER', action = wezterm.action.ActivateCommandPalette },
+  -- Show debug overlay
+  { key = 'D', mods = 'LEADER', action = wezterm.action.ShowDebugOverlay },
+
+  -- Quick session switching
+  { key = 'l', mods = 'LEADER', action = wezterm.action_callback(sessionizer.list_add) },
+  { key = 'L', mods = 'LEADER', action = wezterm.action_callback(sessionizer.list_remove) },
+  { key = 'X', mods = 'LEADER', action = wezterm.action_callback(sessionizer.list_clear) },
+  { key = '1', mods = 'LEADER', action = sessionizer.list_goto(1) },
+  { key = '2', mods = 'LEADER', action = sessionizer.list_goto(2) },
+  { key = '3', mods = 'LEADER', action = sessionizer.list_goto(3) },
+  { key = '4', mods = 'LEADER', action = sessionizer.list_goto(4) },
+  { key = '5', mods = 'LEADER', action = sessionizer.list_goto(5) },
+  { key = '+', mods = 'LEADER', action = sessionizer.list_goto(1) },
+  { key = '[', mods = 'LEADER', action = sessionizer.list_goto(2) },
+  { key = '{', mods = 'LEADER', action = sessionizer.list_goto(3) },
+  { key = '(', mods = 'LEADER', action = sessionizer.list_goto(4) },
+  { key = '&', mods = 'LEADER', action = sessionizer.list_goto(5) },
 }
 
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")

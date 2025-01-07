@@ -111,4 +111,60 @@ M.previous = function(win, pane)
 	M._switch_workspace(win, pane, workspace)
 end
 
+M.list_add = function(win, _)
+	if not wezterm.GLOBAL.workspace_list then
+		wezterm.GLOBAL.workspace_list = {}
+	end
+
+	local list = wezterm.GLOBAL.workspace_list
+	local current_workspace = win:active_workspace()
+	for _, workspace in pairs(list) do
+		if wezterm.to_string(workspace) == wezterm.to_string(current_workspace) then
+			return -- workspace is already added
+		end
+	end
+
+	list[tostring(#list + 1)] = current_workspace
+end
+
+M.list_remove = function(win, _)
+	local list = wezterm.GLOBAL.workspace_list
+	if not list then
+		return
+	end
+
+	local current_workspace = win:active_workspace()
+	local new_list = {}
+	local index = 1
+	for _, workspace in list do
+		if wezterm.to_string(workspace) == wezterm.to_string(current_workspace) then
+			goto continue
+		end
+		new_list[tostring(index)] = workspace
+		index = index + 1
+		::continue::
+	end
+
+	wezterm.GLOBAL.workspace_list = new_list
+end
+
+M.list_clear = function(_, _)
+	wezterm.GLOBAL.workspace_list = {}
+end
+
+M.list_goto = function(index)
+	return wezterm.action_callback(function(win, pane)
+		local list = wezterm.GLOBAL.workspace_list
+		if not list then
+			return
+		end
+
+		local target_workspace = list[tostring(index)]
+    if not target_workspace then
+      return
+    end
+		M._switch_workspace(win, pane, target_workspace)
+	end)
+end
+
 return M
