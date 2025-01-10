@@ -8,21 +8,26 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "tokyonight"
-config.font = wezterm.font("0xProto Nerd Font Mono")
-config.font_size = 13
-config.line_height = 1.4
+
+-- config.font = wezterm.font("0xProto Nerd Font Mono")
+-- config.font_size = 13
+-- config.line_height = 1.4
 
 -- config.font = wezterm.font("Iosevka Nerd Font")
 -- config.font_size = 14
 -- config.line_height = 1.3
 
-config.window_decorations = "RESIZE"
+config.font = wezterm.font("DepartureMono Nerd Font")
+config.font_size = 13
+config.line_height = 1.4
+
+-- config.window_decorations = "RESIZE"
 config.max_fps = 120
 config.window_padding = {
 	left = 10,
 	right = 10,
 	top = 10,
-	bottom = 10,
+	bottom = 0,
 }
 
 -- Use CTRL-b as the leader key because I came from tmux
