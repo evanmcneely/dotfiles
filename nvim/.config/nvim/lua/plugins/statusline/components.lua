@@ -5,6 +5,7 @@ return {
   branch = {
     "branch",
     separator = "",
+    icon = icons.git.Branch,
   },
   diff = {
     "diff",
@@ -73,7 +74,7 @@ return {
   shift_width = {
     function()
       local shiftwidth = vim.api.nvim_buf_get_option(0, "shiftwidth")
-      return "_ " .. shiftwidth
+      return "_" .. shiftwidth
     end,
     padding = 1,
   },

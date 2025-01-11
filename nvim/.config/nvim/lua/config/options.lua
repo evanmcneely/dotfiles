@@ -89,4 +89,5 @@ opt.smoothscroll = true
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldmethod = "expr"
 -- show first and list line and a count of total lines
-opt.foldtext = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]
+opt.foldtext =
+  [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) . ' (' . (v:foldend - v:foldstart + 1) . ' lines)']]

@@ -27,7 +27,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     version = false, -- last release is way too old
-    event = "InsertEnter",
+    event = { "InsertEnter" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
@@ -54,7 +54,8 @@ return {
           ["<C-e>"] = cmp.mapping.abort(),
           ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
           ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
-          ["<C-Y>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
+          -- ["<C-Y>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = true },
+          ["<C-Y>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true },
         },
         formatting = {
           format = function(_, item)

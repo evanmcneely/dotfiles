@@ -51,7 +51,7 @@ return {
     Diff = "",
     Repo = "",
     Octoface = "",
-    Branch = "",
+    Branch = "",
   },
   ui = {
     ArrowCircleDown = "",

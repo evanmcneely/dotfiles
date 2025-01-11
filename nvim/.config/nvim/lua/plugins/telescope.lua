@@ -39,15 +39,12 @@ return {
         end,
         mappings = {
           i = {
-            ["<C-Down>"] = actions.cycle_history_next,
-            ["<C-Up>"] = actions.cycle_history_prev,
             ["<C-f>"] = actions.preview_scrolling_down,
             ["<C-b>"] = actions.preview_scrolling_up,
             ["<C-j>"] = actions.move_selection_next,
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-n>"] = actions.cycle_history_next,
             ["<C-p>"] = actions.cycle_history_prev,
-            ["<esc>"] = actions.close,
           },
           n = {
             ["q"] = actions.close,

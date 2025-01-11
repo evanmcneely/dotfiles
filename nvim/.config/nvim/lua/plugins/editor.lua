@@ -145,7 +145,7 @@ return {
   -- better diagnostics list and others
   {
     "folke/trouble.nvim",
-    enabled = false, -- see if I really need/want this
+    enabled = true, -- see if I really need/want this
     cmd = { "Trouble" },
     opts = {
       modes = {
@@ -194,7 +194,10 @@ return {
   {
     "mbbill/undotree",
     cmd = "UndotreeToggle",
-    keys = { { "<leader>cu", vim.cmd.UndotreeToggle, desc = "Toggle Undotree" } },
+    keys = {
+      { "<leader>cu", vim.cmd.UndotreeToggle, desc = "Toggle Undotree" },
+      { "<leader>cf", vim.cmd.UndotreeFocus, desc = "Focus Undotree" },
+    },
   },
 
   { "sindrets/diffview.nvim", event = "VeryLazy" },
