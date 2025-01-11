@@ -9,24 +9,16 @@ end
 
 config.color_scheme = "tokyonight"
 
--- config.font = wezterm.font("0xProto Nerd Font Mono")
--- config.font_size = 13
--- config.line_height = 1.4
-
--- config.font = wezterm.font("Iosevka Nerd Font")
--- config.font_size = 14
--- config.line_height = 1.3
-
 config.font = wezterm.font("DepartureMono Nerd Font")
 config.font_size = 13
 config.line_height = 1.4
 
--- config.window_decorations = "RESIZE"
+config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 config.max_fps = 120
 config.window_padding = {
 	left = 10,
 	right = 10,
-	top = 10,
+	top = 40,
 	bottom = 0,
 }
 
@@ -58,7 +50,6 @@ config.keys = {
   { key = ':', mods = 'LEADER', action = wezterm.action.ActivateCommandPalette },
   -- Show debug overlay
   { key = 'D', mods = 'LEADER', action = wezterm.action.ShowDebugOverlay },
-
   -- Quick session switching
   { key = 'l', mods = 'LEADER', action = wezterm.action_callback(sessionizer.list_add) },
   { key = 'L', mods = 'LEADER', action = wezterm.action_callback(sessionizer.list_remove) },
@@ -89,7 +80,7 @@ tabline.setup({
 				inactive_hover = { bg = tab_background },
 			},
 		},
-		section_separators = { left = " ", right = "" },
+		section_separators = { left = "", right = "" },
 		component_separators = { left = " ", right = " " },
 		tab_separators = { left = "", right = "  " },
 	},
@@ -113,7 +104,7 @@ tabline.setup({
 		},
 		tabline_x = {
 			{ Background = { Color = tab_background } },
-      "You're doing great",
+			"You're doing great!      ",
 			"ram",
 			"cpu",
 			"domain",
