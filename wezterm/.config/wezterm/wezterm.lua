@@ -97,7 +97,7 @@ tabline.setup({
 		tabline_a = {},
 		tabline_b = {},
 		tabline_c = {
-			{ Foreground = { AnsiColor = "Purple" } },
+			{ Foreground = { AnsiColor = "Yellow" } },
 			{ Background = { Color = tab_background } },
 			"workspace",
 		},
@@ -113,6 +113,7 @@ tabline.setup({
 		},
 		tabline_x = {
 			{ Background = { Color = tab_background } },
+      "You're doing great",
 			"ram",
 			"cpu",
 			"domain",
