@@ -8,7 +8,6 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "tokyonight"
-
 config.font = wezterm.font("DepartureMono Nerd Font")
 config.font_size = 13
 config.line_height = 1.4

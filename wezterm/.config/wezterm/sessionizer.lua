@@ -6,10 +6,6 @@ local M = {}
 
 local fd = "/opt/homebrew/bin/fd"
 
-local function format_workspace(name)
-	return "󱂬 : " .. tostring(name)
-end
-
 M._cached_projects = nil
 
 M.search = function(win, pane)
@@ -34,12 +30,12 @@ M.search = function(win, pane)
 			local project = line:gsub("/.git.*$", "")
 			local label = project
 			local id = project:gsub(".*/", "")
-			table.insert(projects, { label = format_workspace(label), id = tostring(id) })
+			table.insert(projects, { label = label, id = tostring(id) })
 		end
 		M._cached_projects = projects
 	else
 		projects = M._cached_projects
-	end
+  end
 
 	win:perform_action(
 		act.InputSelector({
@@ -59,7 +55,7 @@ M.switch = function(win, pane)
 		table.insert(choices, {
 			id = workspace,
 			label = wezterm.format({
-				{ Text = format_workspace(workspace) },
+				{ Text = workspace },
 			}),
 		})
 	end
@@ -81,11 +77,11 @@ M._handle_selection = function(win, pane, id, label)
 		wezterm.log_info("Cancelled")
 	else
 		wezterm.log_info("Selected " .. label)
-		M._switch_workspace(win, pane, id)
+		M._switch_workspace(win, pane, id, label)
 	end
 end
 
-M._switch_workspace = function(win, pane, id)
+M._switch_workspace = function(win, pane, id, label)
 	local current_workspace = win:active_workspace()
 	if current_workspace == id then
 		return
@@ -94,6 +90,7 @@ M._switch_workspace = function(win, pane, id)
 	win:perform_action(
 		act.SwitchToWorkspace({
 			name = id,
+			spawn = { cwd = label },
 		}),
 		pane
 	)
@@ -143,7 +140,7 @@ M.list_remove = function(win, _)
 		new_list[tostring(index)] = workspace
 		index = index + 1
 		::continue::
-	end
+  end
 
 	wezterm.GLOBAL.workspace_list = new_list
 end
@@ -161,8 +158,8 @@ M.list_goto = function(index)
 
 		local target_workspace = list[tostring(index)]
     if not target_workspace then
-      return
-    end
+			return
+		end
 		M._switch_workspace(win, pane, target_workspace)
 	end)
 end
