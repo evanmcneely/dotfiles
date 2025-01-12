@@ -7,6 +7,11 @@ brew 'curl'
 brew 'stow'
 brew 'bat'
 brew 'tree'
+brew 'flyctl'
+brew 'libpq'
+brew 'sqlite'
+brew 'zoxide'
+brew 'jq'
 brew 'coreutils' # Those that come with macOS are outdated
 brew 'typos' # spell check
 
@@ -16,6 +21,12 @@ cask 'firefox'
 cask 'microsoft-edge'
 cask 'wezterm'
 cast 'raycast'
+
+# lua
+brew 'lua'
+brew 'luajit'
+brew 'stylua'
+brew 'luacheck'
 
 # python
 brew 'python3'
@@ -40,7 +51,6 @@ brew 'automake'
 brew 'pkg-config'
 brew 'gettext'
 brew 'navi'
-brew 'jq' # json parsing tool
 brew 'libmemcache'
 brew 'mkcert'
 brew 'nss'
