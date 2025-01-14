@@ -35,7 +35,7 @@ M.search = function(win, pane)
 		M._cached_projects = projects
 	else
 		projects = M._cached_projects
-  end
+	end
 
 	win:perform_action(
 		act.InputSelector({
@@ -101,7 +101,10 @@ M.previous = function(win, pane)
 	local current_workspace = win:active_workspace()
 	local workspace = wezterm.GLOBAL.previous_workspace
 
-	if current_workspace == workspace or wezterm.GLOBAL.previous_workspace == nil then
+	if
+		wezterm.to_string(current_workspace) == wezterm.to_string(workspace)
+		or wezterm.GLOBAL.previous_workspace == nil
+	then
 		return
 	end
 
@@ -134,13 +137,11 @@ M.list_remove = function(win, _)
 	local new_list = {}
 	local index = 1
 	for _, workspace in list do
-		if wezterm.to_string(workspace) == wezterm.to_string(current_workspace) then
-			goto continue
+		if wezterm.to_string(workspace) ~= wezterm.to_string(current_workspace) then
+			new_list[tostring(index)] = workspace
+			index = index + 1
 		end
-		new_list[tostring(index)] = workspace
-		index = index + 1
-		::continue::
-  end
+	end
 
 	wezterm.GLOBAL.workspace_list = new_list
 end
@@ -157,7 +158,7 @@ M.list_goto = function(index)
 		end
 
 		local target_workspace = list[tostring(index)]
-    if not target_workspace then
+		if not target_workspace then
 			return
 		end
 		M._switch_workspace(win, pane, target_workspace)
