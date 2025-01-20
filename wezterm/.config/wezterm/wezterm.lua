@@ -80,7 +80,7 @@ tabline.setup({
 			},
 		},
 		section_separators = { left = "", right = "" },
-		component_separators = { left = " ", right = " " },
+		component_separators = { left = " ", right = "  " },
 		tab_separators = { left = "", right = "  " },
 	},
 	sections = {
@@ -103,9 +103,7 @@ tabline.setup({
 		},
 		tabline_x = {
 			{ Background = { Color = tab_background } },
-			"You're doing great!      ",
-			"ram",
-			"cpu",
+			"You're doing great!",
 			"domain",
 		},
 		tabline_y = {},
