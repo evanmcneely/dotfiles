@@ -48,23 +48,6 @@ return {
     opts = {},
   },
 
-  -- Lua helpful stuff
-  {
-    "folke/lazydev.nvim",
-    enabled = false,
-    ft = "lua",
-    cmd = "LazyDev",
-    opts = {
-      library = {
-        { path = "luvit-meta/library", words = { "vim%.uv" } },
-        { path = "LazyVim", words = { "LazyVim" } },
-        { path = "lazy.nvim", words = { "LazyVim" } },
-        "plenary.nvim",
-        "busted",
-      },
-    },
-  },
-
   -- Manage libuv types with lazy. Plugin will never be loaded
   { "Bilal2453/luvit-meta", lazy = true },
 
@@ -101,9 +84,9 @@ return {
     },
     -- stylua: ignore
     keys = {
-      { "<leader>ae", function() require("enlighten").edit() end, desc = "Enlighten Edit", mode = { "n", "v" } },
-      { "<leader>ac", function() require("enlighten").chat() end, desc = "Enlighten Chat", mode = { "n", "v" } },
-      { "<leader>al", function() require("enlighten.logger"):show() end, desc = "Enlighten Logs" },
+      { "<leader>aE", function() require("enlighten").edit() end, desc = "Enlighten Edit", mode = { "n", "v" } },
+      { "<leader>aC", function() require("enlighten").chat() end, desc = "Enlighten Chat", mode = { "n", "v" } },
+      { "<leader>aL", function() require("enlighten.logger"):show() end, desc = "Enlighten Logs" },
     },
   },
 
@@ -137,5 +120,55 @@ return {
     --  Call config for python files and load the cached venv automatically
     ft = "python",
     keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv", ft = "python" } },
+  },
+
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    lazy = false,
+    version = false,
+    opts = {
+      hints = { enabled = false },
+      diff = {
+        autojump = false,
+      },
+      file_selector = {
+        provider = "telescope",
+        provider_opts = {},
+      },
+    },
+    build = "make",
+    dependencies = {
+      {
+        -- support for image pasting
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+          },
+        },
+      },
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "Avante" },
+        },
+        ft = { "Avante" },
+      },
+    },
+    keys = {
+      {
+        "<leader>ap",
+        function()
+          return vim.bo.filetype == "AvanteInput" and require("avante.clipboard").paste_image() or require("img-clip").paste_image()
+        end,
+        desc = "clip: paste image",
+      },
+    },
   },
 }

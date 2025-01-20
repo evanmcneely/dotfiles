@@ -74,6 +74,9 @@ return {
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
 
+      -- So Avante can render with markdown syntax
+      vim.treesitter.language.register("markdown", "Avante")
+
       -- For detecting go template files
       vim.filetype.add {
         extension = {
@@ -96,7 +99,7 @@ return {
   -- Show open brackets when not visible in buffer
   {
     "nvim-treesitter/nvim-treesitter-context",
-    event = "BufReadPost"
+    event = "BufReadPost",
   },
 
   -- Automatically add closing tags for HTML and JSX
