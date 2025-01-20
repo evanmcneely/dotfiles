@@ -25,8 +25,8 @@ ZSH_THEME_GIT_PROMPT_STAGED="${YELLOW}%{󰧞%G%}"
 ZSH_THEME_GIT_PROMPT_CONFLICTS="${YELLOW}%{󰅖%G%}"
 ZSH_THEME_GIT_PROMPT_CHANGED="${RED}%{󰐕%G%}"
 ZSH_THEME_GIT_PROMPT_DELETED="${RED}%{󰍴%G%}"
-ZSH_THEME_GIT_PROMPT_BEHIND="${BLUE}%{↓%G%}"
-ZSH_THEME_GIT_PROMPT_AHEAD="${BLUE}%{↑%G%}"
+ZSH_THEME_GIT_PROMPT_BEHIND="${BLUE}%{ ↓%G%}"
+ZSH_THEME_GIT_PROMPT_AHEAD="${BLUE}%{ ↑%G%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="${GREEN}%{…%G%}"
 ZSH_THEME_GIT_PROMPT_STASHED="${MAGENTA}%{⚑%G%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="${GREEN}%{󰄬%G%}"
@@ -42,7 +42,7 @@ function node_version {
 # if there is a python virtualenv active show the name other wiseshow system version
 function pyenv_info {
   if [[ -n "$VIRTUAL_ENV" ]] then
-    echo "󰌠 $(pyenv_prompt_info) "
+    echo "󰌠 $(pyenv local) "
   else
     echo "󰌠 $(python3 -V | cut -c 8-) "
   fi

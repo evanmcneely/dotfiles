@@ -18,6 +18,8 @@ if [[ -r $HOME/.zsh-local.sh ]]; then
     source $HOME/.zsh-local.sh
 fi
 
+eval "$(zoxide init zsh)"
+
 export PATH="${HOME}/.local/bin:${PATH}"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
