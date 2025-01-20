@@ -1,5 +1,11 @@
 {
   "runtime.version": "LuaJIT",
-  "diagnostics.enable": false,
-  "format.enable": false
+  "runtime.path": ["lua/?.lua", "lua/?/init.lua"],
+  "format.enable": false,
+  "workspace.checkThirdParty": false,
+  "workspace.library": [
+    "lua",
+    "$VIMRUNTIME",
+    "${3rd}/luv/library"
+  ]
 }
