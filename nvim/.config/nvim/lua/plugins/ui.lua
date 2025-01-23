@@ -83,7 +83,7 @@ return {
         view = "cmdline",
       },
       popupmenu = {
-        backend = "cmp",
+        enabled = "false",
       },
       presets = {
         bottom_search = true,
