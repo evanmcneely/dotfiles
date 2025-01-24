@@ -136,7 +136,7 @@ M.list_remove = function(win, _)
 	local current_workspace = win:active_workspace()
 	local new_list = {}
 	local index = 1
-	for _, workspace in list do
+	for _, workspace in pairs(list) do
 		if wezterm.to_string(workspace) ~= wezterm.to_string(current_workspace) then
 			new_list[tostring(index)] = workspace
 			index = index + 1
@@ -163,6 +163,33 @@ M.list_goto = function(index)
 		end
 		M._switch_workspace(win, pane, target_workspace)
 	end)
+end
+
+M.list_list = function(win, _)
+	local list = wezterm.GLOBAL.workspace_list
+	if not list then
+		return
+	end
+
+	local output = ""
+	local current_workspace = win:active_workspace()
+	local max = 5
+	for key, workspace in pairs(list) do
+		local workspace_name = wezterm.to_string(workspace):gsub('^"(.*)"$', "%1")
+		local active = ""
+		if wezterm.to_string(current_workspace) == wezterm.to_string(workspace) then
+			active = "*"
+		end
+
+		output = output .. " " .. key .. active .. " - " .. workspace_name .. "  "
+
+		max = max - 1
+		if max == 0 then
+			break
+		end
+	end
+
+	return output
 end
 
 return M

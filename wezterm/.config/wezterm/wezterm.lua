@@ -103,8 +103,10 @@ tabline.setup({
 		},
 		tabline_x = {
 			{ Background = { Color = tab_background } },
-			"You're doing great!",
+			sessionizer.list_list,
 			"domain",
+			{ Foreground = { AnsiColor = "Green" } },
+			"You're doing great!",
 		},
 		tabline_y = {},
 		tabline_z = {},
