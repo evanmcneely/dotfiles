@@ -8,7 +8,7 @@ local fd = "/opt/homebrew/bin/fd"
 
 M._cached_projects = nil
 
-M.search = function(win, pane)
+M.search_and_create_workspace = function(win, pane)
 	local projects = {}
 	if not M._cached_projects then
 		local success, stdout, stderr = wezterm.run_child_process({
@@ -49,7 +49,7 @@ M.search = function(win, pane)
 	)
 end
 
-M.switch = function(win, pane)
+M.switch_workspace = function(win, pane)
 	local choices = {}
 	for _, workspace in ipairs(mux.get_workspace_names()) do
 		table.insert(choices, {
@@ -97,7 +97,7 @@ M._switch_workspace = function(win, pane, id, label)
 	wezterm.GLOBAL.previous_workspace = current_workspace
 end
 
-M.previous = function(win, pane)
+M.goto_previous_workspace = function(win, pane)
 	local current_workspace = win:active_workspace()
 	local workspace = wezterm.GLOBAL.previous_workspace
 
@@ -111,7 +111,7 @@ M.previous = function(win, pane)
 	M._switch_workspace(win, pane, workspace)
 end
 
-M.list_add = function(win, _)
+M.add_current_workspace_to_list = function(win, _)
 	if not wezterm.GLOBAL.workspace_list then
 		wezterm.GLOBAL.workspace_list = {}
 	end
@@ -127,7 +127,7 @@ M.list_add = function(win, _)
 	list[tostring(#list + 1)] = current_workspace
 end
 
-M.list_remove = function(win, _)
+M.remove_current_workspace_from_list = function(win, _)
 	local list = wezterm.GLOBAL.workspace_list
 	if not list then
 		return
@@ -146,11 +146,11 @@ M.list_remove = function(win, _)
 	wezterm.GLOBAL.workspace_list = new_list
 end
 
-M.list_clear = function(_, _)
+M.clear_workspace_list = function(_, _)
 	wezterm.GLOBAL.workspace_list = {}
 end
 
-M.list_goto = function(index)
+M.goto_workspace = function(index)
 	return wezterm.action_callback(function(win, pane)
 		local list = wezterm.GLOBAL.workspace_list
 		if not list then
@@ -165,7 +165,7 @@ M.list_goto = function(index)
 	end)
 end
 
-M.list_list = function(win, _)
+M.workspace_list_to_string = function(win, _)
 	local list = wezterm.GLOBAL.workspace_list
 	if not list then
 		return
@@ -175,14 +175,15 @@ M.list_list = function(win, _)
 	local current_workspace = win:active_workspace()
 	local max = 5
 	for key, workspace in pairs(list) do
-		local workspace_name = wezterm.to_string(workspace):gsub('^"(.*)"$', "%1")
 		local active = ""
 		if wezterm.to_string(current_workspace) == wezterm.to_string(workspace) then
 			active = "*"
 		end
 
+    local workspace_name = wezterm.to_string(workspace):gsub('^"(.*)"$', "%1") -- strip surrounding quotations
 		output = output .. " " .. key .. active .. " - " .. workspace_name .. "  "
 
+    -- add a limited number of workspaces to the string for display
 		max = max - 1
 		if max == 0 then
 			break

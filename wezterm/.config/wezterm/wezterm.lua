@@ -17,7 +17,7 @@ config.max_fps = 120
 config.window_padding = {
 	left = 10,
 	right = 10,
-	top = 40,
+	top = 29,
 	bottom = 0,
 }
 
@@ -26,11 +26,11 @@ config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 -- stylua: ignore
 config.keys = {
 	-- Search projects and launch new workspace
-	{ key = "f", mods = "LEADER", action = wezterm.action_callback(sessionizer.search) },
+	{ key = "f", mods = "LEADER", action = wezterm.action_callback(sessionizer.search_and_create_workspace) },
   -- List all current workspaces
-  { key = "s", mods = "LEADER", action = wezterm.action_callback(sessionizer.switch)},
+  { key = "s", mods = "LEADER", action = wezterm.action_callback(sessionizer.switch_workspace)},
   -- Switch to previous workspace
-  { key = "S", mods = "LEADER", action = wezterm.action_callback(sessionizer.previous) },
+  { key = "S", mods = "LEADER", action = wezterm.action_callback(sessionizer.goto_previous_workspace) },
   -- Close the current pane
   { key = 'x', mods = 'LEADER', action = wezterm.action.CloseCurrentPane { confirm = true } },
   -- Create pane in "vertical" split
@@ -50,19 +50,19 @@ config.keys = {
   -- Show debug overlay
   { key = 'D', mods = 'LEADER', action = wezterm.action.ShowDebugOverlay },
   -- Quick session switching
-  { key = 'l', mods = 'LEADER', action = wezterm.action_callback(sessionizer.list_add) },
-  { key = 'L', mods = 'LEADER', action = wezterm.action_callback(sessionizer.list_remove) },
-  { key = 'X', mods = 'LEADER', action = wezterm.action_callback(sessionizer.list_clear) },
-  { key = '1', mods = 'LEADER', action = sessionizer.list_goto(1) },
-  { key = '2', mods = 'LEADER', action = sessionizer.list_goto(2) },
-  { key = '3', mods = 'LEADER', action = sessionizer.list_goto(3) },
-  { key = '4', mods = 'LEADER', action = sessionizer.list_goto(4) },
-  { key = '5', mods = 'LEADER', action = sessionizer.list_goto(5) },
-  { key = '+', mods = 'LEADER', action = sessionizer.list_goto(1) },
-  { key = '[', mods = 'LEADER', action = sessionizer.list_goto(2) },
-  { key = '{', mods = 'LEADER', action = sessionizer.list_goto(3) },
-  { key = '(', mods = 'LEADER', action = sessionizer.list_goto(4) },
-  { key = '&', mods = 'LEADER', action = sessionizer.list_goto(5) },
+  { key = 'l', mods = 'LEADER', action = wezterm.action_callback(sessionizer.add_current_workspace_to_list) },
+  { key = 'L', mods = 'LEADER', action = wezterm.action_callback(sessionizer.remove_current_workspace_from_list) },
+  { key = 'X', mods = 'LEADER', action = wezterm.action_callback(sessionizer.clear_workspace_list) },
+  { key = '1', mods = 'LEADER', action = sessionizer.goto_workspace(1) },
+  { key = '2', mods = 'LEADER', action = sessionizer.goto_workspace(2) },
+  { key = '3', mods = 'LEADER', action = sessionizer.goto_workspace(3) },
+  { key = '4', mods = 'LEADER', action = sessionizer.goto_workspace(4) },
+  { key = '5', mods = 'LEADER', action = sessionizer.goto_workspace(5) },
+  { key = '+', mods = 'LEADER', action = sessionizer.goto_workspace(1) },
+  { key = '[', mods = 'LEADER', action = sessionizer.goto_workspace(2) },
+  { key = '{', mods = 'LEADER', action = sessionizer.goto_workspace(3) },
+  { key = '(', mods = 'LEADER', action = sessionizer.goto_workspace(4) },
+  { key = '&', mods = 'LEADER', action = sessionizer.goto_workspace(5) },
 }
 
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
@@ -103,7 +103,7 @@ tabline.setup({
 		},
 		tabline_x = {
 			{ Background = { Color = tab_background } },
-			sessionizer.list_list,
+			sessionizer.workspace_list_to_string,
 			"domain",
 			{ Foreground = { AnsiColor = "Green" } },
 			"You're doing great!",
