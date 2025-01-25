@@ -1,5 +1,4 @@
 local wezterm = require("wezterm")
-local sessionizer = require("sessionizer")
 local theme = require("theme")
 
 local M = {}
@@ -42,7 +41,7 @@ M.apply_to_config = function(config)
 			},
 			tabline_x = {
 				{ Background = { Color = theme.tab_background } },
-				sessionizer.workspace_list_to_string,
+				M.workspace_list_to_string,
 				{ Foreground = { AnsiColor = "Red" } },
 				"domain",
 				{ Foreground = { AnsiColor = "Purple" } },
@@ -61,6 +60,44 @@ M.apply_to_config = function(config)
 	config.tab_bar_at_bottom = true
 	config.show_new_tab_button_in_tab_bar = false
 	config.tab_max_width = 32
+end
+
+M.workspace_list_to_string = function(win, _)
+	-- Workspaces are added to the list in sessionizer
+	local list = wezterm.GLOBAL.workspace_list
+	if not list then
+		return
+	end
+
+	-- The maximum number of workspaces to display in tabbar
+	local max = 5
+	local numbers = {
+		{ active = "󰲠", inactive = "󰬺" },
+		{ active = "󰲢", inactive = "󰬻" },
+		{ active = "󰲤", inactive = "󰬼" },
+		{ active = "󰲦", inactive = "󰬽" },
+		{ active = "󰲨", inactive = "󰬾" },
+	}
+
+	local current_workspace = win:active_workspace()
+	local output = ""
+	local count = 1
+	for _, workspace in pairs(list) do
+		local icon = numbers[count].inactive
+		if wezterm.to_string(current_workspace) == wezterm.to_string(workspace) then
+			icon = numbers[count].active
+		end
+
+		local workspace_name = wezterm.to_string(workspace):gsub('^"(.*)"$', "%1") -- strip surrounding quotations
+		output = output .. " " .. icon .. " " .. workspace_name .. " "
+
+		count = count + 1
+		if count > max then
+			break
+		end
+	end
+
+	return output
 end
 
 return M

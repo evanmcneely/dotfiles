@@ -165,32 +165,4 @@ M.goto_workspace = function(index)
 	end)
 end
 
-M.workspace_list_to_string = function(win, _)
-	local list = wezterm.GLOBAL.workspace_list
-	if not list then
-		return
-	end
-
-	local output = ""
-	local current_workspace = win:active_workspace()
-	local max = 5
-	for key, workspace in pairs(list) do
-		local active = ""
-		if wezterm.to_string(current_workspace) == wezterm.to_string(workspace) then
-			active = "*"
-		end
-
-		local workspace_name = wezterm.to_string(workspace):gsub('^"(.*)"$', "%1") -- strip surrounding quotations
-		output = output .. " " .. key .. active .. " - " .. workspace_name .. "  "
-
-		-- add a limited number of workspaces to the string for display
-		max = max - 1
-		if max == 0 then
-			break
-		end
-	end
-
-	return output
-end
-
 return M
