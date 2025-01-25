@@ -31,8 +31,6 @@ return {
       { "<leader>cF", function() require("conform").format { formatters = { "injected" }, timeout_ms = 3000 } end, mode = { "n", "v" }, desc = "Format Injected Langs" },
       { "<leader>cf", function() require("conform").format { timeout_ms = 3000 } end, mode = { "n", "v" }, desc = "Format" },
     },
-    ---@module "conform"
-    ---@type conform.setupOpts
     opts = {
       default_format_opts = {
         timeout_ms = 3000,
@@ -64,9 +62,8 @@ return {
         php = { "phpcbf" },
         go = { "goimports", "gofumpt" },
       },
-      ---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
       formatters = {
-        injected = { options = { ignore_errors = true } },
+        injected = { options = {} },
       },
       format_on_save = function(bufnr)
         -- Disable with a global or buffer-local variable
