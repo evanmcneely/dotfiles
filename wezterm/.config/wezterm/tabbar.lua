@@ -43,9 +43,10 @@ M.apply_to_config = function(config)
 			tabline_x = {
 				{ Background = { Color = theme.tab_background } },
 				sessionizer.workspace_list_to_string,
+				{ Foreground = { AnsiColor = "Red" } },
 				"domain",
 				{ Foreground = { AnsiColor = "Purple" } },
-				"You're doing great!",
+				"You're doing great! ",
 			},
 			tabline_y = {},
 			tabline_z = {},
