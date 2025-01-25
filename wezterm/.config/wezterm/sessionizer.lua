@@ -180,10 +180,10 @@ M.workspace_list_to_string = function(win, _)
 			active = "*"
 		end
 
-    local workspace_name = wezterm.to_string(workspace):gsub('^"(.*)"$', "%1") -- strip surrounding quotations
+		local workspace_name = wezterm.to_string(workspace):gsub('^"(.*)"$', "%1") -- strip surrounding quotations
 		output = output .. " " .. key .. active .. " - " .. workspace_name .. "  "
 
-    -- add a limited number of workspaces to the string for display
+		-- add a limited number of workspaces to the string for display
 		max = max - 1
 		if max == 0 then
 			break
