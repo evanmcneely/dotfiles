@@ -3,6 +3,16 @@ local theme = require("theme")
 
 local M = {}
 
+M.numbers = {
+	{ active = "󰲠", inactive = "󰬺", tab = "󰎤" },
+	{ active = "󰲢", inactive = "󰬻", tab = "󰎧" },
+	{ active = "󰲤", inactive = "󰬼", tab = "󰎪" },
+	{ active = "󰲦", inactive = "󰬽", tab = "󰎭" },
+	{ active = "󰲨", inactive = "󰬾", tab = "󰎱" },
+	{ active = "󰲪", inactive = "󰬿", tab = "󰎳" },
+	{ active = "󰲬", inactive = "󰭀", tab = "󰎶" },
+}
+
 M.apply_to_config = function(config)
 	local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
 	tabline.setup({
@@ -19,7 +29,7 @@ M.apply_to_config = function(config)
 			},
 			section_separators = { left = "", right = "" },
 			component_separators = { left = " ", right = "  " },
-			tab_separators = { left = "", right = "  " },
+			tab_separators = { left = "", right = " " },
 		},
 		sections = {
 			tabline_a = {},
@@ -30,13 +40,23 @@ M.apply_to_config = function(config)
 				"workspace",
 			},
 			tab_active = {
-				"index",
-				"- ",
+				{
+					"index",
+					fmt = function(str)
+						return M.numbers[str].tab
+					end,
+				},
+				" ",
 				{ "process", padding = 0, icons_enabled = false },
 			},
 			tab_inactive = {
-				"index",
-				"- ",
+				{
+					"index",
+					fmt = function(str)
+						return M.numbers[str].tab
+					end,
+				},
+				" ",
 				{ "process", padding = 0, icons_enabled = false },
 			},
 			tabline_x = {
@@ -69,23 +89,14 @@ M.workspace_list_to_string = function(win, _)
 		return
 	end
 
-	-- The maximum number of workspaces to display in tabbar
-	local max = 5
-	local numbers = {
-		{ active = "󰲠", inactive = "󰬺" },
-		{ active = "󰲢", inactive = "󰬻" },
-		{ active = "󰲤", inactive = "󰬼" },
-		{ active = "󰲦", inactive = "󰬽" },
-		{ active = "󰲨", inactive = "󰬾" },
-	}
-
 	local current_workspace = win:active_workspace()
+	local max = #M.numbers
 	local output = ""
 	local count = 1
 	for _, workspace in pairs(list) do
-		local icon = numbers[count].inactive
+		local icon = M.numbers[count].inactive
 		if wezterm.to_string(current_workspace) == wezterm.to_string(workspace) then
-			icon = numbers[count].active
+			icon = M.numbers[count].active
 		end
 
 		local workspace_name = wezterm.to_string(workspace):gsub('^"(.*)"$', "%1") -- strip surrounding quotations
