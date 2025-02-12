@@ -68,10 +68,7 @@ return {
     event = "VeryLazy",
     opts = {
       ai = {
-        chat = {
-          provider = "anthropic",
-          model = "claude-3-5-sonnet-20240620",
-        },
+        model = "o3-mini",
       },
       settings = {
         chat = {
@@ -79,14 +76,17 @@ return {
         },
         edit = {
           showHelp = false,
+          showTitle = false,
+          border = "—",
+          height = 3,
         },
       },
     },
     -- stylua: ignore
     keys = {
-      { "<leader>aE", function() require("enlighten").edit() end, desc = "Enlighten Edit", mode = { "n", "v" } },
-      { "<leader>aC", function() require("enlighten").chat() end, desc = "Enlighten Chat", mode = { "n", "v" } },
-      { "<leader>aL", function() require("enlighten.logger"):show() end, desc = "Enlighten Logs" },
+      { "<leader>ae", function() require("enlighten").edit() end, desc = "Enlighten Edit", mode = { "n", "v" } },
+      { "<leader>ac", function() require("enlighten").chat() end, desc = "Enlighten Chat", mode = { "n", "v" } },
+      { "<leader>al", function() require("enlighten.logger"):show() end, desc = "Enlighten Logs" },
     },
   },
 
@@ -123,52 +123,10 @@ return {
   },
 
   {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
-    version = false,
-    opts = {
-      hints = { enabled = false },
-      diff = {
-        autojump = false,
-      },
-      file_selector = {
-        provider = "telescope",
-        provider_opts = {},
-      },
-    },
-    build = "make",
-    dependencies = {
-      {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
-            },
-          },
-        },
-      },
-      {
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "Avante" },
-        },
-        ft = { "Avante" },
-      },
-    },
-    keys = {
-      {
-        "<leader>ap",
-        function()
-          return vim.bo.filetype == "AvanteInput" and require("avante.clipboard").paste_image() or require("img-clip").paste_image()
-        end,
-        desc = "clip: paste image",
-      },
-    },
+    "smjonas/inc-rename.nvim",
+    event = "BufEnter",
+    config = function()
+      require("inc_rename").setup()
+    end,
   },
 }

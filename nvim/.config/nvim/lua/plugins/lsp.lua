@@ -96,7 +96,10 @@ return {
         vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
         vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
         vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
-        vim.keymap.set("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+        -- vim.keymap.set("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", opt)
+        vim.keymap.set("n", "<leader>cr", function()
+          return ":IncRename " .. vim.fn.expand "<cword>"
+        end, { expr = true })
         vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
         vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
 
@@ -117,7 +120,7 @@ return {
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
       }
 
-      vim.lsp.set_log_level("off")
+      vim.lsp.set_log_level "off"
       -- vim.lsp.set_log_level("debug")
 
       require("lspconfig").html.setup {
