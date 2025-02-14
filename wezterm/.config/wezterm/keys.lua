@@ -46,6 +46,14 @@ M.apply_to_config = function(config)
     { key = '{', mods = 'LEADER', action = sessionizer.goto_workspace(3) },
     { key = '(', mods = 'LEADER', action = sessionizer.goto_workspace(4) },
     { key = '&', mods = 'LEADER', action = sessionizer.goto_workspace(5) },
+    -- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
+    { key = "LeftArrow", mods = "OPT", action=wezterm.action { SendString = "\x1bb" } },
+    -- Make Option-Right equivalent to Alt-f; forward-word
+    { key = "RightArrow", mods = "OPT", action=wezterm.action { SendString = "\x1bf" } },
+    -- Make Option-Down go to start
+    { key = "DownArrow", mods = "OPT", action = wezterm.action{ SendString = "\x01" } },
+    -- Make Option-Up go to end
+    { key = "UpArrow", mods = "OPT", action = wezterm.action { SendString = "\x05" } },
   }
 end
 
