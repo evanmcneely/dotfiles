@@ -8,6 +8,11 @@ return {
         lua = { "luacheck" },
         php = { "phpcs" },
         go = { "staticcheck" },
+        javascript = { "eslint" },
+        typescript = { "eslint" },
+        javascriptreact = { "eslint" },
+        typescriptreact = { "eslint" },
+        python = { "ruff" },
         ["*"] = { "typos" }, -- add spell checks
       },
     },

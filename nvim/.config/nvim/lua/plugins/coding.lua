@@ -69,6 +69,7 @@ return {
     opts = {
       ai = {
         model = "o3-mini",
+        temperature = 0.5,
       },
       settings = {
         chat = {
@@ -77,7 +78,7 @@ return {
         edit = {
           showHelp = false,
           showTitle = false,
-          border = "—",
+          border = "",
           height = 3,
         },
       },
@@ -86,7 +87,7 @@ return {
     keys = {
       { "<leader>ae", function() require("enlighten").edit() end, desc = "Enlighten Edit", mode = { "n", "v" } },
       { "<leader>ac", function() require("enlighten").chat() end, desc = "Enlighten Chat", mode = { "n", "v" } },
-      { "<leader>al", function() require("enlighten.logger"):show() end, desc = "Enlighten Logs" },
+      { "<leader>al", function() require("enlighten").logger:show() end, desc = "Enlighten Logs" },
     },
   },
 

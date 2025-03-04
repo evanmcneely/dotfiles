@@ -262,4 +262,19 @@ return {
       { "<leader>gY", function() require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").open_in_browser }) end, desc = "Open in Github" },
     },
   },
+
+  {
+    "folke/todo-comments.nvim",
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      signs = false,
+      -- TODO = {
+      --   alt = { "TODO", "todo" },
+      -- },
+      highlight = {
+        pattern = [[.*<(KEYWORDS)\s* ]],
+      },
+    },
+  },
 }
