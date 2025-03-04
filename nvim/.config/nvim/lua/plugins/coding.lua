@@ -122,12 +122,4 @@ return {
     ft = "python",
     keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv", ft = "python" } },
   },
-
-  {
-    "smjonas/inc-rename.nvim",
-    event = "BufEnter",
-    config = function()
-      require("inc_rename").setup()
-    end,
-  },
 }
