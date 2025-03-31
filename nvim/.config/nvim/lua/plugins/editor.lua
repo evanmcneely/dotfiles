@@ -200,7 +200,15 @@ return {
     },
   },
 
-  { "sindrets/diffview.nvim", event = "VeryLazy" },
+  {
+    "sindrets/diffview.nvim",
+    event = "VeryLazy",
+    keys = {
+      { "<leader>dc", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" },
+      { "<leader>do", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
+      { "<leader>dm", "<cmd>DiffviewOpen master<cr>", desc = "Diffview master" },
+    },
+  },
 
   -- easy file navigation
   {
@@ -276,5 +284,15 @@ return {
         pattern = [[.*<(KEYWORDS)\s* ]],
       },
     },
+  },
+
+  {
+    "oysandvik94/curl.nvim",
+    version = false,
+    cmd = { "CurlOpen", "CurlCollection" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = true,
   },
 }

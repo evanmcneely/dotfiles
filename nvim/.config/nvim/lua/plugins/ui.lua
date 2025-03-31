@@ -131,7 +131,7 @@ return {
     ░░░░░    ░░░░░  ░░░░░░   ░░░░░░       ░░░      ░░░░░ ░░░░░ ░░░ ░░░░░   
       ]]
 
-      logo = string.rep("\n", 8) .. logo .. "\n\n"
+      logo = string.rep("\n", 3) .. logo .. "\n\n"
 
       local opts = {
         theme = "doom",
@@ -179,5 +179,16 @@ return {
 
       return opts
     end,
+  },
+
+  -- only used for vim.ui.select
+  {
+    "folke/snacks.nvim",
+    lazy=false,
+    opts = {
+      picker = {
+        ui_select = true,
+      },
+    },
   },
 }

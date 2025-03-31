@@ -68,12 +68,13 @@ return {
     event = "VeryLazy",
     opts = {
       ai = {
-        model = "o3-mini",
+        model = "claude-3-7-sonnet-latest",
+        provider = "anthropic",
         temperature = 0.5,
       },
       settings = {
         chat = {
-          width = 100,
+          width = 110,
         },
         edit = {
           showHelp = false,
@@ -85,9 +86,13 @@ return {
     },
     -- stylua: ignore
     keys = {
-      { "<leader>ae", function() require("enlighten").edit() end, desc = "Enlighten Edit", mode = { "n", "v" } },
-      { "<leader>ac", function() require("enlighten").chat() end, desc = "Enlighten Chat", mode = { "n", "v" } },
-      { "<leader>al", function() require("enlighten").logger:show() end, desc = "Enlighten Logs" },
+      { "\\e", function() require("enlighten").edit() end, desc = "Enlighten Edit", mode = { "n", "v" } },
+      { "\\c", function() require("enlighten").chat() end, desc = "Enlighten Chat", mode = { "n", "v" } },
+      { "\\y", function() require("enlighten").keep() end, mode = { "n", "v" } },
+      { "\\Y", function() require("enlighten").keep_all() end,mode = { "n" } },
+      { "\\n", function() require("enlighten").discard() end, mode = { "n", "v" } },
+      { "\\N", function() require("enlighten").discard_all() end,mode = { "n" } },
+      { "\\l", function() require("enlighten").logger:show() end, desc = "Enlighten Logs" },
     },
   },
 
