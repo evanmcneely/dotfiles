@@ -13,6 +13,9 @@ theme.apply_to_config(config)
 keys.apply_to_config(config)
 tabs.apply_to_config(config)
 
+local presentation = wezterm.plugin.require("https://gitlab.com/xarvex/presentation.wez")
+presentation.apply_to_config(config, { font_size_multiplier = 1.3, font_weight = "Regular" })
+
 -- A plugin that integrates Neovim window and Wezterm pane navigation under a single keybind
 -- Must be used with Neovim plugin
 local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
