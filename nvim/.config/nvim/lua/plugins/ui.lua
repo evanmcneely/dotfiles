@@ -184,7 +184,7 @@ return {
   -- only used for vim.ui.select
   {
     "folke/snacks.nvim",
-    lazy=false,
+    lazy = false,
     opts = {
       picker = {
         ui_select = true,
