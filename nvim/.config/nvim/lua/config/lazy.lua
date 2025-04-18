@@ -19,6 +19,7 @@ require "config.options"
 require("lazy").setup {
   spec = {
     { import = "plugins" },
+    -- { import = "config.minimal" },
   },
   defaults = { lazy = true, version = "*" },
   install = { missing = true, colorscheme = { "tokyonight" } },

@@ -71,6 +71,7 @@ return {
         model = "claude-3-7-sonnet-latest",
         provider = "anthropic",
         temperature = 0.5,
+        -- model = "o3-mini"
       },
       settings = {
         chat = {
@@ -93,6 +94,7 @@ return {
       { "\\n", function() require("enlighten").discard() end, mode = { "n", "v" } },
       { "\\N", function() require("enlighten").discard_all() end,mode = { "n" } },
       { "\\l", function() require("enlighten").logger:show() end, desc = "Enlighten Logs" },
+      { "\\p", function() require("enlighten").picker:open() end },
     },
   },
 
