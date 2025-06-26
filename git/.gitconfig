@@ -27,5 +27,5 @@
 [include] 
   path = ~/.gitconfig_local
 
-[includeIf "exists:.git-blame-ignore-revs"]
-  path = .gitconfig-with-ignore-revs
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
