@@ -60,9 +60,7 @@ return {
         python = { "isort", "black" },
         php = { "phpcbf" },
         go = { "goimports", "gofumpt" },
-      },
-      formatters = {
-        injected = { options = {} },
+        templ = { "templ" }
       },
       format_on_save = function(bufnr)
         -- Disable with a global or buffer-local variable

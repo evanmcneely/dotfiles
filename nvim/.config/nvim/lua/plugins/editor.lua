@@ -295,4 +295,27 @@ return {
     },
     config = true,
   },
+
+  {
+    "polarmutex/git-worktree.nvim",
+    lazy = false,
+    version = "^2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      {
+        "<leader>gws",
+        function()
+          require("telescope").extensions.git_worktree.git_worktree()
+        end,
+        desc = "Switch Git Worktree",
+      },
+      {
+        "<leader>gwc",
+        function()
+          require("telescope").extensions.git_worktree.create_git_worktree()
+        end,
+        desc = "Create Git Worktree",
+      },
+    },
+  },
 }

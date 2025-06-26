@@ -68,10 +68,9 @@ return {
     event = "VeryLazy",
     opts = {
       ai = {
-        model = "claude-3-7-sonnet-latest",
+        model = "claude-sonnet-4-20250514",
         provider = "anthropic",
         temperature = 0.5,
-        -- model = "o3-mini"
       },
       settings = {
         chat = {
