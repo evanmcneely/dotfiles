@@ -86,7 +86,7 @@ M.workspace_list_to_string = function(win, _)
 	-- Workspaces are added to the list in sessionizer
 	local list = wezterm.GLOBAL.workspace_list
 	if not list then
-		return
+		return ""
 	end
 
 	local current_workspace = win:active_workspace()
