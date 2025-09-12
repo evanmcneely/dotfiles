@@ -8,7 +8,7 @@ M.tab_background = "#24283b" -- Tokyonight storm background color
 M.apply_to_config = function(config)
 	config.color_scheme = M.theme
 	config.font = wezterm.font("DepartureMono Nerd Font")
-	config.font_size = 13
+	config.font_size = 12
 	config.line_height = 1.4
 
 	config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
