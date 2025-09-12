@@ -24,12 +24,26 @@ return {
   {
     "stevearc/conform.nvim",
     dependencies = { "mason.nvim" },
-    lazy = true,
-    cmd = "ConformInfo",
-    -- stylua: ignore
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
     keys = {
-      { "<leader>cF", function() require("conform").format { formatters = { "injected" }, timeout_ms = 3000 } end, mode = { "n", "v" }, desc = "Format Injected Langs" },
-      { "<leader>cf", function() require("conform").format { timeout_ms = 3000, lsp_format = "fallback" } end, mode = { "n", "v" }, desc = "Format" },
+      {
+        "<localleader>F",
+        function()
+          require("conform").format { formatters = { "injected" }, timeout_ms = 3000 }
+        end,
+        mode = { "n", "v" },
+        desc = "Format Injected Langs",
+      },
+      {
+        "<localleader>f",
+        function()
+          print "formatting"
+          require("conform").format { timeout_ms = 3000, lsp_format = "fallback" }
+        end,
+        mode = { "n", "v" },
+        desc = "Format",
+      },
     },
     opts = {
       default_format_opts = {
@@ -60,7 +74,7 @@ return {
         python = { "isort", "black" },
         php = { "phpcbf" },
         go = { "goimports", "gofumpt" },
-        templ = { "templ" },
+        templ = { "templ", "goimports" },
       },
       format_on_save = function(bufnr)
         -- Disable with a global or buffer-local variable

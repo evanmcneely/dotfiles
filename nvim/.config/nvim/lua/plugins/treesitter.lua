@@ -100,6 +100,10 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     event = "BufReadPost",
+    opts = {
+      enable = true,
+      max_lines = 5,
+    },
   },
 
   -- Automatically add closing tags for HTML and JSX

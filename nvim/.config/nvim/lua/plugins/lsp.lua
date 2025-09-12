@@ -122,7 +122,7 @@ return {
       }
 
       vim.lsp.set_log_level "off"
-      -- vim.lsp.set_log_level("debug")
+      -- vim.lsp.set_log_level "debug"
 
       require("lspconfig").html.setup {
         filetypes = { "html", "gotmpl" },
