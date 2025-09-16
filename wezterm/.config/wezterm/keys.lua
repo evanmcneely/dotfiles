@@ -54,6 +54,8 @@ M.apply_to_config = function(config)
     { key = "DownArrow", mods = "OPT", action = wezterm.action{ SendString = "\x01" } },
     -- Make Option-Up go to end
     { key = "UpArrow", mods = "OPT", action = wezterm.action { SendString = "\x05" } },
+    -- shift enter from claude code
+    { key = "Enter", mods = "SHIFT", action = wezterm.action{ SendString="\x1b\r" } },
   }
 end
 
