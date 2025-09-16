@@ -9,12 +9,28 @@ alias gpull='git pull origin $(git symbolic-ref --short HEAD)'
 alias gd='git diff'
 alias gdm='git diff master..$(git symbolic-ref --short HEAD)'
 alias gbprune='git branch | grep -v "master" | grep -v "main" | xargs git branch -D'
-alias gwa='git worktree add'
-alias gwr='git worktree remove'
+alias glog='git log --graph --oneline --decorate --all'
+
+# alias gwa='git worktree add'
+# wa() {
+#     git worktree add "$1" "${2:-master}" && cd "$1"
+# }
+gwa() {
+    local worktree_name="$1"
+    # Navigate to repository root
+    cd "$(git rev-parse --show-toplevel)"
+    cd ..
+    # Create the worktree
+    git worktree add "$worktree_name"
+    # Switch to worktree
+    cd "$worktree_name"
+}
+alias gwr='git worktree remove $(git worktree list | fzf | awk "{print \$1}")'
 alias gwl='git worktree list'
 alias gwpd='git worktree prune --dry-run'
 alias gwp='git worktree prune'
-alias glog='git log --graph --oneline --decorate --all'
+alias gws='selection=$(git worktree list | fzf | awk "{print \$1}") && [ -n "$selection" ] && cd "$selection"'
+alias gwch='git checkout $(git branch | fzf | sed "s/^[* ] *//" | sed "s/^+ *//") --ignore-other-worktrees'
 
 # docker
 alias da="docker ps --format 'table {{.Names}}\t{{.Status}}'"
