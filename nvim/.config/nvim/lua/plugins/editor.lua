@@ -258,7 +258,7 @@ return {
 
   -- generate github links for the current file
   {
-    "ruifm/gitlinker.nvim",
+    "linrongbin16/gitlinker.nvim",
     lazy = "BufReadPost",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
@@ -266,8 +266,7 @@ return {
     end,
     --stylua: ignore
     keys = {
-      { "<leader>gy", function() require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").copy_to_clipboard }) end, desc = "Link to Github" },
-      { "<leader>gY", function() require("gitlinker").get_buf_range_url("n", { action_callback = require("gitlinker.actions").open_in_browser }) end, desc = "Open in Github" },
+      { "<leader>gy", function() require("gitlinker").link({ action_callback = require("gitlinker.actions").copy_to_clipboard }) end, desc = "Link to Github" },
     },
   },
 
