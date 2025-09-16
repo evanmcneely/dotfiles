@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(npm run build:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run format:*)",
+      "Bash(npm run test)",
+      "Bash(mkdir:*)",
+      "Bash(rm:*)"
+    ],
+    "deny": ["Bash(git push:*)", "Bash(kubctl:*)"],
+    "defaultMode": "acceptEdits",
+    "env": {
+      "ANTHROPIC_MODEL": "claude-sonnet-4"
+    }
+  }
+}
