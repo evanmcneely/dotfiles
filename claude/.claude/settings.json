@@ -12,7 +12,7 @@
     "deny": ["Bash(git push:*)", "Bash(kubctl:*)"],
     "defaultMode": "acceptEdits",
     "env": {
-      "ANTHROPIC_MODEL": "claude-sonnet-4"
+      "ANTHROPIC_MODEL": "claude-sonnet-4.5"
     }
   }
 }
