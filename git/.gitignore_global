@@ -8,4 +8,3 @@ pyrightconfig.json
 env
 .enlighten
 .claude/settings.local.json
-CLAUDE.md
