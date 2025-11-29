@@ -26,3 +26,4 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 # go stuff
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
