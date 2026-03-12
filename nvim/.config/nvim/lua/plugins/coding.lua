@@ -68,9 +68,9 @@ return {
     event = "VeryLazy",
     opts = {
       ai = {
-        model = "claude-sonnet-4-20250514",
+        model = "claude-sonnet-4-6",
         provider = "anthropic",
-        temperature = 0.5,
+        temperature = 0.2,
       },
       settings = {
         chat = {
@@ -87,6 +87,7 @@ return {
     -- stylua: ignore
     keys = {
       { "\\e", function() require("enlighten").edit() end, desc = "Enlighten Edit", mode = { "n", "v" } },
+      { "\\g", function() require("enlighten").edit({ diff_mode = "off", auto_close = true }) end, desc = "Enlighten Edit (auto-accept)", mode = { "n", "v" } },
       { "\\c", function() require("enlighten").chat() end, desc = "Enlighten Chat", mode = { "n", "v" } },
       { "\\y", function() require("enlighten").keep() end, mode = { "n", "v" } },
       { "\\Y", function() require("enlighten").keep_all() end,mode = { "n" } },

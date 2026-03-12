@@ -13,6 +13,23 @@ return {
     end,
   },
 
+  {
+    "eero-lehtinen/oklch-color-picker.nvim",
+    event = "VeryLazy",
+    version = "*",
+    keys = {
+      -- One handed keymap recommended, you will be using the mouse
+      {
+        "<leader>v",
+        function()
+          require("oklch-color-picker").pick_under_cursor()
+        end,
+        desc = "Color pick under cursor",
+      },
+    },
+    opts = {},
+  },
+
   -- easily open and join statements to multiple and single lines
   { "AndrewRadev/splitjoin.vim", event = "BufReadPost" },
 

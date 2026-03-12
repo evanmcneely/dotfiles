@@ -7,7 +7,7 @@ return {
       linters_by_ft = {
         lua = { "luacheck" },
         php = { "phpcs" },
-        go = { "staticcheck" },
+        -- go = { "staticcheck" },
         javascript = { "eslint" },
         typescript = { "eslint" },
         javascriptreact = { "eslint" },
