@@ -8,7 +8,6 @@ zstyle ':omz:update' mode disabled
 export ZSH=$HOME/.oh-my-zsh
 plugins=(
     git-prompt
-    pyenv
 )
 ZSH_THEME="evans"
 source $ZSH/oh-my-zsh.sh
@@ -27,3 +26,5 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
+# Opencode
+export EDITOR=nvim

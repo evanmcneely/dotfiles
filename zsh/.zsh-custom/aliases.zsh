@@ -11,8 +11,8 @@ alias gdm='git diff master..$(git symbolic-ref --short HEAD)'
 alias gbprune='git branch | grep -v "master" | grep -v "main" | xargs git branch -D'
 alias glog='git log --graph --oneline --decorate --all'
 
-alias c="CLAUDE_CONFIG_DIR=~/.claude-personal claude"
-alias cw="CLAUDE_CONFIG_DIR=~/.claude-work claude"
+alias c="CLAUDE_CONFIG_DIR=~/.claude-personal claude --dangerously-skip-permissions"
+alias cw="CLAUDE_CONFIG_DIR=~/.claude-work claude --dangerously-skip-permissions"
 
 # Helper function to navigate to bare repo root
 goto_bare_repo() {
