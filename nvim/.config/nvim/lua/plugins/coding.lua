@@ -113,18 +113,4 @@ return {
     ft = "python",
     keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv", ft = "python" } },
   },
-
-  {
-    "supermaven-inc/supermaven-nvim",
-    lazy = false,
-    config = function()
-      require("supermaven-nvim").setup {
-        keymaps = {
-          accept_suggestion = "<C-c>",
-          clear_suggestion = "<C-x>",
-          -- accept_word = "<C-j>",
-        },
-      }
-    end,
-  },
 }
