@@ -1,12 +1,5 @@
 return {
   {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v4.x",
-    lazy = true,
-    config = false,
-  },
-
-  {
     "williamboman/mason.nvim",
     lazy = false,
     config = true,
@@ -82,153 +75,48 @@ return {
       { "williamboman/mason-lspconfig.nvim" },
     },
     config = function()
-      local lsp_zero = require "lsp-zero"
-      local icons = require "utils.icons"
-
-      -- lsp_attach is where you enable features that only work
-      -- if there is a language server active in the file
-      local lsp_attach = function(_, bufnr)
-        local opts = { buffer = bufnr }
-
-        vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
-        vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-        vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>", opts)
-        vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>", opts)
-        vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>", opts)
-        vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", opts)
-        vim.keymap.set("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-        -- vim.keymap.set("n", "<leader>cr", function()
-        --   return ":IncRename " .. vim.fn.expand "<cword>"
-        -- end, { expr = true })
-        vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-        vim.keymap.set("n", "gs", "<cmd>lua vim.lsp.buf.signature_help()<cr>", opts)
-
-        vim.diagnostic.config {
-          signs = false,
-          underline = true,
-          virtual_text = false,
-        }
-      end
-
-      lsp_zero.extend_lspconfig {
-        sign_text = {
-          error = icons.diagnostics.Error,
-          warn = icons.diagnostics.Warning,
-          hint = icons.diagnostics.Information,
-          info = icons.diagnostics.Information,
-        },
-        lsp_attach = lsp_attach,
-        capabilities = require("cmp_nvim_lsp").default_capabilities(),
-      }
-
       vim.lsp.set_log_level "off"
       -- vim.lsp.set_log_level "debug"
 
-      require("lspconfig").html.setup {
-        filetypes = { "html", "gotmpl" },
+      vim.diagnostic.config {
+        signs = false,
+        underline = true,
+        virtual_text = false,
       }
 
+      -- Keymaps on LSP attach
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(ev)
+          local opts = { buffer = ev.buf }
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+          vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
+          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+          vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, opts)
+          vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+          vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
+        end,
+      })
+
+      -- Default capabilities (with cmp-nvim-lsp)
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+      -- Configure the wildcard '*' to apply defaults to all servers
+      vim.lsp.config("*", {
+        capabilities = capabilities,
+      })
+
+      -- Server-specific overrides
+      vim.lsp.config("html", {
+        filetypes = { "html", "gotmpl" },
+      })
+
+      -- Let mason-lspconfig handle installing & enabling servers
       require("mason-lspconfig").setup {
         ensure_installed = {},
-        handlers = {
-          -- this first function is the "default handler"
-          -- it applies to every language server without a "custom handler"
-          function(server_name)
-            require("lspconfig")[server_name].setup {}
-          end,
-        },
       }
     end,
   },
 }
-
--- old PHP config
--- {
---   "neovim/nvim-lspconfig",
---   opts = {
---     servers = {
---       intelephense = {
---         files = {
---           maxSize = 5000000,
---         },
---         stubs = {
---           "wordpress",
---           "wordpress-tests",
---           "apache",
---           "bcmath",
---           "bz2",
---           "calendar",
---           "com_dotnet",
---           "Core",
---           "ctype",
---           "curl",
---           "date",
---           "dba",
---           "dom",
---           "enchant",
---           "exif",
---           "FFI",
---           "fileinfo",
---           "filter",
---           "fpm",
---           "ftp",
---           "gd",
---           "gettext",
---           "gmp",
---           "hash",
---           "iconv",
---           "imap",
---           "intl",
---           "json",
---           "ldap",
---           "libxml",
---           "mbstring",
---           "meta",
---           "mysqli",
---           "oci8",
---           "odbc",
---           "openssl",
---           "pcntl",
---           "pcre",
---           "PDO",
---           "pdo_ibm",
---           "pdo_mysql",
---           "pdo_pgsql",
---           "pdo_sqlite",
---           "pgsql",
---           "Phar",
---           "posix",
---           "pspell",
---           "random",
---           "readline",
---           "Reflection",
---           "session",
---           "shmop",
---           "SimpleXML",
---           "snmp",
---           "soap",
---           "sockets",
---           "sodium",
---           "SPL",
---           "sqlite3",
---           "standard",
---           "superglobals",
---           "sysvmsg",
---           "sysvsem",
---           "sysvshm",
---           "tidy",
---           "tokenizer",
---           "xml",
---           "xmlreader",
---           "xmlrpc",
---           "xmlwriter",
---           "xsl",
---           "Zend OPcache",
---           "zip",
---           "zlib",
---         },
---       },
---     },
---   },
--- },
---
