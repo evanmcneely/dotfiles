@@ -3,7 +3,8 @@ vim.keymap.set("n", "[<space>", "O<esc>^", { desc = "Pad above" })
 vim.keymap.set("n", "]<space>", "o<esc>^", { desc = "Pad below" })
 
 -- Paste over currently selected text without yanking it
-vim.keymap.set("v", "p", '"_dP')
+vim.keymap.set("v", "P", '"_dP')
+vim.keymap.set("v", "p", '"_dp')
 
 -- useful
 vim.keymap.set("n", "J", "mzJ`z")

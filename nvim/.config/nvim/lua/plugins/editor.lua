@@ -333,5 +333,11 @@ return {
         desc = "Create Git Worktree",
       },
     },
+
+    {
+      "m4xshen/hardtime.nvim",
+      lazy = false,
+      dependencies = { "MunifTanjim/nui.nvim" },
+    },
   },
 }
