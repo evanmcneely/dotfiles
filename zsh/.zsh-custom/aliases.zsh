@@ -72,7 +72,11 @@ gwch() {
   local branch_name="$1"
   if [[ -n "$branch_name" ]]; then
     # Try switching to the branch if one was provided
-    git checkout "$branch_name" --ignore-other-worktrees
+    if ! git checkout "$branch_name" --ignore-other-worktrees 2>/dev/null; then
+      # Branch not found locally, try to fetch from origin
+      echo "Branch '$branch_name' not found locally, fetching from origin..."
+      git fetch origin "$branch_name:$branch_name" && git checkout "$branch_name" --ignore-other-worktrees
+    fi
   else
     # Otherwise fuzzy find a branch to switch to.
     # Already checked branches can have prefixes in the branch list. We need to remove those before switching
