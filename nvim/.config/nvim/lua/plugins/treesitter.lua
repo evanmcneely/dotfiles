@@ -17,6 +17,21 @@ return {
       -- during startup.
       require("lazy.core.loader").add_to_rtp(plugin)
       require "nvim-treesitter.query_predicates"
+
+      -- Neovim 0.12 passes directive captures as node lists; nvim-treesitter still expects a single node here.
+      vim.treesitter.query.add_directive("set-lang-from-info-string!", function(match, _, bufnr, pred, metadata)
+        local node = match[pred[2]]
+        if type(node) == "table" then
+          node = node[1]
+        end
+        if not node then
+          return
+        end
+
+        local injection_alias = vim.treesitter.get_node_text(node, bufnr):lower()
+        local aliases = { ex = "elixir", pl = "perl", sh = "bash", ts = "typescript", uxn = "uxntal" }
+        metadata["injection.language"] = vim.filetype.match { filename = "a." .. injection_alias } or aliases[injection_alias] or injection_alias
+      end, { force = true })
     end,
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     opts_extend = { "ensure_installed" },

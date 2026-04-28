@@ -13,7 +13,7 @@ return {
         javascriptreact = { "eslint" },
         typescriptreact = { "eslint" },
         python = { "ruff" },
-        ["*"] = { "typos" }, -- add spell checks
+        ["*"] = vim.fn.executable "typos" == 1 and { "typos" } or {}, -- add spell checks when available
       },
     },
     config = function(_, opts)

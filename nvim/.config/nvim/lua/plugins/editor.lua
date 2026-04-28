@@ -27,7 +27,23 @@ return {
         desc = "Color pick under cursor",
       },
     },
-    opts = {},
+    opts = {
+      highlight = {
+        disable_builtin_lsp_colors = false,
+      },
+    },
+    config = function(_, opts)
+      require("oklch-color-picker").setup(opts)
+
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("oklch-disable-builtin-lsp-colors", { clear = true }),
+        callback = function(data)
+          if vim.lsp.document_color then
+            vim.lsp.document_color.enable(false, { bufnr = data.buf })
+          end
+        end,
+      })
+    end,
   },
 
   -- easily open and join statements to multiple and single lines

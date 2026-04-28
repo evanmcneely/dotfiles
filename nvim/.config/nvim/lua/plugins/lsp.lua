@@ -75,8 +75,8 @@ return {
       { "williamboman/mason-lspconfig.nvim" },
     },
     config = function()
-      vim.lsp.set_log_level "off"
-      -- vim.lsp.set_log_level "debug"
+      vim.lsp.log.set_level "off"
+      -- vim.lsp.log.set_level "debug"
 
       vim.diagnostic.config {
         signs = false,
