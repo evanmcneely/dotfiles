@@ -122,12 +122,6 @@ alias dcs='docker compose stop'
 alias dcl='docker compose logs'
 alias dclf='docker compose logs -f'
 
-# tmux
-alias t='tmux'
-alias ta='tmux attach'
-alias td='tmux detach'
-alias tl='tmux ls'
-
 # other
 alias v='vim'
 alias n=' env TERM=wezterm nvim'
@@ -136,6 +130,4 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias rds="find . -name ".DS_Store" -delete"
 alias luamake=/Users/evan/.config/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
-alias review='PYENV_VERSION=gpt-pp python ~/dev/personal/gpt_pp/cli_pr_review.py'
 alias fn='fd --type f --hidden --exclude .git | fzf-tmux -p | xargs nvim'
-# alias air='$(go env GOPATH)/bin/air'

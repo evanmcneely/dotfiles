@@ -49,6 +49,7 @@ return {
 
   {
     "evanmcneely/enlighten.nvim",
+    enabled = false,
     dir = "~/dev/personal/enlighten.nvim",
     event = "VeryLazy",
     opts = {
@@ -116,6 +117,7 @@ return {
 
   {
     "supermaven-inc/supermaven-nvim",
+    enabled = false,
     lazy = false,
     config = function()
       require("supermaven-nvim").setup {

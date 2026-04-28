@@ -1,26 +1,30 @@
 # tools
-brew 'git'
+# brew 'git'
 brew 'ripgrep'
+brew 'fd'
+brew 'gh'
 brew 'fzf'
 brew 'neovim'
 brew 'curl'
 brew 'stow'
 brew 'bat'
 brew 'tree'
-brew 'flyctl'
 brew 'libpq'
 brew 'sqlite'
-brew 'zoxide'
+# brew 'zoxide'
 brew 'jq'
 brew 'coreutils' # Those that come with macOS are outdated
-brew 'typos' # spell check
+# brew 'typos' # spell check
 
 # apps
 cask 'google-chrome'
 cask 'firefox'
-cask 'microsoft-edge'
+# cask 'microsoft-edge'
 cask 'wezterm'
-cast 'raycast'
+# cask 'raycast'
+
+# fonts
+cask 'font-departure-mono-nerd-font'
 
 # lua
 brew 'lua'
@@ -30,29 +34,31 @@ brew 'luacheck'
 
 # python
 brew 'python3'
-brew 'pyenv'
-brew 'pyenv-virtualenv'
+# brew 'pyenv'
+# brew 'pyenv-virtualenv'
 
 # node
 brew 'nvm'
-brew 'yarn'
+# brew 'yarn'
 brew 'pnpm'
 
 # php
-brew 'composer'
-brew 'php'
+# brew 'composer'
+# brew 'php'
 
 # other dependencies
-brew 'cmake'
-brew 'tree-sitter'
-brew 'ninja'
-brew 'libtool'
-brew 'automake'
-brew 'pkg-config'
-brew 'gettext'
-brew 'navi'
-brew 'libmemcache'
-brew 'mkcert'
-brew 'nss'
-brew 'zlib'
-brew 'graphv'
+brew 'awscli'
+brew 'flyctl'
+# brew 'cmake'
+# brew 'tree-sitter'
+# brew 'ninja'
+# brew 'libtool'
+# brew 'automake'
+# brew 'pkg-config'
+# brew 'gettext'
+# brew 'navi'
+# brew 'libmemcache'
+# brew 'mkcert'
+# brew 'nss'
+# brew 'zlib'
+# brew 'graphviz'

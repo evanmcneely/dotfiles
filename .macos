@@ -23,8 +23,8 @@ done 2>/dev/null &
 
 # Set computer name (as done via System Preferences → Sharing)
 sudo scutil --set ComputerName "Evans MacBook"
-sudo scutil --set HostName "Evans Macbook"
-sudo scutil --set LocalHostName "Evans MacBook"
+sudo scutil --set HostName "Evans-MacBook"
+sudo scutil --set LocalHostName "Evans-MacBook"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "Evans Macbook"
 
 # Disable the sound effects on boot
@@ -154,11 +154,29 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
 # Disable press-and-hold for keys in favor of key repeat
-# defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-# Set a blazingly fast keyboard repeat rate
-# defaults write NSGlobalDomain KeyRepeat -int 1
-# defaults write NSGlobalDomain InitialKeyRepeat -int 10
+# Set a very fast keyboard repeat rate
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
+
+# Enable Dvorak, U.S. QWERTY, and the custom Evan Dev layout, with Dvorak selected by default
+defaults write com.apple.HIToolbox AppleEnabledInputSources -array \
+	'{"InputSourceKind" = "Keyboard Layout"; "KeyboardLayout ID" = 16300; "KeyboardLayout Name" = "Dvorak";}' \
+	'{"InputSourceKind" = "Keyboard Layout"; "KeyboardLayout ID" = 0; "KeyboardLayout Name" = "U.S.";}' \
+	'{"InputSourceKind" = "Keyboard Layout"; "KeyboardLayout ID" = -8343; "KeyboardLayout Name" = "Evan Dev";}'
+defaults write com.apple.HIToolbox AppleSelectedInputSources -array \
+	'{"InputSourceKind" = "Keyboard Layout"; "KeyboardLayout ID" = 16300; "KeyboardLayout Name" = "Dvorak";}'
+defaults write com.apple.HIToolbox AppleDefaultAsciiInputSource \
+	'{"InputSourceKind" = "Keyboard Layout"; "KeyboardLayout ID" = 16300; "KeyboardLayout Name" = "Dvorak";}'
+defaults write com.apple.HIToolbox AppleCurrentKeyboardLayoutInputSourceID -string "com.apple.keylayout.Dvorak"
+
+hitoolbox_plist="${HOME}/Library/Preferences/com.apple.HIToolbox.plist"
+plutil -replace 'AppleEnabledInputSources.0.KeyboardLayout ID' -integer 16300 "$hitoolbox_plist" 2>/dev/null || true
+plutil -replace 'AppleEnabledInputSources.1.KeyboardLayout ID' -integer 0 "$hitoolbox_plist" 2>/dev/null || true
+plutil -replace 'AppleEnabledInputSources.2.KeyboardLayout ID' -integer -8343 "$hitoolbox_plist" 2>/dev/null || true
+plutil -replace 'AppleSelectedInputSources.0.KeyboardLayout ID' -integer 16300 "$hitoolbox_plist" 2>/dev/null || true
+plutil -replace 'AppleDefaultAsciiInputSource.KeyboardLayout ID' -integer 16300 "$hitoolbox_plist" 2>/dev/null || true
 
 # Set language and text formats
 # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
@@ -172,7 +190,7 @@ defaults write NSGlobalDomain AppleMetricUnits -bool true
 # sudo defaults write /Library/Preferences/com.apple.loginwindow showInputMenu -bool true
 
 # Set the timezone; see `sudo systemsetup -listtimezones` for other values
-sudo systemsetup -settimezone "America/Vancouver" >/dev/null
+sudo systemsetup -settimezone "America/Vancouver" >/dev/null 2>&1 || true
 
 # Stop iTunes from responding to the keyboard media keys
 #launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
@@ -181,6 +199,10 @@ sudo systemsetup -settimezone "America/Vancouver" >/dev/null
 # Energy saving                                                               #
 ###############################################################################
 
+# Sleep the display before system sleep on each power source
+sudo pmset -b displaysleep 3
+sudo pmset -c displaysleep 15
+
 # Enable lid wakeup
 sudo pmset -a lidwake 1
 
@@ -188,10 +210,7 @@ sudo pmset -a lidwake 1
 sudo pmset -a autorestart 1
 
 # Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
-
-# Sleep the display after 15 minutes
-sudo pmset -a displaysleep 15
+sudo systemsetup -setrestartfreeze on >/dev/null 2>&1 || true
 
 # Disable machine sleep while charging
 sudo pmset -c sleep 0
@@ -203,7 +222,7 @@ sudo pmset -b sleep 5
 sudo pmset -a standbydelay 86400
 
 # Never go into computer sleep mode
-sudo systemsetup -setcomputersleep Off >/dev/null
+sudo systemsetup -setcomputersleep Off >/dev/null 2>&1 || true
 
 # Hibernation mode
 # 0: Disable hibernation (speeds up entering sleep mode)
@@ -344,7 +363,8 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # Show the ~/Library folder
-chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
+chflags nohidden ~/Library
+xattr -d com.apple.FinderInfo ~/Library 2>/dev/null || true
 
 # Show the /Volumes folder
 # sudo chflags nohidden /Volumes
@@ -372,6 +392,9 @@ defaults write com.apple.dock mouse-over-hilite-stack -bool true
 
 # Change minimize/maximize window effect
 defaults write com.apple.dock mineffect -string "scale"
+
+# Position the Dock on the right side of the screen
+defaults write com.apple.dock orientation -string "right"
 
 # Minimize windows into their application’s icon
 defaults write com.apple.dock minimize-to-application -bool true
@@ -427,11 +450,17 @@ defaults write com.apple.dock show-recents -bool false
 #defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
 # Reset Launchpad, but keep the desktop wallpaper intact
-find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
+if [[ -d "${HOME}/Library/Application Support/Dock" ]]; then
+	find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
+fi
 
 # Add iOS & Watch Simulator to Launchpad
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
-sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (Watch).app" "/Applications/Simulator (Watch).app"
+if [[ -d "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" && ! -e "/Applications/Simulator.app" ]]; then
+	sudo ln -s "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app" 2>/dev/null || true
+fi
+if [[ -d "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (Watch).app" && ! -e "/Applications/Simulator (Watch).app" ]]; then
+	sudo ln -s "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (Watch).app" "/Applications/Simulator (Watch).app" 2>/dev/null || true
+fi
 
 # Add a spacer to the left side of the Dock (where the applications are)
 #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
@@ -466,15 +495,15 @@ defaults write com.apple.dock wvous-tr-modifier -int 0
 ###############################################################################
 
 # Privacy: don’t send search queries to Apple
-defaults write com.apple.Safari UniversalSearchEnabled -bool false
-defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+defaults write com.apple.Safari UniversalSearchEnabled -bool false 2>/dev/null || true
+defaults write com.apple.Safari SuppressSearchSuggestions -bool true 2>/dev/null || true
 
 # Press Tab to highlight each item on a web page
 # defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
 # defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
 
 # Show the full URL in the address bar (note: this still hides the scheme)
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true 2>/dev/null || true
 
 # Set Safari’s home page to `about:blank` for faster loading
 # defaults write com.apple.Safari HomePage -string "about:blank"
@@ -504,9 +533,9 @@ defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 # defaults write com.apple.Safari ProxiesInBookmarksBar "()"
 
 # Enable the Develop menu and the Web Inspector in Safari
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+defaults write com.apple.Safari IncludeDevelopMenu -bool true 2>/dev/null || true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true 2>/dev/null || true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true 2>/dev/null || true
 
 # Add a context menu item for showing the Web Inspector in web views
 # defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
@@ -523,7 +552,7 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
 
 # Warn about fraudulent websites
-defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
+defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true 2>/dev/null || true
 
 # Disable plug-ins
 # defaults write com.apple.Safari WebKitPluginsEnabled -bool false
@@ -548,7 +577,7 @@ defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
 # defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
 # Update extensions automatically
-defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
+defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true 2>/dev/null || true
 
 ###############################################################################
 # Mail                                                                        #

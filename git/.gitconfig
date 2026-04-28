@@ -3,13 +3,9 @@
 
 [user]
   name = Evan McNeely
-  email = evan.mcneely@leadpages.com
+  email = evanmcneely@me.com
 
 [alias]
-  co = checkout
-  br = branch
-  cm = commit
-  jst = status
   hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 
 [pull]
@@ -26,6 +22,3 @@
 
 [include] 
   path = ~/.gitconfig_local
-
-[blame]
-	ignoreRevsFile = .git-blame-ignore-revs
