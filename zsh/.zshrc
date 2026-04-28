@@ -20,6 +20,14 @@ fi
 export PATH="${HOME}/.local/bin:${PATH}"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
+# node/npm via Homebrew nvm
+export NVM_DIR="$HOME/.nvm"
+if [[ -s "/opt/homebrew/opt/nvm/nvm.sh" ]]; then
+    source "/opt/homebrew/opt/nvm/nvm.sh"
+elif [[ -s "/usr/local/opt/nvm/nvm.sh" ]]; then
+    source "/usr/local/opt/nvm/nvm.sh"
+fi
+
 # go stuff
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin

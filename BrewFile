@@ -14,7 +14,7 @@ brew 'sqlite'
 # brew 'zoxide'
 brew 'jq'
 brew 'coreutils' # Those that come with macOS are outdated
-# brew 'typos' # spell check
+brew 'typos' # spell check
 
 # apps
 cask 'google-chrome'
@@ -49,6 +49,7 @@ brew 'pnpm'
 # other dependencies
 brew 'awscli'
 brew 'flyctl'
+cask 'kitlangton-hex'
 # brew 'cmake'
 # brew 'tree-sitter'
 # brew 'ninja'

@@ -82,6 +82,25 @@ install_brew_bundle() {
   brew bundle --file "$BREWFILE"
 }
 
+install_node_with_nvm() {
+  local nvm_prefix nvm_sh
+
+  nvm_prefix="$(brew --prefix nvm 2>/dev/null)" || die "nvm is not installed. Check BrewFile and rerun setup."
+  nvm_sh="${nvm_prefix}/nvm.sh"
+  [[ -s "$nvm_sh" ]] || die "Missing nvm.sh at ${nvm_sh}."
+
+  export NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
+  mkdir -p "$NVM_DIR"
+
+  info "Installing Node.js LTS with nvm"
+  set +u
+  # shellcheck disable=SC1090
+  source "$nvm_sh"
+  nvm install --lts
+  nvm alias default 'lts/*'
+  set -u
+}
+
 install_oh_my_zsh() {
   if [[ -d "${HOME}/.oh-my-zsh" ]]; then
     return
@@ -174,6 +193,20 @@ install_keyboard_layouts() {
   install -m 0644 "$source_layout" "$target_layout"
 }
 
+install_wezterm_terminfo() {
+  local tempfile
+
+  if infocmp -x wezterm >/dev/null 2>&1; then
+    return
+  fi
+
+  info "Installing WezTerm terminfo"
+  tempfile="$(mktemp)"
+  curl -o "$tempfile" https://raw.githubusercontent.com/wezterm/wezterm/main/termwiz/data/wezterm.terminfo
+  tic -x -o "${HOME}/.terminfo" "$tempfile"
+  rm "$tempfile"
+}
+
 install_tmux_plugins() {
   if [[ -d "${HOME}/.tmux/plugins/tpm" ]]; then
     return
@@ -226,11 +259,13 @@ main() {
   install_homebrew
   ensure_brew_shellenv
   install_brew_bundle
+  install_node_with_nvm
   install_oh_my_zsh
   backup_known_stow_conflicts
   stow_dotfiles
   create_directories
   install_keyboard_layouts
+  install_wezterm_terminfo
   # install_tmux_plugins
   # source_tmux_config
   run_macos_defaults
