@@ -9,3 +9,5 @@ env
 .enlighten
 .claude/settings.local.json
 scratch
+tmp/
+.scratch/

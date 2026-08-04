@@ -2,8 +2,8 @@
 	excludesfile = ~/.gitignore_global
 
 [user]
-  name = Evan McNeely
-  email = evanmcneely@me.com
+	name = Evan McNeely
+	email = evanmcneely@me.com
 
 [alias]
   hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
@@ -20,5 +20,13 @@
 [protocol]
   version = 2
 
-[include] 
+[include]
   path = ~/.gitconfig_local
+
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
