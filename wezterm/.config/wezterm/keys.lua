@@ -8,6 +8,11 @@ M.apply_to_config = function(config)
 	config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
   -- stylua: ignore
   config.keys = {
+    { key = "a", mods = "LEADER", action = wezterm.action.ActivateTab(0) },
+    { key = "o", mods = "LEADER", action = wezterm.action.ActivateTab(1) },
+    { key = "e", mods = "LEADER", action = wezterm.action.ActivateTab(2) },
+    { key = "u", mods = "LEADER", action = wezterm.action.ActivateTab(3) },
+    { key = "i", mods = "LEADER", action = wezterm.action.ActivateTab(4) },
     -- Search projects and launch new workspace
     { key = "f", mods = "LEADER", action = wezterm.action_callback(sessionizer.search_and_create_workspace) },
     -- List all current workspaces
@@ -41,11 +46,19 @@ M.apply_to_config = function(config)
     { key = '3', mods = 'LEADER', action = sessionizer.goto_workspace(3) },
     { key = '4', mods = 'LEADER', action = sessionizer.goto_workspace(4) },
     { key = '5', mods = 'LEADER', action = sessionizer.goto_workspace(5) },
+    { key = '6', mods = 'LEADER', action = sessionizer.goto_workspace(6) },
+    { key = '7', mods = 'LEADER', action = sessionizer.goto_workspace(7) },
+    { key = '8', mods = 'LEADER', action = sessionizer.goto_workspace(8) },
+    { key = '9', mods = 'LEADER', action = sessionizer.goto_workspace(9) },
     { key = '+', mods = 'LEADER', action = sessionizer.goto_workspace(1) },
     { key = '[', mods = 'LEADER', action = sessionizer.goto_workspace(2) },
     { key = '{', mods = 'LEADER', action = sessionizer.goto_workspace(3) },
     { key = '(', mods = 'LEADER', action = sessionizer.goto_workspace(4) },
     { key = '&', mods = 'LEADER', action = sessionizer.goto_workspace(5) },
+    { key = '=', mods = 'LEADER', action = sessionizer.goto_workspace(6) },
+    { key = ')', mods = 'LEADER', action = sessionizer.goto_workspace(7) },
+    { key = '}', mods = 'LEADER', action = sessionizer.goto_workspace(8) },
+    { key = ']', mods = 'LEADER', action = sessionizer.goto_workspace(9) },
     -- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
     { key = "LeftArrow", mods = "OPT", action=wezterm.action { SendString = "\x1bb" } },
     -- Make Option-Right equivalent to Alt-f; forward-word
