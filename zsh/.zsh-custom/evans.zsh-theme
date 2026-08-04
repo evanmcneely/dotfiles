@@ -50,7 +50,7 @@ function pyenv_info {
 
 # primary prompt
 PS1='
-${SYSTEM}$(pyenv_info)$(node_version) ${DIR}󰝰 %2~$(git_super_status) %{$reset_color%}
+${SYSTEM}$(node_version) ${DIR}󰝰 %2~$(git_super_status) %{$reset_color%}
 ${PROMPT_SYMBOL}%{$reset_color%} '
 
 # secondary prompt

@@ -14,6 +14,12 @@ alias glog='git log --graph --oneline --decorate --all'
 alias c="CLAUDE_CODE_NO_FLICKER=1 CLAUDE_CONFIG_DIR=~/.claude-personal claude --dangerously-skip-permissions"
 alias cw="CLAUDE_CODE_NO_FLICKER=1 CLAUDE_CONFIG_DIR=~/.claude-work claude --dangerously-skip-permissions"
 
+alias codex="codex --yolo"
+codex-work() {
+  mkdir -p "$HOME/.codex-work"
+  CODEX_HOME="$HOME/.codex-work" codex "$@"
+}
+
 # Helper function to navigate to bare repo root
 goto_bare_repo() {
     if git rev-parse --show-toplevel &>/dev/null; then
