@@ -7,39 +7,9 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = false, -- last release is way too old
     build = ":TSUpdate",
-    event = { "VeryLazy" },
-    lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
-    init = function(plugin)
-      -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
-      -- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
-      -- no longer trigger the **nvim-treesitter** module to be loaded in time.
-      -- Luckily, the only things that those plugins need are the custom queries, which we make available
-      -- during startup.
-      require("lazy.core.loader").add_to_rtp(plugin)
-      require "nvim-treesitter.query_predicates"
-
-      -- Neovim 0.12 passes directive captures as node lists; nvim-treesitter still expects a single node here.
-      vim.treesitter.query.add_directive("set-lang-from-info-string!", function(match, _, bufnr, pred, metadata)
-        local node = match[pred[2]]
-        if type(node) == "table" then
-          node = node[1]
-        end
-        if not node then
-          return
-        end
-
-        local injection_alias = vim.treesitter.get_node_text(node, bufnr):lower()
-        local aliases = { ex = "elixir", pl = "perl", sh = "bash", ts = "typescript", uxn = "uxntal" }
-        metadata["injection.language"] = vim.filetype.match { filename = "a." .. injection_alias } or aliases[injection_alias] or injection_alias
-      end, { force = true })
-    end,
-    cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+    lazy = false,
     opts_extend = { "ensure_installed" },
-    ---@type TSConfig
-    ---@diagnostic disable-next-line: missing-fields
     opts = {
-      highlight = { enable = true },
-      indent = { enable = true },
       ensure_installed = {
         "php",
         "bash",
@@ -49,7 +19,6 @@ return {
         "javascript",
         "jsdoc",
         "json",
-        "jsonc",
         "lua",
         "luadoc",
         "luap",
@@ -71,23 +40,43 @@ return {
         "gowork",
         "gosum",
         "gotmpl",
-      },
-      incremental_selection = {
-        enable = false,
-      },
-      textobjects = {
-        move = {
-          enable = true,
-          goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
-          goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
-          goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer", ["[a"] = "@parameter.inner" },
-          goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
-        },
+        "templ",
       },
     },
-    ---@param opts TSConfig
     config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
+      local treesitter = require "nvim-treesitter"
+      treesitter.setup {
+        install_dir = vim.fn.stdpath "data" .. "/site",
+      }
+
+      local group = vim.api.nvim_create_augroup("treesitter", { clear = true })
+      local function start(buf)
+        if pcall(vim.treesitter.start, buf) then
+          vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
+      end
+      vim.api.nvim_create_autocmd("FileType", {
+        group = group,
+        callback = function(args)
+          start(args.buf)
+        end,
+      })
+
+      treesitter.install(opts.ensure_installed):await(function(err)
+        if err then
+          vim.schedule(function()
+            vim.notify(err, vim.log.levels.ERROR, { title = "nvim-treesitter" })
+          end)
+          return
+        end
+        vim.schedule(function()
+          for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+            if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].filetype ~= "" then
+              start(buf)
+            end
+          end
+        end)
+      end)
 
       -- So Avante can render with markdown syntax
       vim.treesitter.language.register("markdown", "Avante")
@@ -100,14 +89,10 @@ return {
           gohtmltmpl = "gotmpl",
           gohtxttmpl = "gotmpl",
           gohtexttmpl = "gotmpl",
+          templ = "templ",
         },
       }
-
-      local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-      parser_configs["gotmpl"] = {
-        filetype = "gotmpl",
-        used_by = { "gohtmltmpl", "gotexttmpl", "gotmpl", "gotxttmpl", "gohtml" },
-      }
+      vim.treesitter.language.register("gotmpl", { "gohtmltmpl", "gotexttmpl", "gotmpl", "gotxttmpl", "gohtml" })
     end,
   },
 

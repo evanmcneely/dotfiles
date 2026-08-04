@@ -180,15 +180,4 @@ return {
       return opts
     end,
   },
-
-  -- only used for vim.ui.select
-  {
-    "folke/snacks.nvim",
-    lazy = false,
-    opts = {
-      picker = {
-        ui_select = true,
-      },
-    },
-  },
 }

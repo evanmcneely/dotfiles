@@ -1,6 +1,7 @@
 return {
   "nvim-telescope/telescope.nvim",
-  lazy=false,
+  lazy = false,
+  dependencies = { "nvim-telescope/telescope-ui-select.nvim" },
   -- cmd = "Telescope",
   version = false, -- telescope did only one release, so use HEAD for now
   -- stylua: ignore
@@ -20,8 +21,6 @@ return {
     table.insert(vimgrep_arguments, "--hidden") -- I want to search in hidden/dot files.
     table.insert(vimgrep_arguments, "--glob") -- I don't want to search in the `.git` directory.
     table.insert(vimgrep_arguments, "!**/.git/*")
-
-    require('telescope').load_extension('git_worktree')
 
     return {
       defaults = {
@@ -60,6 +59,15 @@ return {
           find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
         },
       },
+      extensions = {
+        ["ui-select"] = require("telescope.themes").get_dropdown(),
+      },
     }
+  end,
+  config = function(_, opts)
+    local telescope = require "telescope"
+    telescope.setup(opts)
+    telescope.load_extension "git_worktree"
+    telescope.load_extension "ui-select"
   end,
 }

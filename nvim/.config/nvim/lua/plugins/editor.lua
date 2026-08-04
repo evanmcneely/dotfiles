@@ -239,7 +239,7 @@ return {
     keys = {
       { "<leader>dc", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" },
       { "<leader>do", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
-      { "<leader>dm", "<cmd>DiffviewOpen master<cr>", desc = "Diffview master" },
+      { "<leader>dm", "<cmd>DiffviewOpen main<cr>", desc = "Diffview main" },
     },
   },
 
