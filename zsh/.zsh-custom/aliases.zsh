@@ -7,6 +7,28 @@ alias gch='git checkout'
 alias gpush='git push origin $(git symbolic-ref --short HEAD)'
 alias gpull='git pull origin $(git symbolic-ref --short HEAD)'
 alias gd='git diff'
+# Open Diffview with optional revisions, --cached, and -- paths.
+gdiff() {
+  local -a diffview_env
+  local arg
+  local i=0
+  local paths_only=0
+  local layout=auto
+  for arg in "$@"; do
+    if (( ! paths_only )); then
+      case "$arg" in
+        --vertical) layout=diff2_vertical; continue ;;
+        --horizontal) layout=diff2_horizontal; continue ;;
+        --) paths_only=1 ;;
+      esac
+    fi
+    diffview_env+=("NVIM_DIFFVIEW_ARG_$i=$arg")
+    (( i += 1 ))
+  done
+  diffview_env+=("NVIM_DIFFVIEW_ARGC=$i" "NVIM_DIFFVIEW_LAYOUT=$layout")
+  env "${diffview_env[@]}" nvim -c 'lua local args = {}; for i = 0, tonumber(vim.env.NVIM_DIFFVIEW_ARGC) - 1 do args[#args + 1] = vim.env["NVIM_DIFFVIEW_ARG_" .. i] end; require("diffview").open(args)'
+}
+alias dv='gdiff'
 alias gdm='git diff master..$(git symbolic-ref --short HEAD)'
 alias gbprune='git branch | grep -v "master" | grep -v "main" | xargs git branch -D'
 alias glog='git log --graph --oneline --decorate --all'

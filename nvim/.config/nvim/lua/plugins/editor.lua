@@ -237,6 +237,20 @@ return {
   {
     "sindrets/diffview.nvim",
     event = "VeryLazy",
+    opts = function()
+      local layout = vim.env.NVIM_DIFFVIEW_LAYOUT
+      if not layout then
+        return {}
+      end
+      if layout == "auto" then
+        layout = vim.o.columns < 180 and "diff2_vertical" or "diff2_horizontal"
+      end
+      return {
+        view = {
+          default = { layout = layout },
+        },
+      }
+    end,
     keys = {
       { "<leader>dc", "<cmd>DiffviewClose<cr>", desc = "Diffview Close" },
       { "<leader>do", "<cmd>DiffviewOpen<cr>", desc = "Diffview Open" },
