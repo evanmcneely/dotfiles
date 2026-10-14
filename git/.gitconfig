@@ -30,3 +30,37 @@
 [credential "https://gist.github.com"]
 	helper =
 	helper = !/opt/homebrew/bin/gh auth git-credential
+[safe]
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-1-1786559244935-atav15
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/AP-12689-add-employee-detail
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/AP-12689-add-employee-detail
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/AP-12689-add-employee-detail
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/AP-12689-add-employee-detail
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/AP-12689-add-employee-detail
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/AP-12689-add-employee-detail
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/AP-12689-add-employee-detail
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-pr-ap-12689-1786562848741-rceiob
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-2-1786562895157-b47i6o
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-1-1788178334174-gxdxbp
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-2-1788178624295-l2ors7
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-1-1788179686907-5rerfa
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-2-1788180250671-um3me1
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-1-1788183071136-zyqhe3
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-2-1788183488107-0xjm7y
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-3-1788183694137-tn0lx9
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-4-1788183902829-yfyqeb
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-5-1788184126758-hk97ma
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-6-1788184352303-qxczbr
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-7-1788184596773-c76huv
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-8-1788184831724-c1dzh9
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-9-1788185059522-fbbhyg
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-10-1788185263913-du3zw6
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-11-1788185464719-578j7l
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-12-1788185680418-tm6jx5
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-13-1788185883746-1rfmuh
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-14-1788186083328-khvqyx
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-15-1788186329309-n4k46d
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-16-1788186561058-zhwmib
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-17-1788186777719-htx223
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-18-1788187006362-82ge9w
+	directory = /Users/evanmcneely/Dev/work/augmentt-app-factory/.sandcastle/worktrees/sandcastle-scratch-planner-19-1788187208407-w025i9
