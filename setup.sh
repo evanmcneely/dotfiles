@@ -6,7 +6,7 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BREWFILE="${DOTFILES_DIR}/BrewFile"
 BACKUP_DIR="${HOME}/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
 
-STOW_PACKAGES="${STOW_PACKAGES:-wezterm zsh nvim bat git bin}"
+STOW_PACKAGES="${STOW_PACKAGES:-wezterm ghostty zsh nvim bat git bin}"
 RUN_MACOS_DEFAULTS="${RUN_MACOS_DEFAULTS:-1}"
 
 info() {
@@ -161,6 +161,7 @@ backup_known_stow_conflicts() {
   backup_path "${HOME}/.gitignore_global"
 
   backup_path "${HOME}/.config/wezterm"
+  backup_path "${HOME}/.config/ghostty"
   backup_path "${HOME}/.config/nvim"
   backup_path "${HOME}/.config/tmux"
   backup_path "${HOME}/.config/bat"
