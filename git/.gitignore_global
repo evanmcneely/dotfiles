@@ -11,3 +11,5 @@ env
 scratch
 tmp/
 .scratch/
+playwright-e2e/
+opencode.json
