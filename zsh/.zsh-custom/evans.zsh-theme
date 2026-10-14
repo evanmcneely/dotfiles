@@ -34,8 +34,15 @@ ZSH_THEME_GIT_PROMPT_UPSTREAM_SEPARATOR="${BLUE}%{%G%}"
 
 # node
 function node_version {
-  if [[ -x "$(command -v node)" ]] then
-    echo " $(node -v | cut -c 2-)"
+  # Resolve external Node only; the lazy-loading function must not run here.
+  local node_path=${commands[node]-}
+  if [[ "$node_path" != "${_prompt_node_path-}" ]]; then
+    typeset -g _prompt_node_path="$node_path"
+    typeset -g _prompt_node_version=''
+    if [[ -n "$node_path" ]]; then
+      _prompt_node_version=$("$node_path" -v 2>/dev/null)
+      _prompt_node_version=${_prompt_node_version#v}
+    fi
   fi
 }
 
@@ -50,7 +57,7 @@ function pyenv_info {
 
 # primary prompt
 PS1='
-${SYSTEM}$(node_version) ${DIR}󰝰 %2~$(git_super_status) %{$reset_color%}
+${SYSTEM}${_prompt_node_version:+ $_prompt_node_version} ${DIR}󰝰 %2~$(git_super_status) %{$reset_color%}
 ${PROMPT_SYMBOL}%{$reset_color%} '
 
 # secondary prompt
@@ -59,4 +66,6 @@ ${PROMPT_SYMBOL}%{$reset_color%} '
 # override right prompt which contains the git status info via the git-prompt plugin
 RPROMPT=''
 
-
+# Cache in the parent shell so the value survives between prompt renders.
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd node_version

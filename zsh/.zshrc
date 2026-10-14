@@ -22,11 +22,40 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # node/npm via Homebrew nvm
 export NVM_DIR="$HOME/.nvm"
-if [[ -s "/opt/homebrew/opt/nvm/nvm.sh" ]]; then
-    source "/opt/homebrew/opt/nvm/nvm.sh"
-elif [[ -s "/usr/local/opt/nvm/nvm.sh" ]]; then
-    source "/usr/local/opt/nvm/nvm.sh"
-fi
+# Expose the default Node installation and its global packages without loading NVM.
+# Follow aliases such as default -> lts/* -> lts/krypton -> v24.15.0.
+function _nvm_default_path {
+    local version=default
+    local depth=0
+    while [[ -r "$NVM_DIR/alias/$version" ]] && (( depth < 20 )); do
+        version=$(<"$NVM_DIR/alias/$version")
+        (( depth += 1 ))
+    done
+    local node_bin="$NVM_DIR/versions/node/v${version#v}/bin"
+    if [[ -x "$node_bin/node" ]]; then
+        path=("$node_bin" ${path:#"$node_bin"})
+    fi
+}
+_nvm_default_path
+unfunction _nvm_default_path
+
+function _load_nvm {
+    local nvm_script
+    for nvm_script in /opt/homebrew/opt/nvm/nvm.sh /usr/local/opt/nvm/nvm.sh; do
+        if [[ -s "$nvm_script" ]]; then
+            unfunction nvm node npm npx corepack
+            source "$nvm_script"
+            return $?
+        fi
+    done
+    print -u2 'NVM is not installed.'
+    return 127
+}
+
+for _nvm_command in nvm node npm npx corepack; do
+    functions[$_nvm_command]='_load_nvm || return; "$0" "$@"'
+done
+unset _nvm_command
 
 # go stuff
 export GOPATH=$HOME/go
