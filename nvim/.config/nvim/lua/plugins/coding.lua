@@ -1,3 +1,11 @@
+local function tab()
+  local suggestion = package.loaded["supermaven-nvim.completion_preview"]
+  if suggestion and suggestion.has_suggestion() then
+    return "<cmd>lua require('supermaven-nvim.completion_preview').on_accept_suggestion()<cr>"
+  end
+  return vim.snippet.active { direction = 1 } and "<cmd>lua vim.snippet.jump(1)<cr>" or "<Tab>"
+end
+
 return {
 
   -- snippets
@@ -21,7 +29,7 @@ return {
     end,
     -- stylua: ignore
     keys = {
-      { "<Tab>", function() return vim.snippet.active { direction = 1 } and "<cmd>lua vim.snippet.jump(1)<cr>" or "<Tab>" end, expr = true, silent = true, mode = { "i", "s" } },
+      { "<Tab>", tab, expr = true, silent = true, mode = { "i", "s" }, desc = "Accept suggestion or jump snippet" },
       { "<S-Tab>", function() return vim.snippet.active { direction = -1 } and "<cmd>lua vim.snippet.jump(-1)<cr>" or "<S-Tab>" end, expr = true, silent = true, mode = { "i", "s" } },
     },
   },
@@ -114,4 +122,33 @@ return {
     ft = "python",
     keys = { { "<leader>cv", "<cmd>:VenvSelect<cr>", desc = "Select VirtualEnv", ft = "python" } },
   },
+
+  {
+    "supermaven-inc/supermaven-nvim",
+    event = "InsertEnter",
+    cmd = {
+      "SupermavenStart",
+      "SupermavenStop",
+      "SupermavenRestart",
+      "SupermavenToggle",
+      "SupermavenStatus",
+      "SupermavenUseFree",
+      "SupermavenUsePro",
+      "SupermavenLogout",
+      "SupermavenShowLog",
+      "SupermavenClearLog",
+    },
+    config = function()
+      require("supermaven-nvim").setup {}
+      -- Keep the same Tab handler regardless of which completion plugin loads first.
+      vim.keymap.set({ "i", "s" }, "<Tab>", tab, { expr = true, silent = true, desc = "Accept suggestion or jump snippet" })
+      -- Upstream logs status at trace level, hiding it with the default config.
+      vim.api.nvim_create_user_command("SupermavenStatus", function()
+        local running = require("supermaven-nvim.api").is_running()
+        vim.notify("Supermaven is " .. (running and "running" or "not running"), vim.log.levels.INFO)
+      end, {})
+    end,
+  },
+
+  {},
 }
