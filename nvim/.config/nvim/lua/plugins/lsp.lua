@@ -80,7 +80,7 @@ return {
 
       vim.diagnostic.config {
         signs = false,
-        underline = true,
+        underline = false,
         virtual_text = false,
       }
 

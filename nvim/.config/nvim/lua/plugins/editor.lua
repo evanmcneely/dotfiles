@@ -102,7 +102,7 @@ return {
   -- location.
   {
     "folke/flash.nvim",
-    enabled = true,
+    enabled = false,
     event = "VeryLazy",
     vscode = true,
     opts = {},
@@ -226,6 +226,7 @@ return {
   -- navigate undo/redo history
   {
     "mbbill/undotree",
+    enabled = false,
     cmd = "UndotreeToggle",
     keys = {
       { "<leader>cu", vim.cmd.UndotreeToggle, desc = "Toggle Undotree" },
