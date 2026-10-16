@@ -6,8 +6,8 @@ description: Use when writing a PR body or opening a PR.
 Use this template for writing the PR body:
 
 ```markdown
-Ticket: <ticket URL or key, if there is ticket context in the session>
-Related: <relevant PR or parent work, if useful>
+Ticket: [<ticket key or title>](<ticket URL>)
+Related: [<relevant PR or reference title>](<reference URL>)
 
 ## Summary
 
@@ -28,6 +28,8 @@ Related: <relevant PR or parent work, if useful>
 
 <optional: potential ramifications of merge>
 ```
+
+Include `Ticket:` only when there is ticket context in the session, and `Related:` only when useful. Both must use clickable Markdown links to actual URLs, rather than bare ticket keys, PR numbers, or unlinked text. Do not invent URLs.
 
 ## Sections
 

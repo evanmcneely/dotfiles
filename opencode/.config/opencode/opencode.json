@@ -1,5 +1,13 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "providers": {
+    "anthropic": {
+      "settings": {
+        "baseURL": "http://127.0.0.1:3456/v1",
+        "apiKey": "dummy"
+      }
+    }
+  },
   "mcp": {
     // "playwright": {
     //   "type": "local",
@@ -9,5 +17,8 @@
     //   ],
     //   "enabled": false
     // }
-  }
+  },
+  "plugins": [
+    "opencode-with-claude@1.11.2"
+  ]
 }
