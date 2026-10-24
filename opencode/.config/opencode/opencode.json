@@ -8,16 +8,6 @@
       }
     }
   },
-  "mcp": {
-    // "playwright": {
-    //   "type": "local",
-    //   "command": [
-    //     "npx",
-    //     "@playwright/mcp@latest"
-    //   ],
-    //   "enabled": false
-    // }
-  },
   "plugins": [
     "opencode-with-claude@1.11.2"
   ]
