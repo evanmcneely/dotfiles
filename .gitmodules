@@ -1,3 +1,0 @@
-[submodule "opencode/.config/opencode/plugins/poteto-mode"]
-	path = opencode/.config/opencode/plugins/poteto-mode
-	url = git@github.com:evanmcneely/opencode-poteto-mode.git
