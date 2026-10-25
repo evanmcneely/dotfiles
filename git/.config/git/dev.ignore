@@ -1,0 +1,19 @@
+# Preserve the patterns from ~/.gitignore_global because excludesFile replaces it.
+.python-version
+.DS_Store
+*.sw*
+.idea
+.vscode
+pyrightconfig.json
+.env
+env
+.enlighten
+.claude/settings.local.json
+scratch
+tmp/
+.scratch/
+playwright-e2e/
+opencode.json
+
+# Private OpenCode configuration in repositories under ~/Dev/ only.
+.opencode/
