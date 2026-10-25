@@ -18,7 +18,8 @@
     "image_preview": true,
     "tps": true,
     "markdown": "rendered",
-    "permissions": "autoaccept"
+    "permissions": "autoaccept",
+    "new_location": "inherit"
   },
   "animations": true,
   "plugins": [
