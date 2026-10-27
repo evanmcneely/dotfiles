@@ -9,6 +9,9 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
+-- Preserve Ctrl-h (vs Backspace) and Ctrl-j (vs Enter) through nested terminals.
+config.enable_kitty_keyboard = true
+
 theme.apply_to_config(config)
 keys.apply_to_config(config)
 tabs.apply_to_config(config)
