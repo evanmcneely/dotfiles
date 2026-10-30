@@ -1,5 +1,5 @@
 ---
-name: write-pr
+name: open-pr
 description: Use when writing a PR body or opening a PR.
 ---
 
