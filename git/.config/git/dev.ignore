@@ -16,4 +16,4 @@ playwright-e2e/
 opencode.json
 
 # Private OpenCode configuration in repositories under ~/Dev/ only.
-.opencode/
+.opencode
